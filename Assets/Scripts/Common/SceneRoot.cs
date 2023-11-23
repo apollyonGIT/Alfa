@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using System.Linq;
 using UnityEngine;
 
 namespace Common
@@ -10,7 +11,19 @@ namespace Common
         public Canvas uiRoot;
         public Transform monoRoot;
 
+        public Trigger[] triggers;
+
         //==================================================================================================
+
+        protected void init_triggers()
+        {
+            if (triggers == null) return;
+
+            foreach (var t in triggers)
+            {
+                t.@do(true);
+            }
+        }
     }
 }
 

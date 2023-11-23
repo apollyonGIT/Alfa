@@ -5,8 +5,6 @@ namespace World
 {
     public class WorldSceneRoot : SceneRoot<WorldSceneRoot>
     {
-        //public Creator[] creators;
-
         WorldContext ctx;
 
         //==================================================================================================
@@ -17,7 +15,7 @@ namespace World
             ctx.init();
 
             init_helpers();
-            //init_module();
+            init_triggers();
 
             ctx.can_start_tick = true;
         }
@@ -28,15 +26,6 @@ namespace World
             var mouse_h = Common.Helpers.Mouse_Move_Helper._init();
             mouse_h.init(uiCamera);
         }
-
-
-        //void init_module()
-        //{
-        //    foreach (var e in creators)
-        //    {
-        //        e.@do();
-        //    }
-        //}
 
 
         private void Update()

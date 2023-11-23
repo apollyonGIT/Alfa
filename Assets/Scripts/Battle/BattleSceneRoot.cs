@@ -13,7 +13,8 @@ namespace Battle
         protected override void on_init()
         {
             root = WorldSceneRoot.instance;
-            uiCamera = WorldSceneRoot.instance.uiCamera;
+            mainCamera = root.mainCamera;
+            uiCamera = root.uiCamera;
             uiRoot.worldCamera = uiCamera;
 
             ctx = WorldContext.instance;

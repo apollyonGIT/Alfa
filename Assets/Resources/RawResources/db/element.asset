@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 726ba47a839c6374b95b41bceffd5343, type: 3}
-  m_Name: card
+  m_Name: element
   m_EditorClassIdentifier: 
-  asset: {fileID: 5749241365185659529, guid: c7a8cffc46d8e5a4492ab8bea65ee5eb, type: 3}
+  asset: {fileID: -2911402179533695063, guid: 07f8612d5a0fa0a4db2f1684f1d64cf8, type: 3}

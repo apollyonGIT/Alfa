@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c7a8cffc46d8e5a4492ab8bea65ee5eb
+guid: 07f8612d5a0fa0a4db2f1684f1d64cf8
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -9,9 +9,9 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 4adb6ab070f5f684c9eadaca6aa3a350, type: 3}
   items:
-  - sheet_name: card
+  - sheet_name: element
     exports:
-    - name: card
+    - name: element
       has_mask: 0
       mask: 0
       generate_asset: 1
