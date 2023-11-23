@@ -9,6 +9,7 @@ namespace Battle
 
         //==================================================================================================
 
+        //0
         protected override void on_init()
         {
             root = WorldSceneRoot.instance;
