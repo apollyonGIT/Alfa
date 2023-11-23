@@ -5,7 +5,6 @@ namespace Battle
 {
     public class BattleSceneRoot : SceneRoot<BattleSceneRoot>
     {
-        WorldContext ctx;
         WorldSceneRoot root;
 
         //==================================================================================================
@@ -16,8 +15,6 @@ namespace Battle
             mainCamera = root.mainCamera;
             uiCamera = root.uiCamera;
             uiRoot.worldCamera = uiCamera;
-
-            ctx = WorldContext.instance;
         }
 
 
