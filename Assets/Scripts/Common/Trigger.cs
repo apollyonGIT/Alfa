@@ -4,7 +4,7 @@ namespace Common
 {
     public abstract class Trigger : MonoBehaviour
     {
-        public abstract void @do(bool is_init);
+        public abstract void @do(bool is_init = false);
     }
 }
 

@@ -92,10 +92,11 @@ namespace World
 
             tick();
             tick1();
-            tick2();
-            tick3();
             Physics2D.SyncTransforms();
             Physics2D.Simulate(m_delta_time);
+            tick2();
+            tick3();
+
             after_tick();
 
             ctx_tick_end();

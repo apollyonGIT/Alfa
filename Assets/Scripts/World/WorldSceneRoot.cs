@@ -5,7 +5,7 @@ namespace World
 {
     public class WorldSceneRoot : SceneRoot<WorldSceneRoot>
     {
-        public Creator[] creators;
+        //public Creator[] creators;
 
         WorldContext ctx;
 
@@ -17,7 +17,7 @@ namespace World
             ctx.init();
 
             init_helpers();
-            init_module();
+            //init_module();
 
             ctx.can_start_tick = true;
         }
@@ -30,13 +30,13 @@ namespace World
         }
 
 
-        void init_module()
-        {
-            foreach (var e in creators)
-            {
-                e.@do();
-            }
-        }
+        //void init_module()
+        //{
+        //    foreach (var e in creators)
+        //    {
+        //        e.@do();
+        //    }
+        //}
 
 
         private void Update()
