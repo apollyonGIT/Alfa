@@ -11,15 +11,15 @@ namespace Common
         public Canvas uiRoot;
         public Transform monoRoot;
 
-        public Trigger[] triggers;
+        public Producer[] producers;
 
         //==================================================================================================
 
         protected void init_triggers()
         {
-            if (triggers == null) return;
+            if (producers == null) return;
 
-            foreach (var t in triggers)
+            foreach (var t in producers)
             {
                 t.@do(true);
             }

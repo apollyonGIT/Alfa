@@ -2,7 +2,7 @@
 
 namespace Common
 {
-    public abstract class Trigger : MonoBehaviour
+    public abstract class Producer : MonoBehaviour
     {
         public abstract void @do(bool is_init = false);
     }
