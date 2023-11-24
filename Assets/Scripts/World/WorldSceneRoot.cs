@@ -15,7 +15,7 @@ namespace World
             ctx.init();
 
             init_helpers();
-            init_triggers();
+            init_producers();
 
             ctx.can_start_tick = true;
         }
@@ -31,6 +31,12 @@ namespace World
         private void Update()
         {
             ctx.update();
+        }
+
+
+        protected override void on_fini()
+        {
+            fini_producers();
         }
 
 

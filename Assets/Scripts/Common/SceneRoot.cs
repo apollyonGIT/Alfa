@@ -14,13 +14,24 @@ namespace Common
 
         //==================================================================================================
 
-        protected void init_triggers()
+        protected void init_producers()
         {
             if (producers == null) return;
 
             foreach (var t in producers)
             {
-                t.@do(true);
+                t.init();
+            }
+        }
+
+
+        protected void fini_producers()
+        {
+            if (producers == null) return;
+
+            foreach (var t in producers)
+            {
+                t.fini();
             }
         }
     }

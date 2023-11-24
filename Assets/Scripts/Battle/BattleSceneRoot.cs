@@ -15,6 +15,14 @@ namespace Battle
             mainCamera = root.mainCamera;
             uiCamera = root.uiCamera;
             uiRoot.worldCamera = uiCamera;
+
+            init_producers();
+        }
+
+
+        protected override void on_fini()
+        {
+            fini_producers();
         }
 
 

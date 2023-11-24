@@ -4,7 +4,11 @@ namespace Common
 {
     public abstract class Producer : MonoBehaviour
     {
-        public abstract void @do(bool is_init = false);
+        public abstract void init();
+
+        public abstract void tick();
+
+        public abstract void fini();
     }
 }
 
