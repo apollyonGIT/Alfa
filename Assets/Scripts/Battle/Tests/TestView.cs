@@ -1,27 +1,27 @@
 ﻿using Foundation;
 using UnityEngine;
 
-namespace #namespace#
+namespace Battle.Tests
 {
-    public class #name# : MonoBehaviour, #iview#
+    public class TestView : MonoBehaviour, ITestView
     {
-        #cell# cell;
+        Test cell;
 
         //==================================================================================================
 
-        void IModelView<#cell#>.attach(#cell# cell)
+        void IModelView<Test>.attach(Test cell)
         {
             this.cell = cell;
         }
 
 
-        void IModelView<#cell#>.detach(#cell# cell)
+        void IModelView<Test>.detach(Test cell)
         {
             this.cell = null;
         }
 
 
-        void IModelView<#cell#>.shift(#cell# old_cell, #cell# new_cell)
+        void IModelView<Test>.shift(Test old_cell, Test new_cell)
         {
         }
     }

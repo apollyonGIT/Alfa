@@ -1,8 +1,10 @@
-﻿namespace #namespace#
-{
-    public class #name# : Model<#name#, #iview#>
-    {
+﻿using Foundation;
 
+namespace Battle.MapLands
+{
+    public class MapLand : Model<MapLand, IMapLandView>
+    {
+        
         //==================================================================================================
 
     }

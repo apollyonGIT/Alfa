@@ -3,12 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Enemy
-  - Floor
-  - Timber
-  - UnstableCoal_PJT
-  - Caravan_Body
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -16,12 +11,12 @@ TagManager:
   - 
   - Water
   - UI
-  - temp
-  - pre
   - 
-  - catching_monster
-  - body
-  - device
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -43,24 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Ground
-    uniqueID: 539716027
-    locked: 0
-  - name: Device_Behind_Caravan
-    uniqueID: 438228971
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Wheel
-    uniqueID: 1011358893
-    locked: 0
-  - name: Device_Over_Caravan
-    uniqueID: 3248643723
-    locked: 0
-  - name: Enemy
-    uniqueID: 3273385741
-    locked: 0
-  - name: Front_Landscape
-    uniqueID: 334627197
+  - name: mapland
+    uniqueID: 2197310663
     locked: 0

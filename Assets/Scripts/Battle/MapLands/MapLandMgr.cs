@@ -1,21 +1,24 @@
 ﻿using Common;
 using Foundation;
+using System.Collections.Generic;
 
-namespace #namespace#
+namespace Battle.MapLands
 {
-    public interface #iview# : IModelView<#cell#>
+    public interface IMapLandView : IModelView<MapLand>
     { 
     }
 
 
-    public class #name# : IMgr
+    public class MapLandMgr : IMgr
     {
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
 
+        Dictionary<int, MapLand> cells = new();
+
         //==================================================================================================
 
-        public #name#(string name, params object[] objs)
+        public MapLandMgr(string name, params object[] objs)
         {
             m_mgr_name = name;
             (this as IMgr).init(objs);

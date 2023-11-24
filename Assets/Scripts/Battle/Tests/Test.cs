@@ -1,6 +1,8 @@
-﻿namespace #namespace#
+﻿using Foundation;
+
+namespace Battle.Tests
 {
-    public class #name# : Model<#name#, #iview#>
+    public class Test : Model<Test, ITestView>
     {
 
         //==================================================================================================

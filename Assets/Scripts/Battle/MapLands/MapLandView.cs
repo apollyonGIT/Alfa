@@ -1,27 +1,27 @@
 ﻿using Foundation;
 using UnityEngine;
 
-namespace #namespace#
+namespace Battle.MapLands
 {
-    public class #name# : MonoBehaviour, #iview#
+    public class MapLandView : MonoBehaviour, IMapLandView
     {
-        #cell# cell;
+        MapLand cell;
 
         //==================================================================================================
 
-        void IModelView<#cell#>.attach(#cell# cell)
+        void IModelView<MapLand>.attach(MapLand cell)
         {
             this.cell = cell;
         }
 
 
-        void IModelView<#cell#>.detach(#cell# cell)
+        void IModelView<MapLand>.detach(MapLand cell)
         {
             this.cell = null;
         }
 
 
-        void IModelView<#cell#>.shift(#cell# old_cell, #cell# new_cell)
+        void IModelView<MapLand>.shift(MapLand old_cell, MapLand new_cell)
         {
         }
     }

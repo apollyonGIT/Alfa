@@ -1,21 +1,21 @@
 ﻿using Common;
 using Foundation;
 
-namespace #namespace#
+namespace Battle.Tests
 {
-    public interface #iview# : IModelView<#cell#>
+    public interface ITestView : IModelView<Test>
     { 
     }
 
 
-    public class #name# : IMgr
+    public class TestMgr : IMgr
     {
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
 
         //==================================================================================================
 
-        public #name#(string name, params object[] objs)
+        public TestMgr(string name, params object[] objs)
         {
             m_mgr_name = name;
             (this as IMgr).init(objs);
