@@ -25,7 +25,7 @@ namespace Battle.MapLands
         }
 
 
-        void IMgr.destroy()
+        void IMgr.fini()
         {
             Mission.instance.detach_mgr(m_mgr_name);
         }

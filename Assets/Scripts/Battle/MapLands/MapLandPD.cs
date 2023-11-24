@@ -7,6 +7,7 @@ namespace Battle.MapLands
 {
     public class MapLandPD : Producer
     {
+        public override IMgr imgr => mgr;
         MapLandMgr mgr;
 
         //==================================================================================================
@@ -14,8 +15,7 @@ namespace Battle.MapLands
         public override void init()
         {
             mgr = new(Config.MapLandMgr_Name);
-
-
+            
         }
 
 
@@ -26,6 +26,7 @@ namespace Battle.MapLands
 
         public override void fini()
         {
+            imgr.fini();
         }
     }
 }
