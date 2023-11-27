@@ -23,6 +23,13 @@ namespace Battle.HandCards
 
             //use_func?.@do();
         }
+
+
+        public void reset_pos(int seq)
+        {
+            this.seq = seq;
+            view_pos = new(seq * 160, 0);
+        }
     }
 }
 

@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using Common.Helpers;
 using World;
+using Common;
 
 namespace Battle.HandCards
 {
@@ -57,6 +58,9 @@ namespace Battle.HandCards
         void IEndDragHandler.OnEndDrag(PointerEventData eventData)
         {
             helper.fini();
+
+            //Mission.instance.try_get_mgr(Config.HandCardMgr_Name, out HandCardMgr mgr);
+            //mgr.play(cell);
         }
 
 

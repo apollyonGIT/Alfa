@@ -74,10 +74,35 @@ namespace Battle.HandCards
                 seq = cells.Count;
             }
 
-            cell.seq = seq;
-            cell.view_pos = new(seq * 160, 0);
+            cell.reset_pos(seq);
 
             cells.AddLast(cell);
+        }
+
+
+        public void remove_cell(HandCard cell)
+        {
+            var node = cells.Find(cell);
+            var last = cells.Last;
+
+            while (node != last)
+            {
+                node = node.Next;
+                var e = node.Value;
+                e.reset_pos(--e.seq);
+            }
+
+            cells.Remove(cell);
+            cell.clear_views();
+        }
+
+
+        /// <summary>
+        /// 出牌
+        /// </summary>
+        public void play(HandCard cell)
+        {
+            remove_cell(cell);
         }
     }
 }
