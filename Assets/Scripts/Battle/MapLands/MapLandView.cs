@@ -12,6 +12,8 @@ namespace Battle.MapLands
         void IModelView<MapLand>.attach(MapLand cell)
         {
             this.cell = cell;
+
+            transform.localPosition = cell.view_pos;
         }
 
 

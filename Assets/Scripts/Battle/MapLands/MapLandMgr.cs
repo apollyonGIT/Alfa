@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Battle.MapLands
 {
     public interface IMapLandView : IModelView<MapLand>
-    { 
+    {
     }
 
 
@@ -34,6 +34,12 @@ namespace Battle.MapLands
         void IMgr.init(object[] objs)
         {
             Mission.instance.attach_mgr(m_mgr_name, this);
+        }
+
+
+        public void add_cell(MapLand cell)
+        {
+            cells.Add(cell.v_id, cell);
         }
     }
 }

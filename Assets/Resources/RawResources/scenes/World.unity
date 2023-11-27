@@ -201,7 +201,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6.5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -552,7 +552,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -665,7 +665,7 @@ MonoBehaviour:
   uiCamera: {fileID: 28264767}
   uiRoot: {fileID: 396267754}
   monoRoot: {fileID: 214487560}
-  creators: []
+  producers: []
 --- !u!1 &1610941191
 GameObject:
   m_ObjectHideFlags: 0
