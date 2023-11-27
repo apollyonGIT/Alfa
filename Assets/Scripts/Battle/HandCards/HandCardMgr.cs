@@ -1,21 +1,21 @@
 ﻿using Common;
 using Foundation;
 
-namespace #namespace#
+namespace Battle.HandCards
 {
-    public interface #iview# : IModelView<#cell#>
+    public interface IHandCardView : IModelView<HandCard>
     { 
     }
 
 
-    public class #name# : IMgr
+    public class HandCardMgr : IMgr
     {
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
 
         //==================================================================================================
 
-        public #name#(string name, params object[] objs)
+        public HandCardMgr(string name, params object[] objs)
         {
             m_mgr_name = name;
             (this as IMgr).init(objs);
