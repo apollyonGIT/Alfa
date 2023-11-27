@@ -75,6 +75,7 @@ namespace Battle.HandCards
             }
 
             cell.seq = seq;
+            cell.view_pos = new(seq * 160, 0);
 
             cells.AddLast(cell);
         }

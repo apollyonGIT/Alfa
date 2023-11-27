@@ -1,22 +1,31 @@
 ﻿using Foundation;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
+using Common.Helpers;
+using World;
 
 namespace Battle.HandCards
 {
-    public class HandCardView : MonoBehaviour, IHandCardView
+    public class HandCardView : MonoBehaviour, IHandCardView, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         public TextMeshProUGUI title;
 
         HandCard cell;
+        Mouse_Move_Helper helper;
 
         //==================================================================================================
 
         void IModelView<HandCard>.attach(HandCard cell)
         {
             this.cell = cell;
-
             title.text = cell._desc.f_name;
+
+            helper = Mouse_Move_Helper.instance;
+            helper.init(WorldSceneRoot.instance.uiCamera);
+
+            transform.localPosition = cell.view_pos;
+            cell.view_pos = transform.position;
         }
 
 
@@ -35,7 +44,25 @@ namespace Battle.HandCards
 
         void IHandCardView.notify_on_tick1()
         {
-            transform.localPosition = cell.view_pos;
+            transform.position = cell.view_pos;
+        }
+
+
+        void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
+        {
+            helper.calc_offset(cell.view_pos);
+        }
+
+
+        void IEndDragHandler.OnEndDrag(PointerEventData eventData)
+        {
+            helper.fini();
+        }
+
+
+        void IDragHandler.OnDrag(PointerEventData eventData)
+        {
+            cell.view_pos = helper.drag_pos;
         }
     }
 }

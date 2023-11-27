@@ -34,7 +34,7 @@ namespace Common.Helpers
         }
 
 
-        public void clear()
+        public void fini()
         {
             offset = Vector2.zero;
         }
