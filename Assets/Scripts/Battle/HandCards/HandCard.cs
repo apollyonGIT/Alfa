@@ -8,6 +8,7 @@ namespace Battle.HandCards
     public class HandCard : Model<HandCard, IHandCardView>
     {
         public int seq;
+
         public AutoCode.Tables.Card.Record _desc;
         public IFunc use_func;
 
