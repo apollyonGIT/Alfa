@@ -13,7 +13,7 @@ namespace Battle.MapLands
 
         public MapLand(int x, int y)
         {
-            v_id = x * 100 + y;
+            v_id = y * 100 + x;
             view_pos = new(x, y);
         }
     }
