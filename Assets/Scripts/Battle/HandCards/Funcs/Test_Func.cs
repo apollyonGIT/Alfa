@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Common;
+using UnityEngine;
 
 namespace Battle.HandCards.Funcs
 {
@@ -14,7 +15,7 @@ namespace Battle.HandCards.Funcs
         }
 
 
-        bool IFunc.@do()
+        bool IExprFunc.@do()
         {
             Debug.Log(i);
             return true;

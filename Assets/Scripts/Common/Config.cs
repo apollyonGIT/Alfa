@@ -37,6 +37,8 @@ namespace Common
         //帧率
         public const int PHYSICS_TICKS_PER_SECOND = 120;
         public const float PHYSICS_TICK_DELTA_TIME = 1f / PHYSICS_TICKS_PER_SECOND;
+
+        public static ExprTreeConverter handcard_converter = new("Battle.HandCards.Funcs.", ", Battle", "Battle.HandCards.Funcs.", ", Battle");
         #endregion
 
 

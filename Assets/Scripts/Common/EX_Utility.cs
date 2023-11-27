@@ -154,7 +154,7 @@ namespace Common
         /// <summary>
         /// 表达式转换器
         /// </summary>
-        public static bool expr_convert<T>(ExprTreeConverter converter, IExprTree value, out T t, out string err_msg) where T : class
+        public static bool expr_convert<T>(ExprTreeConverter converter, IExprTree value, out T t, out string err_msg) where T : class, IExprFunc
         {
             t = null;
             if (!converter.convert(value, out var obj, out err_msg)) return false;

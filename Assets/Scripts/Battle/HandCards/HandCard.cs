@@ -18,7 +18,7 @@ namespace Battle.HandCards
         public HandCard(uint id)
         {
             Battle_DB.instance.card.try_get(id, out _desc);
-            EX_Utility.expr_convert(Func_Utility.converter, _desc.f_use_func, out use_func, out _);
+            EX_Utility.expr_convert(Config.handcard_converter, _desc.f_use_func, out use_func, out _);
 
             use_func?.@do();
         }
