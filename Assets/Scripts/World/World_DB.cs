@@ -3,7 +3,7 @@ using Common;
 
 namespace World
 {
-    public class DB : Singleton<DB>
+    public class World_DB : Singleton<World_DB>
     {
         Element m_element;
         public Element element

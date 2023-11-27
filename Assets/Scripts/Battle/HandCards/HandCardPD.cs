@@ -40,9 +40,13 @@ namespace Battle.HandCards
 
         IEnumerable<HandCard> cells()
         {
+            var pool = Battle_DB.instance.card_id_pool;
+
             for (int i = 0; i < count; i++)
             {
-                yield return new();
+                var id = EX_Utility.select_random_cell_from_Array(pool); //规则：随机抽牌
+
+                yield return new(id);
             }
         }
     }

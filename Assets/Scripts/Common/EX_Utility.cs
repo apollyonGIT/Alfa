@@ -194,6 +194,15 @@ namespace Common
 
             return ret / 1000;
         }
+
+
+        public static T select_random_cell_from_Array<T>(T[] array)
+        {
+            var count = array.Length;
+            var index = rnd_int(0, count);
+
+            return array[index];
+        }
         #endregion
 
 
@@ -260,6 +269,15 @@ namespace Common
         public static int rnd_int(int min, int max)
         {
             return new System.Random().Next(min, max);
+        }
+
+
+        /// <summary>
+        /// uint随机数
+        /// </summary>
+        public static int rnd_uint(uint min, uint max)
+        {
+            return new System.Random().Next((int)min, (int)max);
         }
 
 

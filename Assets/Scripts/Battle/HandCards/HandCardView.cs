@@ -1,10 +1,13 @@
 ﻿using Foundation;
 using UnityEngine;
+using TMPro;
 
 namespace Battle.HandCards
 {
     public class HandCardView : MonoBehaviour, IHandCardView
     {
+        public TextMeshProUGUI title;
+
         HandCard cell;
 
         //==================================================================================================
@@ -12,6 +15,8 @@ namespace Battle.HandCards
         void IModelView<HandCard>.attach(HandCard cell)
         {
             this.cell = cell;
+
+            title.text = cell._desc.f_name;
         }
 
 
