@@ -1,4 +1,6 @@
-﻿using Foundation;
+﻿using Battle.HandCards.Funcs;
+using Common;
+using Foundation;
 using UnityEngine;
 
 namespace Battle.HandCards
@@ -7,6 +9,7 @@ namespace Battle.HandCards
     {
         public int seq;
         public AutoCode.Tables.Card.Record _desc;
+        public IFunc use_func;
 
         public Vector2 view_pos => new(seq * 160, 0);
 
@@ -15,6 +18,9 @@ namespace Battle.HandCards
         public HandCard(uint id)
         {
             Battle_DB.instance.card.try_get(id, out _desc);
+            EX_Utility.expr_convert(Func_Utility.converter, _desc.f_use_func, out use_func, out _);
+
+            use_func?.@do();
         }
     }
 }

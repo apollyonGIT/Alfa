@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Foundation.Tables;
+using UnityEngine;
 
 namespace Common
 {

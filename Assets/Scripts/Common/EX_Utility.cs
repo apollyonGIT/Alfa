@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Foundation.DynamicPlugin;
 using static Unity.VisualScripting.Antlr3.Runtime.Tree.TreeWizard;
 
 namespace Common
@@ -146,7 +147,19 @@ namespace Common
                 e = t.load_from(asset.bytes);
                 if (!e) return false;
             }
+            return true;
+        }
 
+
+        /// <summary>
+        /// 表达式转换器
+        /// </summary>
+        public static bool expr_convert<T>(ExprTreeConverter converter, IExprTree value, out T t, out string err_msg) where T : class
+        {
+            t = null;
+            if (!converter.convert(value, out var obj, out err_msg)) return false;
+
+            t = obj as T;
             return true;
         }
         #endregion
