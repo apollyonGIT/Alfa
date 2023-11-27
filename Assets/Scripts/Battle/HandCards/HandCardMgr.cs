@@ -2,13 +2,15 @@
 using Foundation;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting.YamlDotNet.Core.Events;
+using UnityEngine;
 using World;
 
 namespace Battle.HandCards
 {
     public interface IHandCardView : IModelView<HandCard>
     {
-        void notify_on_tick1();
+        void notify_on_reset_pos();
     }
 
 
@@ -31,38 +33,12 @@ namespace Battle.HandCards
         void IMgr.fini()
         {
             Mission.instance.detach_mgr(m_mgr_name);
-
-            var ctx = WorldContext.instance;
-            ctx.remove_tick(Config.HandCardMgr_Name);
-            ctx.remove_tick1(Config.HandCardMgr_Name);
         }
 
 
         void IMgr.init(object[] objs)
         {
             Mission.instance.attach_mgr(m_mgr_name, this);
-
-            var ctx = WorldContext.instance;
-            ctx.add_tick(Config.HandCardMgr_Priority, Config.HandCardMgr_Name, tick);
-            ctx.add_tick1(Config.HandCardMgr_Priority, Config.HandCardMgr_Name, tick1);
-        }
-
-
-        void tick()
-        {
-            
-        }
-
-
-        void tick1()
-        {
-            foreach (var cell in cells)
-            {
-                foreach (var view in cell.views)
-                {
-                    view.notify_on_tick1();
-                }
-            }
         }
 
 
@@ -73,8 +49,7 @@ namespace Battle.HandCards
             {
                 seq = cells.Count;
             }
-
-            cell.reset_pos(seq);
+            cell.seq = seq;
 
             cells.AddLast(cell);
         }
@@ -89,7 +64,8 @@ namespace Battle.HandCards
             {
                 node = node.Next;
                 var e = node.Value;
-                e.reset_pos(--e.seq);
+                e.seq--;
+                e.reset_pos();
             }
 
             cells.Remove(cell);

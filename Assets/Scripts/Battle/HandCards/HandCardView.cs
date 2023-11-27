@@ -24,9 +24,6 @@ namespace Battle.HandCards
 
             helper = Mouse_Move_Helper.instance;
             helper.init(WorldSceneRoot.instance.uiCamera);
-
-            transform.localPosition = cell.view_pos;
-            cell.view_pos = transform.position;
         }
 
 
@@ -43,15 +40,9 @@ namespace Battle.HandCards
         }
 
 
-        void IHandCardView.notify_on_tick1()
-        {
-            transform.position = cell.view_pos;
-        }
-
-
         void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
         {
-            helper.calc_offset(cell.view_pos);
+            helper.calc_offset(transform.position);
         }
 
 
@@ -59,14 +50,20 @@ namespace Battle.HandCards
         {
             helper.fini();
 
-            //Mission.instance.try_get_mgr(Config.HandCardMgr_Name, out HandCardMgr mgr);
-            //mgr.play(cell);
+            Mission.instance.try_get_mgr(Config.HandCardMgr_Name, out HandCardMgr mgr);
+            mgr.play(cell);
         }
 
 
         void IDragHandler.OnDrag(PointerEventData eventData)
         {
-            cell.view_pos = helper.drag_pos;
+            transform.position = helper.drag_pos;
+        }
+
+
+        void IHandCardView.notify_on_reset_pos()
+        {
+            transform.localPosition = cell.view_init_pos;
         }
     }
 }

@@ -23,6 +23,7 @@ namespace Battle.HandCards
 
                 var view = Instantiate(temp_view, transform);
                 cell.add_view(view);
+                cell.reset_pos();
             }
         }
 

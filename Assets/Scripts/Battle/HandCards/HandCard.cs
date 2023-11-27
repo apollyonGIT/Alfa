@@ -12,7 +12,7 @@ namespace Battle.HandCards
         public AutoCode.Tables.Card.Record _desc;
         public IFunc use_func;
 
-        public Vector2 view_pos;
+        public Vector2 view_init_pos => new(seq * 160, 0);
 
         //==================================================================================================
 
@@ -25,10 +25,12 @@ namespace Battle.HandCards
         }
 
 
-        public void reset_pos(int seq)
+        public void reset_pos()
         {
-            this.seq = seq;
-            view_pos = new(seq * 160, 0);
+            foreach (var view in views)
+            {
+                view.notify_on_reset_pos();
+            }
         }
     }
 }
