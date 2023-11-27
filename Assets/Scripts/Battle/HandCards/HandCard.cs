@@ -14,14 +14,14 @@ namespace Battle.HandCards
 
         public Vector2 view_init_pos => new(seq * 160, 0);
 
+        public HandCardMgr mgr;
+
         //==================================================================================================
 
         public HandCard(uint id)
         {
             Battle_DB.instance.card.try_get(id, out _desc);
             EX_Utility.expr_convert(Config.handcard_converter, _desc.f_use_func, out use_func, out _);
-
-            //use_func?.@do();
         }
 
 
@@ -31,6 +31,15 @@ namespace Battle.HandCards
             {
                 view.notify_on_reset_pos();
             }
+        }
+
+
+        public void play()
+        {
+            use_func?.@do();
+
+            //规则：打出后，删除自身
+            mgr.remove_cell(this);
         }
     }
 }

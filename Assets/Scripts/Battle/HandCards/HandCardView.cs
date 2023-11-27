@@ -46,18 +46,17 @@ namespace Battle.HandCards
         }
 
 
+        void IDragHandler.OnDrag(PointerEventData eventData)
+        {
+            transform.position = helper.drag_pos;
+        }
+
+
         void IEndDragHandler.OnEndDrag(PointerEventData eventData)
         {
             helper.fini();
 
-            Mission.instance.try_get_mgr(Config.HandCardMgr_Name, out HandCardMgr mgr);
-            mgr.play(cell);
-        }
-
-
-        void IDragHandler.OnDrag(PointerEventData eventData)
-        {
-            transform.position = helper.drag_pos;
+            cell.play();
         }
 
 

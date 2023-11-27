@@ -50,6 +50,7 @@ namespace Battle.HandCards
                 seq = cells.Count;
             }
             cell.seq = seq;
+            cell.mgr = this;
 
             cells.AddLast(cell);
         }
