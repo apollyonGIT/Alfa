@@ -41,10 +41,11 @@ namespace Common
 
         #region internal_setting
         //tick优先级
-        //public const int EnemyMgr_Priority = 0;
+        public const int HandCardMgr_Priority = 5;
 
         //tick管理类
         public const string MapLandMgr_Name = "MapLandMgr";
+        public const string HandCardMgr_Name = "HandCardMgr";
 
         //普通管理类
 

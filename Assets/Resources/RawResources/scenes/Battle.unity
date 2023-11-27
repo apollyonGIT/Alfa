@@ -370,6 +370,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 431535847}
+  - component: {fileID: 431535848}
   m_Layer: 5
   m_Name: handcards
   m_TagString: Untagged
@@ -394,9 +395,23 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 104}
+  m_AnchoredPosition: {x: -400, y: 104}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &431535848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431535846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a40b83b3beb829249a546cf9819ca707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  count: 6
+  temp_view: {fileID: 1238865490808601235, guid: 2999b98f5717cc54eb95469e7b34786b, type: 3}
 --- !u!1 &533072629
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,3 +944,4 @@ MonoBehaviour:
   monoRoot: {fileID: 533072630}
   producers:
   - {fileID: 955590447}
+  - {fileID: 431535848}
