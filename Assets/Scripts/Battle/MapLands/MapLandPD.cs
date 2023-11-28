@@ -28,9 +28,9 @@ namespace Battle.MapLands
                 cell.add_view(view);
             }
 
-            //计算本体位置，使其居中于镜头
+            //计算mono位置，使其居中于镜头
             Vector2 pos = new(limit_x, limit_y);
-            transform.localPosition = pos * -0.5f;
+            BattleSceneRoot.instance.monoRoot.localPosition = pos * -0.5f;
         }
 
 
