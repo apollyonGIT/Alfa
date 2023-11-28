@@ -31,6 +31,10 @@ namespace Battle.Chesses
         void IMgr.fini()
         {
             Mission.instance.detach_mgr(m_mgr_name);
+
+            var ctx = WorldContext.instance;
+            ctx.remove_tick(Config.ChessMgr_Player_Name);
+            ctx.remove_tick1(Config.ChessMgr_Player_Name);
         }
 
 
