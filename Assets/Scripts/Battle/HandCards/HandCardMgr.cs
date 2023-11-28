@@ -19,7 +19,7 @@ namespace Battle.HandCards
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
 
-        LinkedList<HandCard> cells = new();
+        LinkedList<HandCard> m_cells = new();
 
         //==================================================================================================
 
@@ -45,21 +45,21 @@ namespace Battle.HandCards
         public void add_cell(HandCard cell)
         {
             int seq = 0;
-            if (cells.Any())
+            if (m_cells.Any())
             {
-                seq = cells.Count;
+                seq = m_cells.Count;
             }
             cell.seq = seq;
             cell.mgr = this;
 
-            cells.AddLast(cell);
+            m_cells.AddLast(cell);
         }
 
 
         public void remove_cell(HandCard cell)
         {
-            var node = cells.Find(cell);
-            var last = cells.Last;
+            var node = m_cells.Find(cell);
+            var last = m_cells.Last;
 
             while (node != last)
             {
@@ -69,7 +69,7 @@ namespace Battle.HandCards
                 e.reset_pos();
             }
 
-            cells.Remove(cell);
+            m_cells.Remove(cell);
             cell.clear_views();
         }
 

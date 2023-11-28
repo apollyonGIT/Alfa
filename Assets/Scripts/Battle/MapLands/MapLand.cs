@@ -5,7 +5,7 @@ namespace Battle.MapLands
 {
     public class MapLand : Model<MapLand, IMapLandView>
     {
-        public int v_id;
+        public int vid;
 
         public Vector2 view_pos;
 
@@ -13,7 +13,7 @@ namespace Battle.MapLands
 
         public MapLand(int x, int y)
         {
-            v_id = y * 100 + x;
+            vid = y * 100 + x;
             view_pos = new(x, y);
         }
     }

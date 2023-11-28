@@ -14,7 +14,7 @@ namespace Battle.MapLands
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
 
-        Dictionary<int, MapLand> cells = new();
+        Dictionary<int, MapLand> m_cells = new();
 
         //==================================================================================================
 
@@ -39,7 +39,7 @@ namespace Battle.MapLands
 
         public void add_cell(MapLand cell)
         {
-            cells.Add(cell.v_id, cell);
+            m_cells.Add(cell.vid, cell);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Battle.MapLands
             this.cell = cell;
 
             transform.localPosition = cell.view_pos;
-            gameObject.name = $"{cell.v_id}";
+            gameObject.name = $"{cell.vid}";
         }
 
 

@@ -24,6 +24,12 @@ namespace Battle.Chesses
         void IModelView<Chess>.shift(Chess old_cell, Chess new_cell)
         {
         }
+
+
+        void IChessView.notify_on_tick1()
+        {
+            transform.localPosition = cell.view_pos;
+        }
     }
 }
 

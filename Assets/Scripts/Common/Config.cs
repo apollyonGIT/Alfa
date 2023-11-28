@@ -44,7 +44,8 @@ namespace Common
 
         #region internal_setting
         //tick优先级
-        //public const int HandCardMgr_Priority = 5;
+        public const int ChessMgr_Player_Priority = 1;
+        public const int ChessMgr_Enemy_Priority = 2;
 
         //tick管理类
         public const string MapLandMgr_Name = "MapLandMgr";
