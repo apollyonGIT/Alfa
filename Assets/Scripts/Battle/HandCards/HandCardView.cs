@@ -56,7 +56,7 @@ namespace Battle.HandCards
         {
             helper.fini();
 
-            cell.play();
+            cell.mgr.play(cell);
         }
 
 

@@ -79,6 +79,9 @@ namespace Battle.HandCards
         /// </summary>
         public void play(HandCard cell)
         {
+            cell.use_func?.@do();
+
+            //规则：打出后，删除自身
             remove_cell(cell);
         }
     }

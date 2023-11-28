@@ -32,15 +32,6 @@ namespace Battle.HandCards
                 view.notify_on_reset_pos();
             }
         }
-
-
-        public void play()
-        {
-            use_func?.@do();
-
-            //规则：打出后，删除自身
-            mgr.remove_cell(this);
-        }
     }
 }
 
