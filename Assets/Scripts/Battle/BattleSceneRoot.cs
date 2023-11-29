@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Opr_Module;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using World;
@@ -7,6 +8,8 @@ namespace Battle
 {
     public class BattleSceneRoot : SceneRoot<BattleSceneRoot>
     {
+        public OprSender oprSender;
+
         WorldSceneRoot root;
 
         //==================================================================================================
@@ -19,6 +22,8 @@ namespace Battle
             uiRoot.worldCamera = uiCamera;
 
             init_producers();
+
+            oprSender.click_event += oprSender_click_event;
         }
 
 
@@ -37,18 +42,6 @@ namespace Battle
         public void btn_fail()
         {
             root.btn_end_battle();
-        }
-
-
-        public bool try_get_mouse_attach_cpn(PointerEventData eventData, out OprReciver reciver)
-        {
-            var pos = uiCamera.ScreenToWorldPoint(eventData.position);
-            pos += mainCamera.transform.position;
-            pos.z = 0;
-
-            var hit = Physics2D.Raycast(pos, Vector2.zero);
-
-            return hit.transform.TryGetComponent(out reciver);
         }
     }
 }

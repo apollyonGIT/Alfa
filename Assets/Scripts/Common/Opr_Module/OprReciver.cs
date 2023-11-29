@@ -1,16 +1,10 @@
 ﻿using UnityEngine;
 
-namespace Battle
+namespace Common.Opr_Module
 {
-    public interface IOprReciver
-    { 
-        
-    }
-
-
     public class OprReciver : MonoBehaviour
     {
-        public IOprReciver target; 
+        public OprTargetView target; 
 
         //==================================================================================================
 

@@ -1,9 +1,10 @@
-﻿using Foundation;
+﻿using Common.Opr_Module;
+using Foundation;
 using UnityEngine;
 
 namespace Battle.Chesses
 {
-    public class ChessView : MonoBehaviour, IChessView
+    public class ChessView : OprTargetView, IChessView
     {
         Chess cell;
 
@@ -29,6 +30,12 @@ namespace Battle.Chesses
         void IChessView.notify_on_tick1()
         {
             transform.localPosition = cell.view_pos;
+        }
+
+
+        public override void notify_on_click()
+        {
+            Debug.Log("wowowow");
         }
     }
 }

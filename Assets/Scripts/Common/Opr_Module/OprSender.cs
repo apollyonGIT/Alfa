@@ -1,18 +1,18 @@
-﻿using Battle.Chesses;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Battle
+namespace Common.Opr_Module
 {
     public class OprSender : MonoBehaviour, IPointerClickHandler
     {
-        public BattleSceneRoot root;
+        public delegate void Click_Handle(PointerEventData eventData);
+        public event Click_Handle click_event;
 
         //==================================================================================================
 
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
         {
-            root.try_get_mouse_attach_cpn(eventData, out OprReciver reciver);
+            click_event(eventData);
         }
     }
 }
