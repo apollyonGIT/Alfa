@@ -73,6 +73,9 @@ namespace Battle.Chesses
         }
 
 
+        /// <summary>
+        /// 移动
+        /// </summary>
         public void move(Chess cell, int step_x, int step_y)
         {
             var key = cell.vid;            
@@ -83,6 +86,15 @@ namespace Battle.Chesses
                 m_cells.Remove(key);
                 m_cells.Add(cell.vid, cell);
             }
+        }
+
+
+        /// <summary>
+        /// 创建攻击范围
+        /// </summary>
+        public void create_attack_area()
+        { 
+            
         }
     }
 }

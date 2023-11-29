@@ -36,9 +36,7 @@ namespace Battle.Chesses
 
         public override void notify_on_click()
         {
-            Debug.Log("wowowow");
-
-            cell.mgr.move(cell, 2, 0);
+            
         }
     }
 }
