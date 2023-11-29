@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine.EventSystems;
 using Common.Helpers;
 using World;
-using Common;
 
 namespace Battle.HandCards
 {
