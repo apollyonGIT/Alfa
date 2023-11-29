@@ -1,12 +1,9 @@
-﻿using Common;
-using Common.Opr_Module;
-using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using Common.Opr_Module;
 using World;
 
 namespace Battle
 {
-    public class BattleSceneRoot : SceneRoot<BattleSceneRoot>
+    public class BattleSceneRoot : OprSceneRoot<BattleSceneRoot>
     {
         public OprSender oprSender;
 
