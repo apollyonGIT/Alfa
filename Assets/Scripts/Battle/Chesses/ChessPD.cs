@@ -36,7 +36,7 @@ namespace Battle.Chesses
 
         public Chess cell()
         {
-            return new(1, 2);
+            return new(mgr, 1, 2);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using Battle.Helpers;
+using Foundation;
 using UnityEngine;
 
 namespace Battle.Chesses
@@ -7,14 +8,24 @@ namespace Battle.Chesses
     {
         public int vid;
 
-        public Vector2 view_pos;
+        public Vector2 view_pos => calc_view_pos();
+
+        public ChessMgr mgr;
 
         //==================================================================================================
 
-        public Chess(int x, int y)
+        public Chess(ChessMgr mgr, int x, int y)
         {
-            vid = 100 * y + x;
-            view_pos = new(x, y);
+            this.mgr = mgr;
+
+            SquareMap_Helper.encode_vid(x, y, out vid);
+        }
+
+
+        Vector2 calc_view_pos()
+        {
+            SquareMap_Helper.decode_vid(vid, out var x, out var y);
+            return new(x, y);            
         }
     }
 }

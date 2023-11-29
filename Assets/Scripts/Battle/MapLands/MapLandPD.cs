@@ -6,9 +6,6 @@ namespace Battle.MapLands
 {
     public class MapLandPD : Producer
     {
-        public int limit_x;
-        public int limit_y;
-
         public MapLandView temp_view;
 
         public override IMgr imgr => mgr;
@@ -29,7 +26,7 @@ namespace Battle.MapLands
             }
 
             //计算mono位置，使其居中于镜头
-            Vector2 pos = new(limit_x, limit_y);
+            Vector2 pos = new(Config.mapland_limit_x, Config.mapland_limit_y);
             BattleSceneRoot.instance.monoRoot.localPosition = pos * -0.5f;
         }
 
@@ -47,11 +44,11 @@ namespace Battle.MapLands
 
         IEnumerable<MapLand> cells()
         {
-            for (int y = 0; y < limit_y; y++)
+            for (int y = 0; y < Config.mapland_limit_y; y++)
             {
-                for (int x = 0; x < limit_x; x++)
+                for (int x = 0; x < Config.mapland_limit_x; x++)
                 {
-                    MapLand cell = new(x, y);
+                    MapLand cell = new(mgr, x, y);
 
                     yield return cell;
                 }

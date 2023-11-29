@@ -1,7 +1,8 @@
-﻿using Common;
+﻿using Battle.Helpers;
+using Common;
 using Foundation;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using World;
 
 namespace Battle.Chesses
@@ -69,6 +70,19 @@ namespace Battle.Chesses
         public void add_cell(Chess cell)
         {
             m_cells.Add(cell.vid, cell);
+        }
+
+
+        public void move(Chess cell, int step_x, int step_y)
+        {
+            var key = cell.vid;            
+            SquareMap_Helper.move(ref cell.vid, step_x, step_y);
+
+            if (cell.vid != key)
+            {
+                m_cells.Remove(key);
+                m_cells.Add(cell.vid, cell);
+            }
         }
     }
 }

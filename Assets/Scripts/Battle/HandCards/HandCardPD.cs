@@ -47,7 +47,7 @@ namespace Battle.HandCards
             {
                 var id = EX_Utility.select_random_cell_from_Array(pool); //规则：随机抽牌
 
-                yield return new(id);
+                yield return new(mgr, id);
             }
         }
     }

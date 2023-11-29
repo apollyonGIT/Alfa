@@ -1,4 +1,5 @@
-﻿using Common.Opr_Module;
+﻿using Battle.Helpers;
+using Common.Opr_Module;
 using Foundation;
 using UnityEngine;
 
@@ -36,6 +37,8 @@ namespace Battle.Chesses
         public override void notify_on_click()
         {
             Debug.Log("wowowow");
+
+            cell.mgr.move(cell, 2, 0);
         }
     }
 }

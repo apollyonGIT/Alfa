@@ -9,10 +9,14 @@ namespace Battle.MapLands
 
         public Vector2 view_pos;
 
+        public MapLandMgr mgr;
+
         //==================================================================================================
 
-        public MapLand(int x, int y)
+        public MapLand(MapLandMgr mgr, int x, int y)
         {
+            this.mgr = mgr;
+
             vid = y * 100 + x;
             view_pos = new(x, y);
         }

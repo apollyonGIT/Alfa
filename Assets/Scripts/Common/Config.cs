@@ -38,7 +38,12 @@ namespace Common
         public const int PHYSICS_TICKS_PER_SECOND = 120;
         public const float PHYSICS_TICK_DELTA_TIME = 1f / PHYSICS_TICKS_PER_SECOND;
 
+        //表达式转换器
         public static ExprTreeConverter handcard_converter = new("Battle.HandCards.Funcs.", ", Battle", "Battle.HandCards.Funcs.", ", Battle");
+
+        //mapland大小
+        public const int mapland_limit_x = 8;
+        public const int mapland_limit_y = 8;
         #endregion
 
 
@@ -56,6 +61,10 @@ namespace Common
 
         //普通管理类
 
+        #endregion
+
+
+        #region outter_prms
         #endregion
     }
 }

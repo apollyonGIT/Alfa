@@ -18,8 +18,10 @@ namespace Battle.HandCards
 
         //==================================================================================================
 
-        public HandCard(uint id)
+        public HandCard(HandCardMgr mgr, uint id)
         {
+            this.mgr = mgr;
+
             Battle_DB.instance.card.try_get(id, out _desc);
             EX_Utility.expr_convert(Config.handcard_converter, _desc.f_use_func, out use_func, out _);
         }
