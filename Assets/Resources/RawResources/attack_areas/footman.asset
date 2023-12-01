@@ -10,5 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a6c44799b50d794ea9772835fd147f8, type: 3}
-  m_Name: attack_area_asset
+  m_Name: footman
   m_EditorClassIdentifier: 
+  pos_array:
+  - x: 0
+    y: 1

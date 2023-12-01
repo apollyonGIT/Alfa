@@ -1,4 +1,5 @@
-﻿using Battle.Helpers;
+﻿using Battle.AttackAreas;
+using Battle.Helpers;
 using Common;
 using Foundation;
 using System.Collections.Generic;
@@ -89,12 +90,9 @@ namespace Battle.Chesses
         }
 
 
-        /// <summary>
-        /// 创建攻击范围
-        /// </summary>
-        public void create_attack_area()
-        { 
-            
+        public void do_when_click(Chess cell)
+        {
+            EX_Utility.try_load_asset(("attack_areas", "footman"), out AttackArea_Asset asset);
         }
     }
 }
