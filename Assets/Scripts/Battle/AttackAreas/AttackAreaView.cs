@@ -27,6 +27,12 @@ namespace Battle.AttackAreas
         void IModelView<AttackArea>.shift(AttackArea old_cell, AttackArea new_cell)
         {
         }
+
+
+        void IAttackAreaView.notify_on_show(bool is_enable)
+        {
+            gameObject.SetActive(is_enable);
+        }
     }
 }
 

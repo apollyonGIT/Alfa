@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: footman
   m_EditorClassIdentifier: 
   pos_array:
-  - x: 0
+  - x: 1
     y: 1
