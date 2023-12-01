@@ -1,4 +1,5 @@
-﻿using Common;
+﻿using Battle.Helpers;
+using Common;
 using Foundation;
 using System.Collections.Generic;
 
@@ -44,20 +45,28 @@ namespace Battle.AttackAreas
         }
 
 
-        public void show_cell(int vid, bool is_enable)
+        public void @enable(int self_vid, (string, string) asset_paths)
         {
-            if (!m_cells.TryGetValue(vid, out var cell)) return;
+            @disable();
 
-            foreach (var view in cell.views)
+            EX_Utility.try_load_asset(asset_paths, out AttackArea_Asset asset);
+            foreach (var pos in asset.pos_array)
             {
-                view.notify_on_show(is_enable);
+                SquareMap_Helper.decode_vid(self_vid, out var self_x, out var self_y);
+                SquareMap_Helper.encode_vid(pos.x + self_x, pos.y + self_y, out var vid);
+
+                if (!m_cells.TryGetValue(vid, out var cell)) continue;
+                foreach (var view in cell.views)
+                {
+                    view.notify_on_show(true);
+                }
             }
         }
 
 
-        public void close_all_cell()
+        public void @disable()
         {
-            foreach (var (_,cell) in m_cells)
+            foreach (var (_, cell) in m_cells)
             {
                 foreach (var view in cell.views)
                 {
@@ -65,6 +74,7 @@ namespace Battle.AttackAreas
                 }
             }
         }
+
     }
 }
 

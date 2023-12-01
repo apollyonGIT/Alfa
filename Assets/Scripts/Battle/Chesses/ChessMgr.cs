@@ -3,7 +3,6 @@ using Battle.Helpers;
 using Common;
 using Foundation;
 using System.Collections.Generic;
-using UnityEngine;
 using World;
 
 namespace Battle.Chesses
@@ -20,6 +19,8 @@ namespace Battle.Chesses
         readonly string m_mgr_name;
 
         Dictionary<int, Chess> m_cells = new();
+
+        AttackAreaMgr m_attack_area_mgr;
 
         //==================================================================================================
 
@@ -47,6 +48,8 @@ namespace Battle.Chesses
             var ctx = WorldContext.instance;
             ctx.add_tick(Config.ChessMgr_Player_Priority, Config.ChessMgr_Player_Name, tick);
             ctx.add_tick1(Config.ChessMgr_Player_Priority, Config.ChessMgr_Player_Name, tick1);
+
+            Mission.instance.try_get_mgr(Config.AttackAreaMgr_Name, out m_attack_area_mgr);
         }
 
 
@@ -92,18 +95,7 @@ namespace Battle.Chesses
 
         public void do_when_click(Chess cell)
         {
-            EX_Utility.try_load_asset(("attack_areas", "footman"), out AttackArea_Asset asset);
-            var pos = asset.pos_array[0];
-
-            SquareMap_Helper.decode_vid(cell.vid, out var cell_x, out var cell_y);
-            SquareMap_Helper.encode_vid(pos.x + cell_x, pos.y + cell_y, out var new_pos);
-
-            Mission.instance.try_get_mgr(Config.AttackAreaMgr_Name, out AttackAreaMgr a_mgr);
-            a_mgr.close_all_cell();
-            a_mgr.show_cell(new_pos, true);
-
-
-            Debug.Log("wwwww");
+            m_attack_area_mgr.@enable(cell.vid, ("attack_areas", "footman"));
         }
     }
 }
