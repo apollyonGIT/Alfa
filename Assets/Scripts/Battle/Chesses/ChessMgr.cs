@@ -10,6 +10,7 @@ namespace Battle.Chesses
     public interface IChessView : IModelView<Chess>
     {
         void notify_on_tick1();
+        void notify_on_selected(bool bl);
     }
 
 
@@ -96,6 +97,11 @@ namespace Battle.Chesses
         public void do_when_click(Chess cell)
         {
             m_attack_area_mgr.@enable(cell.vid, ("attack_areas", "footman"));
+
+            foreach (var view in cell.views)
+            {
+                view.notify_on_selected(true);
+            }
         }
     }
 }
