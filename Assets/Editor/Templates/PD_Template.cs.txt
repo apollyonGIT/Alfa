@@ -21,6 +21,7 @@ namespace #namespace#
 
         public override void fini()
         {
+            imgr.fini();
         }
     }
 }

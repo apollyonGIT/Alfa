@@ -2,24 +2,24 @@
 using Foundation;
 using System.Collections.Generic;
 
-namespace Battle.MapLands
+namespace Battle.AttackAreas
 {
-    public interface IMapLandView : IModelView<MapLand>
-    {
+    public interface IAttackAreaView : IModelView<AttackArea>
+    { 
+        
     }
 
 
-    public class MapLandMgr : IMgr
+    public class AttackAreaMgr : IMgr
     {
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
 
-        Dictionary<int, MapLand> m_cells = new();
-        public Dictionary<int, MapLand> cells => m_cells;
+        Dictionary<int, AttackArea> m_cells = new();
 
         //==================================================================================================
 
-        public MapLandMgr(string name, params object[] objs)
+        public AttackAreaMgr(string name, params object[] objs)
         {
             m_mgr_name = name;
             (this as IMgr).init(objs);
@@ -38,10 +38,23 @@ namespace Battle.MapLands
         }
 
 
-        public void add_cell(MapLand cell)
+        public void add_cell(AttackArea cell)
         {
-            m_cells.Add(cell.vid, cell);
+            m_cells.Add(cell.vid ,cell);
         }
+
+
+        public void enable_cell(int vid)
+        { 
+            
+        }
+
+
+        public void disable_cell(int vid)
+        {
+
+        }
+
     }
 }
 

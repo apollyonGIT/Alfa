@@ -59,6 +59,8 @@ namespace Common
         public const string ChessMgr_Player_Name = "ChessMgr_Player";
         public const string ChessMgr_Enemy_Name = "ChessMgr_Enemy";
 
+        public const string AttackAreaMgr_Name = "AttackAreaMgr";
+
         //普通管理类
 
         #endregion

@@ -3,7 +3,7 @@ using Battle.Helpers;
 using Common;
 using Foundation;
 using System.Collections.Generic;
-using System.Linq;
+using UnityEngine;
 using World;
 
 namespace Battle.Chesses
@@ -93,6 +93,9 @@ namespace Battle.Chesses
         public void do_when_click(Chess cell)
         {
             EX_Utility.try_load_asset(("attack_areas", "footman"), out AttackArea_Asset asset);
+            var pos = asset.pos_array[0];
+
+            Debug.Log("wwwww");
         }
     }
 }
