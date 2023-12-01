@@ -44,7 +44,7 @@ TagManager:
   - name: mapland
     uniqueID: 2197310663
     locked: 0
-  - name: attack_area
+  - name: showinfo_area
     uniqueID: 213630477
     locked: 0
   - name: chess
