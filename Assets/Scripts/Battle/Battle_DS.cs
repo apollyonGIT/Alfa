@@ -16,7 +16,7 @@ namespace Battle
 
         //==================================================================================================
 
-        public static void safe_offset(ref VID vid)
+        public static bool safe_offset(ref VID vid)
         {
             ref int x = ref vid.x;
             ref int y = ref vid.y;
@@ -28,15 +28,32 @@ namespace Battle
             x = x > mx ? mx : x;
             y = y < 0 ? 0 : y;
             y = y > my ? my : y;
+
+            return true;
         }
 
 
-        public static void move(ref VID v, int step_x, int step_y)
+        public static bool unsafe_offset(VID vid)
+        {
+            int x = vid.x;
+            int y = vid.y;
+
+            var mx = Config.map_max_x - 1;
+            var my = Config.map_max_y - 1;
+
+            return !(x < 0 || x > mx || y < 0 || y > my);
+        }
+
+
+        public static bool move(ref VID v, int step_x, int step_y, bool is_safe_mode = true)
         {
             v.x += step_x;
             v.y += step_y;
 
-            safe_offset(ref v);
+            if (is_safe_mode)
+                return safe_offset(ref v);
+            else
+                return unsafe_offset(v);
         }
 
 

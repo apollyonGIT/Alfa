@@ -59,13 +59,10 @@ namespace Battle.Info_Areas
         {
             disable_all();
 
-            
-
-            if (!m_cells.TryGetValue(vid, out var cell)) return;
-
-
-
-            cell.enable(type);
+            foreach (var cell in @select(vid, type))
+            {
+                cell.enable(type);
+            }
         }
 
 
@@ -78,18 +75,19 @@ namespace Battle.Info_Areas
         /// <summary>
         /// 根据条件选取cells
         /// </summary>
-        bool @select(VID vid, Info_Area_Type type, out Queue<Info_AreaMgr> cells)
+        IEnumerable<Info_Area> @select(VID vid, Info_Area_Type type)
         {
-            cells = new();
+            EX_Utility.try_load_asset(("info_areas", "footman"), out Info_Area_Asset asset);
 
-            //Mission.instance.do_mgr_method(Config.ChessMgr_Player_Name, "");
+            var attack_area = asset.attack_area;
+            foreach (var step in attack_area)
+            {
+                var _vid = vid;
+                if (!VID.move(ref _vid, step.x, step.y, false)) continue;
+                if (!m_cells.TryGetValue(_vid, out var cell)) continue;
 
-            //if (type == Info_Area_Type.attack_area)
-            //{ 
-                
-            //}
-
-            return true;
+                yield return cell;
+            }
         }
     }
 }
