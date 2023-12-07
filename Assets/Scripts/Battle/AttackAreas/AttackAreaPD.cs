@@ -1,5 +1,4 @@
 ﻿using Battle.Helpers;
-using Battle.MapLands;
 using Common;
 using System.Collections.Generic;
 
@@ -18,13 +17,13 @@ namespace Battle.AttackAreas
         {
             mgr = new(Config.AttackAreaMgr_Name);
 
-            foreach (var cell in cells())
-            {
-                mgr.add_cell(cell);
+            //foreach (var cell in cells())
+            //{
+            //    mgr.add_cell(cell);
 
-                var view = Instantiate(temp_view, transform);
-                cell.add_view(view);
-            }
+            //    var view = Instantiate(temp_view, transform);
+            //    cell.add_view(view);
+            //}
         }
 
 
@@ -39,23 +38,23 @@ namespace Battle.AttackAreas
         }
 
 
-        IEnumerable<int> vids(MapLandMgr ml_mgr)
-        {
-            foreach (var (vid, _) in ml_mgr.cells)
-            {
-                yield return vid;
-            }
-        }
+        //IEnumerable<int> vids(MapLandMgr ml_mgr)
+        //{
+        //    foreach (var (vid, _) in ml_mgr.cells)
+        //    {
+        //        yield return vid;
+        //    }
+        //}
 
 
-        IEnumerable<AttackArea> cells()
-        {
-            Mission.instance.try_get_mgr(Config.MapLandMgr_Name, out MapLandMgr ml_mgr);
-            foreach (var vid in vids(ml_mgr))
-            {
-                yield return new(vid);
-            }
-        }
+        //IEnumerable<AttackArea> cells()
+        //{
+        //    Mission.instance.try_get_mgr(Config.MapLandMgr_Name, out MapLandMgr ml_mgr);
+        //    foreach (var vid in vids(ml_mgr))
+        //    {
+        //        yield return new(vid);
+        //    }
+        //}
     }
 }
 

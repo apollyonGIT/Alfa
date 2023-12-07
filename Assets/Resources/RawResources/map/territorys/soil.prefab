@@ -201,7 +201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2577786627550202213}
-  - component: {fileID: 2140373850039287099}
+  - component: {fileID: 1774685961091743357}
   m_Layer: 0
   m_Name: soil
   m_TagString: Untagged
@@ -226,7 +226,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2140373850039287099
+--- !u!114 &1774685961091743357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,6 +235,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2577786627550202202}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a2a10e6064432247a51f058f22878b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6aa16a551acd9ca4f95f5cf48523ef33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -1,30 +1,29 @@
 ﻿using Foundation;
 using UnityEngine;
 
-namespace Battle.MapLands
+namespace Battle.Territorys
 {
-    public class MapLandView : MonoBehaviour, IMapLandView
+    public class TerritoryView : MonoBehaviour, ITerritoryView
     {
-        MapLand cell;
+        Territory cell;
 
         //==================================================================================================
 
-        void IModelView<MapLand>.attach(MapLand cell)
+        void IModelView<Territory>.attach(Territory cell)
         {
             this.cell = cell;
 
             transform.localPosition = cell.view_pos;
-            gameObject.name = $"{cell.vid}";
         }
 
 
-        void IModelView<MapLand>.detach(MapLand cell)
+        void IModelView<Territory>.detach(Territory cell)
         {
             this.cell = null;
         }
 
 
-        void IModelView<MapLand>.shift(MapLand old_cell, MapLand new_cell)
+        void IModelView<Territory>.shift(Territory old_cell, Territory new_cell)
         {
         }
     }

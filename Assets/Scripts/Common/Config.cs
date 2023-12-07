@@ -44,6 +44,9 @@ namespace Common
         //mapland大小
         public const int mapland_limit_x = 8;
         public const int mapland_limit_y = 8;
+
+        public const int map_max_x = 8;
+        public const int map_max_y = 8;
         #endregion
 
 
@@ -54,6 +57,8 @@ namespace Common
 
         //tick管理类
         public const string MapLandMgr_Name = "MapLandMgr";
+        public const string TerritoryMgr_Name = "TerritoryMgr";
+
         public const string HandCardMgr_Name = "HandCardMgr";
 
         public const string ChessMgr_Player_Name = "ChessMgr_Player";

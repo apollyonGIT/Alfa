@@ -2,24 +2,23 @@
 using Foundation;
 using System.Collections.Generic;
 
-namespace Battle.MapLands
+namespace Battle.Territorys
 {
-    public interface IMapLandView : IModelView<MapLand>
-    {
+    public interface ITerritoryView : IModelView<Territory>
+    { 
     }
 
 
-    public class MapLandMgr : IMgr
+    public class TerritoryMgr : IMgr
     {
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
 
-        Dictionary<int, MapLand> m_cells = new();
-        public Dictionary<int, MapLand> cells => m_cells;
+        Dictionary<VID, Territory> m_cells = new();
 
         //==================================================================================================
 
-        public MapLandMgr(string name, params object[] objs)
+        public TerritoryMgr(string name, params object[] objs)
         {
             m_mgr_name = name;
             (this as IMgr).init(objs);
@@ -38,7 +37,7 @@ namespace Battle.MapLands
         }
 
 
-        public void add_cell(MapLand cell)
+        public void add_cell(Territory cell)
         {
             m_cells.Add(cell.vid, cell);
         }
