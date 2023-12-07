@@ -1,6 +1,7 @@
 ﻿using Common;
 using Foundation;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Battle.Territorys
 {
@@ -40,6 +41,12 @@ namespace Battle.Territorys
         public void add_cell(Territory cell)
         {
             m_cells.Add(cell.vid, cell);
+        }
+
+
+        public void test()
+        {
+            Debug.Log("t_test");
         }
     }
 }

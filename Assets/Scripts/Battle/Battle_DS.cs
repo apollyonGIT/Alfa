@@ -53,40 +53,11 @@ namespace Battle
         }
 
 
-        public static VID right(VID v)
+        public static VID move(VID v, int x_step, int y_step)
         {
             var ret = v;
-            v.x++;
-
-            safe_offset(ref ret);
-            return ret;
-        }
-
-
-        public static VID left(VID v)
-        {
-            var ret = v;
-            v.x--;
-
-            safe_offset(ref ret);
-            return ret;
-        }
-
-
-        public static VID up(VID v)
-        {
-            var ret = v;
-            v.y++;
-
-            safe_offset(ref ret);
-            return ret;
-        }
-
-
-        public static VID down(VID v)
-        {
-            var ret = v;
-            v.y--;
+            v.x += x_step;
+            v.y += y_step;
 
             safe_offset(ref ret);
             return ret;

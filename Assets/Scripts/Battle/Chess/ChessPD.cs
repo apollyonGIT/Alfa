@@ -1,10 +1,11 @@
 ﻿using Common;
+using System.Collections.Generic;
 
-namespace Battle.Chesses
+namespace Battle.Chess
 {
     public class ChessPD : Producer
     {
-        public ChessView temp_view;
+        public ChessView temp_view_player;
 
         public override IMgr imgr => mgr;
         ChessMgr mgr;
@@ -15,11 +16,13 @@ namespace Battle.Chesses
         {
             mgr = new(Config.ChessMgr_Player_Name);
 
-            var e = cell();
-            mgr.add_cell(e);
+            foreach (var cell in cells(1, 2))
+            {
+                var view = Instantiate(temp_view_player, transform);
+                cell.add_view(view);
 
-            var view = Instantiate(temp_view, transform);
-            e.add_view(view);
+                mgr.add_cell(cell);
+            }
         }
 
 
@@ -34,9 +37,10 @@ namespace Battle.Chesses
         }
 
 
-        public Chess cell()
+        IEnumerable<Chess> cells(int x, int y)
         {
-            return new(mgr, 1, 2);
+            VID vid = VID.init(x, y);
+            yield return new(vid);
         }
     }
 }

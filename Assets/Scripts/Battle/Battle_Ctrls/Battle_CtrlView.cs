@@ -1,6 +1,6 @@
-﻿using Common.Opr_Module;
+﻿using Common;
+using Common.Opr_Module;
 using Foundation;
-using UnityEngine;
 
 namespace Battle.Battle_Ctrls
 {
@@ -31,7 +31,8 @@ namespace Battle.Battle_Ctrls
 
         public override void notify_on_click()
         {
-            Debug.Log($"x:{cell.vid.x}, y:{cell.vid.y}");
+            Mission.instance.try_get_mgr(Config.Battle_CtrlMgr_Name, out Battle_CtrlMgr mgr);
+            mgr.do_on_click(cell.vid);
         }
     }
 }

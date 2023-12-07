@@ -51,10 +51,8 @@ namespace Battle.Territorys
             {
                 for (int x = 0; x < mx; x++)
                 {
-                    Territory cell = new()
-                    {
-                        vid = VID.init(x, y)
-                    };
+                    var vid = VID.init(x, y);
+                    Territory cell = new(vid);
 
                     yield return cell;
                 }

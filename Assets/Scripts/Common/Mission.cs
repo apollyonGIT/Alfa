@@ -48,6 +48,24 @@ namespace Common
         {
             m_mgrs_dic.Clear();
         }
+
+
+        public object do_mgr_method(string mgr_name, string method_name, object[] prms)
+        {
+            if (!try_get_mgr(mgr_name, out IMgr mgr)) return null;
+
+            return do_mgr_method(mgr, method_name, prms);
+        }
+
+
+        public object do_mgr_method(IMgr mgr, string method_name, object[] prms)
+        {
+            var mi = mgr.GetType().GetMethod(method_name);
+            if (mi == null) return null;
+
+            return mi.Invoke(mgr, prms);
+        }
+
     }
 }
 

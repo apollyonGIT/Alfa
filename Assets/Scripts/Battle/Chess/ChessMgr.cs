@@ -1,16 +1,14 @@
-﻿using Battle.AttackAreas;
-using Battle.Helpers;
-using Common;
+﻿using Common;
 using Foundation;
 using System.Collections.Generic;
+using UnityEngine;
 using World;
 
-namespace Battle.Chesses
+namespace Battle.Chess
 {
     public interface IChessView : IModelView<Chess>
     {
         void notify_on_tick1();
-        void notify_on_selected(bool bl);
     }
 
 
@@ -19,9 +17,7 @@ namespace Battle.Chesses
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
 
-        Dictionary<int, Chess> m_cells = new();
-
-        AttackAreaMgr m_attack_area_mgr;
+        Dictionary<VID, Chess> m_cells = new();
 
         //==================================================================================================
 
@@ -49,14 +45,11 @@ namespace Battle.Chesses
             var ctx = WorldContext.instance;
             ctx.add_tick(Config.ChessMgr_Player_Priority, Config.ChessMgr_Player_Name, tick);
             ctx.add_tick1(Config.ChessMgr_Player_Priority, Config.ChessMgr_Player_Name, tick1);
-
-            Mission.instance.try_get_mgr(Config.AttackAreaMgr_Name, out m_attack_area_mgr);
         }
 
 
         void tick()
         {
-
         }
 
 
@@ -78,30 +71,9 @@ namespace Battle.Chesses
         }
 
 
-        /// <summary>
-        /// 移动
-        /// </summary>
-        public void move(Chess cell, int step_x, int step_y)
+        public void do_on_click(VID vid)
         {
-            var key = cell.vid;            
-            SquareMap_Helper.move(ref cell.vid, step_x, step_y);
-
-            if (cell.vid != key)
-            {
-                m_cells.Remove(key);
-                m_cells.Add(cell.vid, cell);
-            }
-        }
-
-
-        public void do_when_click(Chess cell)
-        {
-            m_attack_area_mgr.@enable(cell.vid, ("attack_areas", "footman"));
-
-            foreach (var view in cell.views)
-            {
-                view.notify_on_selected(true);
-            }
+            Debug.Log($"x:{vid.x}" + "," + $"y:{vid.y}");
         }
     }
 }

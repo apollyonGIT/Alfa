@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Battle.Battle_Ctrls
 {
     public interface IBattle_CtrlView : IModelView<Battle_Ctrl>
-    { 
+    {
     }
 
 
@@ -40,6 +40,15 @@ namespace Battle.Battle_Ctrls
         public void add_cell(Battle_Ctrl cell)
         {
             m_cells.Add(cell.vid, cell);
+        }
+
+
+        public void do_on_click(VID vid)
+        {
+            var mission = Mission.instance;
+
+            mission.try_get_mgr(Config.ChessMgr_Player_Name, out var player_mgr);
+            mission.do_mgr_method(player_mgr, "do_on_click", new object[] { vid });
         }
     }
 }

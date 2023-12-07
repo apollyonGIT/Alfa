@@ -1,13 +1,10 @@
-﻿using Common.Opr_Module;
-using Foundation;
+﻿using Foundation;
 using UnityEngine;
 
-namespace Battle.Chesses
+namespace Battle.Chess
 {
-    public class ChessView : OprTargetView, IChessView
+    public class ChessView : MonoBehaviour, IChessView
     {
-        public GameObject selected;
-
         Chess cell;
 
         //==================================================================================================
@@ -33,20 +30,6 @@ namespace Battle.Chesses
         {
             transform.localPosition = cell.view_pos;
         }
-
-
-        void IChessView.notify_on_selected(bool bl)
-        {
-            selected.SetActive(bl);
-        }
-
-
-        public override void notify_on_click()
-        {
-            cell.mgr.do_when_click(cell);
-        }
-
-        
     }
 }
 

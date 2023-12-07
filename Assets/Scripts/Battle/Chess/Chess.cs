@@ -1,9 +1,9 @@
 ﻿using Foundation;
 using UnityEngine;
 
-namespace Battle.Territorys
+namespace Battle.Chess
 {
-    public class Territory : Model<Territory, ITerritoryView>
+    public class Chess : Model<Chess, IChessView>
     {
         public VID vid;
 
@@ -11,7 +11,7 @@ namespace Battle.Territorys
 
         //==================================================================================================
 
-        public Territory(VID vid)
+        public Chess(VID vid)
         {
             this.vid = vid;
         }
