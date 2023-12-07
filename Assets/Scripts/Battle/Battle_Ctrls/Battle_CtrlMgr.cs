@@ -46,12 +46,19 @@ namespace Battle.Battle_Ctrls
         public void do_on_click(VID vid)
         {
             var mission = Mission.instance;
-
-            //mission.try_get_mgr(Config.ChessMgr_Player_Name, out var player_mgr);
-            //mission.do_mgr_method(player_mgr, "move", new object[] { vid, 0, 2 });
-
+            mission.try_get_mgr(Config.ChessMgr_Player_Name, out var player_mgr);
             mission.try_get_mgr(Config.InfoAreaMgr_Name, out var info_area_mgr);
-            mission.do_mgr_method(info_area_mgr, "enable_cell", new object[] { vid, Info_Area_Type.attack_area, ("info_areas", "footman") });
+
+            //规则：首先清空所有范围显示
+            mission.do_mgr_method(info_area_mgr, "disable_all", new object[] { });
+
+            //规则：如果选中player chess，显示攻击范围
+            var try_get_info_area_path_prms = new object[] { vid, null };
+            if ((bool)mission.do_mgr_method(player_mgr, "try_get_info_area_path", try_get_info_area_path_prms))
+            {
+                var info_area_path = try_get_info_area_path_prms[1];
+                mission.do_mgr_method(info_area_mgr, "enable_cell", new object[] { vid, Info_Area_Type.attack_area, info_area_path });
+            }
         }
     }
 }

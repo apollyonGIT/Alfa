@@ -1,7 +1,7 @@
 ﻿using Foundation;
 using UnityEngine;
 
-namespace Battle.Chess
+namespace Battle.Chesses
 {
     public class ChessView : MonoBehaviour, IChessView
     {

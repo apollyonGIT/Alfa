@@ -58,8 +58,6 @@ namespace Battle.Info_Areas
 
         public void enable_cell(VID vid, Info_Area_Type type, (string, string) asset_path)
         {
-            disable_all();
-
             EX_Utility.try_load_asset(asset_path, out Info_Area_Asset asset);
 
             foreach (var cell in @select(vid, type, asset))

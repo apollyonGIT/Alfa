@@ -1,25 +1,26 @@
 ﻿using Foundation;
 using UnityEngine;
 
-namespace Battle.Chess
+namespace Battle.Chesses
 {
     public class Chess : Model<Chess, IChessView>
     {
         public VID vid;
+        public AutoCode.Tables.Chess.Record _desc;
 
         public Vector2 view_pos => VID.convert(vid);
 
         //==================================================================================================
 
-        public Chess(VID vid)
+        public Chess(VID vid, uint id)
         {
             this.vid = vid;
+            Battle_DB.instance.chess.try_get(id ,out _desc);
         }
 
 
         public void tick()
         {
-            
         }
 
 

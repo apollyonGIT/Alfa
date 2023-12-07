@@ -1,7 +1,7 @@
 ﻿using Common;
 using System.Collections.Generic;
 
-namespace Battle.Chess
+namespace Battle.Chesses
 {
     public class ChessPD : Producer
     {
@@ -40,7 +40,7 @@ namespace Battle.Chess
         IEnumerable<Chess> cells(int x, int y)
         {
             VID vid = VID.init(x, y);
-            yield return new(vid);
+            yield return new(vid, 1); //临时
         }
     }
 }

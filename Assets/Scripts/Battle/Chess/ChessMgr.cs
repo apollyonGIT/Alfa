@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using World;
 
-namespace Battle.Chess
+namespace Battle.Chesses
 {
     public interface IChessView : IModelView<Chess>
     {
@@ -79,6 +79,16 @@ namespace Battle.Chess
 
             VID.move(ref cell.vid, step_x, step_y);
             add_cell(cell);
+        }
+
+
+        public bool try_get_info_area_path(VID vid, out (string, string) path)
+        {
+            path = default;
+            if (!m_cells.TryGetValue(vid, out var cell)) return false;
+
+            path = cell._desc.f_info_area;
+            return true;
         }
     }
 }

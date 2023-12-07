@@ -42,6 +42,21 @@ namespace Battle
             }
         }
 
+
+        Chess m_chess;
+        public Chess chess
+        {
+            get
+            {
+                if (m_chess == null)
+                {
+                    EX_Utility.try_load_table("chess", out m_chess);
+                }
+
+                return m_chess;
+            }
+        }
+
     }
 }
 
