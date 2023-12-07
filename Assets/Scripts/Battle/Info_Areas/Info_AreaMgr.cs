@@ -1,6 +1,7 @@
 ﻿using Common;
 using Foundation;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
 namespace Battle.Info_Areas
@@ -55,11 +56,13 @@ namespace Battle.Info_Areas
         }
 
 
-        public void enable_cell(VID vid, Info_Area_Type type)
+        public void enable_cell(VID vid, Info_Area_Type type, (string, string) asset_path)
         {
             disable_all();
 
-            foreach (var cell in @select(vid, type))
+            EX_Utility.try_load_asset(asset_path, out Info_Area_Asset asset);
+
+            foreach (var cell in @select(vid, type, asset))
             {
                 cell.enable(type);
             }
@@ -75,15 +78,16 @@ namespace Battle.Info_Areas
         /// <summary>
         /// 根据条件选取cells
         /// </summary>
-        IEnumerable<Info_Area> @select(VID vid, Info_Area_Type type)
+        IEnumerable<Info_Area> @select(VID vid, Info_Area_Type type, Info_Area_Asset asset)
         {
-            EX_Utility.try_load_asset(("info_areas", "footman"), out Info_Area_Asset asset);
+            var fi = asset.GetType().GetField(type.ToString());
+            var infos = (Info_Area_Asset.Info[])fi.GetValue(asset);
+            if (infos == null) yield return null;
 
-            var attack_area = asset.attack_area;
-            foreach (var step in attack_area)
+            foreach (var info in infos)
             {
                 var _vid = vid;
-                if (!VID.move(ref _vid, step.x, step.y, false)) continue;
+                if (!VID.move(ref _vid, info.x, info.y, false)) continue;
                 if (!m_cells.TryGetValue(_vid, out var cell)) continue;
 
                 yield return cell;

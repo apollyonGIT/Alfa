@@ -51,7 +51,7 @@ namespace Battle.Battle_Ctrls
             //mission.do_mgr_method(player_mgr, "move", new object[] { vid, 0, 2 });
 
             mission.try_get_mgr(Config.InfoAreaMgr_Name, out var info_area_mgr);
-            mission.do_mgr_method(info_area_mgr, "enable_cell", new object[] { vid, Info_Area_Type.attack_area});
+            mission.do_mgr_method(info_area_mgr, "enable_cell", new object[] { vid, Info_Area_Type.attack_area, ("info_areas", "footman") });
         }
     }
 }
