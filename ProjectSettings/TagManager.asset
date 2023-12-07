@@ -50,3 +50,6 @@ TagManager:
   - name: chess
     uniqueID: 3578829471
     locked: 0
+  - name: battle_ctrl
+    uniqueID: 2766145177
+    locked: 0
