@@ -21,8 +21,8 @@ namespace Battle
             ref int x = ref vid.x;
             ref int y = ref vid.y;
 
-            var mx = Config.map_max_x;
-            var my = Config.map_max_y;
+            var mx = Config.map_max_x - 1;
+            var my = Config.map_max_y - 1;
 
             x = x < 0 ? 0 : x;
             x = x > mx ? mx : x;
@@ -31,36 +31,12 @@ namespace Battle
         }
 
 
-        public static VID operator +(VID v1, VID v2)
+        public static void move(ref VID v, int step_x, int step_y)
         {
-            var ret = v1;
-            ret.x += v2.x;
-            ret.y += v2.y;
+            v.x += step_x;
+            v.y += step_y;
 
-            safe_offset(ref ret);
-            return ret;
-        }
-
-
-        public static VID operator -(VID v1, VID v2)
-        {
-            var ret = v1;
-            ret.x -= v2.x;
-            ret.y -= v2.y;
-
-            safe_offset(ref ret);
-            return ret;
-        }
-
-
-        public static VID move(VID v, int x_step, int y_step)
-        {
-            var ret = v;
-            v.x += x_step;
-            v.y += y_step;
-
-            safe_offset(ref ret);
-            return ret;
+            safe_offset(ref v);
         }
 
 

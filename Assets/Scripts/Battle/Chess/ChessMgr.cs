@@ -75,6 +75,16 @@ namespace Battle.Chess
         {
             Debug.Log($"x:{vid.x}" + "," + $"y:{vid.y}");
         }
+
+
+        public void move(VID vid, int step_x, int step_y)
+        {
+            if (!m_cells.TryGetValue(vid, out var cell)) return;
+            m_cells.Remove(vid);
+
+            VID.move(ref cell.vid, step_x, step_y);
+            add_cell(cell);
+        }
     }
 }
 

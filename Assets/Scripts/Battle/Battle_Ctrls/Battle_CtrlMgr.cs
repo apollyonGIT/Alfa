@@ -48,7 +48,7 @@ namespace Battle.Battle_Ctrls
             var mission = Mission.instance;
 
             mission.try_get_mgr(Config.ChessMgr_Player_Name, out var player_mgr);
-            mission.do_mgr_method(player_mgr, "do_on_click", new object[] { vid });
+            mission.do_mgr_method(player_mgr, "move", new object[] { vid, 0, 2 });
         }
     }
 }
