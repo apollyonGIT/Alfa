@@ -44,7 +44,7 @@ TagManager:
   - name: territory
     uniqueID: 2197310663
     locked: 0
-  - name: showinfo_area
+  - name: info_area
     uniqueID: 213630477
     locked: 0
   - name: chess

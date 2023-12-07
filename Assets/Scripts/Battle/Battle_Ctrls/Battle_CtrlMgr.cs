@@ -47,8 +47,11 @@ namespace Battle.Battle_Ctrls
         {
             var mission = Mission.instance;
 
-            mission.try_get_mgr(Config.ChessMgr_Player_Name, out var player_mgr);
-            mission.do_mgr_method(player_mgr, "move", new object[] { vid, 0, 2 });
+            //mission.try_get_mgr(Config.ChessMgr_Player_Name, out var player_mgr);
+            //mission.do_mgr_method(player_mgr, "move", new object[] { vid, 0, 2 });
+
+            mission.try_get_mgr(Config.InfoAreaMgr_Name, out var info_area_mgr);
+            mission.do_mgr_method(info_area_mgr, "enable_cell", new object[] { vid, Info_Area_Type.attack_area});
         }
     }
 }

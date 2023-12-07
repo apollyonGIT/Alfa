@@ -11,6 +11,10 @@ namespace Battle.Battle_Ctrls
 
         //==================================================================================================
 
+        public Battle_Ctrl(VID vid)
+        {
+            this.vid = vid;
+        }
     }
 }
 

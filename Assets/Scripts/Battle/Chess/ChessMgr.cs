@@ -50,6 +50,10 @@ namespace Battle.Chess
 
         void tick()
         {
+            foreach (var (_, cell) in m_cells)
+            {
+                cell.tick();
+            }
         }
 
 
@@ -57,10 +61,7 @@ namespace Battle.Chess
         {
             foreach (var (_, cell) in m_cells)
             {
-                foreach (var view in cell.views)
-                {
-                    view.notify_on_tick1();
-                }
+                cell.tick1();
             }
         }
 
@@ -68,12 +69,6 @@ namespace Battle.Chess
         public void add_cell(Chess cell)
         {
             m_cells.Add(cell.vid, cell);
-        }
-
-
-        public void do_on_click(VID vid)
-        {
-            Debug.Log($"x:{vid.x}" + "," + $"y:{vid.y}");
         }
 
 

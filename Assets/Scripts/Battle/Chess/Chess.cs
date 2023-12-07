@@ -15,6 +15,21 @@ namespace Battle.Chess
         {
             this.vid = vid;
         }
+
+
+        public void tick()
+        {
+            
+        }
+
+
+        public void tick1()
+        {
+            foreach (var view in views)
+            {
+                view.notify_on_tick1();
+            }
+        }
     }
 }
 

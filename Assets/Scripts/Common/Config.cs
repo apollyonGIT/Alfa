@@ -64,7 +64,7 @@ namespace Common
         public const string ChessMgr_Player_Name = "ChessMgr_Player";
         public const string ChessMgr_Enemy_Name = "ChessMgr_Enemy";
 
-        public const string AttackAreaMgr_Name = "AttackAreaMgr";
+        public const string InfoAreaMgr_Name = "InfoAreaMgr";
 
         //普通管理类
 
@@ -72,6 +72,7 @@ namespace Common
 
 
         #region outter_prms
+        public Color player_attack_area_color;
         #endregion
     }
 }
