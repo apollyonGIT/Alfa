@@ -11,8 +11,8 @@ namespace Battle
 
     public struct VID 
     {
-        int x;
-        int y;
+        public int x;
+        public int y;
 
         //==================================================================================================
 

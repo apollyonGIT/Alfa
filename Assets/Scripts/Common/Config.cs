@@ -56,7 +56,7 @@ namespace Common
         public const int ChessMgr_Enemy_Priority = 2;
 
         //tick管理类
-        public const string MapLandMgr_Name = "MapLandMgr";
+        public const string Battle_CtrlMgr_Name = "Battle_Ctrl";
         public const string TerritoryMgr_Name = "TerritoryMgr";
 
         public const string HandCardMgr_Name = "HandCardMgr";

@@ -41,7 +41,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: mapland
+  - name: territory
     uniqueID: 2197310663
     locked: 0
   - name: showinfo_area

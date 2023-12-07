@@ -1,6 +1,5 @@
 ﻿using AutoCode.Tables;
 using Common;
-using System.Linq;
 
 namespace Battle
 {

@@ -1,21 +1,20 @@
 ﻿using Common;
 using System.Collections.Generic;
-using UnityEngine;
 
-namespace Battle.Territorys
+namespace Battle.Battle_Ctrls
 {
-    public class TerritoryPD : Producer
+    public class Battle_CtrlPD : Producer
     {
-        public TerritoryView temp_view;
+        public Battle_CtrlView model_view;
 
         public override IMgr imgr => mgr;
-        TerritoryMgr mgr;
+        Battle_CtrlMgr mgr;
 
         //==================================================================================================
 
         public override void init()
         {
-            mgr = new(Config.TerritoryMgr_Name);
+            mgr = new(Config.Battle_CtrlMgr_Name);
 
             var mx = Config.map_max_x;
             var my = Config.map_max_y;
@@ -24,13 +23,9 @@ namespace Battle.Territorys
             {
                 mgr.add_cell(cell);
 
-                var view = Instantiate(temp_view, transform);
+                var view = Instantiate(model_view, transform);
                 cell.add_view(view);
             }
-
-            //计算mono位置，使其居中于镜头
-            Vector2 pos = new(mx, my);
-            BattleSceneRoot.instance.monoRoot.localPosition = pos * -0.5f;
         }
 
 
@@ -45,13 +40,13 @@ namespace Battle.Territorys
         }
 
 
-        IEnumerable<Territory> cells(int mx, int my)
+        IEnumerable<Battle_Ctrl> cells(int mx, int my)
         {
             for (int y = 0; y < my; y++)
             {
                 for (int x = 0; x < mx; x++)
                 {
-                    Territory cell = new()
+                    Battle_Ctrl cell = new()
                     {
                         vid = VID.init(x, y)
                     };
