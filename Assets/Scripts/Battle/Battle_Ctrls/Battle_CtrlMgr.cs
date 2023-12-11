@@ -49,12 +49,16 @@ namespace Battle.Battle_Ctrls
             mission.try_get_mgr(Config.ChessMgr_Player_Name, out var player_mgr);
             mission.try_get_mgr(Config.InfoAreaMgr_Name, out var info_area_mgr);
 
+            var is_player = player_mgr.try_get_cell(out var player_cell, new object[] { vid });
+            var is_attack_area = info_area_mgr.try_get_cell(out var area_cell, new object[] { vid });
+
             //规则：首先清空所有范围显示
             mission.do_mgr_method(info_area_mgr, "disable_all", new object[] { });
 
             //规则：如果选中player chess，显示攻击范围
-            if (mission.try_get_cell_prop(player_mgr, "info_area_path", out (string, string) info_area_path, new object[] { vid }))
+            if (is_player && mission.try_get_cell_prop(player_cell, "info_area_path", out (string, string) info_area_path))
                 mission.do_mgr_method(info_area_mgr, "enable_cell", new object[] { vid, Info_Area_Type.attack_area, info_area_path });
+
         }
 
 

@@ -60,10 +60,9 @@ namespace Common
         }
 
 
-        public bool try_get_cell_field<T>(IMgr mgr, string fn, out T field, params object[] prms_used_to_get_cell)
+        public bool try_get_cell_field<T>(object cell, string fn, out T field)
         {
             field = default;
-            if (!mgr.try_get_cell(out var cell, prms_used_to_get_cell)) return false;
 
             var fi = cell.GetType().GetField(fn);
             if (fi == null) return false;
@@ -76,10 +75,9 @@ namespace Common
         }
 
 
-        public bool try_get_cell_prop<T>(IMgr mgr, string pn, out T prop, params object[] prms_used_to_get_cell)
+        public bool try_get_cell_prop<T>(object cell, string pn, out T prop)
         {
             prop = default;
-            if (!mgr.try_get_cell(out var cell, prms_used_to_get_cell)) return false;
 
             var pi = cell.GetType().GetProperty(pn);
             if (pi == null) return false;
