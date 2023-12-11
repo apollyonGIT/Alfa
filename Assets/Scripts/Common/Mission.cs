@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Common
 {
@@ -48,6 +50,21 @@ namespace Common
         public void remove_all_mgr()
         {
             m_mgrs_dic.Clear();
+        }
+
+
+        public object do_mgr_overload_method(IMgr mgr, string method_name, object[] prms)
+        {
+            Type[] types = new Type[prms.Length];
+            for (int i = 0; i < prms.Length; i++)
+            {
+                types[i] = prms[i].GetType();
+            }
+
+            var mi = mgr.GetType().GetMethod(method_name, types);
+            if (mi == null) return null;
+
+            return mi.Invoke(mgr, prms);
         }
 
 

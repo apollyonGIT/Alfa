@@ -6,7 +6,6 @@ namespace World.Helpers
     {
         public void enter_battle(WorldContext ctx)
         {
-            ctx.bctx = new();
             EX_Utility.load_scene_async("scenes", "Battle");
 
             ctx.is_battle = true;

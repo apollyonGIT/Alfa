@@ -82,6 +82,16 @@ namespace Battle.Chesses
         }
 
 
+        public void move(VID from, VID to)
+        {
+            if (!m_cells.TryGetValue(from, out var cell)) return;
+            m_cells.Remove(from);
+
+            cell.vid = to;
+            add_cell(cell);
+        }
+
+
         bool IMgr.try_get_cell(out object cell, params object[] prms)
         {
             var vid = (VID)prms[0];
