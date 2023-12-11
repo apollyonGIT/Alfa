@@ -82,13 +82,13 @@ namespace Battle.Chesses
         }
 
 
-        public bool try_get_info_area_path(VID vid, out (string, string) path)
+        bool IMgr.try_get_cell(out object cell, params object[] prms)
         {
-            path = default;
-            if (!m_cells.TryGetValue(vid, out var cell)) return false;
+            var vid = (VID)prms[0];
+            var ret = m_cells.TryGetValue(vid, out var _cell);
+            cell = _cell;
 
-            path = cell._desc.f_info_area;
-            return true;
+            return ret;
         }
     }
 }

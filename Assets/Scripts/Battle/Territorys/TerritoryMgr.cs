@@ -44,9 +44,13 @@ namespace Battle.Territorys
         }
 
 
-        public void test()
+        bool IMgr.try_get_cell(out object cell, params object[] prms)
         {
-            Debug.Log("t_test");
+            var vid = (VID)prms[0];
+            var ret = m_cells.TryGetValue(vid, out var _cell);
+            cell = _cell;
+
+            return ret;
         }
     }
 }

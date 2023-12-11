@@ -1,7 +1,6 @@
 ﻿using Common;
 using Foundation;
 using System.Collections.Generic;
-using System.Net;
 using UnityEngine;
 
 namespace Battle.Info_Areas
@@ -90,6 +89,16 @@ namespace Battle.Info_Areas
 
                 yield return cell;
             }
+        }
+
+
+        bool IMgr.try_get_cell(out object cell, params object[] prms)
+        {
+            var vid = (VID)prms[0];
+            var ret = m_cells.TryGetValue(vid, out var _cell);
+            cell = _cell;
+
+            return ret;
         }
     }
 }

@@ -8,6 +8,9 @@ namespace Battle.Chesses
         public VID vid;
         public AutoCode.Tables.Chess.Record _desc;
 
+        public (string,string) info_area_path => _desc.f_info_area;
+
+
         public Vector2 view_pos => VID.convert(vid);
 
         //==================================================================================================

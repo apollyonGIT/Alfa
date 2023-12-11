@@ -53,12 +53,18 @@ namespace Battle.Battle_Ctrls
             mission.do_mgr_method(info_area_mgr, "disable_all", new object[] { });
 
             //规则：如果选中player chess，显示攻击范围
-            var try_get_info_area_path_prms = new object[] { vid, null };
-            if ((bool)mission.do_mgr_method(player_mgr, "try_get_info_area_path", try_get_info_area_path_prms))
-            {
-                var info_area_path = try_get_info_area_path_prms[1];
+            if (mission.try_get_cell_prop(player_mgr, "info_area_path", out (string, string) info_area_path, new object[] { vid }))
                 mission.do_mgr_method(info_area_mgr, "enable_cell", new object[] { vid, Info_Area_Type.attack_area, info_area_path });
-            }
+        }
+
+
+        bool IMgr.try_get_cell(out object cell, params object[] prms)
+        {
+            var vid = (VID)prms[0];
+            var ret = m_cells.TryGetValue(vid, out var _cell);
+            cell = _cell;
+
+            return ret;
         }
     }
 }

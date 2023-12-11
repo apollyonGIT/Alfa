@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Mono.Cecil.Cil;
+using System.Collections.Generic;
 
 namespace Common
 {
@@ -7,6 +8,7 @@ namespace Common
         public string name { get; }
         void init(params object[] objs);
         void fini();
+        bool try_get_cell(out object cell, params object[] prms);
     }
 
 
@@ -64,6 +66,38 @@ namespace Common
             if (mi == null) return null;
 
             return mi.Invoke(mgr, prms);
+        }
+
+
+        public bool try_get_cell_field<T>(IMgr mgr, string fn, out T field, params object[] prms)
+        {
+            field = default;
+            if (!mgr.try_get_cell(out var cell, prms)) return false;
+
+            var fi = cell.GetType().GetField(fn);
+            if (fi == null) return false;
+
+            var v = fi.GetValue(cell);
+            if (v is not T) return false;
+
+            field = (T)v;
+            return true;
+        }
+
+
+        public bool try_get_cell_prop<T>(IMgr mgr, string pn, out T prop, params object[] prms)
+        {
+            prop = default;
+            if (!mgr.try_get_cell(out var cell, prms)) return false;
+
+            var pi = cell.GetType().GetProperty(pn);
+            if (pi == null) return false;
+
+            var v = pi.GetValue(cell);
+            if (v is not T) return false;
+
+            prop = (T)v;
+            return true;
         }
 
     }

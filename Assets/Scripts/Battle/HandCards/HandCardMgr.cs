@@ -2,9 +2,6 @@
 using Foundation;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting.YamlDotNet.Core.Events;
-using UnityEngine;
-using World;
 
 namespace Battle.HandCards
 {
@@ -82,6 +79,13 @@ namespace Battle.HandCards
 
             //规则：打出后，删除自身
             remove_cell(cell);
+        }
+
+
+        bool IMgr.try_get_cell(out object cell, params object[] prms)
+        {
+            cell = null;
+            return false;
         }
     }
 }
