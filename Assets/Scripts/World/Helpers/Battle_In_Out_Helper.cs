@@ -1,6 +1,5 @@
 ﻿using Common;
 using System.Reflection;
-using System;
 
 namespace World.Helpers
 {
@@ -8,8 +7,7 @@ namespace World.Helpers
     {
         public void enter_battle(WorldContext ctx)
         {
-            var type = Assembly.Load(Config.current.battle_assembly_name).GetType(Config.current.battle_ctx_name);
-            ctx.bctx = Activator.CreateInstance(type);
+            ctx.battle_ret = new();
 
             EX_Utility.load_scene_async("scenes", "Battle");
 
@@ -19,9 +17,8 @@ namespace World.Helpers
 
         public void end_battle(WorldContext ctx)
         {
-            var bctx = ctx.bctx;
-            var mi = bctx.GetType().GetMethod("end_battle");
-            mi?.Invoke(bctx, new object[] { });
+            var bctx_type = Assembly.Load(Config.current.battle_assembly_name).GetType(Config.current.battle_ctx_name);
+            bctx_type.GetMethod("end_battle")?.Invoke(null, new object[] { ctx });
 
             EX_Utility.unload_scene_async("Battle");
 

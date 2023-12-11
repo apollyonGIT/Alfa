@@ -1,4 +1,6 @@
-﻿namespace Battle
+﻿using World;
+
+namespace Battle
 {
     public class BattleContext : Common.Singleton<BattleContext>
     {
@@ -6,9 +8,9 @@
 
         //==================================================================================================
 
-        public void end_battle()
-        { 
-            
+        public static void end_battle(WorldContext ctx)
+        {
+            //ctx.battle_ret = ;
         }
     }
 }
