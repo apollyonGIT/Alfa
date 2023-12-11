@@ -12,6 +12,8 @@ namespace Battle.Chesses
         void IModelView<Chess>.attach(Chess cell)
         {
             this.cell = cell;
+
+            transform.localPosition = cell.view_pos;
         }
 
 

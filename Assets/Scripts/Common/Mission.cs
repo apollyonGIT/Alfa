@@ -1,10 +1,9 @@
-﻿using Mono.Cecil.Cil;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Common
 {
     public interface IMgr
-    { 
+    {
         public string name { get; }
         void init(params object[] objs);
         void fini();
@@ -32,7 +31,7 @@ namespace Common
 
         public bool try_get_mgr(string name, out IMgr mgr)
         {
-            return m_mgrs_dic.TryGetValue(name, out mgr); 
+            return m_mgrs_dic.TryGetValue(name, out mgr);
         }
 
 
@@ -52,14 +51,6 @@ namespace Common
         }
 
 
-        public object do_mgr_method(string mgr_name, string method_name, object[] prms)
-        {
-            if (!try_get_mgr(mgr_name, out IMgr mgr)) return null;
-
-            return do_mgr_method(mgr, method_name, prms);
-        }
-
-
         public object do_mgr_method(IMgr mgr, string method_name, object[] prms)
         {
             var mi = mgr.GetType().GetMethod(method_name);
@@ -69,10 +60,10 @@ namespace Common
         }
 
 
-        public bool try_get_cell_field<T>(IMgr mgr, string fn, out T field, params object[] prms)
+        public bool try_get_cell_field<T>(IMgr mgr, string fn, out T field, params object[] prms_used_to_get_cell)
         {
             field = default;
-            if (!mgr.try_get_cell(out var cell, prms)) return false;
+            if (!mgr.try_get_cell(out var cell, prms_used_to_get_cell)) return false;
 
             var fi = cell.GetType().GetField(fn);
             if (fi == null) return false;
@@ -85,10 +76,10 @@ namespace Common
         }
 
 
-        public bool try_get_cell_prop<T>(IMgr mgr, string pn, out T prop, params object[] prms)
+        public bool try_get_cell_prop<T>(IMgr mgr, string pn, out T prop, params object[] prms_used_to_get_cell)
         {
             prop = default;
-            if (!mgr.try_get_cell(out var cell, prms)) return false;
+            if (!mgr.try_get_cell(out var cell, prms_used_to_get_cell)) return false;
 
             var pi = cell.GetType().GetProperty(pn);
             if (pi == null) return false;
