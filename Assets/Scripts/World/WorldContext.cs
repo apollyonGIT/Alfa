@@ -11,6 +11,8 @@ namespace World
         #region outter
         public bool is_battle;
 
+        public object bctx;
+
         #endregion
 
         //==================================================================================================

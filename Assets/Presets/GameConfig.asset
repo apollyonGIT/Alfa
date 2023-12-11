@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 328bb3ad18c142342ae79c735de328ac, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
+  battle_assembly_name: Battle
+  battle_ctx_name: Battle.BattleContext
   player_attack_area_color: {r: 0.15686275, g: 0.38431376, b: 0.4666667, a: 0.6862745}

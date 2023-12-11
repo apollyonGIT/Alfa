@@ -72,6 +72,11 @@ namespace Common
 
 
         #region outter_prms
+        [Header("战斗模块配置")]
+        public string battle_assembly_name;
+        public string battle_ctx_name;
+
+        [Header("玩家 - 战斗格子颜色")]
         public Color player_attack_area_color;
         #endregion
     }
