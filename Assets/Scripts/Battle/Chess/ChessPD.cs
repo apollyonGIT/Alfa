@@ -16,7 +16,7 @@ namespace Battle.Chesses
         {
             mgr = new(Config.ChessMgr_Player_Name);
 
-            foreach (var cell in cells(1, 2))
+            foreach (var cell in cells())
             {
                 var view = Instantiate(temp_view_player, transform);
                 cell.add_view(view);
@@ -37,10 +37,13 @@ namespace Battle.Chesses
         }
 
 
-        IEnumerable<Chess> cells(int x, int y)
+        IEnumerable<Chess> cells()
         {
-            VID vid = VID.init(x, y);
-            yield return new(vid, 1); //临时
+            VID vid = VID.init(1, 2);
+            yield return new(vid, 1);
+
+            vid = VID.init(4, 4);
+            yield return new(vid, 1);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Battle.Chesses
         public VID vid;
         public AutoCode.Tables.Chess.Record _desc;
 
-        public (string,string) info_area_path => _desc.f_info_area;
+        public (string, string) info_area_path => _desc.f_info_area;
 
 
         public Vector2 view_pos => VID.convert(vid);
@@ -18,7 +18,7 @@ namespace Battle.Chesses
         public Chess(VID vid, uint id)
         {
             this.vid = vid;
-            Battle_DB.instance.chess.try_get(id ,out _desc);
+            Battle_DB.instance.chess.try_get(id, out _desc);
         }
 
 

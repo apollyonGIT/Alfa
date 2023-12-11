@@ -1,7 +1,7 @@
 ﻿using Common;
 using Foundation;
 using System.Collections.Generic;
-using World;
+using UnityEngine;
 
 namespace Battle.Battle_Ctrls
 {
@@ -60,23 +60,40 @@ namespace Battle.Battle_Ctrls
             mission.try_get_cell_prop(info_area_cell, "is_select_attack_area", out bool is_attack_area);
 
             //规则：首先清空所有范围显示
-            mission.do_mgr_method(info_area_mgr, "disable_all", new object[] { });
+            mission.do_mgr_method(info_area_mgr, "disable_all", null);
 
-            //规则：如果选中player chess，显示攻击范围
-            if (is_player && mission.try_get_cell_prop(player_cell, "info_area_path", out (string, string) info_area_path))
+            //规则：空点，无事发生
+            if (!is_attack_area && !is_player)
             {
-                selected_chess_vid = vid;
-                mission.do_mgr_method(info_area_mgr, "enable_cell", new object[] { vid, Info_Area_Type.attack_area, info_area_path });
+                return;
             }
 
-            //规则：如果选中攻击范围，移动player chess，并清空范围显示
-            if (is_attack_area)
+            //规则：选中chess，显示攻击范围
+            if (!is_attack_area && is_player)
+            {
+                if (!mission.try_get_cell_prop(player_cell, "info_area_path", out (string, string) info_area_path)) return;
+                
+                selected_chess_vid = vid;
+                mission.do_mgr_method(info_area_mgr, "enable_cell", new object[] { vid, Info_Area_Type.attack_area, info_area_path });
+                return;
+            }
+
+            //规则：范围内移动
+            if (is_attack_area && !is_player)
             {
                 mission.do_mgr_overload_method(player_mgr, "move", new object[] { selected_chess_vid, vid });
                 selected_chess_vid = vid;
-                mission.do_mgr_method(info_area_mgr, "disable_all", new object[] { });
+                mission.do_mgr_method(info_area_mgr, "disable_all", null);
+                return;
             }
-                
+
+            //规则：范围内交互
+            if (is_attack_area && is_player)
+            {
+                Debug.Log("存在目标");
+                return;
+            }
+
         }
 
 
