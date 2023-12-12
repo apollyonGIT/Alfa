@@ -3,25 +3,17 @@ using UnityEditor;
 using UnityEditor.EditorTools;
 using UnityEngine;
 
-namespace DIY_Editor
+namespace Editor.DIY_Editor.Tools
 {
-    public class Brush : EditorTool
+    public class Brush : DIY_EditorTool
     {
-        GUIContent m_icon;
-        public override GUIContent toolbarIcon => m_icon;
-
         public string m_win_title;
 
         //==================================================================================================
 
-        public virtual void init(string icon_image_path, string icon_text)
+        public override void init(object root, string icon_image_path, string icon_text)
         {
-            m_icon = new()
-            {
-                image = EditorGUIUtility.IconContent(icon_image_path).image,
-                text = icon_text,
-                tooltip = icon_text,
-            };
+            base.init(root, icon_image_path, icon_text);
 
             m_win_title = GetType().Name;
         }

@@ -1,7 +1,7 @@
-﻿using Editor.DIY_Editor;
+﻿using Editor.DIY_Editor.Tools;
 using UnityEditor;
 
-namespace DIY_Editor.Info_Area_Editor
+namespace Editor.DIY_Editor.Info_Area_Editor
 {
     [CustomEditor(typeof(Info_Area_Root), true)]
     public class Info_Area_RootEditor : RootEditor
@@ -16,7 +16,7 @@ namespace DIY_Editor.Info_Area_Editor
             root = (Info_Area_Root)target;
 
             m_brush = CreateInstance<Info_Area_Brush>();
-            m_brush.init("d_TerrainInspector.TerrainToolSplat On", "info_area");
+            m_brush.init(root, "d_TerrainInspector.TerrainToolSplat", "info_area");
         }
 
 

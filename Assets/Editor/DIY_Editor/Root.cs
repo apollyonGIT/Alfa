@@ -7,6 +7,7 @@ namespace Editor.DIY_Editor
     {
         public abstract void save_asset();
         public abstract void load_asset();
+        public abstract void clean();
     }
 
 

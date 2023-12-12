@@ -57,21 +57,6 @@ namespace Battle
             }
         }
 
-
-        //Info_A m_element;
-        //public Element element
-        //{
-        //    get
-        //    {
-        //        if (m_element == null)
-        //        {
-        //            EX_Utility.try_load_table("element", out m_element);
-        //        }
-
-        //        return m_element;
-        //    }
-        //}
-
     }
 }
 
