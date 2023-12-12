@@ -11,7 +11,7 @@ namespace Editor.DIY_Editor.Tools
 
         //==================================================================================================
 
-        public override void init(object root, string icon_image_path, string icon_text)
+        public override void init(Component root, string icon_image_path, string icon_text)
         {
             base.init(root, icon_image_path, icon_text);
 
@@ -22,6 +22,7 @@ namespace Editor.DIY_Editor.Tools
         public override void OnToolGUI(EditorWindow window)
         {
             create_win(window);
+            mouse_left_down();
         }
 
 
@@ -47,6 +48,26 @@ namespace Editor.DIY_Editor.Tools
 
         protected virtual void draw_win_content()
         { 
+        }
+
+
+        void mouse_left_down()
+        {
+            HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
+
+            var ev = Event.current;
+            if (ev.type != EventType.MouseDown) return;
+            if (ev.button != 0) return;
+            if (!Common.EX_Utility.try_get_mouse_point(ev, root, out var point)) return;
+
+            do_brush(point);
+            ev.Use();
+        }
+
+
+        protected virtual void do_brush(Vector2 pos)
+        {
+            Debug.Log(pos);
         }
     }
 }

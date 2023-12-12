@@ -9,11 +9,11 @@ namespace Editor.DIY_Editor.Tools
         protected GUIContent m_icon;
         public override GUIContent toolbarIcon => m_icon;
 
-        public object root;
+        public Component root;
 
         //==================================================================================================
 
-        public virtual void init(object root, string icon_image_path, string icon_text)
+        public virtual void init(Component root, string icon_image_path, string icon_text)
         {
             m_icon = new()
             {

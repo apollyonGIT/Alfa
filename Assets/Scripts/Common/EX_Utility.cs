@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static Foundation.DynamicPlugin;
@@ -209,12 +210,37 @@ namespace Common
         }
 
 
+        /// <summary>
+        /// 随机抽取数组元素
+        /// </summary>
         public static T select_random_cell_from_Array<T>(T[] array)
         {
             var count = array.Length;
             var index = rnd_int(0, count);
 
             return array[index];
+        }
+
+
+        /// <summary>
+        /// 获取鼠标在scene中的点击位置
+        /// 以组件所在的gameobject为参照物
+        /// </summary>
+        public static bool try_get_mouse_point(Event ev, Component target, out Vector3 point)
+        {
+            Ray ray = HandleUtility.GUIPointToWorldRay(ev.mousePosition);
+
+            point = new();
+            if (target == null) return false;
+
+            var transform = target.transform;
+            var plane = new Plane(transform.forward, -Vector3.Dot(transform.position, transform.forward));
+
+            if (!plane.Raycast(ray, out var distance)) return false;
+
+            point = ray.GetPoint(distance);
+            point = transform.InverseTransformPoint(point); //获取点的位置
+            return true;
         }
         #endregion
 
