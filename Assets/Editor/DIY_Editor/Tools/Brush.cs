@@ -1,6 +1,4 @@
-﻿using Editor.DIY_Editor;
-using UnityEditor;
-using UnityEditor.EditorTools;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace Editor.DIY_Editor.Tools
@@ -60,15 +58,10 @@ namespace Editor.DIY_Editor.Tools
             if (ev.button != 0) return;
             if (!Common.EX_Utility.try_get_mouse_point(ev, root, out var point)) return;
 
-            do_brush(point);
+            root.GetType().GetMethod("do_brush")?.Invoke(root, new object[] { point });
             ev.Use();
         }
 
-
-        protected virtual void do_brush(Vector2 pos)
-        {
-            Debug.Log(pos);
-        }
     }
 }
 
