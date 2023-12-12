@@ -10,7 +10,7 @@ namespace Editor.DIY_Editor.Info_Area_Editor
         public Transform area;
         public Info_AreaView model_area_view;
 
-        public List<Info_Area> cells = new();
+        List<Info_Area> m_cells = new();
 
         //==================================================================================================
 
@@ -27,7 +27,7 @@ namespace Editor.DIY_Editor.Info_Area_Editor
                 };
                 Info_Area cell = new(vid);
 
-                cells.Add(cell);
+                m_cells.Add(cell);
 
                 var view = Instantiate(model_area_view, area);
                 view.area.enabled = true;
@@ -43,7 +43,7 @@ namespace Editor.DIY_Editor.Info_Area_Editor
 
         public override void clean()
         {
-            cells.Clear();
+            m_cells.Clear();
 
             var view = area.GetComponentsInChildren<Info_AreaView>();
             foreach (var e in view)
