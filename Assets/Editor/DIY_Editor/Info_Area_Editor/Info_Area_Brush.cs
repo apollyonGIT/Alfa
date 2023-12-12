@@ -1,5 +1,4 @@
-﻿using Battle;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace DIY_Editor.Info_Area_Editor

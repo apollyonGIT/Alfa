@@ -14,6 +14,8 @@ namespace Battle.Info_Areas
         void IModelView<Info_Area>.attach(Info_Area cell)
         {
             this.cell = cell;
+
+            transform.localPosition = cell.view_pos;
         }
 
 

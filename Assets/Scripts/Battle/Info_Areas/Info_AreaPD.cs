@@ -1,23 +1,21 @@
-﻿using Battle.Info_Areas;
-using Common;
+﻿using Common;
 using System.Collections.Generic;
 
-namespace Battle.Battle_Ctrls
+namespace Battle.Info_Areas
 {
-    public class Battle_CtrlPD : Producer
+    public class Info_AreaPD : Producer
     {
-        public Battle_CtrlView model_view;
+        public Info_AreaView model_view;
 
         public override IMgr imgr => mgr;
-
-        Battle_CtrlMgr mgr;
+        Info_AreaMgr mgr;
 
         //==================================================================================================
 
         public override void init()
         {
-            mgr = new(Config.Battle_CtrlMgr_Name);
-            
+            mgr = new(Config.InfoAreaMgr_Name);
+
             var mx = Config.map_max_x;
             var my = Config.map_max_y;
 
@@ -41,7 +39,7 @@ namespace Battle.Battle_Ctrls
         }
 
 
-        IEnumerable<Battle_Ctrl> cells(int mx, int my)
+        IEnumerable<Info_Area> cells(int mx, int my)
         {
             for (int y = 0; y < my; y++)
             {
