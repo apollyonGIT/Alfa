@@ -2,6 +2,7 @@
 using Battle.Info_Areas;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking.Match;
 
 namespace Editor.DIY_Editor.Info_Area_Editor
 {
@@ -27,6 +28,19 @@ namespace Editor.DIY_Editor.Info_Area_Editor
 
         protected override void save_asset(Info_Area_Asset asset)
         {
+            List<Info_Area_Asset.Info> list = new();
+            foreach (var (vid,_) in m_cells)
+            {
+                Info_Area_Asset.Info info = new() 
+                {
+                    x = vid.x,
+                    y = vid.y,
+                };
+
+                list.Add(info);
+            }
+
+            asset.attack_area = list.ToArray();
         }
 
 

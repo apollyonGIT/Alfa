@@ -54,7 +54,7 @@ namespace Editor.DIY_Editor.Tools
             HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
 
             var ev = Event.current;
-            if (ev.type != EventType.MouseDown) return;
+            if (ev.type != EventType.MouseDown && ev.type != EventType.MouseDrag) return;
             if (!Common.EX_Utility.try_get_mouse_point(ev, root, out var point)) return;
 
             if (ev.button == 0)
