@@ -10,7 +10,7 @@ namespace Editor.DIY_Editor.Info_Area_Editor
         public Transform area;
         public Info_AreaView model_area_view;
 
-        List<Info_Area> m_cells = new();
+        Dictionary<VID, Info_Area> m_cells = new();
 
         //==================================================================================================
 
@@ -20,18 +20,7 @@ namespace Editor.DIY_Editor.Info_Area_Editor
 
             foreach (var info in asset.attack_area)
             {
-                VID vid = new()
-                {
-                    x = info.x,
-                    y = info.y,
-                };
-                Info_Area cell = new(vid);
-
-                m_cells.Add(cell);
-
-                var view = Instantiate(model_area_view, area);
-                view.area.enabled = true;
-                cell.add_view(view);
+                add_attack_area(info.x, info.y);
             }
         }
 
@@ -55,7 +44,52 @@ namespace Editor.DIY_Editor.Info_Area_Editor
 
         public void do_brush(Vector3 pos)
         {
-            Debug.Log(pos);
+            int x = Mathf.FloorToInt(pos.x);
+            int y = Mathf.FloorToInt(pos.y);
+
+            add_attack_area(x, y);
+        }
+
+
+        public void do_erase(Vector3 pos)
+        {
+            int x = Mathf.FloorToInt(pos.x);
+            int y = Mathf.FloorToInt(pos.y);
+
+            del_attack_area(x, y);
+        }
+
+
+        void add_attack_area(int x, int y)
+        {
+            VID vid = new()
+            {
+                x = x,
+                y = y,
+            };
+            Info_Area cell = new(vid);
+
+            if (m_cells.ContainsKey(vid)) return;
+            m_cells.Add(vid, cell);
+
+            var view = Instantiate(model_area_view, area);
+            view.area.enabled = true;
+            cell.add_view(view);
+        }
+
+
+        void del_attack_area(int x, int y)
+        {
+            VID vid = new()
+            {
+                x = x,
+                y = y,
+            };
+
+            if (!m_cells.TryGetValue(vid, out var cell)) return;
+            m_cells.Remove(vid);
+
+            cell.clear_views();
         }
     }
 }

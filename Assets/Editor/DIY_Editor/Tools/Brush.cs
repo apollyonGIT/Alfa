@@ -20,7 +20,7 @@ namespace Editor.DIY_Editor.Tools
         public override void OnToolGUI(EditorWindow window)
         {
             create_win(window);
-            mouse_left_down();
+            mouse_down();
         }
 
 
@@ -49,16 +49,19 @@ namespace Editor.DIY_Editor.Tools
         }
 
 
-        void mouse_left_down()
+        void mouse_down()
         {
             HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
 
             var ev = Event.current;
             if (ev.type != EventType.MouseDown) return;
-            if (ev.button != 0) return;
             if (!Common.EX_Utility.try_get_mouse_point(ev, root, out var point)) return;
 
-            root.GetType().GetMethod("do_brush")?.Invoke(root, new object[] { point });
+            if (ev.button == 0)
+                root.GetType().GetMethod("do_brush")?.Invoke(root, new object[] { point });
+            if (ev.button == 1)
+                root.GetType().GetMethod("do_erase")?.Invoke(root, new object[] { point });
+
             ev.Use();
         }
 

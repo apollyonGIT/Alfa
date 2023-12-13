@@ -22,6 +22,8 @@ namespace Battle.Info_Areas
         void IModelView<Info_Area>.detach(Info_Area cell)
         {
             this.cell = null;
+
+            DestroyImmediate(gameObject);
         }
 
         
