@@ -52,6 +52,7 @@ namespace Battle.Battle_Ctrls
             var mission = Mission.instance;
             mission.try_get_mgr(Config.ChessMgr_Player_Name, out var player_mgr);
             mission.try_get_mgr(Config.InfoAreaMgr_Name, out var info_area_mgr);
+            mission.try_get_mgr(Config.Desc_ContentMgr_Name, out var desc_content_mgr);
 
             //计算valid
             bool is_player = player_mgr.try_get_cell(out var player_cell, new object[] { vid });
@@ -59,28 +60,34 @@ namespace Battle.Battle_Ctrls
             info_area_mgr.try_get_cell(out var info_area_cell, new object[] { vid });
             mission.try_get_cell_prop(info_area_cell, "is_select_attack_area", out bool is_attack_area);
 
-            //规则：首先清空所有范围显示
+            //规则：清空
             mission.do_mgr_method(info_area_mgr, "disable_all", null);
+            mission.do_mgr_method(desc_content_mgr, "enable_cell", new object[] { false });
 
-            //规则：空点，无事发生
+            //规则：空点
             if (!is_attack_area && !is_player)
             {
                 return;
             }
 
-            //规则：选中chess，显示攻击范围
+            //规则：选中chess
             if (!is_attack_area && is_player)
             {
                 if (bctx.energy == 0) return;
 
+                selected_chess_vid = vid;
+
+                //显示攻击范围
                 if (!mission.try_get_cell_prop(player_cell, "info_area_path", out (string, string) info_area_path)) return;
                 mission.do_mgr_method(info_area_mgr, "enable_cell", new object[] { vid, Info_Area_Type.attack_area, info_area_path });
-                selected_chess_vid = vid;
+
+                //显示详情
+                mission.do_mgr_method(desc_content_mgr, "enable_cell", new object[] { true });
 
                 return;
             }
 
-            //规则：范围内移动
+            //规则：选中攻击范围
             if (is_attack_area && !is_player)
             {
                 mission.do_mgr_overload_method(player_mgr, "move", new object[] { selected_chess_vid, vid });

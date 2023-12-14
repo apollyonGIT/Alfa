@@ -44,7 +44,7 @@ namespace Battle.Desc_Contents
         }
 
 
-        public void enable(bool is_enable)
+        public void enable_cell(bool is_enable)
         {
             cell.enable(is_enable);
         }
