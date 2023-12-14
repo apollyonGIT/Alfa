@@ -66,6 +66,8 @@ namespace Common
 
         public const string InfoAreaMgr_Name = "InfoAreaMgr";
 
+        public const string StoreCheckMgr_Name = "StoreCheckMgr";
+
         //普通管理类
 
         #endregion

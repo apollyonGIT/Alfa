@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b0b73c31491f54e9c9f560b5d190f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asset: {fileID: 11400000, guid: ac327603173870f469facbf4ce6ae8a3, type: 2}
+  asset: {fileID: 11400000, guid: 48ce890bde567e54da838043d9bf0966, type: 2}
   area: {fileID: 37817495}
   model_area_view: {fileID: 4212698867209469378, guid: 64892d596b9baf2429cc542001a5ba76, type: 3}
 --- !u!1 &863544760
