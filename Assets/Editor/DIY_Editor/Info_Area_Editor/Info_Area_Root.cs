@@ -70,7 +70,6 @@ namespace Editor.DIY_Editor.Info_Area_Editor
             int y = Mathf.FloorToInt(pos.y);
 
             del_attack_area(x, y);
-            var e = 1;
         }
 
 
