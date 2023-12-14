@@ -67,6 +67,7 @@ namespace Common
         public const string InfoAreaMgr_Name = "InfoAreaMgr";
 
         public const string StoreCheckMgr_Name = "StoreCheckMgr";
+        public const string Desc_ContentMgr_Name = "Desc_ContentMgr";
 
         //普通管理类
 
