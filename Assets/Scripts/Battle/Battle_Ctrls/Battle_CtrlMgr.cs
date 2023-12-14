@@ -71,23 +71,24 @@ namespace Battle.Battle_Ctrls
             //规则：选中chess，显示攻击范围
             if (!is_attack_area && is_player)
             {
+                if (bctx.energy == 0) return;
+
                 if (!mission.try_get_cell_prop(player_cell, "info_area_path", out (string, string) info_area_path)) return;
-                
-                selected_chess_vid = vid;
                 mission.do_mgr_method(info_area_mgr, "enable_cell", new object[] { vid, Info_Area_Type.attack_area, info_area_path });
+                selected_chess_vid = vid;
+
                 return;
             }
 
             //规则：范围内移动
             if (is_attack_area && !is_player)
             {
-                if (bctx.energy == 0) return;
-
                 mission.do_mgr_overload_method(player_mgr, "move", new object[] { selected_chess_vid, vid });
                 selected_chess_vid = vid;
                 mission.do_mgr_method(info_area_mgr, "disable_all", null);
 
                 bctx.energy--;
+
                 return;
             }
 
