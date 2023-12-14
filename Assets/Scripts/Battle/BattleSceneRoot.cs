@@ -40,6 +40,12 @@ namespace Battle
         {
             root.btn_end_battle();
         }
+
+
+        public void btn_next_turn()
+        {
+            tick_producers();
+        }
     }
 }
 

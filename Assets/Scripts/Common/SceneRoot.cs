@@ -36,6 +36,17 @@ namespace Common
                 t.fini();
             }
         }
+
+
+        protected void tick_producers()
+        {
+            if (producers == null) return;
+
+            foreach (var t in producers)
+            {
+                t.tick();
+            }
+        }
     }
 }
 

@@ -81,9 +81,13 @@ namespace Battle.Battle_Ctrls
             //规则：范围内移动
             if (is_attack_area && !is_player)
             {
+                if (bctx.energy == 0) return;
+
                 mission.do_mgr_overload_method(player_mgr, "move", new object[] { selected_chess_vid, vid });
                 selected_chess_vid = vid;
                 mission.do_mgr_method(info_area_mgr, "disable_all", null);
+
+                bctx.energy--;
                 return;
             }
 
