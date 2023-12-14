@@ -32,6 +32,12 @@ namespace #namespace#
         {
             Mission.instance.attach_mgr(m_mgr_name, this);
         }
+
+
+        bool IMgr.try_get_cell(out object cell, params object[] prms)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
 
