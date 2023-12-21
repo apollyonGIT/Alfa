@@ -41,9 +41,6 @@ namespace Battle.Chesses
         {
             VID vid = VID.init(1, 2);
             yield return new(vid, 1);
-
-            vid = VID.init(4, 4);
-            yield return new(vid, 1);
         }
     }
 }

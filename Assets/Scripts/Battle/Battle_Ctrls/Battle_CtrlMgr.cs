@@ -50,8 +50,8 @@ namespace Battle.Battle_Ctrls
             ref var selected_chess_vid = ref bctx.selected_chess_vid;
 
             var mission = Mission.instance;
-            mission.try_get_mgr(Config.ChessMgr_Player_Name, out var player_mgr);
-            mission.try_get_mgr(Config.InfoAreaMgr_Name, out var info_area_mgr);
+            if (!mission.try_get_mgr(Config.ChessMgr_Player_Name, out var player_mgr)) return;
+            if (!mission.try_get_mgr(Config.InfoAreaMgr_Name, out var info_area_mgr)) return;
 
             //计算valid
             bool is_player = player_mgr.try_get_cell(out var player_cell, new object[] { vid });
