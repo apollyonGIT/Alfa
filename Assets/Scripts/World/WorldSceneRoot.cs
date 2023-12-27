@@ -18,7 +18,6 @@ namespace World
             init_triggers();
 
             ctx.can_start_tick = true;
-            Debug.Log("1");
         }
 
 
