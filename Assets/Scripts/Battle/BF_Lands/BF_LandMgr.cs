@@ -1,5 +1,6 @@
 ﻿using Common;
 using Foundation;
+using System.Collections.Generic;
 
 namespace Battle.BF_Lands
 {
@@ -12,6 +13,8 @@ namespace Battle.BF_Lands
     {
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
+
+        Dictionary<VID, BF_Land> m_cells = new();
 
         //==================================================================================================
 
@@ -36,7 +39,17 @@ namespace Battle.BF_Lands
 
         bool IMgr.try_get_cell(out object cell, params object[] prms)
         {
-            throw new System.NotImplementedException();
+            var vid = (VID)prms[0];
+            var ret = m_cells.TryGetValue(vid, out var _cell);
+            cell = _cell;
+
+            return ret;
+        }
+
+
+        public void add_cell(BF_Land cell)
+        {
+            m_cells.Add(cell.vid ,cell);
         }
     }
 }

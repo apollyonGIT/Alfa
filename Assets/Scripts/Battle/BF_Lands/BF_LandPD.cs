@@ -23,6 +23,8 @@ namespace Battle.BF_Lands
 
             foreach (var cell in cells())
             {
+                mgr.add_cell(cell);
+
                 var view = Instantiate(model_view, transform);
                 cell.add_view(view);
             }
