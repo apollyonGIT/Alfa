@@ -14,14 +14,12 @@ namespace Battle
         public static void init()
         {
             var wctx = WorldContext.instance;
-            Debug.Log("init");
         }
 
 
         public static void fini()
         {
             var wctx = WorldContext.instance;
-            Debug.Log("fini");
         }
     }
 }

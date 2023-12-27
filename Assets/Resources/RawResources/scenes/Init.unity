@@ -646,7 +646,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Project Alfa
+  m_text: Project Doom
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d81c9d4541903948b317bc0b7581831, type: 2}
   m_sharedMaterial: {fileID: -78483463829187710, guid: 6d81c9d4541903948b317bc0b7581831, type: 2}
@@ -905,6 +905,7 @@ MonoBehaviour:
   uiCamera: {fileID: 28264767}
   uiRoot: {fileID: 396267754}
   monoRoot: {fileID: 0}
+  producers: []
 --- !u!1 &1871257145
 GameObject:
   m_ObjectHideFlags: 0

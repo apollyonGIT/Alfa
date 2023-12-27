@@ -61,6 +61,11 @@ namespace Common
         public string battle_assembly;
         public string battle_context_path;
         #endregion
+
+
+        #region common_ds_key
+        public const string bf_land_area = "bf_land_area"; 
+        #endregion
     }
 }
 
