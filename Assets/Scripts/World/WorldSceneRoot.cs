@@ -14,17 +14,9 @@ namespace World
             ctx = WorldContext._init();
             ctx.init();
 
-            init_helpers();
             init_triggers();
 
             ctx.can_start_tick = true;
-        }
-
-
-        void init_helpers()
-        {
-            var mouse_h = Common.Helpers.Mouse_Move_Helper._init();
-            mouse_h.init(uiCamera);
         }
 
 

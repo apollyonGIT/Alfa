@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using static Unity.VisualScripting.Antlr3.Runtime.Tree.TreeWizard;
 
 namespace Common
 {
@@ -31,6 +31,16 @@ namespace Common
 
                 Game.instance.state.next = loading;
             }
+        }
+
+
+        /// <summary>
+        /// 获取当前Game_State
+        /// </summary>
+        public static string get_current_game_state()
+        {
+            var current = Game.instance.state.current.ToString();
+            return current.Split('.').Last();
         }
 
 
@@ -270,6 +280,16 @@ namespace Common
         {
             var sub = to - from;
             return Mathf.Atan2(sub.y, sub.x);
+        }
+
+
+        /// <summary>
+        /// 计算鼠标位置
+        /// </summary>
+        public static Vector2 calc_mouse_pos(Camera camera)
+        {
+            var raw = Mouse.current.position.ReadValue();
+            return camera.ScreenToWorldPoint(raw);
         }
         #endregion
 
