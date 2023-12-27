@@ -1,4 +1,5 @@
 ﻿using Common;
+using UnityEngine;
 using World.Helpers;
 
 namespace World
@@ -17,6 +18,7 @@ namespace World
             init_triggers();
 
             ctx.can_start_tick = true;
+            Debug.Log("1");
         }
 
 
