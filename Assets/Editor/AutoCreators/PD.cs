@@ -3,7 +3,7 @@ using UnityEditor;
 
 namespace Editor.AutoCreators
 {
-    public class Producer
+    public class Trigger
     {
         static string path = "Assets/Editor/Templates/PD_Template.cs.txt";
 

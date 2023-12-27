@@ -1,21 +1,17 @@
 ﻿using Common;
 using Foundation;
-using System.Collections.Generic;
 
 namespace #namespace#
 {
-    public interface #iview# : IModelView<#name#>
+    public interface #iview# : IModelView<#cell#>
     { 
-        void notify_on_init(#cell# cell);
     }
 
 
-    public class #name# : Model<#name#, #iview#>, IMgr
+    public class #name# : IMgr
     {
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
-
-        //Dictionary<int, #cell#> m_cell_dic = new();
 
         //==================================================================================================
 
@@ -38,12 +34,9 @@ namespace #namespace#
         }
 
 
-        public void add_cell(#cell# cell, #iview# view)
+        bool IMgr.try_get_cell(out object cell, params object[] prms)
         {
-            //m_cell_dic.Add(cell.id, cell);
-
-            add_view(view);
-            view.notify_on_init(cell);
+            throw new System.NotImplementedException();
         }
     }
 }

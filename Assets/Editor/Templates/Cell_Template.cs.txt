@@ -1,6 +1,8 @@
-﻿namespace #namespace#
+﻿using Foundation;
+
+namespace #namespace#
 {
-    public class #name#
+    public class #name# : Model<#name#, #iview#>
     {
 
         //==================================================================================================
