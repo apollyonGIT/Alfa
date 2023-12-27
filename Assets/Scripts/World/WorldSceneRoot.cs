@@ -15,7 +15,7 @@ namespace World
             ctx = WorldContext._init();
             ctx.init();
 
-            init_triggers();
+            init_producers();
 
             ctx.can_start_tick = true;
         }
