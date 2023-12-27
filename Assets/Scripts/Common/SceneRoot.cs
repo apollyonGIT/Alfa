@@ -20,7 +20,18 @@ namespace Common
 
             foreach (var t in producers)
             {
-                t.@do(true);
+                t.init();
+            }
+        }
+
+
+        protected void fini_producers()
+        {
+            if (producers == null) return;
+
+            foreach (var t in producers)
+            {
+                t.fini();
             }
         }
     }

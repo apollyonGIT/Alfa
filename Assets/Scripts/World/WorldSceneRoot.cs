@@ -19,6 +19,12 @@ namespace World
         }
 
 
+        protected override void on_fini()
+        {
+            fini_producers();
+        }
+
+
         private void Update()
         {
             ctx.update();

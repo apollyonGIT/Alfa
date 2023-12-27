@@ -6,7 +6,7 @@ namespace Common
     { 
         public string name { get; }
         void init(params object[] objs);
-        void destroy();
+        void fini();
     }
 
 
