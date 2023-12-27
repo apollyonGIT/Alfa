@@ -55,6 +55,12 @@ namespace Common
         public const string SlotMgr_Enemy_Back_Name = "e_back_slot";
 
         #endregion
+
+
+        #region outter
+        public string battle_assembly;
+        public string battle_context_path;
+        #endregion
     }
 }
 

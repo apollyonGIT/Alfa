@@ -1,4 +1,5 @@
 ﻿using Common;
+using System.Reflection;
 
 namespace World
 {
@@ -6,6 +7,8 @@ namespace World
     {
         public void enter_battle(WorldContext ctx)
         {
+            Assembly.Load(Config.current.battle_assembly).GetType(Config.current.battle_context_path).GetMethod("init").Invoke(null, null);
+
             EX_Utility.load_scene_async("scenes", "Battle");
             ctx.is_battle = true;
         }
@@ -13,6 +16,8 @@ namespace World
 
         public void end_battle(WorldContext ctx)
         {
+            Assembly.Load(Config.current.battle_assembly).GetType(Config.current.battle_context_path).GetMethod("fini").Invoke(null, null);
+
             EX_Utility.unload_scene_async("Battle");
             ctx.is_battle = false;
         }
