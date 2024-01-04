@@ -51,7 +51,7 @@ namespace Battle.BF_Lands
             {
                 for (int x = 0; x < count_x; x++)
                 {
-                    var vid = VID.init(x, y);
+                    VID vid = (x, y);
 
                     yield return new(vid);
                 }

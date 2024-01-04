@@ -53,19 +53,6 @@ namespace Battle
         }
 
 
-        public static VID init(int x, int y)
-        {
-            var ret = new VID
-            {
-                x = x,
-                y = y
-            };
-
-            safe_offset(ref ret);
-            return ret;
-        }
-
-
         public static Vector2 convert(VID v)
         {
             Vector2 ret = new()
@@ -73,6 +60,46 @@ namespace Battle
                 x = v.x,
                 y = v.y
             };
+
+            return ret;
+        }
+
+
+        public static explicit operator Vector2(VID v)
+        {
+            Vector2 ret = new()
+            {
+                x = v.x,
+                y = v.y
+            };
+
+            return ret;
+        }
+
+
+        public static implicit operator VID(Vector2 v)
+        {
+            VID ret = new()
+            {
+                x = Mathf.FloorToInt(v.x),
+                y = Mathf.FloorToInt(v.y),
+            };
+
+            safe_offset(ref ret);
+
+            return ret;
+        }
+
+
+        public static implicit operator VID((int x, int y) tuple)
+        {
+            VID ret = new()
+            {
+                x = tuple.x,
+                y = tuple.y,
+            };
+
+            safe_offset(ref ret);
 
             return ret;
         }
