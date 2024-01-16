@@ -1,15 +1,15 @@
 ﻿using Foundation;
 using UnityEngine;
 
-namespace Battle.BF_Lands
+namespace Battle.Lands
 {
-    public class BF_LandView : MonoBehaviour, IBF_LandView
+    public class LandView : MonoBehaviour, ILandView
     {
-        BF_Land cell;
+        Land cell;
 
         //==================================================================================================
 
-        void IModelView<BF_Land>.attach(BF_Land cell)
+        void IModelView<Land>.attach(Land cell)
         {
             this.cell = cell;
 
@@ -17,13 +17,13 @@ namespace Battle.BF_Lands
         }
 
 
-        void IModelView<BF_Land>.detach(BF_Land cell)
+        void IModelView<Land>.detach(Land cell)
         {
             this.cell = null;
         }
 
 
-        void IModelView<BF_Land>.shift(BF_Land old_cell, BF_Land new_cell)
+        void IModelView<Land>.shift(Land old_cell, Land new_cell)
         {
         }
     }

@@ -64,7 +64,7 @@ namespace Common
 
 
         #region common_ds_key
-        public const string bf_land_area = "bf_land_area"; 
+        public const string land_area = "land_area"; 
         #endregion
     }
 }

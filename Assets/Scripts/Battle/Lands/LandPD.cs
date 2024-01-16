@@ -1,25 +1,25 @@
 ﻿using Common;
 using System.Collections.Generic;
 
-namespace Battle.BF_Lands
+namespace Battle.Lands
 {
-    public class BF_LandPD : Producer
+    public class LandPD : Producer
     {
         public int count_x;
         public int count_y;
 
-        public BF_LandView model_view;
+        public LandView model_view;
 
         public override IMgr imgr => mgr;
-        BF_LandMgr mgr;
+        LandMgr mgr;
 
         //==================================================================================================
 
         public override void init()
         {
-            Common_DS.instance.add(Config.bf_land_area, (count_x, count_y));
+            Common_DS.instance.add(Config.land_area, (count_x, count_y));
 
-            mgr = new("BF_LandMgr");
+            mgr = new("LandMgr");
 
             foreach (var cell in cells())
             {
@@ -45,7 +45,7 @@ namespace Battle.BF_Lands
         }
 
 
-        IEnumerable<BF_Land> cells()
+        IEnumerable<Land> cells()
         {
             for (int y = 0; y < count_y; y++)
             {

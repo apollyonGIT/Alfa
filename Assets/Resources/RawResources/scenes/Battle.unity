@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 479456474}
   - component: {fileID: 479456475}
   m_Layer: 0
-  m_Name: bf_lands
+  m_Name: lands
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

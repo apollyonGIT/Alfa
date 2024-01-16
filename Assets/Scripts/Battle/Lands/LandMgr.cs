@@ -2,23 +2,23 @@
 using Foundation;
 using System.Collections.Generic;
 
-namespace Battle.BF_Lands
+namespace Battle.Lands
 {
-    public interface IBF_LandView : IModelView<BF_Land>
+    public interface ILandView : IModelView<Land>
     { 
     }
 
 
-    public class BF_LandMgr : IMgr
+    public class LandMgr : IMgr
     {
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
 
-        Dictionary<VID, BF_Land> m_cells = new();
+        Dictionary<VID, Land> m_cells = new();
 
         //==================================================================================================
 
-        public BF_LandMgr(string name, params object[] objs)
+        public LandMgr(string name, params object[] objs)
         {
             m_mgr_name = name;
             (this as IMgr).init(objs);
@@ -47,7 +47,7 @@ namespace Battle.BF_Lands
         }
 
 
-        public void add_cell(BF_Land cell)
+        public void add_cell(Land cell)
         {
             m_cells.Add(cell.vid ,cell);
         }

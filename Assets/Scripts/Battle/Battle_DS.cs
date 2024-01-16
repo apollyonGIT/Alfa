@@ -15,7 +15,7 @@ namespace Battle
             ref int x = ref vid.x;
             ref int y = ref vid.y;
 
-            Common_DS.instance.try_get_value(Config.bf_land_area, out (int x, int y) area);
+            Common_DS.instance.try_get_value(Config.land_area, out (int x, int y) area);
             var mx = area.x - 1;
             var my = area.y - 1;
 
@@ -33,7 +33,7 @@ namespace Battle
             int x = vid.x;
             int y = vid.y;
 
-            Common_DS.instance.try_get_value(Config.bf_land_area, out (int x, int y) area);
+            Common_DS.instance.try_get_value(Config.land_area, out (int x, int y) area);
             var mx = area.x - 1;
             var my = area.y - 1;
 
