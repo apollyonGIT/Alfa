@@ -13,15 +13,19 @@ namespace Battle.Lands
     {
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
+        int IMgr.priority => m_mgr_priority;
+        readonly int m_mgr_priority;
 
         Dictionary<VID, Land> m_cells = new();
 
         //==================================================================================================
 
-        public LandMgr(string name, params object[] objs)
+        public LandMgr(string name, int priority, params object[] args)
         {
             m_mgr_name = name;
-            (this as IMgr).init(objs);
+            m_mgr_priority = priority;
+
+            (this as IMgr).init(args);
         }
 
 

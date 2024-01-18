@@ -29,6 +29,15 @@ namespace Battle.Players
             mgr.remove_cell(from);
             mgr.add_cell(this);
         }
+
+
+        public void tick1()
+        {
+            foreach (var view in views)
+            {
+                view.notify_on_tick1();
+            }
+        }
     }
 }
 

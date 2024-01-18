@@ -8,9 +8,9 @@ namespace Common
 
         //==================================================================================================
 
-        public abstract void init();
+        public abstract void init(int priority);
 
-        public abstract void tick();
+        public abstract void call();
 
         public abstract void fini();
     }

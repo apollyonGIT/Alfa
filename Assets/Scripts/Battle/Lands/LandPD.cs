@@ -15,11 +15,11 @@ namespace Battle.Lands
 
         //==================================================================================================
 
-        public override void init()
+        public override void init(int priority)
         {
             Common_DS.instance.add(Config.land_area, (count_x, count_y));
 
-            mgr = new("LandMgr");
+            mgr = new("LandMgr", priority);
 
             foreach (var cell in cells(mgr))
             {
@@ -34,7 +34,7 @@ namespace Battle.Lands
         }
 
 
-        public override void tick()
+        public override void call()
         {
         }
 

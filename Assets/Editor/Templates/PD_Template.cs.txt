@@ -9,12 +9,13 @@ namespace #namespace#
 
         //==================================================================================================
 
-        public override void init()
+        public override void init(int priority)
         {
+            mgr = new("#mgr#", priority);
         }
 
 
-        public override void tick()
+        public override void call()
         {
         }
 

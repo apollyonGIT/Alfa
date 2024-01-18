@@ -18,9 +18,9 @@ namespace Common
         {
             if (producers == null) return;
 
-            foreach (var t in producers)
+            for (int i = 0; i < producers.Length; i++)
             {
-                t.init();
+                producers[i].init(i);
             }
         }
 

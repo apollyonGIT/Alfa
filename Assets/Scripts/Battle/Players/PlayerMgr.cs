@@ -1,11 +1,13 @@
 ﻿using Common;
 using Foundation;
 using System.Collections.Generic;
+using World;
 
 namespace Battle.Players
 {
     public interface IPlayerView : IModelView<Player>
-    { 
+    {
+        void notify_on_tick1();
     }
 
 
@@ -13,27 +15,54 @@ namespace Battle.Players
     {
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
+        int IMgr.priority => m_mgr_priority;
+        readonly int m_mgr_priority;
 
         Dictionary<VID ,Player> m_cells = new();
 
         //==================================================================================================
 
-        public PlayerMgr(string name, params object[] objs)
+        public PlayerMgr(string name, int priority, params object[] args)
         {
             m_mgr_name = name;
-            (this as IMgr).init(objs);
+            m_mgr_priority = priority;
+
+            (this as IMgr).init(args);
         }
 
 
         void IMgr.fini()
         {
             Mission.instance.detach_mgr(m_mgr_name);
+
+            var wctx = WorldContext.instance;
+            wctx.remove_tick(m_mgr_name);
+            wctx.remove_tick1(m_mgr_name);
         }
 
 
         void IMgr.init(object[] objs)
         {
             Mission.instance.attach_mgr(m_mgr_name, this);
+
+            var wctx = WorldContext.instance;
+            wctx.add_tick(m_mgr_priority, m_mgr_name, tick);
+            wctx.add_tick1(m_mgr_priority, m_mgr_name, tick1);
+        }
+
+
+        void tick()
+        {
+            
+        }
+
+
+        void tick1()
+        {
+            foreach (var (_, cell) in m_cells)
+            {
+                cell.tick1();
+            }
         }
 
 

@@ -12,9 +12,9 @@ namespace Battle.Players
 
         //==================================================================================================
 
-        public override void init()
+        public override void init(int priority)
         {
-            mgr = new("PlayerMgr");
+            mgr = new("PlayerMgr", priority);
 
             foreach (var cell in cells(mgr))
             {
@@ -26,7 +26,7 @@ namespace Battle.Players
         }
 
 
-        public override void tick()
+        public override void call()
         {
         }
 
