@@ -21,7 +21,7 @@ namespace Battle.Lands
 
             mgr = new("LandMgr");
 
-            foreach (var cell in cells())
+            foreach (var cell in cells(mgr))
             {
                 mgr.add_cell(cell);
 
@@ -30,7 +30,7 @@ namespace Battle.Lands
             }
 
             //位置调整，使其居中
-            transform.localPosition = new(-count_x / 2, -count_y / 2);
+            BattleSceneRoot.instance.monoRoot.localPosition = new(-count_x / 2, -count_y / 2);
         }
 
 
@@ -45,15 +45,15 @@ namespace Battle.Lands
         }
 
 
-        IEnumerable<Land> cells()
+        IEnumerable<Land> cells(LandMgr mgr)
         {
             for (int y = 0; y < count_y; y++)
             {
                 for (int x = 0; x < count_x; x++)
                 {
-                    VID vid = (x, y);
+                    VID pos = (x, y);
 
-                    yield return new(vid);
+                    yield return new(mgr, pos);
                 }
             }
         }

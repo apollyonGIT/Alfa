@@ -39,8 +39,8 @@ namespace Battle.Lands
 
         bool IMgr.try_get_cell(out object cell, params object[] prms)
         {
-            var vid = (VID)prms[0];
-            var ret = m_cells.TryGetValue(vid, out var _cell);
+            var pos = (VID)prms[0];
+            var ret = m_cells.TryGetValue(pos, out var _cell);
             cell = _cell;
 
             return ret;
@@ -49,7 +49,7 @@ namespace Battle.Lands
 
         public void add_cell(Land cell)
         {
-            m_cells.Add(cell.vid ,cell);
+            m_cells.Add(cell.pos ,cell);
         }
     }
 }

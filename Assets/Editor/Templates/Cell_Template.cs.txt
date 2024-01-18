@@ -5,8 +5,14 @@ namespace #namespace#
     public class #name# : Model<#name#, #iview#>
     {
 
+        public #mgr# mgr;
+
         //==================================================================================================
 
+        public #name#(#mgr# mgr,  params object[] args)
+        {
+            this.mgr = mgr;
+        }
     }
 }
 

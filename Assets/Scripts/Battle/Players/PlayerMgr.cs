@@ -1,21 +1,24 @@
 ﻿using Common;
 using Foundation;
+using System.Collections.Generic;
 
-namespace #namespace#
+namespace Battle.Players
 {
-    public interface #iview# : IModelView<#cell#>
+    public interface IPlayerView : IModelView<Player>
     { 
     }
 
 
-    public class #name# : IMgr
+    public class PlayerMgr : IMgr
     {
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
 
+        Dictionary<VID ,Player> m_cells = new();
+
         //==================================================================================================
 
-        public #name#(string name, params object[] objs)
+        public PlayerMgr(string name, params object[] objs)
         {
             m_mgr_name = name;
             (this as IMgr).init(objs);
@@ -36,7 +39,25 @@ namespace #namespace#
 
         bool IMgr.try_get_cell(out object cell, params object[] args)
         {
-            throw new System.NotImplementedException();
+            cell = default;
+
+            var pos = (VID)args[0];
+            if (!m_cells.TryGetValue(pos, out var _cell)) return false;
+
+            cell = _cell;
+            return true;
+        }
+
+
+        public void add_cell(Player cell)
+        {
+            m_cells.Add(cell.pos, cell);
+        }
+
+
+        public void remove_cell(VID pos)
+        {
+            m_cells.Remove(pos);
         }
     }
 }

@@ -44,3 +44,6 @@ TagManager:
   - name: Land
     uniqueID: 2413200295
     locked: 0
+  - name: Chess
+    uniqueID: 253726403
+    locked: 0

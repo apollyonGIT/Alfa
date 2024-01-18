@@ -7,7 +7,7 @@ namespace Common
         public string name { get; }
         void init(params object[] objs);
         void fini();
-        bool try_get_cell(out object cell, params object[] prms);
+        bool try_get_cell(out object cell, params object[] args);
     }
 
 

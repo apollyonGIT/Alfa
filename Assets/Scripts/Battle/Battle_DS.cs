@@ -10,7 +10,10 @@ namespace Battle
 
         //==================================================================================================
 
-        public static bool safe_offset(ref VID vid)
+        /// <summary>
+        /// 边界约束
+        /// </summary>
+        public static bool border_constraint(ref VID vid)
         {
             ref int x = ref vid.x;
             ref int y = ref vid.y;
@@ -28,7 +31,10 @@ namespace Battle
         }
 
 
-        public static bool unsafe_offset(VID vid)
+        /// <summary>
+        /// 出界检定
+        /// </summary>
+        public static bool valid_offset(VID vid)
         {
             int x = vid.x;
             int y = vid.y;
@@ -41,67 +47,43 @@ namespace Battle
         }
 
 
-        public static bool move(ref VID v, int step_x, int step_y, bool is_safe_mode = true)
-        {
-            v.x += step_x;
-            v.y += step_y;
-
-            if (is_safe_mode)
-                return safe_offset(ref v);
-            else
-                return unsafe_offset(v);
-        }
-
-
-        public static Vector2 convert(VID v)
-        {
-            Vector2 ret = new()
-            {
-                x = v.x,
-                y = v.y
-            };
-
-            return ret;
-        }
-
-
         public static explicit operator Vector2(VID v)
         {
-            Vector2 ret = new()
+            return new()
             {
                 x = v.x,
                 y = v.y
             };
-
-            return ret;
         }
 
 
         public static implicit operator VID(Vector2 v)
         {
-            VID ret = new()
+            return new()
             {
                 x = Mathf.FloorToInt(v.x),
                 y = Mathf.FloorToInt(v.y),
             };
-
-            safe_offset(ref ret);
-
-            return ret;
         }
 
 
         public static implicit operator VID((int x, int y) tuple)
         {
-            VID ret = new()
+            return new()
             {
                 x = tuple.x,
                 y = tuple.y,
             };
+        }
 
-            safe_offset(ref ret);
 
-            return ret;
+        public static VID operator +(VID v1, VID v2)
+        {
+            return new()
+            {
+                x = v1.x + v2.x,
+                y = v1.y + v2.y,
+            };
         }
     }
 }
