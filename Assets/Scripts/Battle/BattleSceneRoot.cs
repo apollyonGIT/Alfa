@@ -1,9 +1,10 @@
 ﻿using Common;
+using Common.Opr_Module;
 using World;
 
 namespace Battle
 {
-    public class BattleSceneRoot : SceneRoot<BattleSceneRoot>
+    public class BattleSceneRoot : OprSceneRoot<BattleSceneRoot>
     {
         WorldSceneRoot root;
 
@@ -17,6 +18,8 @@ namespace Battle
             uiRoot.worldCamera = uiCamera;
 
             init_producers();
+
+            base.on_init();
         }
 
 
