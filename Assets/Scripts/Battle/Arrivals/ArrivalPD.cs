@@ -1,27 +1,21 @@
-﻿using Common;
-using Common.Opr_Module;
+﻿using Battle.Interactives;
+using Common;
 using System.Collections.Generic;
-using World;
 
-namespace Battle.Lands
+namespace Battle.Arrivals
 {
-    public class LandPD : Producer
+    public class ArrivalPD : Producer
     {
-        public int count_x;
-        public int count_y;
-
-        public LandView model_view;
+        public ArrivalView model_view;
 
         public override IMgr imgr => mgr;
-        LandMgr mgr;
+        ArrivalMgr mgr;
 
         //==================================================================================================
 
         public override void init(int priority)
         {
-            Common_DS.instance.add(Config.land_area, (count_x, count_y));
-
-            mgr = new("LandMgr", priority);
+            mgr = new("ArrivalMgr", priority);
 
             foreach (var cell in cells(mgr))
             {
@@ -30,9 +24,6 @@ namespace Battle.Lands
                 var view = Instantiate(model_view, transform);
                 cell.add_view(view);
             }
-
-            //调整镜头，使其居中
-            BattleSceneRoot.instance.move_main_camera(new(count_x / 2, count_y / 2));
         }
 
 
@@ -47,11 +38,13 @@ namespace Battle.Lands
         }
 
 
-        IEnumerable<Land> cells(LandMgr mgr)
+        IEnumerable<Arrival> cells(ArrivalMgr mgr)
         {
-            for (int y = 0; y < count_y; y++)
+            Common_DS.instance.try_get_value(Config.land_area, out (int x, int y) land_area);
+
+            for (int y = 0; y < land_area.y; y++)
             {
-                for (int x = 0; x < count_x; x++)
+                for (int x = 0; x < land_area.x; x++)
                 {
                     VID pos = (x, y);
 

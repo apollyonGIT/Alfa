@@ -31,7 +31,7 @@ namespace Battle.Interactives
 
         public override void notify_on_click()
         {
-            Debug.Log("111");
+            cell.mgr.do_on_click(cell);
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using Common;
-using Common.Opr_Module;
+﻿using Common.Opr_Module;
+using UnityEngine;
 using World;
 
 namespace Battle
@@ -38,6 +38,14 @@ namespace Battle
         public void btn_fail()
         {
             root.btn_end_battle();
+        }
+
+
+        public void move_main_camera(Vector2 move_to)
+        {
+            var pos = mainCamera.transform.localPosition;
+            pos += new Vector3(move_to.x, move_to.y, 0);
+            mainCamera.transform.localPosition = pos;
         }
     }
 }

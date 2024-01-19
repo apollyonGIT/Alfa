@@ -1,9 +1,10 @@
 ﻿using UnityEngine.EventSystems;
 using UnityEngine;
+using System;
 
 namespace Common.Opr_Module
 {
-    public class OprSceneRoot<T> : SceneRoot<OprSceneRoot<T>>
+    public class OprSceneRoot<T> : SceneRoot<T> where T : SceneRoot<T>
     {
         public OprSender oprSender;
 

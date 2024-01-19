@@ -2,25 +2,26 @@
 using Foundation;
 using System.Collections.Generic;
 
-namespace Battle.Interactives
+namespace Battle.Arrivals
 {
-    public interface IInteractiveView : IModelView<Interactive>
-    { 
+    public interface IArrivalView : IModelView<Arrival>
+    {
+        void notify_on_change_active(bool need_active);
     }
 
 
-    public class InteractiveMgr : IMgr
+    public class ArrivalMgr : IMgr
     {
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
         int IMgr.priority => m_mgr_priority;
         readonly int m_mgr_priority;
 
-        Dictionary<VID, Interactive> m_cells = new();
+        Dictionary<VID, Arrival> m_cells = new();
 
         //==================================================================================================
 
-        public InteractiveMgr(string name, int priority, params object[] args)
+        public ArrivalMgr(string name, int priority, params object[] args)
         {
             m_mgr_name = name;
             m_mgr_priority = priority;
@@ -47,25 +48,28 @@ namespace Battle.Interactives
         }
 
 
-        public void add_cell(Interactive cell)
+        public void add_cell(Arrival cell)
         {
             m_cells.Add(cell.pos, cell);
         }
 
 
-        public void do_on_click(Interactive cell)
+        public void active_cell(VID[] pos_array)
         {
-            var pos = cell.pos;
-
-            var mission = Mission.instance;
+            foreach (var pos in pos_array)
             {
-                if (mission.try_get_mgr("ArrivalMgr", out var arrival_mgr))
-                {
-                    arrival_mgr.GetType().GetMethod("active_cell")?.Invoke(arrival_mgr, new object[] { new VID[] { pos } });
-                }
+                if (!m_cells.TryGetValue(pos, out var cell)) continue;
+                cell.change_active(true);
             }
-            
+        }
 
+
+        public void unactive_cells()
+        {
+            foreach (var (_, cell) in m_cells)
+            {
+                cell.change_active(false);
+            }
         }
     }
 }

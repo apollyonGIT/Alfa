@@ -88,6 +88,9 @@ namespace Battle.Players
         {
             m_cells.Remove(pos);
         }
+
+
+        
     }
 }
 
