@@ -1,4 +1,5 @@
 ﻿using Common;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Battle
@@ -84,6 +85,19 @@ namespace Battle
                 x = v1.x + v2.x,
                 y = v1.y + v2.y,
             };
+        }
+
+
+        public static VID[] convert(object[] objs)
+        {
+            List<VID> ret = new();
+
+            foreach (var obj in objs)
+            {
+                ret.Add((VID)obj);
+            }
+
+            return ret.ToArray();
         }
     }
 }

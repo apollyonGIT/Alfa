@@ -1,6 +1,8 @@
-﻿using Common;
+﻿using Battle.Tricks;
+using Common;
 using Foundation;
 using System.Collections.Generic;
+using UnityEngine;
 using World;
 
 namespace Battle.Players
@@ -11,7 +13,7 @@ namespace Battle.Players
     }
 
 
-    public class PlayerMgr : IMgr
+    public class PlayerMgr : ChessMgr, IMgr
     {
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
@@ -90,7 +92,26 @@ namespace Battle.Players
         }
 
 
-        
+        public override void move(ref VID pos, Vector2 step)
+        {
+            if (!m_cells.TryGetValue(pos, out var cell)) return;
+
+            var from = pos;
+            opti_move(ref pos, step);
+
+            remove_cell(from);
+            add_cell(cell);
+        }
+
+
+        public override bool try_get_arrivals(VID pos, out VID[] arrival_pos_array)
+        {
+            arrival_pos_array = default;
+
+            arrival_pos_array = new VID[] { pos };
+
+            return true;
+        }
     }
 }
 

@@ -1,11 +1,12 @@
 ﻿using Common;
 using Foundation;
 using System.Collections.Generic;
+using UnityEngine.Video;
 
 namespace Battle.Interactives
 {
     public interface IInteractiveView : IModelView<Interactive>
-    { 
+    {
     }
 
 
@@ -59,12 +60,21 @@ namespace Battle.Interactives
 
             var mission = Mission.instance;
             {
-                if (mission.try_get_mgr("ArrivalMgr", out var arrival_mgr))
-                {
-                    arrival_mgr.GetType().GetMethod("active_cell")?.Invoke(arrival_mgr, new object[] { new VID[] { pos } });
-                }
+                //尝试选中player
+                if (!mission.try_get_mgr("PlayerMgr", out var player_mgr)) return;
+
+                //获取可达范围
+                var try_get_arrivals_args = new object[] { pos, null };
+                if (!(bool)player_mgr.GetType().GetMethod("try_get_arrivals").Invoke(player_mgr, try_get_arrivals_args)) return;
+                var arrival_array = try_get_arrivals_args[1];
+
+                //高亮可达范围
+                if (!mission.try_get_mgr("ArrivalMgr", out var arrival_mgr)) return;
+                arrival_mgr.GetType().GetMethod("active_cell")?.Invoke(arrival_mgr, new object[] { arrival_array });
+
             }
-            
+
+
 
         }
     }
