@@ -16,6 +16,12 @@ namespace Editor.DIY_Editor
             OnInspectorGUI_Up();
 
             EditorGUILayout.Space();
+            if (GUILayout.Button("Clear"))
+            {
+                t.clean();
+            }
+
+            EditorGUILayout.Space();
             if (GUILayout.Button("Load Asset"))
             {
                 t.load_asset();

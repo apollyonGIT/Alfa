@@ -107,9 +107,12 @@ namespace Battle.Players
         public override bool try_get_arrivals(VID pos, out VID[] arrival_pos_array)
         {
             arrival_pos_array = default;
+            if (!m_cells.TryGetValue(pos, out var cell)) return false;
+
+            //规则：根据配置读取可达范围
+
 
             arrival_pos_array = new VID[] { pos };
-
             return true;
         }
     }
