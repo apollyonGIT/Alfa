@@ -34,21 +34,22 @@ namespace Editor.DIY_Editor
             if (ev.type != EventType.MouseDown && ev.type != EventType.MouseDrag) return;
             if (!Common.EX_Utility.try_get_mouse_point(ev, root, out var point)) return;
 
+            var args = new object[] { point };
             if (ev.button == 0)
-                left_click();
+                left_click(args);
             if (ev.button == 1)
-                right_click();
+                right_click(args);
 
             ev.Use();
         }
 
 
-        protected virtual void left_click()
+        protected virtual void left_click(object[] args)
         { 
         }
 
 
-        protected virtual void right_click()
+        protected virtual void right_click(object[] args)
         {
         }
     }

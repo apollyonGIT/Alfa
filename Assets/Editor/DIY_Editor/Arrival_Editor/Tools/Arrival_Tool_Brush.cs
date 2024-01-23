@@ -4,15 +4,15 @@ namespace Editor.DIY_Editor.Arrival_Editor
 {
     public class Arrival_Tool_Brush : Tool
     {
-        protected override void left_click()
+        protected override void left_click(object[] args)
         {
-            Debug.Log("llll");
+            root.GetType().GetMethod("do_brush")?.Invoke(root, args);
         }
 
 
-        protected override void right_click()
+        protected override void right_click(object[] args)
         {
-            Debug.Log("rrrr");
+            root.GetType().GetMethod("do_erase")?.Invoke(root, args);
         }
     }
 }
