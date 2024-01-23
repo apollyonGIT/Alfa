@@ -1,0 +1,56 @@
+﻿using UnityEditor;
+using UnityEditor.EditorTools;
+using UnityEngine;
+
+namespace Editor.DIY_Editor
+{
+    public class Tool : EditorTool
+    {
+        protected GUIContent m_icon;
+        public override GUIContent toolbarIcon => m_icon;
+
+        public Component root;
+
+        //==================================================================================================
+
+        public virtual void init(Component root, string icon_image_path, string icon_text)
+        {
+            m_icon = new()
+            {
+                image = EditorGUIUtility.IconContent(icon_image_path).image,
+                text = icon_text,
+                tooltip = icon_text,
+            };
+
+            this.root = root;
+        }
+
+
+        public override void OnToolGUI(EditorWindow window)
+        {
+            HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
+
+            var ev = Event.current;
+            if (ev.type != EventType.MouseDown && ev.type != EventType.MouseDrag) return;
+            if (!Common.EX_Utility.try_get_mouse_point(ev, root, out var point)) return;
+
+            if (ev.button == 0)
+                left_click();
+            if (ev.button == 1)
+                right_click();
+
+            ev.Use();
+        }
+
+
+        protected virtual void left_click()
+        { 
+        }
+
+
+        protected virtual void right_click()
+        {
+        }
+    }
+}
+

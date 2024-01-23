@@ -16,7 +16,7 @@ namespace Editor.DIY_Editor
             OnInspectorGUI_Up();
 
             EditorGUILayout.Space();
-            if (GUILayout.Button("Clear"))
+            if (GUILayout.Button("Clean"))
             {
                 t.clean();
             }
