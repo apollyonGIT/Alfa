@@ -78,8 +78,8 @@ namespace Battle.Interactives
                     return;
                 }
 
-                //规则：如果选中player，且位于可达高亮，则无事发生
-                if (is_player && is_arrival) return;
+                //规则：如果选中自身，且位于可达高亮，则无事发生
+                if (is_player && pos == (VID)bctx.foucs_pos && is_arrival) return;
 
                 //规则：如果位于可达高亮，且非player，则player移动
                 if (is_arrival && !is_player)

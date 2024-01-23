@@ -65,6 +65,8 @@ namespace Battle.Arrivals
 
         public void active_cell(VID[] pos_array)
         {
+            unactive_cells();
+
             foreach (var pos in pos_array)
             {
                 if (!m_cells.TryGetValue(pos, out var cell)) continue;

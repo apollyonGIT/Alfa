@@ -44,7 +44,7 @@ namespace Battle
         public void move_main_camera(Vector2 move_to)
         {
             var pos = mainCamera.transform.localPosition;
-            pos += new Vector3(move_to.x, move_to.y, 0);
+            pos = new Vector3(move_to.x, move_to.y, pos.z);
             mainCamera.transform.localPosition = pos;
         }
     }

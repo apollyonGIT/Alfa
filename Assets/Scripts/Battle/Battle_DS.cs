@@ -88,6 +88,20 @@ namespace Battle
         }
 
 
+        public static bool operator ==(VID v1, VID v2)
+        {
+            var ret = (v1.x == v2.x) && (v1.y == v2.y);
+            return ret;
+        }
+
+
+        public static bool operator !=(VID v1, VID v2)
+        {
+            var ret = (v1.x == v2.x) && (v1.y == v2.y);
+            return !ret;
+        }
+
+
         public static VID[] convert(Vector2[] objs, VID offset = default)
         {
             List<VID> ret = new();
