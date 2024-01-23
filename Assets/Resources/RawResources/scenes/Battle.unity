@@ -450,8 +450,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06188edf21fbb894da44f08a4fd889df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count_x: 8
-  count_y: 8
+  count_x: 10
+  count_y: 10
   model_view: {fileID: 7317526040361611968, guid: db8bfab78e98bd148b4350d69723b445, type: 3}
 --- !u!1 &533072629
 GameObject:
