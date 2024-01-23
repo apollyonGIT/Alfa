@@ -14,7 +14,7 @@ namespace Editor.DIY_Editor.Arrival_Editor
 
         public override void clean()
         {
-            foreach (var (pos, go) in m_cells)
+            foreach (var (_, go) in m_cells)
             {
                 DestroyImmediate(go);
             }
