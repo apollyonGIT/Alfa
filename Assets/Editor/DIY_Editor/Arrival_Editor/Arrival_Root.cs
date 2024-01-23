@@ -15,9 +15,10 @@ namespace Editor.DIY_Editor.Arrival_Editor
 
         public override void clean()
         {
-            foreach (var (_, go) in m_cells)
+            var count = transform.childCount;
+            for (int i = 0; i < count; i++)
             {
-                DestroyImmediate(go);
+                DestroyImmediate(transform.GetChild(0).gameObject);
             }
 
             m_cells.Clear();
