@@ -1,4 +1,5 @@
-﻿using Battle.Tricks;
+﻿using Battle.Arrivals;
+using Battle.Tricks;
 using Common;
 using Foundation;
 using System.Collections.Generic;
@@ -110,9 +111,9 @@ namespace Battle.Players
             if (!m_cells.TryGetValue(pos, out var cell)) return false;
 
             //规则：根据配置读取可达范围
+            EX_Utility.try_load_asset(("arrivals", "Arrival_Asset_Test"), out Arrival_Asset asset);
+            arrival_pos_array = VID.convert(asset.pos_array, pos);
 
-
-            arrival_pos_array = new VID[] { pos };
             return true;
         }
     }

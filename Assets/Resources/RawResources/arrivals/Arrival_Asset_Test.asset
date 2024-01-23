@@ -9,6 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15da2aefc794bd5428a93d099bd254d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 26bfa788314b3234f8e219e4727c3151, type: 3}
   m_Name: Arrival_Asset_Test
   m_EditorClassIdentifier: 
+  pos_array:
+  - {x: 0, y: 0}
+  - {x: 0, y: 3}
+  - {x: 0, y: 2}
+  - {x: 0, y: 1}
+  - {x: -1, y: 2}
+  - {x: 1, y: 2}

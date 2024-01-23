@@ -1,4 +1,5 @@
 ﻿using Battle;
+using Battle.Arrivals;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,12 +27,23 @@ namespace Editor.DIY_Editor.Arrival_Editor
         public override void load_asset()
         {
             clean();
+
+            foreach (var pos in asset.pos_array)
+            {
+                do_brush(pos);
+            }
         }
 
 
         protected override void save_asset(Arrival_Asset asset)
         {
-            
+            var list = new List<Vector2>();
+            foreach (var (pos, _) in m_cells)
+            {
+                list.Add((Vector2)pos);
+            }
+
+            asset.pos_array = list.ToArray();
         }
 
 

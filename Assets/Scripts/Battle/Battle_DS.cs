@@ -88,13 +88,13 @@ namespace Battle
         }
 
 
-        public static VID[] convert(object[] objs)
+        public static VID[] convert(Vector2[] objs, VID offset = default)
         {
             List<VID> ret = new();
 
             foreach (var obj in objs)
             {
-                ret.Add((VID)obj);
+                ret.Add(obj + offset);
             }
 
             return ret.ToArray();
