@@ -1,5 +1,4 @@
 ﻿using Common;
-using UnityEngine;
 using World;
 
 namespace Battle
@@ -7,6 +6,8 @@ namespace Battle
     public class BattleContext : Singleton<BattleContext>
     {
         #region outter
+        public VID? foucs_pos = null; //焦点位置
+
         #endregion
 
         //==================================================================================================

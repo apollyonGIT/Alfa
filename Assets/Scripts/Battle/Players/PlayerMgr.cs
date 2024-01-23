@@ -93,6 +93,18 @@ namespace Battle.Players
         }
 
 
+        public override void move_to(VID to)
+        {
+            VID pos = (VID)BattleContext.instance.foucs_pos;
+            if (!m_cells.TryGetValue(pos, out var cell)) return;
+
+            cell.pos = to;
+
+            remove_cell(pos);
+            add_cell(cell);
+        }
+
+
         public override void move(ref VID pos, Vector2 step)
         {
             if (!m_cells.TryGetValue(pos, out var cell)) return;

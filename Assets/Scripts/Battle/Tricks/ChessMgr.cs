@@ -4,6 +4,11 @@ namespace Battle.Tricks
 {
     public class ChessMgr
     {
+        public virtual void move_to(VID to)
+        { 
+        }
+
+
         public virtual void move(ref VID pos, Vector2 step)
         { 
         }

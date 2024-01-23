@@ -30,9 +30,9 @@ namespace Battle.Arrivals
         }
 
 
-        void IArrivalView.notify_on_change_active(bool need_active)
+        void IArrivalView.notify_on_change_active()
         {
-            area.enabled = need_active;
+            area.enabled = cell.is_active;
         }
     }
 }

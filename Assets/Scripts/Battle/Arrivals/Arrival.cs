@@ -8,6 +8,7 @@ namespace Battle.Arrivals
         public VID pos;
 
         public Vector2 view_pos => (Vector2)pos;
+        public bool is_active;
 
         public ArrivalMgr mgr;
 
@@ -23,9 +24,11 @@ namespace Battle.Arrivals
 
         public void change_active(bool need_active)
         {
+            is_active = need_active;
+
             foreach (var view in views)
             {
-                view.notify_on_change_active(need_active);
+                view.notify_on_change_active();
             }
         }
     }

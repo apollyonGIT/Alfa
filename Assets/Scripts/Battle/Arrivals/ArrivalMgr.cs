@@ -6,7 +6,7 @@ namespace Battle.Arrivals
 {
     public interface IArrivalView : IModelView<Arrival>
     {
-        void notify_on_change_active(bool need_active);
+        void notify_on_change_active();
     }
 
 
@@ -44,7 +44,16 @@ namespace Battle.Arrivals
 
         bool IMgr.try_get_cell(out object cell, params object[] args)
         {
-            throw new System.NotImplementedException();
+            cell = default;
+
+            var pos = (VID)args[0];
+            if (!m_cells.TryGetValue(pos, out var _cell)) return false;
+
+            //条件：是否过滤非激活的cell
+            if ((bool)args[1] &&!_cell.is_active) return false;
+
+            cell = _cell;
+            return true;
         }
 
 
