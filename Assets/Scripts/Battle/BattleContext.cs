@@ -1,5 +1,4 @@
 ﻿using Common;
-using World;
 
 namespace Battle
 {
@@ -14,13 +13,11 @@ namespace Battle
 
         public static void init()
         {
-            var wctx = WorldContext.instance;
         }
 
 
         public static void fini()
         {
-            var wctx = WorldContext.instance;
         }
     }
 }

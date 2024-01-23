@@ -31,17 +31,17 @@ namespace World
         }
 
 
-        public void btn_enter_battle()
+        public void btn_in_battle()
         {
             ui_active(false);
 
-            Battle_In_Out_Helper.instance.enter_battle(ctx);
+            Battle_In_Out_Helper.instance.in_battle(ctx);
         }
 
 
-        public void btn_end_battle()
+        public void btn_out_battle()
         {
-            Battle_In_Out_Helper.instance.end_battle(ctx);
+            Battle_In_Out_Helper.instance.out_battle(ctx);
 
             ui_active(true);
         }

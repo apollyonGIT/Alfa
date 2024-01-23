@@ -1,4 +1,5 @@
 ﻿using Common;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -90,15 +91,34 @@ namespace Battle
 
         public static bool operator ==(VID v1, VID v2)
         {
-            var ret = (v1.x == v2.x) && (v1.y == v2.y);
-            return ret;
+            return object.Equals(v1, v2);
         }
 
 
         public static bool operator !=(VID v1, VID v2)
         {
-            var ret = (v1.x == v2.x) && (v1.y == v2.y);
-            return !ret;
+            return !object.Equals(v1, v2);
+        }
+
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+
+            if (GetType() != obj.GetType())
+                return false;
+
+            var vid = (VID)obj;
+
+            var ret = (x == vid.x) && (y == vid.y);
+            return ret;
+        }
+
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(x, y);
         }
 
 

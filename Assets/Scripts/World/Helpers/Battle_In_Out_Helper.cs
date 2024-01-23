@@ -5,7 +5,7 @@ namespace World
 {
     public class Battle_In_Out_Helper : Singleton<Battle_In_Out_Helper>
     {
-        public void enter_battle(WorldContext ctx)
+        public void in_battle(WorldContext ctx)
         {
             Assembly.Load(Config.current.battle_assembly).GetType(Config.current.battle_context_path).GetMethod("init").Invoke(null, null);
 
@@ -14,7 +14,7 @@ namespace World
         }
 
 
-        public void end_battle(WorldContext ctx)
+        public void out_battle(WorldContext ctx)
         {
             Assembly.Load(Config.current.battle_assembly).GetType(Config.current.battle_context_path).GetMethod("fini").Invoke(null, null);
 
