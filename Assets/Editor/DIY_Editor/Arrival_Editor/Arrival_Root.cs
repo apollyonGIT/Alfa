@@ -1,15 +1,25 @@
-﻿using UnityEngine;
+﻿using Battle;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Editor.DIY_Editor.Arrival_Editor
 {
     public class Arrival_Root : Root<Arrival_Asset>
     {
+        public GameObject model_view;
+
+        Dictionary<VID, GameObject> m_cells = new();
 
         //==================================================================================================
 
         public override void clean()
         {
-            
+            foreach (var (pos, go) in m_cells)
+            {
+                DestroyImmediate(go);
+            }
+
+            m_cells.Clear();
         }
 
 
@@ -25,15 +35,26 @@ namespace Editor.DIY_Editor.Arrival_Editor
         }
 
 
-        public void do_brush(Vector3 pos)
+        public void do_brush(Vector2 pos)
         {
-            Debug.Log("bbbbb");
+            VID _pos = pos;
+            if (m_cells.TryGetValue(_pos, out var _)) return;
+
+            var view = Instantiate(model_view, transform);
+            view.transform.localPosition = (Vector2)_pos;
+
+            var cell = view.gameObject;
+            m_cells.Add(_pos, cell);
         }
 
 
-        public void do_erase(Vector3 pos)
+        public void do_erase(Vector2 pos)
         {
-            Debug.Log("eeee");
+            VID _pos = pos;
+            if (!m_cells.TryGetValue(_pos, out var cell)) return;
+
+            m_cells.Remove(_pos);
+            DestroyImmediate(cell);
         }
     }
 }
