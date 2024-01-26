@@ -25,11 +25,6 @@ namespace Battle.Arrivals
         }
 
 
-        void IModelView<Arrival>.shift(Arrival old_cell, Arrival new_cell)
-        {
-        }
-
-
         void IArrivalView.notify_on_change_active()
         {
             area.enabled = cell.is_active;

@@ -19,11 +19,6 @@ namespace #namespace#
         {
             this.cell = null;
         }
-
-
-        void IModelView<#cell#>.shift(#cell# old_cell, #cell# new_cell)
-        {
-        }
     }
 }
 

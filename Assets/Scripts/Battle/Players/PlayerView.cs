@@ -23,11 +23,6 @@ namespace Battle.Players
         }
 
 
-        void IModelView<Player>.shift(Player old_cell, Player new_cell)
-        {
-        }
-
-
         void IPlayerView.notify_on_tick1()
         {
             transform.localPosition = cell.view_pos;

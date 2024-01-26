@@ -24,11 +24,6 @@ namespace Battle.Interactives
         }
 
 
-        void IModelView<Interactive>.shift(Interactive old_cell, Interactive new_cell)
-        {
-        }
-
-
         public override void notify_on_click()
         {
             cell.mgr.do_on_click(cell);

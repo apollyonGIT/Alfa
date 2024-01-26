@@ -21,11 +21,6 @@ namespace Battle.Lands
         {
             this.cell = null;
         }
-
-
-        void IModelView<Land>.shift(Land old_cell, Land new_cell)
-        {
-        }
     }
 }
 
