@@ -6,7 +6,7 @@ namespace Common
     { 
         public string name { get; }
         public int priority { get; }
-        void init(params object[] objs);
+        void init(params object[] args);
         void fini();
         bool try_get_cell(out object cell, params object[] args);
     }

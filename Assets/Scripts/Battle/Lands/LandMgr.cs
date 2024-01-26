@@ -35,7 +35,7 @@ namespace Battle.Lands
         }
 
 
-        void IMgr.init(object[] objs)
+        void IMgr.init(object[] args)
         {
             Mission.instance.attach_mgr(m_mgr_name, this);
         }
