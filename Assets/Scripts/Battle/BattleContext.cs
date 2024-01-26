@@ -1,4 +1,5 @@
 ﻿using Common;
+using World;
 
 namespace Battle
 {
@@ -11,12 +12,12 @@ namespace Battle
 
         //==================================================================================================
 
-        public static void init()
+        public static void attach(WorldContext wctx)
         {
         }
 
 
-        public static void fini()
+        public static void detach(WorldContext wctx)
         {
         }
     }

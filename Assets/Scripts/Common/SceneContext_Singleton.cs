@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Common
 {
-    public class SceneContext<T> : Singleton<T> where T : new()
+    public class SceneContext_Singleton<T> : Singleton<T> where T : new()
     {
         public bool can_start_tick = false;
 
