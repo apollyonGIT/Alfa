@@ -1,7 +1,7 @@
 ﻿using Common;
 using Foundation;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Battle.Res_Cards
@@ -22,6 +22,8 @@ namespace Battle.Res_Cards
         LinkedList<Res_Card> m_selected_cells = new();
 
         public Vector2 node_pos => new(m_cells.Count * 40, 0);
+
+        public Action add_cells_ac;
 
         //==================================================================================================
 
@@ -66,6 +68,17 @@ namespace Battle.Res_Cards
         }
 
 
+        public void remove_cells()
+        {
+            foreach (var cell in m_cells)
+            {
+                cell.destroy();
+            }
+
+            m_cells.Clear();
+        }
+
+
         public void play()
         {
             foreach (var cell in m_selected_cells)
@@ -82,6 +95,12 @@ namespace Battle.Res_Cards
                 m_selected_cells.AddLast(cell);
             else
                 m_selected_cells.Remove(cell);
+        }
+
+
+        public void add_cells()
+        {
+            add_cells_ac?.Invoke();
         }
     }
 }

@@ -18,6 +18,8 @@ namespace Battle.Res_Cards
 
         public void destroy()
         {
+            mgr = null;
+
             foreach (var view in views)
             {
                 view.detach(this);

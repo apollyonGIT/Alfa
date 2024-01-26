@@ -1,5 +1,4 @@
 ﻿using Common;
-using UnityEngine;
 
 namespace Battle
 {
@@ -7,7 +6,12 @@ namespace Battle
     {
         public void next_turn(BattleContext ctx)
         {
-            
+            var mission = Mission.instance;
+            {
+                mission.try_get_mgr("Res_CardMgr", out var res_card_mgr);
+                res_card_mgr.GetType().GetMethod("remove_cells")?.Invoke(res_card_mgr, null);
+                res_card_mgr.GetType().GetMethod("add_cells")?.Invoke(res_card_mgr, null);
+            }
         }
     }
 }
