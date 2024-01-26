@@ -62,6 +62,7 @@ namespace Battle.Interactives
             {
                 if (!mission.try_get_mgr("PlayerMgr", out var player_mgr)) return;
                 if (!mission.try_get_mgr("ArrivalMgr", out var arrival_mgr)) return;
+                if (!mission.try_get_mgr("Res_CardMgr", out var res_card_mgr)) return;
 
                 bool is_player = player_mgr.try_get_cell(out _, pos);
                 bool is_arrival = arrival_mgr.try_get_cell(out _, pos, true);
@@ -85,8 +86,9 @@ namespace Battle.Interactives
                 if (is_arrival && !is_player)
                 {
                     player_mgr.GetType().GetMethod("move_to").Invoke(player_mgr, new object[] { pos });
+                    res_card_mgr.GetType().GetMethod("play").Invoke(res_card_mgr, null);
+
                     arrival_mgr.GetType().GetMethod("unactive_cells")?.Invoke(arrival_mgr, null);
-                    
                     bctx.foucs_pos = null;
                     return;
                 }
@@ -94,7 +96,6 @@ namespace Battle.Interactives
                 //默认：
                 {
                     arrival_mgr.GetType().GetMethod("unactive_cells")?.Invoke(arrival_mgr, null);
-
                     bctx.foucs_pos = null;
                 }
                 

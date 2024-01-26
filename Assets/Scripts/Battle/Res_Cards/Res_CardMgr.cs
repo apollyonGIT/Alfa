@@ -1,6 +1,8 @@
 ﻿using Common;
 using Foundation;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace Battle.Res_Cards
 {
@@ -17,6 +19,9 @@ namespace Battle.Res_Cards
         readonly int m_mgr_priority;
 
         LinkedList<Res_Card> m_cells = new();
+        LinkedList<Res_Card> m_selected_cells = new();
+
+        public Vector2 node_pos => new(m_cells.Count * 40, 0);
 
         //==================================================================================================
 
@@ -47,9 +52,36 @@ namespace Battle.Res_Cards
         }
 
 
-        public void add_cells(Res_Card cell)
+        public void add_cell(Res_Card cell)
         {
             m_cells.AddLast(cell);
+        }
+
+
+        public void remove_cell(Res_Card cell)
+        {
+            m_cells.Remove(cell);
+
+            cell.destroy();
+        }
+
+
+        public void play()
+        {
+            foreach (var cell in m_selected_cells)
+            {
+                remove_cell(cell);
+            }
+            m_selected_cells.Clear();
+        }
+
+
+        public void change_selected_cells(Res_Card cell)
+        {
+            if (cell.is_selected)
+                m_selected_cells.AddLast(cell);
+            else
+                m_selected_cells.Remove(cell);
         }
     }
 }

@@ -14,6 +14,22 @@ namespace Battle.Res_Cards
         {
             this.mgr = mgr;
         }
+
+
+        public void destroy()
+        {
+            foreach (var view in views)
+            {
+                view.detach(this);
+            }
+        }
+
+
+        public void select()
+        {
+            is_selected = !is_selected;
+            mgr.change_selected_cells(this);
+        }
     }
 }
 

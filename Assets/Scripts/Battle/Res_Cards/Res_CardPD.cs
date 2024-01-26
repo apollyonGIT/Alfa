@@ -1,10 +1,13 @@
 ﻿using Common;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Battle.Res_Cards
 {
     public class Res_CardPD : Producer
     {
+        public RectTransform rect;
+
         public int count;
         public Res_CardView model_view;
 
@@ -19,7 +22,7 @@ namespace Battle.Res_Cards
 
             foreach (var cell in cells(mgr))
             {
-                mgr.add_cells(cell);
+                mgr.add_cell(cell);
 
                 var view = Instantiate(model_view, transform);
                 cell.add_view(view);
@@ -44,6 +47,14 @@ namespace Battle.Res_Cards
             {
                 yield return new(mgr);
             }
+        }
+
+
+        private void Update()
+        {
+            if (mgr == null) return;
+
+            rect.sizeDelta = mgr.node_pos;
         }
     }
 }
