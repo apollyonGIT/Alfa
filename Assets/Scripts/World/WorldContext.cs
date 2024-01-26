@@ -2,7 +2,7 @@
 
 namespace World
 {
-    public class WorldContext : SceneContext_Singleton<WorldContext>
+    public class WorldContext : Singleton<WorldContext>
     {
         #region outter
         public bool is_battle;

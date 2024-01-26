@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Common
+namespace Common.Ticker_Module
 {
-    public class SceneContext_Singleton<T> : Singleton<T> where T : new()
+    public class Ticker : Singleton<Ticker>
     {
         public bool can_start_tick = false;
 

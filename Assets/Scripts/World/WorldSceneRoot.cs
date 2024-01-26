@@ -11,23 +11,14 @@ namespace World
         protected override void on_init()
         {
             ctx = WorldContext._init();
-            ctx.init();
 
             init_producers();
-
-            ctx.can_start_tick = true;
         }
 
 
         protected override void on_fini()
         {
             fini_producers();
-        }
-
-
-        private void Update()
-        {
-            ctx.update();
         }
 
 

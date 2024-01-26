@@ -1,10 +1,10 @@
 ﻿using Battle.Arrivals;
 using Battle.Tricks;
 using Common;
+using Common.Ticker_Module;
 using Foundation;
 using System.Collections.Generic;
 using UnityEngine;
-using World;
 
 namespace Battle.Players
 {
@@ -38,9 +38,11 @@ namespace Battle.Players
         {
             Mission.instance.detach_mgr(m_mgr_name);
 
-            var wctx = WorldContext.instance;
-            wctx.remove_tick(m_mgr_name);
-            wctx.remove_tick1(m_mgr_name);
+            var ticker = Ticker.instance;
+            {
+                ticker.remove_tick(m_mgr_name);
+                ticker.remove_tick1(m_mgr_name);
+            }            
         }
 
 
@@ -48,9 +50,11 @@ namespace Battle.Players
         {
             Mission.instance.attach_mgr(m_mgr_name, this);
 
-            var wctx = WorldContext.instance;
-            wctx.add_tick(m_mgr_priority, m_mgr_name, tick);
-            wctx.add_tick1(m_mgr_priority, m_mgr_name, tick1);
+            var ticker = Ticker.instance;
+            { 
+                ticker.add_tick(m_mgr_priority, m_mgr_name, tick);
+                ticker.add_tick(m_mgr_priority, m_mgr_name, tick1);
+            }
         }
 
 
