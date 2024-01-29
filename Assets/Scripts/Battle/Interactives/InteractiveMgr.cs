@@ -63,9 +63,11 @@ namespace Battle.Interactives
                 if (!mission.try_get_mgr("PlayerMgr", out var player_mgr)) return;
                 if (!mission.try_get_mgr("ArrivalMgr", out var arrival_mgr)) return;
                 if (!mission.try_get_mgr("Res_CardMgr", out var res_card_mgr)) return;
+                if (!mission.try_get_mgr("EnemyMgr", out var enemy_mgr)) return;
 
                 bool is_player = player_mgr.try_get_cell(out _, pos);
                 bool is_arrival = arrival_mgr.try_get_cell(out _, pos, true);
+                bool is_enemy = enemy_mgr.try_get_cell(out var enemy, pos);
 
                 //规则：如果选中player，且不位于可达高亮，则高亮其可达范围
                 if (is_player && !is_arrival)
@@ -85,7 +87,16 @@ namespace Battle.Interactives
                 //规则：如果位于可达高亮，且非player，则player移动
                 if (is_arrival && !is_player)
                 {
-                    player_mgr.GetType().GetMethod("move_to")?.Invoke(player_mgr, new object[] { pos });
+                    if (is_enemy)
+                    {
+                        var current_player_args = new object[] { "dmg", null };
+                        player_mgr.GetType().GetMethod("current_player_prop")?.Invoke(player_mgr, current_player_args);
+                        var dmg = current_player_args[1];
+                        enemy.GetType().GetMethod("hurt")?.Invoke(enemy, new object[] { dmg });
+                    }
+                    else
+                        player_mgr.GetType().GetMethod("move_to")?.Invoke(player_mgr, new object[] { pos });
+                    
                     res_card_mgr.GetType().GetMethod("play")?.Invoke(res_card_mgr, null);
 
                     arrival_mgr.GetType().GetMethod("unactive_cells")?.Invoke(arrival_mgr, null);

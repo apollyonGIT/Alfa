@@ -296,6 +296,18 @@ namespace Common
         }
 
 
+        public static int floor_int(int floor, int calc)
+        {
+            return calc <= floor ? floor : calc;
+        }
+
+
+        public static int ceil_int(int ceil, int calc)
+        {
+            return calc >= ceil ? ceil : calc;
+        }
+
+
         /// <summary>
         /// 计算：向量旋转弧度
         /// </summary>

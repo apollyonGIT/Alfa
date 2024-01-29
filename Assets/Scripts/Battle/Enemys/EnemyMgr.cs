@@ -132,7 +132,6 @@ namespace Battle.Enemys
                 cell.notify_on_call();
             }
         }
-
     }
 }
 

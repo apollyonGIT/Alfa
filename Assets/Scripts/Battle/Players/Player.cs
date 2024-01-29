@@ -8,6 +8,9 @@ namespace Battle.Players
         public VID pos;
         public Vector2 view_pos => (Vector2)pos;
 
+        public int hp = 100;
+        public int dmg => calc_dmg();
+
         public PlayerMgr mgr;
 
         //==================================================================================================
@@ -26,6 +29,12 @@ namespace Battle.Players
             {
                 view.notify_on_tick1();
             }
+        }
+
+
+        public int calc_dmg()
+        {
+            return 10;
         }
     }
 }

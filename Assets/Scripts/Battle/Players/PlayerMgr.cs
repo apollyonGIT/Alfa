@@ -132,6 +132,19 @@ namespace Battle.Players
 
             return true;
         }
+
+
+        public bool current_player_prop(string name, out object ret)
+        {
+            ret = default;
+
+            var focus_pos = BattleContext.instance.foucs_pos;
+            if (focus_pos == null) return false;
+            if (!m_cells.TryGetValue((VID)focus_pos, out Player cell)) return false;
+
+            ret = cell.GetType().GetProperty(name)?.GetValue(cell);
+            return ret != default;
+        }
     }
 }
 
