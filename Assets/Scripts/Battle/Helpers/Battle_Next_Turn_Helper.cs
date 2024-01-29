@@ -9,6 +9,8 @@ namespace Battle
             var mission = Mission.instance;
             {
                 mission.try_get_mgr("Res_CardMgr", out var res_card_mgr);
+
+                //规则：重新抽牌至上限
                 res_card_mgr.GetType().GetMethod("remove_cells")?.Invoke(res_card_mgr, null);
                 res_card_mgr.GetType().GetMethod("add_cells")?.Invoke(res_card_mgr, null);
             }
