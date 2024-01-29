@@ -71,7 +71,7 @@ namespace Battle.Interactives
                 if (is_player && !is_arrival)
                 {
                     var try_get_arrivals_args = new object[] { pos, null };
-                    player_mgr.GetType().GetMethod("try_get_arrivals").Invoke(player_mgr, try_get_arrivals_args);
+                    player_mgr.GetType().GetMethod("try_get_arrivals")?.Invoke(player_mgr, try_get_arrivals_args);
                     var arrival_array = try_get_arrivals_args[1];
                     arrival_mgr.GetType().GetMethod("active_cell")?.Invoke(arrival_mgr, new object[] { arrival_array });
 
@@ -85,8 +85,8 @@ namespace Battle.Interactives
                 //规则：如果位于可达高亮，且非player，则player移动
                 if (is_arrival && !is_player)
                 {
-                    player_mgr.GetType().GetMethod("move_to").Invoke(player_mgr, new object[] { pos });
-                    res_card_mgr.GetType().GetMethod("play").Invoke(res_card_mgr, null);
+                    player_mgr.GetType().GetMethod("move_to")?.Invoke(player_mgr, new object[] { pos });
+                    res_card_mgr.GetType().GetMethod("play")?.Invoke(res_card_mgr, null);
 
                     arrival_mgr.GetType().GetMethod("unactive_cells")?.Invoke(arrival_mgr, null);
                     bctx.foucs_pos = null;
