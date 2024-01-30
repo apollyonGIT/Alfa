@@ -89,6 +89,16 @@ namespace Battle
         }
 
 
+        public static VID operator -(VID v1, VID v2)
+        {
+            return new()
+            {
+                x = v1.x - v2.x,
+                y = v1.y - v2.y,
+            };
+        }
+
+
         public static bool operator ==(VID v1, VID v2)
         {
             return object.Equals(v1, v2);

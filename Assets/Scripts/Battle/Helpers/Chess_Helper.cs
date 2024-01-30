@@ -53,28 +53,59 @@ namespace Battle
             {
                 if (block == self) continue;
 
-                if (block.x == self.x && block.y > self.y)
+                //直线阻挡
                 {
-                    ret.RemoveAll(t => (t.x == block.x && t.y > block.y));
-                    continue;
+                    if (block.x == self.x && block.y > self.y)
+                    {
+                        ret.RemoveAll(t => (t.x == block.x && t.y > block.y));
+                        continue;
+                    }
+
+                    if (block.x == self.x && block.y < self.y)
+                    {
+                        ret.RemoveAll(t => (t.x == block.x && t.y < block.y));
+                        continue;
+                    }
+
+                    if (block.y == self.y && block.x > self.x)
+                    {
+                        ret.RemoveAll(t => (t.y == block.y && t.x > block.x));
+                        continue;
+                    }
+
+                    if (block.y == self.y && block.x < self.x)
+                    {
+                        ret.RemoveAll(t => (t.y == block.y && t.x < block.x));
+                        continue;
+                    }
                 }
 
-                if (block.x == self.x && block.y < self.y)
+                //斜线阻挡
+                var sub = block - self;
                 {
-                    ret.RemoveAll(t => (t.x == block.x && t.y < block.y));
-                    continue;
-                }
+                    if (sub.x == sub.y && block.x > self.x)
+                    {
+                        ret.RemoveAll(t => (t - block).x == (t - block).y && t.x > block.x);
+                        continue;
+                    }
 
-                if (block.y == self.y && block.x > self.x)
-                {
-                    ret.RemoveAll(t => (t.y == block.y && t.x > block.x));
-                    continue;
-                }
+                    if (sub.x == sub.y && block.x < self.x)
+                    {
+                        ret.RemoveAll(t => (t - block).x == (t - block).y && t.x < block.x);
+                        continue;
+                    }
 
-                if (block.y == self.y && block.x < self.x)
-                {
-                    ret.RemoveAll(t => (t.y == block.y && t.x < block.x));
-                    continue;
+                    if (sub.x == -sub.y && block.x > self.x)
+                    {
+                        ret.RemoveAll(t => (t - block).x == (block - t).y && t.x > block.x);
+                        continue;
+                    }
+
+                    if (sub.x == -sub.y && block.x < self.x)
+                    {
+                        ret.RemoveAll(t => (t - block).x == (block - t).y && t.x < block.x);
+                        continue;
+                    }
                 }
             }
 
