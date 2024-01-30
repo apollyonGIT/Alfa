@@ -1,4 +1,6 @@
-﻿using Foundation;
+﻿using Common;
+using Foundation;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace Battle.Players
@@ -11,6 +13,10 @@ namespace Battle.Players
         public int hp = 100;
         public int dmg => calc_dmg();
 
+        public VID[] arrival_pos_array => VID.convert(m_arrival_pos_array, pos);
+        Vector2[] m_arrival_pos_array;
+
+        public AutoCode.Tables.Monster.Record _desc;
         public PlayerMgr mgr;
 
         //==================================================================================================
@@ -18,8 +24,14 @@ namespace Battle.Players
         public Player(PlayerMgr mgr, params object[] args)
         {
             this.mgr = mgr;
-
+            
             pos = (VID)args[0];
+
+            var id = (int)args[1];
+            World.World_DB.instance.monster.try_get((uint)id, out _desc);
+
+            EX_Utility.try_load_asset(_desc.f_arrival_asset_path, out Arrival_Asset asset);
+            m_arrival_pos_array = asset.pos_array;
         }
 
 

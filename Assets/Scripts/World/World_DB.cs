@@ -3,7 +3,7 @@ using Common;
 
 namespace World
 {
-    public class DB : Singleton<DB>
+    public class World_DB : Singleton<World_DB>
     {
         Element m_element;
         public Element element
@@ -16,6 +16,21 @@ namespace World
                 }
 
                 return m_element;
+            }
+        }
+
+
+        Monster m_monster;
+        public Monster monster
+        {
+            get
+            {
+                if (m_monster == null)
+                {
+                    EX_Utility.try_load_table("monster", out m_monster);
+                }
+
+                return m_monster;
             }
         }
     }

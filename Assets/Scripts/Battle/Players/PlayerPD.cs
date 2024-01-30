@@ -41,11 +41,11 @@ namespace Battle.Players
         {
             VID pos = (2, 3);
 
-            yield return new(mgr, pos);
+            yield return new(mgr, pos, 1);
 
             pos = (4, 0);
 
-            yield return new(mgr, pos);
+            yield return new(mgr, pos, 1);
         }
     }
 }
