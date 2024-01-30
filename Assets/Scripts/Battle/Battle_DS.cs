@@ -134,5 +134,11 @@ namespace Battle
             return ret.ToArray();
         }
     }
+
+
+    public interface IEntityMgr
+    {
+        List<VID> pos_array { get; }
+    }
 }
 

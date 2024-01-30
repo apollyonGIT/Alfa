@@ -1,5 +1,4 @@
-﻿using Battle.Tricks;
-using Common;
+﻿using Common;
 using Common.Ticker_Module;
 using Foundation;
 using System.Collections.Generic;
@@ -14,12 +13,14 @@ namespace Battle.Enemys
     }
 
 
-    public class EnemyMgr : ChessMgr, IMgr
+    public class EnemyMgr : IMgr, IEntityMgr
     {
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
         int IMgr.priority => m_mgr_priority;
         readonly int m_mgr_priority;
+
+        List<VID> IEntityMgr.pos_array => EX_Utility.convert_dic_to_list(m_cells);
 
         Dictionary<VID, Enemy> m_cells = new();
 
@@ -97,7 +98,7 @@ namespace Battle.Enemys
         }
 
 
-        public override void move_to(VID to)
+        public void move_to(VID to)
         {
             VID pos = (VID)BattleContext.instance.foucs_pos;
             if (!m_cells.TryGetValue(pos, out var cell)) return;
@@ -109,12 +110,12 @@ namespace Battle.Enemys
         }
 
 
-        public override void move(ref VID pos, Vector2 step)
+        public void move(ref VID pos, Vector2 step)
         {
             if (!m_cells.TryGetValue(pos, out var cell)) return;
 
             var from = pos;
-            opti_move(ref pos, step);
+            Chess_Helper.opti_move(ref pos, step);
 
             remove_cell(from);
             add_cell(cell);

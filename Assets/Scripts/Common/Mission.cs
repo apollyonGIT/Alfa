@@ -15,6 +15,7 @@ namespace Common
     public class Mission : Singleton<Mission>
     {
         Dictionary<string, IMgr> m_mgrs_dic = new();
+        public Dictionary<string, IMgr> mgr_dic => m_mgrs_dic;
 
         //==================================================================================================
 

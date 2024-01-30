@@ -8,15 +8,15 @@ namespace Battle
         {
             var mission = Mission.instance;
             {
-                mission.try_get_mgr("Res_CardMgr", out var res_card_mgr);
-                mission.try_get_mgr("EnemyMgr", out var enemy_mgr);
+                mission.try_get_mgr("Res_CardMgr", out Res_Cards.Res_CardMgr res_card_mgr);
+                mission.try_get_mgr("EnemyMgr", out Enemys.EnemyMgr enemy_mgr);
 
                 //规则：怪物向下移动一格
-                enemy_mgr.GetType().GetMethod("be_call")?.Invoke(enemy_mgr, null);
+                enemy_mgr.be_call();
 
                 //规则：重新抽牌至上限
-                res_card_mgr.GetType().GetMethod("remove_cells")?.Invoke(res_card_mgr, null);
-                res_card_mgr.GetType().GetMethod("add_cells")?.Invoke(res_card_mgr, null);
+                res_card_mgr.remove_cells();
+                res_card_mgr.add_cells();
             }
         }
     }

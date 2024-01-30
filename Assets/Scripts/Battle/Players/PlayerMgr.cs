@@ -1,5 +1,4 @@
 ﻿using Battle.Arrivals;
-using Battle.Tricks;
 using Common;
 using Common.Ticker_Module;
 using Foundation;
@@ -14,12 +13,14 @@ namespace Battle.Players
     }
 
 
-    public class PlayerMgr : ChessMgr, IMgr
+    public class PlayerMgr : IMgr, IEntityMgr
     {
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
         int IMgr.priority => m_mgr_priority;
         readonly int m_mgr_priority;
+
+        List<VID> IEntityMgr.pos_array => EX_Utility.convert_dic_to_list(m_cells);
 
         Dictionary<VID ,Player> m_cells = new();
 
@@ -97,7 +98,7 @@ namespace Battle.Players
         }
 
 
-        public override void move_to(VID to)
+        public void move_to(VID to)
         {
             VID pos = (VID)BattleContext.instance.foucs_pos;
             if (!m_cells.TryGetValue(pos, out var cell)) return;
@@ -109,20 +110,22 @@ namespace Battle.Players
         }
 
 
-        public override void move(ref VID pos, Vector2 step)
+        public void move(ref VID pos, Vector2 step)
         {
             if (!m_cells.TryGetValue(pos, out var cell)) return;
 
             var from = pos;
-            opti_move(ref pos, step);
+            Chess_Helper.opti_move(ref pos, step);
 
             remove_cell(from);
             add_cell(cell);
         }
 
 
-        public override bool try_get_arrivals(VID pos, out VID[] arrival_pos_array)
+        public bool try_get_arrivals(VID pos, out VID[] arrival_pos_array)
         {
+            var x = Chess_Helper.instance.enetity_pos_array;
+
             arrival_pos_array = default;
             if (!m_cells.TryGetValue(pos, out var cell)) return false;
 
