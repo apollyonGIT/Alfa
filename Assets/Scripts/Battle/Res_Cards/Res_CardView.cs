@@ -1,7 +1,6 @@
 ﻿using Foundation;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace Battle.Res_Cards
 {
@@ -30,12 +29,18 @@ namespace Battle.Res_Cards
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
         {
             cell.select();
+        }
 
+
+        void IRes_CardView.notify_on_click()
+        {
             var offset = cell.is_selected ? 25 : -25;
             var pos = transform.localPosition;
             pos.y += offset;
             transform.localPosition = pos;
         }
+
+
     }
 }
 

@@ -2,12 +2,14 @@
 using Foundation;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Battle.Res_Cards
 {
     public interface IRes_CardView : IModelView<Res_Card>
     {
+        void notify_on_click();
     }
 
 
@@ -84,6 +86,17 @@ namespace Battle.Res_Cards
             foreach (var cell in m_selected_cells)
             {
                 remove_cell(cell);
+            }
+            m_selected_cells.Clear();
+        }
+
+
+        public void reset()
+        {
+            var temp = m_selected_cells.ToList();
+            foreach (var cell in temp)
+            {
+                cell.select();
             }
             m_selected_cells.Clear();
         }

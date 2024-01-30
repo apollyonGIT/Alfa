@@ -69,7 +69,7 @@ namespace Battle.Interactives
                 bool is_arrival = (arrival_mgr as IMgr).try_get_cell(out _, pos, true);
                 bool is_enemy = (enemy_mgr as IMgr).try_get_cell(out var enemy, pos);
 
-                //规则：如果选中player，且不位于可达高亮，则高亮其可达范围
+                //规则：未选中player，且目标为player，则高亮其移动/攻击范围
                 if (is_player && !is_arrival)
                 {
                     player_mgr.try_get_arrivals(pos, out var arrival_array);
@@ -78,10 +78,7 @@ namespace Battle.Interactives
                     return;
                 }
 
-                //规则：如果选中自身，且位于可达高亮，则无事发生
-                if (is_player && pos == (VID)bctx.foucs_pos && is_arrival) return;
-
-                //规则：如果位于可达高亮，且非player，则player移动/攻击
+                //规则：已选中player，且目标非player，则player移动/攻击
                 if (is_arrival && !is_player)
                 {
                     if (is_enemy)
@@ -94,27 +91,34 @@ namespace Battle.Interactives
 
                     res_card_mgr.play();
 
-                    arrival_mgr.unactive_cells();
-                    bctx.foucs_pos = null;
+                    reset();
                     return;
                 }
 
                 //默认：
-                {
-                    arrival_mgr.unactive_cells();
-                    bctx.foucs_pos = null;
-                    return;
-                }
+                reset();
             }
         }
 
 
         public void do_on_click_null()
         {
+            reset();
+        }
+
+
+        /// <summary>
+        /// 复位，清空所有选中状态
+        /// </summary>
+        void reset()
+        {
             var bctx = BattleContext.instance;
             var mission = Mission.instance;
             {
                 if (!mission.try_get_mgr("ArrivalMgr", out Arrivals.ArrivalMgr arrival_mgr)) return;
+                if (!mission.try_get_mgr("Res_CardMgr", out Res_Cards.Res_CardMgr res_card_mgr)) return;
+
+                res_card_mgr.reset();
                 arrival_mgr.unactive_cells();
                 bctx.foucs_pos = null;
             }
