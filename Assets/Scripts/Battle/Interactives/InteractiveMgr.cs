@@ -107,6 +107,18 @@ namespace Battle.Interactives
                 }
             }
         }
+
+
+        public void do_on_click_null()
+        {
+            var bctx = BattleContext.instance;
+            var mission = Mission.instance;
+            {
+                if (!mission.try_get_mgr("ArrivalMgr", out Arrivals.ArrivalMgr arrival_mgr)) return;
+                arrival_mgr.unactive_cells();
+                bctx.foucs_pos = null;
+            }
+        }
     }
 }
 

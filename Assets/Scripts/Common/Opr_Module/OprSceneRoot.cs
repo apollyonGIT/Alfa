@@ -17,7 +17,12 @@ namespace Common.Opr_Module
             pos.z = 0;
 
             var hit = Physics2D.Raycast(pos, Vector2.zero).transform;
-            if (hit == null) return;
+            if (hit == null)
+            {
+                notify_on_click_null();
+                return;
+            }
+
             if (!hit.TryGetComponent(out OprReciver reciver)) return;
 
             reciver.target.notify_on_click();
@@ -27,6 +32,11 @@ namespace Common.Opr_Module
         protected override void on_init()
         {
             oprSender.click_event += oprSender_click_event;
+        }
+
+
+        public virtual void notify_on_click_null()
+        { 
         }
     }
 }

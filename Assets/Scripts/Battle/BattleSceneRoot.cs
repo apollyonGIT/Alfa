@@ -1,4 +1,5 @@
-﻿using Common.Opr_Module;
+﻿using Common;
+using Common.Opr_Module;
 using UnityEngine;
 using World;
 
@@ -55,6 +56,13 @@ namespace Battle
         public void btn_next()
         {
             Battle_Next_Turn_Helper.instance.next_turn(bctx);
+        }
+
+
+        public override void notify_on_click_null()
+        {
+            Mission.instance.try_get_mgr("InteractiveMgr", out var interactive_mgr);
+            interactive_mgr.GetType().GetMethod("do_on_click_null")?.Invoke(interactive_mgr, null);
         }
     }
 }
