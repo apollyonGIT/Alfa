@@ -60,22 +60,20 @@ namespace Battle.Interactives
             var bctx = BattleContext.instance;
             var mission = Mission.instance;
             {
-                if (!mission.try_get_mgr("PlayerMgr", out var player_mgr)) return;
-                if (!mission.try_get_mgr("ArrivalMgr", out var arrival_mgr)) return;
-                if (!mission.try_get_mgr("Res_CardMgr", out var res_card_mgr)) return;
-                if (!mission.try_get_mgr("EnemyMgr", out var enemy_mgr)) return;
+                if (!mission.try_get_mgr("PlayerMgr", out Players.PlayerMgr player_mgr)) return;
+                if (!mission.try_get_mgr("ArrivalMgr", out Arrivals.ArrivalMgr arrival_mgr)) return;
+                if (!mission.try_get_mgr("Res_CardMgr", out Res_Cards.Res_CardMgr res_card_mgr)) return;
+                if (!mission.try_get_mgr("EnemyMgr", out Enemys.EnemyMgr enemy_mgr)) return;
 
-                bool is_player = player_mgr.try_get_cell(out _, pos);
-                bool is_arrival = arrival_mgr.try_get_cell(out _, pos, true);
-                bool is_enemy = enemy_mgr.try_get_cell(out var enemy, pos);
+                bool is_player = (player_mgr as IMgr).try_get_cell(out _, pos);
+                bool is_arrival = (arrival_mgr as IMgr).try_get_cell(out _, pos, true);
+                bool is_enemy = (enemy_mgr as IMgr).try_get_cell(out var enemy, pos);
 
                 //规则：如果选中player，且不位于可达高亮，则高亮其可达范围
                 if (is_player && !is_arrival)
                 {
-                    var try_get_arrivals_args = new object[] { pos, null };
-                    player_mgr.GetType().GetMethod("try_get_arrivals")?.Invoke(player_mgr, try_get_arrivals_args);
-                    var arrival_array = try_get_arrivals_args[1];
-                    arrival_mgr.GetType().GetMethod("active_cell")?.Invoke(arrival_mgr, new object[] { arrival_array });
+                    player_mgr.try_get_arrivals(pos, out var arrival_array);
+                    arrival_mgr.active_cell(arrival_array);
 
                     bctx.foucs_pos = pos;
                     return;
@@ -89,24 +87,22 @@ namespace Battle.Interactives
                 {
                     if (is_enemy)
                     {
-                        var current_player_args = new object[] { "dmg", null };
-                        player_mgr.GetType().GetMethod("current_player_prop")?.Invoke(player_mgr, current_player_args);
-                        var dmg = current_player_args[1];
+                        player_mgr.current_player_prop("dmg", out var dmg);
                         enemy.GetType().GetMethod("hurt")?.Invoke(enemy, new object[] { dmg });
                     }
                     else
-                        player_mgr.GetType().GetMethod("move_to")?.Invoke(player_mgr, new object[] { pos });
-                    
-                    res_card_mgr.GetType().GetMethod("play")?.Invoke(res_card_mgr, null);
+                        player_mgr.move_to(pos);
 
-                    arrival_mgr.GetType().GetMethod("unactive_cells")?.Invoke(arrival_mgr, null);
+                    res_card_mgr.play();
+
+                    arrival_mgr.unactive_cells();
                     bctx.foucs_pos = null;
                     return;
                 }
 
                 //默认：
                 {
-                    arrival_mgr.GetType().GetMethod("unactive_cells")?.Invoke(arrival_mgr, null);
+                    arrival_mgr.unactive_cells();
                     bctx.foucs_pos = null;
                 }
                 
