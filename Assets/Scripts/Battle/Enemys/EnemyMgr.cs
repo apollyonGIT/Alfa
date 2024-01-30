@@ -54,7 +54,7 @@ namespace Battle.Enemys
             var ticker = Ticker.instance;
             {
                 ticker.add_tick(m_mgr_priority, m_mgr_name, tick);
-                ticker.add_tick(m_mgr_priority, m_mgr_name, tick1);
+                ticker.add_tick1(m_mgr_priority, m_mgr_name, tick1);
             }
         }
 

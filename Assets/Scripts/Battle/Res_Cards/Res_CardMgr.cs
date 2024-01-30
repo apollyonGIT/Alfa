@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Ticker_Module;
 using Foundation;
 using System;
 using System.Collections.Generic;
@@ -41,12 +42,32 @@ namespace Battle.Res_Cards
         void IMgr.fini()
         {
             Mission.instance.detach_mgr(m_mgr_name);
+
+            var ticker = Ticker.instance;
+            {
+                ticker.remove_tick(m_mgr_name);
+            }
         }
 
 
         void IMgr.init(object[] args)
         {
             Mission.instance.attach_mgr(m_mgr_name, this);
+
+            var ticker = Ticker.instance;
+            {
+                ticker.add_tick(m_mgr_priority, m_mgr_name, tick);
+            }
+        }
+
+
+        void tick()
+        {
+            var bctx = BattleContext.instance;
+            {
+                bctx.res_cards_count = m_cells.Count;
+                bctx.selected_res_cards_count = m_selected_cells.Count;
+            }
         }
 
 
