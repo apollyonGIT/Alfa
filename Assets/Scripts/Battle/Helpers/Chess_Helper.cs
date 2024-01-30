@@ -7,7 +7,7 @@ namespace Battle
 {
     public class Chess_Helper : Singleton<Chess_Helper>
     {
-        public IEnumerable<VID> enetity_pos_array => calc_entity_pos_array();
+        public IEnumerable<VID> entity_pos_array => calc_entity_pos_array();
 
         //==================================================================================================
 
@@ -49,7 +49,7 @@ namespace Battle
         {
             List<VID> ret = area.ToList();
 
-            foreach (var block in enetity_pos_array)
+            foreach (var block in entity_pos_array)
             {
                 if (block == self) continue;
 
