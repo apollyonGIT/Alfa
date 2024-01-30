@@ -258,27 +258,12 @@ namespace Common
         }
 
 
-        public static LinkedList<K> convert_dic_to_linkedlist<K, V>(Dictionary<K, V> dic)
+        public static IEnumerable<K> convert_dic_to_ienum<K, V>(Dictionary<K, V> dic)
         {
-            var ret = new LinkedList<K>();
             foreach (var (key, _) in dic)
             {
-                ret.AddLast(key);
+                yield return key;
             }
-
-            return ret;
-        }
-
-
-        public static List<K> convert_dic_to_list<K, V>(Dictionary<K, V> dic)
-        {
-            var ret = new List<K>();
-            foreach (var (key, _) in dic)
-            {
-                ret.Add(key);
-            }
-
-            return ret;
         }
         #endregion
 

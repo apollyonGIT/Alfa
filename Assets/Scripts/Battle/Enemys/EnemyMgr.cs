@@ -20,7 +20,7 @@ namespace Battle.Enemys
         int IMgr.priority => m_mgr_priority;
         readonly int m_mgr_priority;
 
-        List<VID> IEntityMgr.pos_array => EX_Utility.convert_dic_to_list(m_cells);
+        IEnumerable<VID> IEntityMgr.pos_array => EX_Utility.convert_dic_to_ienum(m_cells);
 
         Dictionary<VID, Enemy> m_cells = new();
 

@@ -138,7 +138,7 @@ namespace Battle
 
     public interface IEntityMgr
     {
-        List<VID> pos_array { get; }
+        IEnumerable<VID> pos_array { get; }
     }
 }
 

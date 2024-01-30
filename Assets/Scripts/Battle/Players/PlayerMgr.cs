@@ -3,6 +3,7 @@ using Common;
 using Common.Ticker_Module;
 using Foundation;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Battle.Players
@@ -20,9 +21,9 @@ namespace Battle.Players
         int IMgr.priority => m_mgr_priority;
         readonly int m_mgr_priority;
 
-        List<VID> IEntityMgr.pos_array => EX_Utility.convert_dic_to_list(m_cells);
+        IEnumerable<VID> IEntityMgr.pos_array => EX_Utility.convert_dic_to_ienum(m_cells);
 
-        Dictionary<VID ,Player> m_cells = new();
+        Dictionary<VID, Player> m_cells = new();
 
         //==================================================================================================
 
@@ -43,7 +44,7 @@ namespace Battle.Players
             {
                 ticker.remove_tick(m_mgr_name);
                 ticker.remove_tick1(m_mgr_name);
-            }            
+            }
         }
 
 
@@ -52,7 +53,7 @@ namespace Battle.Players
             Mission.instance.attach_mgr(m_mgr_name, this);
 
             var ticker = Ticker.instance;
-            { 
+            {
                 ticker.add_tick(m_mgr_priority, m_mgr_name, tick);
                 ticker.add_tick(m_mgr_priority, m_mgr_name, tick1);
             }
@@ -61,7 +62,7 @@ namespace Battle.Players
 
         void tick()
         {
-            
+
         }
 
 
@@ -124,14 +125,13 @@ namespace Battle.Players
 
         public bool try_get_arrivals(VID pos, out VID[] arrival_pos_array)
         {
-            var x = Chess_Helper.instance.enetity_pos_array;
-
             arrival_pos_array = default;
             if (!m_cells.TryGetValue(pos, out var cell)) return false;
 
             //规则：根据配置读取可达范围
             EX_Utility.try_load_asset(("arrivals", "Arrival_Asset_Test"), out Arrival_Asset asset);
             arrival_pos_array = VID.convert(asset.pos_array, pos);
+            Chess_Helper.instance.calc_with_block(pos, ref arrival_pos_array);
 
             return true;
         }
