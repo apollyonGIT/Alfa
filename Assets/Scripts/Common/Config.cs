@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Common
 {
@@ -36,6 +37,12 @@ namespace Common
         //帧率
         public const int PHYSICS_TICKS_PER_SECOND = 120;
         public const float PHYSICS_TICK_DELTA_TIME = 1f / PHYSICS_TICKS_PER_SECOND;
+
+        //类型
+        public static Type type_string = Type.GetType("System.String");
+        public static Type type_float = Type.GetType("System.Single");
+        public static Type type_int32 = Type.GetType("System.Int32");
+
         #endregion
 
 
