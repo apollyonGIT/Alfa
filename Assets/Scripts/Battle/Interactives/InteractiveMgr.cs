@@ -74,7 +74,6 @@ namespace Battle.Interactives
                 {
                     player_mgr.try_get_arrivals(pos, out var arrival_array);
                     arrival_mgr.active_cell(arrival_array);
-
                     bctx.foucs_pos = pos;
                     return;
                 }
@@ -82,7 +81,7 @@ namespace Battle.Interactives
                 //规则：如果选中自身，且位于可达高亮，则无事发生
                 if (is_player && pos == (VID)bctx.foucs_pos && is_arrival) return;
 
-                //规则：如果位于可达高亮，且非player，则player移动
+                //规则：如果位于可达高亮，且非player，则player移动/攻击
                 if (is_arrival && !is_player)
                 {
                     if (is_enemy)
@@ -104,8 +103,8 @@ namespace Battle.Interactives
                 {
                     arrival_mgr.unactive_cells();
                     bctx.foucs_pos = null;
+                    return;
                 }
-                
             }
         }
     }
