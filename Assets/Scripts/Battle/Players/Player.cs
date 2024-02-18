@@ -34,7 +34,7 @@ namespace Battle.Players
             EX_Utility.try_load_asset(_desc.f_arrival_asset_path, out Arrival_Asset asset);
             m_arrival_pos_array = asset.pos_array;
 
-            var can_move = (bool)Table_Utility.do_expr(_desc.f_move_condition, this, new Type[] { Config.type_float, Config.type_string });
+            var can_move = (bool)Table_Utility.do_expr(_desc.f_move_condition, this);
         }
 
 
