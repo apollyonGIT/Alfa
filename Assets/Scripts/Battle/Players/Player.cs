@@ -20,6 +20,8 @@ namespace Battle.Players
         public AutoCode.Tables.Monster.Record _desc;
         public PlayerMgr mgr;
 
+        public IPlayer_AC ac;
+
         //==================================================================================================
 
         public Player(PlayerMgr mgr, params object[] args)
@@ -28,13 +30,15 @@ namespace Battle.Players
             
             pos = (VID)args[0];
 
-            var id = (int)args[1];
-            World.World_DB.instance.monster.try_get((uint)id, out _desc);
+            var id = (string)args[1];
+            World.World_DB.instance.monster.try_get(id, out _desc);
 
             EX_Utility.try_load_asset(_desc.f_arrival_asset_path, out Arrival_Asset asset);
             m_arrival_pos_array = asset.pos_array;
 
-            var can_move = (bool)Table_Utility.do_expr(_desc.f_move_condition, this);
+            //var can_move = (bool)Table_Utility.do_expr(_desc.f_move_condition, this);
+
+            Player_AC.load_ac(this);
         }
 
 
