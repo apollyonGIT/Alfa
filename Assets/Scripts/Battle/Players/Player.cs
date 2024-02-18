@@ -2,7 +2,6 @@
 using Common.Table_Module;
 using Foundation;
 using UnityEngine;
-using System;
 
 namespace Battle.Players
 {
@@ -20,7 +19,7 @@ namespace Battle.Players
         public AutoCode.Tables.Monster.Record _desc;
         public PlayerMgr mgr;
 
-        public IPlayer_AC ac;
+        public Player_AC ac;
 
         //==================================================================================================
 
@@ -36,9 +35,9 @@ namespace Battle.Players
             EX_Utility.try_load_asset(_desc.f_arrival_asset_path, out Arrival_Asset asset);
             m_arrival_pos_array = asset.pos_array;
 
-            //var can_move = (bool)Table_Utility.do_expr(_desc.f_move_condition, this);
-
             Player_AC.load_ac(this);
+
+            var can_move = (bool)Table_Utility.do_expr(_desc.f_move_condition, ac);
         }
 
 
@@ -54,13 +53,6 @@ namespace Battle.Players
         public int calc_dmg()
         {
             return 10;
-        }
-
-
-        public bool move_condition(float f, string s)
-        {
-            Debug.Log(f);
-            return false;
         }
     }
 }
