@@ -15,6 +15,8 @@ namespace Battle.Res_Cards
         Res_CardMgr mgr;
 
         public int cells_distance = 130;
+        public float selected_scale_offset = 1.3f;
+        public float selected_height_offset = 30f;
 
         public Transform res_area;
         public Transform selecting_area;

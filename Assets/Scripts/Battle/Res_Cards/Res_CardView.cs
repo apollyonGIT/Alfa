@@ -34,8 +34,8 @@ namespace Battle.Res_Cards
 
         void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
         {
-            transform.localPosition = new(transform.localPosition.x, 20);
-            transform.localScale = Vector3.one * 1.3f;
+            transform.localPosition = new(transform.localPosition.x, pd.selected_height_offset);
+            transform.localScale = Vector3.one * pd.selected_scale_offset;
 
             m_index = transform.GetSiblingIndex();
             pd.standing.SetSiblingIndex(m_index);

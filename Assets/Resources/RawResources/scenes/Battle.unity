@@ -682,6 +682,8 @@ MonoBehaviour:
   count: 6
   model_view: {fileID: 4580246924604044599, guid: 73dd03f977984fd47b5a9e275f4052db, type: 3}
   cells_distance: 130
+  selected_scale_offset: 1.3
+  selected_height_offset: 35
   res_area: {fileID: 562846046}
   selecting_area: {fileID: 828705667}
   standing: {fileID: 1294087023}
