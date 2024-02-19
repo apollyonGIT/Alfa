@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace Common.Opr_Module
 {
-    public class OprSender : MonoBehaviour, IPointerClickHandler
+    public class OprSender : MonoBehaviour, IPointerClickHandler, IDragHandler
     {
         public event Action<PointerEventData> click_event;
         public event Action<float> scroll_event;
@@ -14,7 +14,19 @@ namespace Common.Opr_Module
 
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
         {
-            click_event(eventData);
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                click_event(eventData);
+            }
+        }
+
+
+        void IDragHandler.OnDrag(PointerEventData eventData)
+        {
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                
+            }
         }
 
 
