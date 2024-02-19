@@ -16,6 +16,10 @@ namespace Battle.Res_Cards
 
         public int cells_distance = 130;
 
+        public Transform res_area;
+        public Transform selecting_area;
+        public Transform standing;
+
         //==================================================================================================
 
         public override void init(int priority)
@@ -55,6 +59,7 @@ namespace Battle.Res_Cards
 
                 var view = Instantiate(model_view, transform);
                 cell.add_view(view);
+                view.pd = this;
             }
         }
 

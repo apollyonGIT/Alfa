@@ -7,6 +7,8 @@ namespace Battle
 {
     public class BattleSceneRoot : OprSceneRoot<BattleSceneRoot>
     {
+        public Transform selecting;
+
         WorldSceneRoot root;
         BattleContext bctx;
 

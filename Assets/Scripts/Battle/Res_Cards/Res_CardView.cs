@@ -1,6 +1,8 @@
 ﻿using Foundation;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
+using World;
 
 namespace Battle.Res_Cards
 {
@@ -8,7 +10,11 @@ namespace Battle.Res_Cards
     {
         public Transform node;
 
+        [HideInInspector]
+        public Res_CardPD pd;
         Res_Card cell;
+
+        int m_index;
 
         //==================================================================================================
 
@@ -30,6 +36,12 @@ namespace Battle.Res_Cards
         {
             transform.localPosition = new(transform.localPosition.x, 20);
             transform.localScale = Vector3.one * 1.3f;
+
+            m_index = transform.GetSiblingIndex();
+            pd.standing.SetSiblingIndex(m_index);
+            pd.standing.gameObject.SetActive(true);
+
+            transform.SetParent(pd.selecting_area);
         }
 
 
@@ -37,6 +49,12 @@ namespace Battle.Res_Cards
         {
             transform.localPosition = new(transform.localPosition.x, 0);
             transform.localScale = Vector3.one;
+
+            transform.SetParent(pd.res_area);
+
+            transform.SetSiblingIndex(m_index);
+            pd.standing.gameObject.SetActive(false);
+            pd.standing.SetAsLastSibling();
         }
     }
 }
