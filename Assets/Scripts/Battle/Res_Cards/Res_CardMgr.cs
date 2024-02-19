@@ -24,7 +24,7 @@ namespace Battle.Res_Cards
         LinkedList<Res_Card> m_cells = new();
         LinkedList<Res_Card> m_selected_cells = new();
 
-        public Vector2 node_pos => new(m_cells.Count * 40, 0);
+        public Vector2 node_pos => new(m_cells.Count, 0);
 
         public Action add_cells_ac;
 

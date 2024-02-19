@@ -8,11 +8,13 @@ namespace Battle.Res_Cards
     {
         public RectTransform rect;
 
-        public int count;
+        public int count = 6;
         public Res_CardView model_view;
 
         public override IMgr imgr => mgr;
         Res_CardMgr mgr;
+
+        public int cells_distance = 130;
 
         //==================================================================================================
 
@@ -61,7 +63,7 @@ namespace Battle.Res_Cards
         {
             if (mgr == null) return;
 
-            rect.sizeDelta = mgr.node_pos;
+            rect.sizeDelta = mgr.node_pos * cells_distance;
         }
     }
 }

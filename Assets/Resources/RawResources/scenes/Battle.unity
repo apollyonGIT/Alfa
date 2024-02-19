@@ -659,11 +659,11 @@ RectTransform:
   m_Father: {fileID: 193126015}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 560, y: 90}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 55, y: 90}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &562846047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,8 +677,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rect: {fileID: 562846046}
-  count: 20
+  count: 6
   model_view: {fileID: 4580246924604044599, guid: 73dd03f977984fd47b5a9e275f4052db, type: 3}
+  cells_distance: 130
 --- !u!114 &562846048
 MonoBehaviour:
   m_ObjectHideFlags: 0
