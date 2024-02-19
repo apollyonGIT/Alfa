@@ -118,7 +118,6 @@ namespace Battle.Interactives
                 if (!mission.try_get_mgr("ArrivalMgr", out Arrivals.ArrivalMgr arrival_mgr)) return;
                 if (!mission.try_get_mgr("Res_CardMgr", out Res_Cards.Res_CardMgr res_card_mgr)) return;
 
-                res_card_mgr.reset();
                 arrival_mgr.unactive_cells();
                 bctx.foucs_pos = null;
             }

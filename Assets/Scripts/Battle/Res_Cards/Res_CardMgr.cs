@@ -10,7 +10,6 @@ namespace Battle.Res_Cards
 {
     public interface IRes_CardView : IModelView<Res_Card>
     {
-        void notify_on_click();
     }
 
 
@@ -22,7 +21,6 @@ namespace Battle.Res_Cards
         readonly int m_mgr_priority;
 
         LinkedList<Res_Card> m_cells = new();
-        LinkedList<Res_Card> m_selected_cells = new();
 
         public Vector2 node_pos => new(m_cells.Count, 0);
 
@@ -63,11 +61,7 @@ namespace Battle.Res_Cards
 
         void tick()
         {
-            var bctx = BattleContext.instance;
-            {
-                bctx.res_cards_count = m_cells.Count;
-                bctx.selected_res_cards_count = m_selected_cells.Count;
-            }
+            
         }
 
 
@@ -104,31 +98,7 @@ namespace Battle.Res_Cards
 
         public void play()
         {
-            foreach (var cell in m_selected_cells)
-            {
-                remove_cell(cell);
-            }
-            m_selected_cells.Clear();
-        }
-
-
-        public void reset()
-        {
-            var temp = m_selected_cells.ToList();
-            foreach (var cell in temp)
-            {
-                cell.select();
-            }
-            m_selected_cells.Clear();
-        }
-
-
-        public void change_selected_cells(Res_Card cell)
-        {
-            if (cell.is_selected)
-                m_selected_cells.AddLast(cell);
-            else
-                m_selected_cells.Remove(cell);
+            
         }
 
 

@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace Battle.Res_Cards
 {
-    public class Res_CardView : MonoBehaviour, IRes_CardView, IPointerClickHandler
+    public class Res_CardView : MonoBehaviour, IRes_CardView, IPointerEnterHandler, IPointerExitHandler
     {
         public Transform node;
 
@@ -26,21 +26,18 @@ namespace Battle.Res_Cards
         }
 
 
-        void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+        void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
         {
-            cell.select();
+            transform.localPosition = new(transform.localPosition.x, 20);
+            transform.localScale = Vector3.one * 1.3f;
         }
 
 
-        void IRes_CardView.notify_on_click()
+        void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
         {
-            var offset = cell.is_selected ? 25 : -25;
-            var pos = transform.localPosition;
-            pos.y += offset;
-            transform.localPosition = pos;
+            transform.localPosition = new(transform.localPosition.x, 0);
+            transform.localScale = Vector3.one;
         }
-
-
     }
 }
 

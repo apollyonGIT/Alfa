@@ -25,18 +25,6 @@ namespace Battle.Res_Cards
                 view.detach(this);
             }
         }
-
-
-        public void select()
-        {
-            is_selected = !is_selected;
-            mgr.change_selected_cells(this);
-
-            foreach (var view in views)
-            {
-                view.notify_on_click();
-            }
-        }
     }
 }
 
