@@ -7,8 +7,6 @@ namespace Battle
 {
     public class BattleSceneRoot : OprSceneRoot<BattleSceneRoot>
     {
-        public Transform selecting;
-
         WorldSceneRoot root;
         BattleContext bctx;
 
@@ -65,6 +63,12 @@ namespace Battle
         {
             Mission.instance.try_get_mgr("InteractiveMgr", out var interactive_mgr);
             interactive_mgr.GetType().GetMethod("do_on_click_null")?.Invoke(interactive_mgr, null);
+        }
+
+
+        public override void notify_on_scroll(float v)
+        {
+            Camera_Helper.change_camera_projection_size(v);
         }
     }
 }
