@@ -4,8 +4,10 @@ namespace Common
 {
     public class Camera_Helper<T> : Singleton<T> where T : Camera_Helper<T>, new()
     {
-        public virtual Camera camera { get; }
-        public virtual float default_size { get; } = 5f;
+        public Vector3 pos => camera.transform.localPosition;
+
+        protected virtual Camera camera { get; }
+        protected virtual float default_size { get; } = 5f;
 
         //==================================================================================================
 
