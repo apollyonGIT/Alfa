@@ -26,7 +26,7 @@ namespace Battle
         {
             var camera_helper = World_Camera_Helper.instance;
             {
-                camera_helper.goto_pos(m_ori_camera_pos);
+                camera_helper.move_to_pos(m_ori_camera_pos);
                 camera_helper.reset_size();
             }
         }

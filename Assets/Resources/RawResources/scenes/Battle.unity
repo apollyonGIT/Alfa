@@ -1408,6 +1408,26 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 804baba7-fd8e-492a-9c50-efa32d7ffc3f
     m_ActionName: Player/mouse_left_click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a6f8ad00-c3d4-4705-a496-ec433fd69b6c
+    m_ActionName: Player/ZoomIn[/Mouse/scroll/up]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0e2330bd-97a5-4eae-a11a-2f202baa9e5a
+    m_ActionName: Player/ZoomOut[/Mouse/scroll/down]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 99752199-aeac-41a4-8a98-f0633288a229
+    m_ActionName: Player/RightMouseDown[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 693b0de3-8ac3-45bf-9090-b8fc492a6aa7
+    m_ActionName: Player/RightMouseUp[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7a844e6a-c8a3-4114-afe7-c2dd8bffe822
+    m_ActionName: Player/RightMouseDrag[/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

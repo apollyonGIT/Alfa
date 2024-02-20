@@ -29,7 +29,7 @@ namespace Common
         }
 
 
-        public void goto_pos(Vector2 v)
+        public void move_to_pos(Vector2 v)
         {
             var pos = camera.transform.localPosition;
             pos = new Vector3(v.x, v.y, pos.z);

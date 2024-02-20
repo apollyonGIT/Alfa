@@ -6,7 +6,7 @@
             "id": "7b3230cf-4444-45e9-9e13-7b6d45027e69",
             "actions": [
                 {
-                    "name": "select",
+                    "name": "LeftMouseClick",
                     "type": "Button",
                     "id": "804baba7-fd8e-492a-9c50-efa32d7ffc3f",
                     "expectedControlType": "Button",
@@ -15,7 +15,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "zoom_in",
+                    "name": "ZoomIn",
                     "type": "Value",
                     "id": "a6f8ad00-c3d4-4705-a496-ec433fd69b6c",
                     "expectedControlType": "Axis",
@@ -24,10 +24,37 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "zoom_out",
+                    "name": "ZoomOut",
                     "type": "Button",
                     "id": "0e2330bd-97a5-4eae-a11a-2f202baa9e5a",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightMouseDown",
+                    "type": "Button",
+                    "id": "99752199-aeac-41a4-8a98-f0633288a229",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightMouseUp",
+                    "type": "Button",
+                    "id": "693b0de3-8ac3-45bf-9090-b8fc492a6aa7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightMouseDrag",
+                    "type": "PassThrough",
+                    "id": "7a844e6a-c8a3-4114-afe7-c2dd8bffe822",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -41,7 +68,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "select",
+                    "action": "LeftMouseClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -52,7 +79,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "zoom_in",
+                    "action": "ZoomIn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -63,7 +90,40 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "zoom_out",
+                    "action": "ZoomOut",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0fc3afe5-32f0-451e-ae29-1b937954001f",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightMouseDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1563a2f0-9f01-48be-b88e-30394a07ab80",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightMouseUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7e031eea-30bb-4a4a-a802-737df7b15eea",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightMouseDrag",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
