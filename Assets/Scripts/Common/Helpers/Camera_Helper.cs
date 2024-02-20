@@ -8,12 +8,17 @@ namespace Common
 
         protected virtual Camera camera { get; }
         protected virtual float default_size { get; } = 5f;
+        protected virtual float max_size { get; } = 10f;
+        protected virtual float min_size { get; } = 4f;
 
         //==================================================================================================
 
         public void change_size(float v)
         {
-            camera.orthographicSize += v;
+            var size = camera.orthographicSize + v;
+            size = Mathf.Clamp(size, min_size, max_size);
+
+            camera.orthographicSize = size;
         }
 
 

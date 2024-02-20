@@ -1,6 +1,5 @@
 ﻿using Common;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Battle
 {
@@ -34,13 +33,13 @@ namespace Battle
 
         public void OnZoomIn()
         {
-            Battle_Camera_Helper.instance.change_size(-1);
+            Battle_Camera_Helper.instance.change_size(-0.5f);
         }
 
 
         public void OnZoomOut()
         {
-            Battle_Camera_Helper.instance.change_size(1);
+            Battle_Camera_Helper.instance.change_size(0.5f);
         }
 
 
