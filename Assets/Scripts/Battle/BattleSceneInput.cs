@@ -7,8 +7,7 @@ namespace Battle
     {
         bool m_is_right_mouse_hold;
 
-        Vector3 m_ori_camera_pos;
-        Vector3 m_ori_mouse_pos;
+        Vector3 m_temp_pos;
 
         //==================================================================================================
 
@@ -47,8 +46,7 @@ namespace Battle
         {
             m_is_right_mouse_hold = true;
 
-            m_ori_camera_pos = BattleSceneRoot.instance.mainCamera.transform.localPosition;
-            m_ori_mouse_pos = (Vector3)Mouse_Helper.calc_mouse_pos(BattleSceneRoot.instance.uiCamera);
+            m_temp_pos = Battle_Camera_Helper.instance.pos + (Vector3)Mouse_Helper.calc_mouse_pos(BattleSceneRoot.instance.uiCamera);
         }
 
 
@@ -62,7 +60,8 @@ namespace Battle
         {
             if (!m_is_right_mouse_hold) return;
 
-            BattleSceneRoot.instance.mainCamera.transform.localPosition = m_ori_camera_pos + (m_ori_mouse_pos - (Vector3)Mouse_Helper.calc_mouse_pos(BattleSceneRoot.instance.uiCamera));
+            var pos = m_temp_pos - (Vector3)Mouse_Helper.calc_mouse_pos(BattleSceneRoot.instance.uiCamera);
+            Battle_Camera_Helper.instance.move_to_pos(pos);
         }
     }
 }
