@@ -11,6 +11,7 @@ namespace World
         protected override void on_init()
         {
             ctx = WorldContext._init();
+            WorldContext.attach();
 
             init_producers();
         }
@@ -18,6 +19,8 @@ namespace World
 
         protected override void on_fini()
         {
+            WorldContext.detach();
+
             fini_producers();
         }
 

@@ -5,12 +5,19 @@ namespace Common
     public class Camera_Helper<T> : Singleton<T> where T : Camera_Helper<T>, new()
     {
         public virtual Camera camera { get; }
+        public virtual float default_size { get; } = 5f;
 
         //==================================================================================================
 
         public void change_size(float v)
         {
             camera.orthographicSize += v;
+        }
+
+
+        public void reset_size()
+        {
+            camera.orthographicSize = default_size;
         }
 
 
