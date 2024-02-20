@@ -53,7 +53,7 @@ namespace Battle.Interactives
         }
 
 
-        public void do_on_click(Interactive cell)
+        public void notify_on_left_click(Interactive cell)
         {
             var pos = cell.pos;
 
@@ -101,7 +101,7 @@ namespace Battle.Interactives
         }
 
 
-        public void do_on_click_null()
+        public void notify_on_left_click_null()
         {
             reset();
         }

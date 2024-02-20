@@ -1,12 +1,13 @@
-﻿using Common.Opr_Module;
+﻿using Common;
 using Foundation;
-using UnityEngine;
 
 namespace Battle.Interactives
 {
-    public class InteractiveView : OprTargetView, IInteractiveView
+    public class InteractiveView : InputView, IInteractiveView
     {
         Interactive cell;
+        public override object iv_mgr => cell.mgr;
+        public override object iv_cell => cell;
 
         //==================================================================================================
 
@@ -21,12 +22,6 @@ namespace Battle.Interactives
         void IModelView<Interactive>.detach(Interactive cell)
         {
             this.cell = null;
-        }
-
-
-        public override void notify_on_click()
-        {
-            cell.mgr.do_on_click(cell);
         }
     }
 }

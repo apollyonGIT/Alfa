@@ -1,11 +1,11 @@
 ﻿using Common;
-using Common.Opr_Module;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using World;
 
 namespace Battle
 {
-    public class BattleSceneRoot : OprSceneRoot<BattleSceneRoot>
+    public class BattleSceneRoot : SceneRoot<BattleSceneRoot>
     {
         WorldSceneRoot root;
         BattleContext bctx;
@@ -45,30 +45,9 @@ namespace Battle
         }
 
 
-        public void move_main_camera(Vector2 move_to)
-        {
-            var pos = mainCamera.transform.localPosition;
-            pos = new Vector3(move_to.x, move_to.y, pos.z);
-            mainCamera.transform.localPosition = pos;
-        }
-
-
         public void btn_next()
         {
             Battle_Next_Turn_Helper.instance.next_turn(bctx);
-        }
-
-
-        public override void notify_on_click_null()
-        {
-            Mission.instance.try_get_mgr("InteractiveMgr", out var interactive_mgr);
-            interactive_mgr.GetType().GetMethod("do_on_click_null")?.Invoke(interactive_mgr, null);
-        }
-
-
-        public override void notify_on_scroll(float v)
-        {
-            Camera_Helper.change_camera_projection_size(v);
         }
     }
 }

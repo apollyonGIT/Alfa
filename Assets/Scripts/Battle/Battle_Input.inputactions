@@ -1,0 +1,74 @@
+{
+    "name": "Battle_Input",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "7b3230cf-4444-45e9-9e13-7b6d45027e69",
+            "actions": [
+                {
+                    "name": "select",
+                    "type": "Button",
+                    "id": "804baba7-fd8e-492a-9c50-efa32d7ffc3f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "zoom_in",
+                    "type": "Value",
+                    "id": "a6f8ad00-c3d4-4705-a496-ec433fd69b6c",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "zoom_out",
+                    "type": "Button",
+                    "id": "0e2330bd-97a5-4eae-a11a-2f202baa9e5a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "260374cb-adca-4978-a846-c2c2797594b1",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3424d31a-8499-466e-b4da-ababd1ccac5e",
+                    "path": "<Mouse>/scroll/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "zoom_in",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e657843e-c11e-4127-9111-a880696c77d3",
+                    "path": "<Mouse>/scroll/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "zoom_out",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
