@@ -31,10 +31,10 @@ namespace Common
         /// <summary>
         /// 计算鼠标位置
         /// </summary>
-        public static Vector2 calc_mouse_pos(Camera camera)
+        public static void calc_mouse_pos(Camera camera, out Vector3 ret)
         {
-            var raw = Mouse.current.position.ReadValue();
-            return camera.ScreenToWorldPoint(raw);
+            ret = camera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            ret.z = 0;
         }
     }
 }

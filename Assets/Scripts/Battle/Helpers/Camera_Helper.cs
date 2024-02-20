@@ -7,17 +7,13 @@ namespace Battle
 
         //==================================================================================================
 
-        public static void change_camera_projection_size(float v)
+        public static void change_size(float v)
         {
-            var root = BattleSceneRoot.instance;
-            {
-                root.mainCamera.orthographicSize += v;
-                root.uiCamera.orthographicSize += v;
-            }
+            BattleSceneRoot.instance.mainCamera.orthographicSize += v;
         }
 
 
-        public static void change_camera_pos(Vector2 v)
+        public static void add_pos(Vector2 v)
         {
             var mainCamera = BattleSceneRoot.instance.mainCamera;
             {
@@ -28,7 +24,7 @@ namespace Battle
         }
 
 
-        public static void move_camera_to_pos(Vector2 v)
+        public static void goto_pos(Vector2 v)
         {
             var mainCamera = BattleSceneRoot.instance.mainCamera;
             {

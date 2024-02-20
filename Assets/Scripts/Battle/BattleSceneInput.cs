@@ -1,6 +1,5 @@
 ﻿using Common;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Battle
 {
@@ -8,10 +7,7 @@ namespace Battle
     {
         public void OnSelect()
         {
-            var root = BattleSceneRoot.instance;
-            var pos = root.uiCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            pos += root.mainCamera.transform.position;
-            pos.z = 0;
+            Mouse_Helper.calc_mouse_pos(BattleSceneRoot.instance.mainCamera, out var pos);
 
             var hit = Physics2D.Raycast(pos, Vector2.zero).transform;
             if (hit == null)
@@ -30,13 +26,13 @@ namespace Battle
 
         public void OnZoom_in()
         {
-            Camera_Helper.change_camera_projection_size(-1);
+            Camera_Helper.change_size(-1);
         }
 
 
         public void OnZoom_out()
         {
-            Camera_Helper.change_camera_projection_size(1);
+            Camera_Helper.change_size(1);
         }
     }
 }
