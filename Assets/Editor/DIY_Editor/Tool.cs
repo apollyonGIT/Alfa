@@ -32,7 +32,7 @@ namespace Editor.DIY_Editor
 
             var ev = Event.current;
             if (ev.type != EventType.MouseDown && ev.type != EventType.MouseDrag) return;
-            if (!Common.EX_Utility.try_get_mouse_point(ev, root, out var point)) return;
+            if (!Common.Mouse_Helper.try_get_mouse_point(ev, root, out var point)) return;
 
             var args = new object[] { (Vector2)point };
             if (ev.button == 0)
