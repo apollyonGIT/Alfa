@@ -26,13 +26,13 @@ namespace Battle
 
         public void OnZoom_in()
         {
-            Camera_Helper.change_size(-1);
+            Camera_Helper.instance.change_size(-1);
         }
 
 
         public void OnZoom_out()
         {
-            Camera_Helper.change_size(1);
+            Camera_Helper.instance.change_size(1);
         }
     }
 }

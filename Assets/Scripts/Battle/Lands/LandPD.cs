@@ -30,7 +30,7 @@ namespace Battle.Lands
             }
 
             //调整镜头，使其居中
-            Camera_Helper.goto_pos(new(count_x / 2, count_y / 2));
+            Camera_Helper.instance.goto_pos(new(count_x / 2, count_y / 2));
         }
 
 
