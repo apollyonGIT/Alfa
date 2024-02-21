@@ -4,27 +4,27 @@ using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 using World;
 
-namespace Battle.Res_Cards
+namespace Battle.Talisman_Skills
 {
-    public class Res_CardView : MonoBehaviour, IRes_CardView, IPointerEnterHandler, IPointerExitHandler
+    public class Talisman_SkillView : MonoBehaviour, ITalisman_SkillView, IPointerEnterHandler, IPointerExitHandler
     {
         public Transform node;
 
         [HideInInspector]
-        public Res_CardPD pd;
-        Res_Card cell;
+        public Talisman_SkillPD pd;
+        Talisman_Skill cell;
 
         int m_index;
 
         //==================================================================================================
 
-        void IModelView<Res_Card>.attach(Res_Card cell)
+        void IModelView<Talisman_Skill>.attach(Talisman_Skill cell)
         {
             this.cell = cell;
         }
 
 
-        void IModelView<Res_Card>.detach(Res_Card cell)
+        void IModelView<Talisman_Skill>.detach(Talisman_Skill cell)
         {
             this.cell = null;
 
@@ -50,7 +50,7 @@ namespace Battle.Res_Cards
             transform.localPosition = new(transform.localPosition.x, 0);
             transform.localScale = Vector3.one;
 
-            transform.SetParent(pd.res_area);
+            transform.SetParent(pd.transform);
 
             transform.SetSiblingIndex(m_index);
             pd.standing.gameObject.SetActive(false);

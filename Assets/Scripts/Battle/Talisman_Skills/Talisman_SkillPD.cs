@@ -2,23 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Battle.Res_Cards
+namespace Battle.Talisman_Skills
 {
-    public class Res_CardPD : Producer
+    public class Talisman_SkillPD : Producer
     {
         public RectTransform rect;
 
         public int count = 6;
-        public Res_CardView model_view;
+        public Talisman_SkillView model_view;
 
         public override IMgr imgr => mgr;
-        Res_CardMgr mgr;
+        Talisman_SkillMgr mgr;
 
         public int cells_distance = 130;
         public float selected_scale_offset = 1.3f;
         public float selected_height_offset = 30f;
 
-        public Transform res_area;
         public Transform selecting_area;
         public Transform standing;
 
@@ -26,7 +25,7 @@ namespace Battle.Res_Cards
 
         public override void init(int priority)
         {
-            mgr = new("Res_CardMgr", priority);
+            mgr = new("Talisman_SkillMgr", priority);
 
             mgr.add_cells_ac = add_cells;
             mgr.add_cells();
@@ -47,7 +46,7 @@ namespace Battle.Res_Cards
         }
 
 
-        IEnumerable<Res_Card> cells(Res_CardMgr mgr)
+        IEnumerable<Talisman_Skill> cells(Talisman_SkillMgr mgr)
         {
             for (int i = 0; i < count; i++)
             {
@@ -73,7 +72,7 @@ namespace Battle.Res_Cards
         {
             if (mgr == null) return;
 
-            rect.sizeDelta = mgr.node_pos * cells_distance;
+            rect.sizeDelta = Vector2.right * count * cells_distance;
         }
     }
 }

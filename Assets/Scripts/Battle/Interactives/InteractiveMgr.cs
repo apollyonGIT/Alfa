@@ -62,7 +62,7 @@ namespace Battle.Interactives
             {
                 if (!mission.try_get_mgr("PlayerMgr", out Players.PlayerMgr player_mgr)) return;
                 if (!mission.try_get_mgr("ArrivalMgr", out Arrivals.ArrivalMgr arrival_mgr)) return;
-                if (!mission.try_get_mgr("Res_CardMgr", out Res_Cards.Res_CardMgr res_card_mgr)) return;
+                if (!mission.try_get_mgr("Talisman_SkillMgr", out Talisman_Skills.Talisman_SkillMgr talisman_skill_mgr)) return;
                 if (!mission.try_get_mgr("EnemyMgr", out Enemys.EnemyMgr enemy_mgr)) return;
 
                 bool is_player = (player_mgr as IMgr).try_get_cell(out _, pos);
@@ -89,7 +89,7 @@ namespace Battle.Interactives
                     else
                         player_mgr.move_to(pos);
 
-                    res_card_mgr.play();
+                    talisman_skill_mgr.play();
 
                     reset();
                     return;
@@ -116,7 +116,6 @@ namespace Battle.Interactives
             var mission = Mission.instance;
             {
                 if (!mission.try_get_mgr("ArrivalMgr", out Arrivals.ArrivalMgr arrival_mgr)) return;
-                if (!mission.try_get_mgr("Res_CardMgr", out Res_Cards.Res_CardMgr res_card_mgr)) return;
 
                 arrival_mgr.unactive_cells();
                 bctx.foucs_pos = null;

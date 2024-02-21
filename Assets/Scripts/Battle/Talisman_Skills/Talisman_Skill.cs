@@ -1,16 +1,16 @@
 ﻿using Foundation;
 
-namespace Battle.Res_Cards
+namespace Battle.Talisman_Skills
 {
-    public class Res_Card : Model<Res_Card, IRes_CardView>
+    public class Talisman_Skill : Model<Talisman_Skill, ITalisman_SkillView>
     {
         public bool is_selected;
 
-        public Res_CardMgr mgr;
+        public Talisman_SkillMgr mgr;
 
         //==================================================================================================
 
-        public Res_Card(Res_CardMgr mgr,  params object[] args)
+        public Talisman_Skill(Talisman_SkillMgr mgr,  params object[] args)
         {
             this.mgr = mgr;
         }

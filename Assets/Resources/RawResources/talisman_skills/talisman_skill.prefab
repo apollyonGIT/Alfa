@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 4520815548220835373}
   - component: {fileID: 4580246924604044599}
   m_Layer: 5
-  m_Name: res_card
+  m_Name: talisman_skill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

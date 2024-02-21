@@ -6,29 +6,27 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Battle.Res_Cards
+namespace Battle.Talisman_Skills
 {
-    public interface IRes_CardView : IModelView<Res_Card>
+    public interface ITalisman_SkillView : IModelView<Talisman_Skill>
     {
     }
 
 
-    public class Res_CardMgr : IMgr
+    public class Talisman_SkillMgr : IMgr
     {
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
         int IMgr.priority => m_mgr_priority;
         readonly int m_mgr_priority;
 
-        LinkedList<Res_Card> m_cells = new();
-
-        public Vector2 node_pos => new(m_cells.Count, 0);
+        LinkedList<Talisman_Skill> m_cells = new();
 
         public Action add_cells_ac;
 
         //==================================================================================================
 
-        public Res_CardMgr(string name, int priority, params object[] args)
+        public Talisman_SkillMgr(string name, int priority, params object[] args)
         {
             m_mgr_name = name;
             m_mgr_priority = priority;
@@ -71,13 +69,13 @@ namespace Battle.Res_Cards
         }
 
 
-        public void add_cell(Res_Card cell)
+        public void add_cell(Talisman_Skill cell)
         {
             m_cells.AddLast(cell);
         }
 
 
-        public void remove_cell(Res_Card cell)
+        public void remove_cell(Talisman_Skill cell)
         {
             m_cells.Remove(cell);
 
