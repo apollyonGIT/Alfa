@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using System.Linq;
 using UnityEngine;
 
 namespace Common
@@ -18,9 +19,10 @@ namespace Common
         {
             if (producers == null) return;
 
-            for (int i = 0; i < producers.Length; i++)
+            int i = 0;
+            foreach (var t in producers.Where(t=> t != null))
             {
-                producers[i].init(i);
+                t.init(i++);
             }
         }
 
@@ -29,7 +31,7 @@ namespace Common
         {
             if (producers == null) return;
 
-            foreach (var t in producers)
+            foreach (var t in producers.Where(t => t != null))
             {
                 t.fini();
             }
@@ -40,7 +42,7 @@ namespace Common
         {
             if (producers == null) return;
 
-            foreach (var t in producers)
+            foreach (var t in producers.Where(t => t != null))
             {
                 t.call();
             }
