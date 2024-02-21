@@ -37,7 +37,7 @@ namespace Battle.Players
 
             Player_AC.load_ac(this);
 
-            var can_move = (bool)Table_Utility.do_expr(_desc.f_move_condition, ac);
+            //Table_Utility.do_expr(_desc.f_move_condition, ac);
         }
 
 
