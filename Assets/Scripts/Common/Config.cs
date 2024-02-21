@@ -38,40 +38,35 @@ namespace Common
         public const int PHYSICS_TICKS_PER_SECOND = 120;
         public const float PHYSICS_TICK_DELTA_TIME = 1f / PHYSICS_TICKS_PER_SECOND;
 
-        //类型
-        public static Type type_string = Type.GetType("System.String");
-        public static Type type_float = Type.GetType("System.Single");
-        public static Type type_int32 = Type.GetType("System.Int32");
-
         #endregion
 
 
         #region internal_setting
         //tick优先级
         public const int EnemyMgr_Priority = 0;
-        public const int HandCardMgr_Priority = 1;
 
         //tick管理类
         public const string EnemyMgr_Name = "EnemyMgr_Name";
-        public const string HandCardMgr_Name = "HandCardMgr_Name";
 
         //普通管理类
-        public const string SlotMgr_Player_Front_Name = "p_front_slot";
-        public const string SlotMgr_Player_Back_Name = "p_back_slot";
-        public const string SlotMgr_Enemy_Front_Name = "e_front_slot";
-        public const string SlotMgr_Enemy_Back_Name = "e_back_slot";
 
         #endregion
 
 
         #region outter
+        [Header("程序集相关")]
         public string battle_assembly;
         public string battle_context_path;
+
+        [Header("战斗资源")]
+        public int reiki = 8;
+
         #endregion
 
 
         #region common_ds_key
         public const string land_area = "land_area"; 
+
         #endregion
     }
 }
