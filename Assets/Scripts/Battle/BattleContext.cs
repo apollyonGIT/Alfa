@@ -6,12 +6,14 @@ namespace Battle
 {
     public class BattleContext : Singleton<BattleContext>
     {
-        static Vector2 m_ori_camera_pos;
-
         #region outter
         public VID? foucs_pos = null; //焦点位置
 
+        public int reiki = Config.current.reiki;
+        public EN_reiki_type reiki_type = EN_reiki_type.阳;
         #endregion
+
+        static Vector2 m_ori_camera_pos;
 
         //==================================================================================================
 

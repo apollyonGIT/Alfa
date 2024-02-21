@@ -1,12 +1,10 @@
 ﻿using Foundation;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
-using World;
 
 namespace Battle.Talisman_Skills
 {
-    public class Talisman_SkillView : MonoBehaviour, ITalisman_SkillView, IPointerEnterHandler, IPointerExitHandler
+    public class Talisman_SkillView : MonoBehaviour, ITalisman_SkillView, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
         public Transform node;
 
@@ -47,14 +45,36 @@ namespace Battle.Talisman_Skills
 
         void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
         {
-            transform.localPosition = new(transform.localPosition.x, 0);
-            transform.localScale = Vector3.one;
+            if (eventData.button != PointerEventData.InputButton.Left)
+            {
+                transform.localPosition = new(transform.localPosition.x, 0);
+                transform.localScale = Vector3.one;
+            }
 
             transform.SetParent(pd.transform);
 
             transform.SetSiblingIndex(m_index);
             pd.standing.gameObject.SetActive(false);
             pd.standing.SetAsLastSibling();
+        }
+
+
+        void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
+        {
+            if (eventData.button != PointerEventData.InputButton.Left) return;
+
+            Cursor.SetCursor(pd.cursor, Vector2.zero, CursorMode.Auto);
+        }
+
+
+        void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
+        {
+            if (eventData.button != PointerEventData.InputButton.Left) return;
+
+            transform.localPosition = new(transform.localPosition.x, 0);
+            transform.localScale = Vector3.one;
+
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }
     }
 }

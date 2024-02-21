@@ -1,18 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace Battle
+﻿namespace Battle
 {
-	public enum Battle_Turn_Type
+	public enum EN_reiki_type
 	{
-		attack_init,
-		attack,
-		attack_fini,
-
-		defense_init,
-		defense,
-		defense_fini
-	}
+		阴,
+		阳,
+		混元
+    }
 }
 

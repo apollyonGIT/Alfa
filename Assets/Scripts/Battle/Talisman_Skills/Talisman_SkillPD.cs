@@ -1,6 +1,7 @@
 ﻿using Common;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Battle.Talisman_Skills
 {
@@ -20,6 +21,8 @@ namespace Battle.Talisman_Skills
 
         public Transform selecting_area;
         public Transform standing;
+
+        public Texture2D cursor;
 
         //==================================================================================================
 
