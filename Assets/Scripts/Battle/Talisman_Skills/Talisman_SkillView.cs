@@ -13,7 +13,6 @@ namespace Battle.Talisman_Skills
         Talisman_Skill cell;
 
         int m_index;
-        bool m_is_dragging;
 
         //==================================================================================================
 
@@ -33,6 +32,8 @@ namespace Battle.Talisman_Skills
 
         void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
         {
+            if (cell.mgr.is_casting) return;
+
             transform.localPosition = new(transform.localPosition.x, pd.selected_height_offset);
             transform.localScale = Vector3.one * pd.selected_scale_offset;
 
@@ -46,7 +47,8 @@ namespace Battle.Talisman_Skills
 
         void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
         {
-            if (m_is_dragging) return;
+            if (cell.mgr.is_casting) return;
+
             reset();
         }
 
@@ -56,7 +58,7 @@ namespace Battle.Talisman_Skills
             if (eventData.button != PointerEventData.InputButton.Left) return;
 
             Cursor.SetCursor(pd.cursor, Vector2.zero, CursorMode.Auto);
-            m_is_dragging = true;
+            cell.mgr.is_casting = true;
         }
 
 
@@ -66,7 +68,7 @@ namespace Battle.Talisman_Skills
 
             reset();
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-            m_is_dragging = false;
+            cell.mgr.is_casting = false;
         }
 
 

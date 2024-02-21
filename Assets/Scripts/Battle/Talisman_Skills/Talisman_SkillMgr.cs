@@ -23,6 +23,7 @@ namespace Battle.Talisman_Skills
         LinkedList<Talisman_Skill> m_cells = new();
 
         public Action add_cells_ac;
+        public bool is_casting;
 
         //==================================================================================================
 
