@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 07f8612d5a0fa0a4db2f1684f1d64cf8
+guid: 52b890859f1bc07458f42f86581597df
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -12,6 +12,15 @@ ScriptedImporter:
   - sheet_name: element
     exports:
     - name: element
+      has_mask: 0
+      mask: 0
+      generate_asset: 1
+      generate_code: 1
+      code_lang: 0
+      code_path: 
+  - sheet_name: trigram
+    exports:
+    - name: trigram
       has_mask: 0
       mask: 0
       generate_asset: 1

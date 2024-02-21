@@ -20,6 +20,21 @@ namespace World
         }
 
 
+        Trigram m_trigram;
+        public Trigram trigram
+        {
+            get
+            {
+                if (m_trigram == null)
+                {
+                    EX_Utility.try_load_table("trigram", out m_trigram);
+                }
+
+                return m_trigram;
+            }
+        }
+
+
         Monster m_monster;
         public Monster monster
         {

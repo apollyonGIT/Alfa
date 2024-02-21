@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 726ba47a839c6374b95b41bceffd5343, type: 3}
-  m_Name: element
+  m_Name: trigram
   m_EditorClassIdentifier: 
-  asset: {fileID: -2911402179533695063, guid: 52b890859f1bc07458f42f86581597df, type: 3}
+  asset: {fileID: 7878678044360422833, guid: 52b890859f1bc07458f42f86581597df, type: 3}
