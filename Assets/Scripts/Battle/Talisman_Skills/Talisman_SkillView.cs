@@ -13,6 +13,7 @@ namespace Battle.Talisman_Skills
         Talisman_Skill cell;
 
         int m_index;
+        bool m_is_dragging;
 
         //==================================================================================================
 
@@ -45,17 +46,8 @@ namespace Battle.Talisman_Skills
 
         void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
         {
-            if (eventData.button != PointerEventData.InputButton.Left)
-            {
-                transform.localPosition = new(transform.localPosition.x, 0);
-                transform.localScale = Vector3.one;
-            }
-
-            transform.SetParent(pd.transform);
-
-            transform.SetSiblingIndex(m_index);
-            pd.standing.gameObject.SetActive(false);
-            pd.standing.SetAsLastSibling();
+            if (m_is_dragging) return;
+            reset();
         }
 
 
@@ -64,6 +56,7 @@ namespace Battle.Talisman_Skills
             if (eventData.button != PointerEventData.InputButton.Left) return;
 
             Cursor.SetCursor(pd.cursor, Vector2.zero, CursorMode.Auto);
+            m_is_dragging = true;
         }
 
 
@@ -71,10 +64,22 @@ namespace Battle.Talisman_Skills
         {
             if (eventData.button != PointerEventData.InputButton.Left) return;
 
+            reset();
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            m_is_dragging = false;
+        }
+
+
+        void @reset()
+        {
             transform.localPosition = new(transform.localPosition.x, 0);
             transform.localScale = Vector3.one;
 
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            transform.SetParent(pd.transform);
+
+            transform.SetSiblingIndex(m_index);
+            pd.standing.gameObject.SetActive(false);
+            pd.standing.SetAsLastSibling();
         }
     }
 }
