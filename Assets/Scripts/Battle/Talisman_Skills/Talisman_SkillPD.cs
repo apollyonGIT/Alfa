@@ -14,7 +14,6 @@ namespace Battle.Talisman_Skills
         public override IMgr imgr => mgr;
         Talisman_SkillMgr mgr;
 
-        public int cells_distance = 130;
         public float selected_scale_offset = 1.3f;
         public float selected_height_offset = 30f;
 
@@ -57,14 +56,6 @@ namespace Battle.Talisman_Skills
             {
                 yield return new(mgr);
             }
-        }
-
-
-        private void Update()
-        {
-            if (mgr == null) return;
-
-            rect.sizeDelta = Vector2.right * count * cells_distance;
         }
     }
 }
