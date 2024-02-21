@@ -35,6 +35,9 @@ namespace Battle.Res_Cards
 
         public override void call()
         {
+            //规则：重新抽牌至上限
+            mgr.remove_cells();
+            mgr.add_cells();
         }
 
 

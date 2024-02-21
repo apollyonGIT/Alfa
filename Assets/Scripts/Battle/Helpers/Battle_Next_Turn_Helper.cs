@@ -4,7 +4,7 @@ namespace Battle
 {
     public class Battle_Next_Turn_Helper : Singleton<Battle_Next_Turn_Helper>
     {
-        public void next_turn(BattleContext ctx)
+        public void next_turn(BattleSceneRoot root)
         {
             var mission = Mission.instance;
             {
@@ -18,6 +18,9 @@ namespace Battle
                 res_card_mgr.remove_cells();
                 res_card_mgr.add_cells();
             }
+
+
+
         }
     }
 }

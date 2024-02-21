@@ -28,6 +28,8 @@ namespace Battle.Enemys
 
         public override void call()
         {
+            //规则：怪物向下移动一格
+            mgr.be_call();
         }
 
 

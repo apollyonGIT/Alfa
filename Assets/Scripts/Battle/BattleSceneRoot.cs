@@ -1,6 +1,4 @@
 ﻿using Common;
-using UnityEngine;
-using UnityEngine.InputSystem;
 using World;
 
 namespace Battle
@@ -8,7 +6,6 @@ namespace Battle
     public class BattleSceneRoot : SceneRoot<BattleSceneRoot>
     {
         WorldSceneRoot root;
-        BattleContext bctx;
 
         //==================================================================================================
 
@@ -20,10 +17,6 @@ namespace Battle
             uiRoot.worldCamera = uiCamera;
 
             init_producers();
-
-            base.on_init();
-
-            bctx = BattleContext.instance;
         }
 
 
@@ -47,7 +40,7 @@ namespace Battle
 
         public void btn_next()
         {
-            Battle_Next_Turn_Helper.instance.next_turn(bctx);
+            call_producers();
         }
     }
 }
