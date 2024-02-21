@@ -22,7 +22,6 @@ namespace Battle.Talisman_Skills
 
         LinkedList<Talisman_Skill> m_cells = new();
 
-        public Action add_cells_ac;
         public bool is_casting;
 
         //==================================================================================================
@@ -98,12 +97,6 @@ namespace Battle.Talisman_Skills
         public void play()
         {
             
-        }
-
-
-        public void add_cells()
-        {
-            add_cells_ac?.Invoke();
         }
     }
 }

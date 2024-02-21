@@ -1,7 +1,6 @@
 ﻿using Common;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Battle.Talisman_Skills
 {
@@ -30,16 +29,19 @@ namespace Battle.Talisman_Skills
         {
             mgr = new("Talisman_SkillMgr", priority);
 
-            mgr.add_cells_ac = add_cells;
-            mgr.add_cells();
+            foreach (var cell in cells(mgr))
+            {
+                mgr.add_cell(cell);
+
+                var view = Instantiate(model_view, transform);
+                cell.add_view(view);
+                view.pd = this;
+            }
         }
 
 
         public override void call()
         {
-            //规则：重新抽牌至上限
-            mgr.remove_cells();
-            mgr.add_cells();
         }
 
 
@@ -54,19 +56,6 @@ namespace Battle.Talisman_Skills
             for (int i = 0; i < count; i++)
             {
                 yield return new(mgr);
-            }
-        }
-
-
-        public void add_cells()
-        {
-            foreach (var cell in cells(mgr))
-            {
-                mgr.add_cell(cell);
-
-                var view = Instantiate(model_view, transform);
-                cell.add_view(view);
-                view.pd = this;
             }
         }
 
