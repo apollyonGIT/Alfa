@@ -314,6 +314,20 @@ namespace Common
         {
             return Enum.IsDefined(typeof(ENUM), e);
         }
+
+
+        public static void raycast(Vector2 pos, Action hit_null_ac ,Action<InputView> hit_success_ac)
+        {
+            var hit = Physics2D.Raycast(pos, Vector2.zero).transform;
+            if (hit == null)
+            {
+                hit_null_ac?.Invoke();
+                return;
+            }
+                
+            if (!hit.TryGetComponent(out InputView view)) return;
+            hit_success_ac?.Invoke(view);
+        }
         #endregion
     }
 }
