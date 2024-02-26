@@ -25,7 +25,8 @@ namespace Battle
                 {
                     var mgr = view.vmgr;
                     mgr.GetType().GetMethod("notify_on_left_click")?.Invoke(mgr, new object[] { view.vcell });
-                });
+                }
+            );
         }
 
 
