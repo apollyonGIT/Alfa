@@ -1,11 +1,14 @@
-﻿using Foundation;
-using UnityEngine;
+﻿using Common;
+using Foundation;
 
 namespace Battle.Enemys
 {
-    public class EnemyView : MonoBehaviour, IEnemyView
+    public class EnemyView : View, IEnemyView
     {
         Enemy cell;
+
+        public override object vmgr => cell.mgr;
+        public override object vcell => cell;
 
         //==================================================================================================
 

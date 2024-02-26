@@ -1,11 +1,14 @@
-﻿using Foundation;
-using UnityEngine;
+﻿using Common;
+using Foundation;
 
 namespace Battle.Players
 {
-    public class PlayerView : MonoBehaviour, IPlayerView
+    public class PlayerView : View, IPlayerView
     {
         Player cell;
+
+        public override object vmgr => cell.mgr;
+        public override object vcell => cell;
 
         //==================================================================================================
 

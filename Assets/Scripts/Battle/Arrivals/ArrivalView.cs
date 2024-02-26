@@ -1,13 +1,17 @@
-﻿using Foundation;
+﻿using Common;
+using Foundation;
 using UnityEngine;
 
 namespace Battle.Arrivals
 {
-    public class ArrivalView : MonoBehaviour, IArrivalView
+    public class ArrivalView : View, IArrivalView
     {
         public SpriteRenderer area;
 
         Arrival cell;
+
+        public override object vmgr => cell.mgr;
+        public override object vcell => cell;
 
         //==================================================================================================
 

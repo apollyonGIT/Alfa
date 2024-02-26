@@ -316,7 +316,7 @@ namespace Common
         }
 
 
-        public static void raycast(Vector2 pos, Action hit_null_ac ,Action<InputView> hit_success_ac)
+        public static void raycast(Vector2 pos, Action hit_null_ac ,Action<View> hit_success_ac)
         {
             var hit = Physics2D.Raycast(pos, Vector2.zero).transform;
             if (hit == null)
@@ -325,7 +325,7 @@ namespace Common
                 return;
             }
                 
-            if (!hit.TryGetComponent(out InputView view)) return;
+            if (!hit.TryGetComponent(out View view)) return;
             hit_success_ac?.Invoke(view);
         }
         #endregion

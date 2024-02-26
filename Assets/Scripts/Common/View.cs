@@ -2,10 +2,10 @@
 
 namespace Common
 {
-    public abstract class InputView : MonoBehaviour
+    public abstract class View : MonoBehaviour
     {
-        public abstract object iv_mgr { get; }
-        public abstract object iv_cell { get; }
+        public abstract object vmgr { get; }
+        public abstract object vcell { get; }
 
         //==================================================================================================
     }

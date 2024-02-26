@@ -1,10 +1,11 @@
-﻿using Foundation;
+﻿using Common;
+using Foundation;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Battle.Talisman_Skills
 {
-    public class Talisman_SkillView : MonoBehaviour, ITalisman_SkillView, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
+    public class Talisman_SkillView : View, ITalisman_SkillView, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
         public Transform node;
 
@@ -13,6 +14,9 @@ namespace Battle.Talisman_Skills
         Talisman_Skill cell;
 
         int m_index;
+
+        public override object vmgr => cell.mgr;
+        public override object vcell => cell;
 
         //==================================================================================================
 

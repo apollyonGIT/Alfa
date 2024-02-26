@@ -1,11 +1,15 @@
 ﻿using Foundation;
 using UnityEngine;
+using Common;
 
 namespace #namespace#
 {
-    public class #name# : MonoBehaviour, #iview#
+    public class #name# : View, #iview#
     {
         #cell# cell;
+
+        public override object vmgr => cell.mgr;
+        public override object vcell => cell;
 
         //==================================================================================================
 

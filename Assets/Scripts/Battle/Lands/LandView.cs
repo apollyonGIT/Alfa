@@ -1,11 +1,14 @@
-﻿using Foundation;
-using UnityEngine;
+﻿using Common;
+using Foundation;
 
 namespace Battle.Lands
 {
-    public class LandView : MonoBehaviour, ILandView
+    public class LandView : View, ILandView
     {
         Land cell;
+
+        public override object vmgr => cell.mgr;
+        public override object vcell => cell;
 
         //==================================================================================================
 

@@ -3,11 +3,11 @@ using Foundation;
 
 namespace Battle.Interactives
 {
-    public class InteractiveView : InputView, IInteractiveView
+    public class InteractiveView : View, IInteractiveView
     {
         Interactive cell;
-        public override object iv_mgr => cell.mgr;
-        public override object iv_cell => cell;
+        public override object vmgr => cell.mgr;
+        public override object vcell => cell;
 
         //==================================================================================================
 
