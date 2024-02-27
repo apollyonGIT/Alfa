@@ -290,8 +290,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 209237435}
-  - {fileID: 562846046}
   - {fileID: 691965383}
+  - {fileID: 562846046}
   - {fileID: 828705667}
   - {fileID: 1565609548}
   - {fileID: 1341879679}
@@ -374,8 +374,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 209237435}
+  - component: {fileID: 209237436}
   m_Layer: 5
-  m_Name: trigram
+  m_Name: trigrams
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -398,9 +399,23 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 170, y: 100}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 238, y: 120}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &209237436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209237434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 976b4f01e5608c446b0a758309a92540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 70
+  model_view: {fileID: 351455689130791879, guid: 53ea7cab6a916ca4295fa0e000d5750c, type: 3}
 --- !u!1 &322141683
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,7 +711,7 @@ RectTransform:
   m_Children:
   - {fileID: 1294087023}
   m_Father: {fileID: 193126015}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -914,7 +929,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 193126015}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -1470,6 +1485,7 @@ MonoBehaviour:
   - {fileID: 322141685}
   - {fileID: 562846049}
   - {fileID: 691965384}
+  - {fileID: 209237436}
 --- !u!114 &2013995910
 MonoBehaviour:
   m_ObjectHideFlags: 0
