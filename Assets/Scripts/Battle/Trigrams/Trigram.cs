@@ -22,6 +22,8 @@ namespace Battle.Trigrams
             this.mgr = mgr;
 
             id = (int)args[0];
+            Battle_DB.instance.trigram.try_get((e_trigramType)id, out _desc);
+
             pos = (Vector2)args[1];
             dir = EX_Utility.quick_look_rotation_from_left((Vector2)args[2]);
         }

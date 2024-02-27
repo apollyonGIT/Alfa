@@ -1,5 +1,4 @@
 ﻿using Common;
-using Common.Table_Module;
 using Foundation;
 using UnityEngine;
 
@@ -30,7 +29,7 @@ namespace Battle.Players
             pos = (VID)args[0];
 
             var id = (string)args[1];
-            World.World_DB.instance.monster.try_get(id, out _desc);
+            Battle_DB.instance.monster.try_get(id, out _desc);
 
             EX_Utility.try_load_asset(_desc.f_arrival_asset_path, out Arrival_Asset asset);
             m_arrival_pos_array = asset.pos_array;

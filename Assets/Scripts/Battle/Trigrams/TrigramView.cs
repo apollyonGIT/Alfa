@@ -21,7 +21,7 @@ namespace Battle.Trigrams
 
             transform.localRotation = cell.dir;
             transform.localPosition = cell.pos;
-            desc.text = cell.id.ToString();
+            desc.text = cell._desc.f_name;
         }
 
 
