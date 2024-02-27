@@ -1,13 +1,14 @@
 ﻿using Common;
 using Foundation;
 using UnityEngine;
+using static AutoCode.Tables.Trigram;
 
 namespace Battle.Trigrams
 {
     public class Trigram : Model<Trigram, ITrigramView>
     {
         public int id;
-        
+        public Record _desc;
 
         public Vector2 pos;
         public Quaternion dir;

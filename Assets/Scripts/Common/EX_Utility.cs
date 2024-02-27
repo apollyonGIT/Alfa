@@ -227,12 +227,7 @@ namespace Common
         /// </summary>
         public static Vector2 convert_rad_to_dir(float rad)
         {
-            var dir =  new Vector2(1, MathF.Tan(rad)).normalized;
-
-            if (rad < 180 * Mathf.Deg2Rad && rad > -180 * Mathf.Deg2Rad)
-                return dir;
-            else
-                return new Vector2(-dir.x, -dir.y);
+            return new Vector2(MathF.Cos(rad), MathF.Sin(rad)).normalized;
         }
 
 

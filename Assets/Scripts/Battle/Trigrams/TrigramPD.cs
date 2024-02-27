@@ -1,4 +1,5 @@
 ﻿using Common;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,11 +44,14 @@ namespace Battle.Trigrams
         {
             for (int i = 0; i < 8; i++)
             {
-                var rad = 45 * i * Mathf.Deg2Rad;
+                var rad = -45 * i * Mathf.Deg2Rad;
                 var dir = EX_Utility.convert_rad_to_dir(rad);
                 var pos = dir * radius;
 
-                yield return new(mgr, i, pos, dir);
+                var id = i + 3;
+                id = id <= 8 ? id : id - 8;
+
+                yield return new(mgr, id, pos, dir);
             }
         }
     }

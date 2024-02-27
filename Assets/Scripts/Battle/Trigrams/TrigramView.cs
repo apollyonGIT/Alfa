@@ -19,8 +19,9 @@ namespace Battle.Trigrams
         {
             this.cell = cell;
 
-            transform.localPosition = cell.pos;
             transform.localRotation = cell.dir;
+            transform.localPosition = cell.pos;
+            desc.text = cell.id.ToString();
         }
 
 
