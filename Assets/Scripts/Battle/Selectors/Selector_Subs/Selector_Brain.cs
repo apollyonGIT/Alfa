@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace Battle.Selectors
 {
-    public class Selector_Brain : Selector
+    public class Selector_brain : Selector
     {
 
         //==================================================================================================
 
-        public Selector_Brain(SelectorMgr mgr, params object[] args) : base(mgr, args)
+        public Selector_brain(SelectorMgr mgr, params object[] args) : base(mgr, args)
         {
         }
     }

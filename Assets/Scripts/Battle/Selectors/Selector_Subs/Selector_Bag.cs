@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace Battle.Selectors
 {
-    public class Selector_Bag : Selector
+    public class Selector_bag : Selector
     {
 
         //==================================================================================================
 
-        public Selector_Bag(SelectorMgr mgr, params object[] args) : base(mgr, args)
+        public Selector_bag(SelectorMgr mgr, params object[] args) : base(mgr, args)
         {
         }
     }

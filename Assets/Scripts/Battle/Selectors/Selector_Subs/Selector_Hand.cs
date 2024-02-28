@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace Battle.Selectors
 {
-    public class Selector_Hand : Selector
+    public class Selector_hand : Selector
     {
 
         //==================================================================================================
 
-        public Selector_Hand(SelectorMgr mgr, params object[] args) : base(mgr, args)
+        public Selector_hand(SelectorMgr mgr, params object[] args) : base(mgr, args)
         {
         }
     }

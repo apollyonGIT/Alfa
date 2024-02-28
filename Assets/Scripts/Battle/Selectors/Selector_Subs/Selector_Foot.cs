@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace Battle.Selectors
 {
-    public class Selector_Foot : Selector
+    public class Selector_foot : Selector
     {
 
         //==================================================================================================
 
-        public Selector_Foot(SelectorMgr mgr, params object[] args) : base(mgr, args)
+        public Selector_foot(SelectorMgr mgr, params object[] args) : base(mgr, args)
         {
         }
     }
