@@ -12,6 +12,7 @@ namespace Battle.Trigrams
 
         public Vector2 pos;
         public Quaternion dir;
+        public int count;
 
         public TrigramMgr mgr;
 
@@ -26,6 +27,15 @@ namespace Battle.Trigrams
 
             pos = (Vector2)args[1];
             dir = EX_Utility.quick_look_rotation_from_left((Vector2)args[2]);
+        }
+
+
+        public void tick1()
+        {
+            foreach (var view in views)
+            {
+                view.notify_on_tick1();
+            }
         }
     }
 }

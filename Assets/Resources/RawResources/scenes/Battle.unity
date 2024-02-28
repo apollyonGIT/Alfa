@@ -414,6 +414,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976b4f01e5608c446b0a758309a92540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trigram_max_count: 3
+  trigram_asign_each_turn: 3
   radius: 70
   model_view: {fileID: 351455689130791879, guid: 53ea7cab6a916ca4295fa0e000d5750c, type: 3}
 --- !u!1 &322141683

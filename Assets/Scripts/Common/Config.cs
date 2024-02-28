@@ -59,7 +59,6 @@ namespace Common
         public string battle_context_path;
 
         [Header("战斗资源")]
-        public int reiki = 8;
 
         #endregion
 

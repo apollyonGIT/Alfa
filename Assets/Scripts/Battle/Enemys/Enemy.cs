@@ -32,12 +32,6 @@ namespace Battle.Enemys
         }
 
 
-        public void notify_on_call()
-        {
-            mgr.move(ref pos, new(0, -1));
-        }
-
-
         public void hurt(int dmg)
         {
             hp = EX_Utility.floor_int(0, hp - dmg);

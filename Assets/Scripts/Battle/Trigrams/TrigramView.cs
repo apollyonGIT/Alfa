@@ -21,13 +21,19 @@ namespace Battle.Trigrams
 
             transform.localRotation = cell.dir;
             transform.localPosition = cell.pos;
-            desc.text = cell._desc.f_name;
+            desc.text = $"{cell.count}";
         }
 
 
         void IModelView<Trigram>.detach(Trigram cell)
         {
             this.cell = null;
+        }
+
+
+        void ITrigramView.notify_on_tick1()
+        {
+            desc.text = $"{cell.count}";
         }
     }
 }

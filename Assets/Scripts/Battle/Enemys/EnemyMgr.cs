@@ -4,6 +4,7 @@ using Foundation;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 namespace Battle.Enemys
 {
@@ -122,15 +123,12 @@ namespace Battle.Enemys
         }
 
 
-        /// <summary>
-        /// 响应外部
-        /// </summary>
-        public void be_call()
+        public void move()
         {
             var temp = m_cells.ToList();
             foreach (var (_, cell) in temp)
             {
-                cell.notify_on_call();
+                move(ref cell.pos, new(0, -1));
             }
         }
     }
