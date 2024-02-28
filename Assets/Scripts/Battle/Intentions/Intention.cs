@@ -4,8 +4,8 @@ namespace Battle.Intentions
 {
     public class Intention : Model<Intention, IIntentionView>
     {
-        public bool is_active;
-        public bool is_opr_access;
+        public bool is_active = true;
+        public bool is_opr_access = true;
 
         public IntentionMgr mgr;
 
