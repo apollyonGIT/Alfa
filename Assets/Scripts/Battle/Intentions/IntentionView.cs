@@ -3,26 +3,26 @@ using Common;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Battle.Miracles
+namespace Battle.Intentions
 {
-    public class MiracleView : View, IMiracleView, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
+    public class IntentionView : View, IIntentionView, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
         [HideInInspector]
-        public MiraclePD pd;
-        Miracle cell;
+        public IntentionPD pd;
+        Intention cell;
 
         public override object vmgr => cell.mgr;
         public override object vcell => cell;
 
         //==================================================================================================
 
-        void IModelView<Miracle>.attach(Miracle cell)
+        void IModelView<Intention>.attach(Intention cell)
         {
             this.cell = cell;
         }
 
 
-        void IModelView<Miracle>.detach(Miracle cell)
+        void IModelView<Intention>.detach(Intention cell)
         {
             this.cell = null;
         }
@@ -30,6 +30,7 @@ namespace Battle.Miracles
 
         void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
         {
+            if (!cell.is_opr_access) return;
             if (cell.mgr.is_casting) return;
 
             transform.localScale = Vector3.one * pd.selected_scale_offset;
@@ -38,6 +39,7 @@ namespace Battle.Miracles
 
         void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
         {
+            if (!cell.is_opr_access) return;
             if (cell.mgr.is_casting) return;
 
             reset();
@@ -46,6 +48,7 @@ namespace Battle.Miracles
 
         void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
         {
+            if (!cell.is_opr_access) return;
             if (eventData.button != PointerEventData.InputButton.Left) return;
 
             Cursor.SetCursor(pd.cursor, Vector2.zero, CursorMode.Auto);
@@ -55,6 +58,7 @@ namespace Battle.Miracles
 
         void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
         {
+            if (!cell.is_opr_access) return;
             if (eventData.button != PointerEventData.InputButton.Left) return;
 
             reset();
@@ -66,6 +70,12 @@ namespace Battle.Miracles
         void @reset()
         {
             transform.localScale = Vector3.one;
+        }
+
+
+        void IIntentionView.notify_on_tick1()
+        {
+            gameObject.SetActive(cell.is_active);
         }
     }
 }

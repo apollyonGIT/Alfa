@@ -1,14 +1,14 @@
 ﻿using Common;
 using UnityEngine;
 
-namespace Battle.Miracles
+namespace Battle.Intentions
 {
-    public class MiraclePD : Producer
+    public class IntentionPD : Producer
     {
-        public MiracleView model_view;
+        public IntentionView model_view;
 
         public override IMgr imgr => mgr;
-        MiracleMgr mgr;
+        IntentionMgr mgr;
 
         public float selected_scale_offset = 1.3f;
         public float selected_height_offset = 30f;
@@ -19,9 +19,9 @@ namespace Battle.Miracles
 
         public override void init(int priority)
         {
-            mgr = new("MiracleMgr", priority);
+            mgr = new("IntentionMgr", priority);
 
-            Miracle cell = new(mgr);
+            Intention cell = new(mgr);
             mgr.add_cell(cell);
 
             var view = Instantiate(model_view, transform);

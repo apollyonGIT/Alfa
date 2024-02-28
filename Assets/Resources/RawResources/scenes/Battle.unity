@@ -912,7 +912,7 @@ GameObject:
   - component: {fileID: 691965383}
   - component: {fileID: 691965384}
   m_Layer: 5
-  m_Name: miracles
+  m_Name: intention
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -964,7 +964,7 @@ GameObject:
   m_Component:
   - component: {fileID: 828705667}
   m_Layer: 5
-  m_Name: selecting
+  m_Name: selecting_skill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1486,8 +1486,8 @@ MonoBehaviour:
   - {fileID: 931516634}
   - {fileID: 322141685}
   - {fileID: 209237436}
-  - {fileID: 691965384}
   - {fileID: 562846049}
+  - {fileID: 691965384}
 --- !u!114 &2013995910
 MonoBehaviour:
   m_ObjectHideFlags: 0

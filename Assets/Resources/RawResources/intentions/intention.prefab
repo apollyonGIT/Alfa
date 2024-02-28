@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 4520815548220835373}
   - component: {fileID: 1517615155439425337}
   m_Layer: 5
-  m_Name: miracle
+  m_Name: intention
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

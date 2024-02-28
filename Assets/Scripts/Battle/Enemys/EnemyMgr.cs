@@ -4,7 +4,6 @@ using Foundation;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 namespace Battle.Enemys
 {
