@@ -1,9 +1,10 @@
 ﻿using Foundation;
 using Common;
+using UnityEngine.EventSystems;
 
 namespace Battle.Selectors
 {
-    public class SelectorView : View, ISelectorView
+    public class SelectorView : View, ISelectorView, IPointerClickHandler
     {
         Selector cell;
 
@@ -26,6 +27,12 @@ namespace Battle.Selectors
 
         void ISelectorView.notify_on_tick1()
         {
+        }
+
+
+        void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+        {
+            cell.on_click();
         }
     }
 }

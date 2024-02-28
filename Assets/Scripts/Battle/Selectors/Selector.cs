@@ -30,6 +30,11 @@ namespace Battle.Selectors
                 view.notify_on_tick1();
             }
         }
+
+
+        public virtual void on_click()
+        { 
+        }
     }
 }
 

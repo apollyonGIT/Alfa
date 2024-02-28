@@ -1,7 +1,9 @@
 ﻿using Common;
 using Foundation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Battle.Selectors
 {
@@ -44,7 +46,10 @@ namespace Battle.Selectors
         {
             for (int i = 0; i < model_views.Length; i++)
             {
-                yield return new(mgr, model_views[i].name);
+                var name = model_views[i].name;
+                var type = Assembly.Load("Battle").GetType($"Battle.Selectors.Selector_{name}");
+
+                yield return (Selector)Activator.CreateInstance(type, new object[] { mgr, name });
             }
         }
     }
