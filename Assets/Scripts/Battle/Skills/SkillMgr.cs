@@ -3,27 +3,27 @@ using Common.Ticker_Module;
 using Foundation;
 using System.Collections.Generic;
 
-namespace Battle.Talisman_Skills
+namespace Battle.Skills
 {
-    public interface ITalisman_SkillView : IModelView<Talisman_Skill>
+    public interface ISkillView : IModelView<Skill>
     {
     }
 
 
-    public class Talisman_SkillMgr : IMgr
+    public class SkillMgr : IMgr
     {
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
         int IMgr.priority => m_mgr_priority;
         readonly int m_mgr_priority;
 
-        LinkedList<Talisman_Skill> m_cells = new();
+        LinkedList<Skill> m_cells = new();
 
         public bool is_casting;
 
         //==================================================================================================
 
-        public Talisman_SkillMgr(string name, int priority, params object[] args)
+        public SkillMgr(string name, int priority, params object[] args)
         {
             m_mgr_name = name;
             m_mgr_priority = priority;
@@ -66,7 +66,7 @@ namespace Battle.Talisman_Skills
         }
 
 
-        public void add_cell(Talisman_Skill cell)
+        public void add_cell(Skill cell)
         {
             m_cells.AddLast(cell);
         }

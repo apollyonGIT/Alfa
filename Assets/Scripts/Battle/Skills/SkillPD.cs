@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Battle.Talisman_Skills
+namespace Battle.Skills
 {
-    public class Talisman_SkillPD : Producer
+    public class SkillPD : Producer
     {
         public RectTransform rect;
 
         public int count = 6;
-        public Talisman_SkillView model_view;
+        public SkillView model_view;
 
         public override IMgr imgr => mgr;
-        Talisman_SkillMgr mgr;
+        SkillMgr mgr;
 
         public float selected_scale_offset = 1.3f;
         public float selected_height_offset = 30f;
@@ -26,7 +26,7 @@ namespace Battle.Talisman_Skills
 
         public override void init(int priority)
         {
-            mgr = new("Talisman_SkillMgr", priority);
+            mgr = new("SkillMgr", priority);
 
             foreach (var cell in cells(mgr))
             {
@@ -50,7 +50,7 @@ namespace Battle.Talisman_Skills
         }
 
 
-        IEnumerable<Talisman_Skill> cells(Talisman_SkillMgr mgr)
+        IEnumerable<Skill> cells(SkillMgr mgr)
         {
             for (int i = 0; i < count; i++)
             {

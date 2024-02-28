@@ -693,7 +693,7 @@ GameObject:
   - component: {fileID: 562846048}
   - component: {fileID: 562846049}
   m_Layer: 5
-  m_Name: talisman_skills
+  m_Name: skills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -3,13 +3,13 @@ using Foundation;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Battle.Talisman_Skills
+namespace Battle.Skills
 {
-    public class Talisman_SkillView : View, ITalisman_SkillView, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
+    public class SkillView : View, ISkillView, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
         [HideInInspector]
-        public Talisman_SkillPD pd;
-        Talisman_Skill cell;
+        public SkillPD pd;
+        Skill cell;
 
         int m_index;
 
@@ -18,13 +18,13 @@ namespace Battle.Talisman_Skills
 
         //==================================================================================================
 
-        void IModelView<Talisman_Skill>.attach(Talisman_Skill cell)
+        void IModelView<Skill>.attach(Skill cell)
         {
             this.cell = cell;
         }
 
 
-        void IModelView<Talisman_Skill>.detach(Talisman_Skill cell)
+        void IModelView<Skill>.detach(Skill cell)
         {
             this.cell = null;
         }
