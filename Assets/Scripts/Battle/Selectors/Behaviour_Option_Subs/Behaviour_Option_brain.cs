@@ -12,6 +12,12 @@ namespace Battle.Behaviour_Options
         public Behaviour_Option_brain(Behaviour_OptionMgr mgr, params object[] args) : base(mgr, args)
         {
         }
+
+
+        public override void on_click()
+        {
+            Debug.Log("brain");
+        }
     }
 }
 
