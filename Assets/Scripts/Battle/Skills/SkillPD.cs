@@ -54,7 +54,7 @@ namespace Battle.Skills
         {
             for (int i = 0; i < count; i++)
             {
-                yield return new(mgr);
+                yield return new(mgr, i);
             }
         }
     }

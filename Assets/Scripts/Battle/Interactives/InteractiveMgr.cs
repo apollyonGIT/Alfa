@@ -89,8 +89,6 @@ namespace Battle.Interactives
                     else
                         player_mgr.move_to(pos);
 
-                    skill_mgr.play();
-
                     reset();
                     return;
                 }

@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using Common;
+using Foundation;
 using static AutoCode.Tables.BehaviourOption;
 
 namespace Battle.Behaviour_Options
@@ -47,10 +48,13 @@ namespace Battle.Behaviour_Options
             {
                 view.notify_on_select();
             }
+
+            Mission.instance.try_get_mgr("SkillMgr", out var skill_mgr);
+            skill_mgr.GetType().GetMethod("reset")?.Invoke(skill_mgr, null);
         }
 
 
-        public void on_cancel()
+        public virtual void on_cancel()
         {
             foreach (var view in views)
             {

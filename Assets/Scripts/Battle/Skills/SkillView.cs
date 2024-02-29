@@ -1,5 +1,6 @@
 ﻿using Common;
 using Foundation;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,6 +8,8 @@ namespace Battle.Skills
 {
     public class SkillView : View, ISkillView, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
+        public TextMeshProUGUI content;
+
         [HideInInspector]
         public SkillPD pd;
         Skill cell;
@@ -82,6 +85,12 @@ namespace Battle.Skills
             transform.SetSiblingIndex(m_index);
             pd.standing.gameObject.SetActive(false);
             pd.standing.SetAsLastSibling();
+        }
+
+
+        void ISkillView.notify_on_tick1()
+        {
+            content.text = cell.content;
         }
     }
 }

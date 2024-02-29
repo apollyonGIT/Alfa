@@ -6,7 +6,8 @@ using System.Collections.Generic;
 namespace Battle.Skills
 {
     public interface ISkillView : IModelView<Skill>
-    {
+    { 
+        void notify_on_tick1();
     }
 
 
@@ -17,7 +18,7 @@ namespace Battle.Skills
         int IMgr.priority => m_mgr_priority;
         readonly int m_mgr_priority;
 
-        LinkedList<Skill> m_cells = new();
+        Dictionary<int, Skill> m_cells = new();
 
         public bool is_casting;
 
@@ -39,6 +40,7 @@ namespace Battle.Skills
             var ticker = Ticker.instance;
             {
                 ticker.remove_tick(m_mgr_name);
+                ticker.remove_tick1(m_mgr_name);
             }
         }
 
@@ -50,31 +52,50 @@ namespace Battle.Skills
             var ticker = Ticker.instance;
             {
                 ticker.add_tick(m_mgr_priority, m_mgr_name, tick);
+                ticker.add_tick(m_mgr_priority, m_mgr_name, tick1);
             }
         }
 
 
         void tick()
         {
-            
+            foreach (var (_, cell) in m_cells)
+            {
+                cell.tick();
+            }
+        }
+
+
+        void tick1()
+        {
+            foreach (var (_, cell) in m_cells)
+            {
+                cell.tick1();
+            }
         }
 
 
         bool IMgr.try_get_cell(out object cell, params object[] args)
         {
-            throw new System.NotImplementedException();
+            var id = (int)args[0];
+            var ret = m_cells.TryGetValue(id, out var _cell);
+            cell = _cell;
+            return ret;
         }
 
 
         public void add_cell(Skill cell)
         {
-            m_cells.AddLast(cell);
+            m_cells.Add(cell.id, cell);
         }
 
 
-        public void play()
+        public void reset()
         {
-            
+            foreach (var (_, cell) in m_cells)
+            {
+                cell.reset();
+            }
         }
     }
 }
