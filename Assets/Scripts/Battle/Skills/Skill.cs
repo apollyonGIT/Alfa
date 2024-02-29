@@ -54,6 +54,8 @@ namespace Battle.Skills
 
         public void reset()
         {
+            skill_mono = null;
+
             title = "";
             content = "";
             cost = 0;

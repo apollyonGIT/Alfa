@@ -104,11 +104,10 @@ namespace Battle.Skills
 
         void ISkillView.notify_on_tick1()
         {
-            if (!cell.is_active)
-            {
+            if (cell.is_active)
+                bg.color = Color.white;
+            else
                 bg.color = Color.gray;
-                return;
-            }
 
             title.text = cell.title;
             content.text = cell.content;
