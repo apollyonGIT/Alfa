@@ -1,8 +1,5 @@
-﻿using Common;
-using Common.Table_Module;
+﻿using Common.Table_Module;
 using Foundation;
-using System;
-using static AutoCode.Tables.Skill;
 
 namespace Battle.Skills
 {
