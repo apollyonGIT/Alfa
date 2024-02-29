@@ -52,9 +52,9 @@ namespace Battle.Skills
 
         IEnumerable<Skill> cells(SkillMgr mgr)
         {
-            for (int i = 0; i < count; i++)
+            for (int pos = 0; pos < count; pos++)
             {
-                yield return new(mgr, i);
+                yield return new(mgr, pos);
             }
         }
     }

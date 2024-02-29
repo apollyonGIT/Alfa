@@ -1,4 +1,8 @@
-﻿using Foundation;
+﻿using Common;
+using Common.Table_Module;
+using Foundation;
+using System;
+using static AutoCode.Tables.Skill;
 
 namespace Battle.Skills
 {
@@ -6,7 +10,10 @@ namespace Battle.Skills
     {
         public string content;
 
-        public int id;
+        public int pos;
+        public ISkillMono skill_mono;
+        public string cast_func;
+
         public SkillMgr mgr;
 
         //==================================================================================================
@@ -14,7 +21,7 @@ namespace Battle.Skills
         public Skill(SkillMgr mgr, params object[] args)
         {
             this.mgr = mgr;
-            id = (int)args[0];
+            pos = (int)args[0];
 
             reset();
         }
@@ -44,6 +51,12 @@ namespace Battle.Skills
         public void reset()
         {
             content = "";
+        }
+
+
+        public void cast()
+        {
+            Table_Utility.do_expr(cast_func, skill_mono);
         }
     }
 }

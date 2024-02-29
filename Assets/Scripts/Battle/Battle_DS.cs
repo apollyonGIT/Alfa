@@ -150,5 +150,10 @@ namespace Battle
     {
         IEnumerable<VID> pos_array { get; }
     }
+
+
+    public interface ISkillMono
+    {
+    }
 }
 

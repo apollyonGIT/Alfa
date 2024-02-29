@@ -1,4 +1,5 @@
 ﻿using Common;
+using UnityEngine;
 
 namespace Battle.Behaviour_Options
 {
@@ -15,6 +16,12 @@ namespace Battle.Behaviour_Options
         public override void init()
         {
             on_click();
+        }
+
+
+        public void cast_nova()
+        {
+            Debug.Log("nova");
         }
     }
 }

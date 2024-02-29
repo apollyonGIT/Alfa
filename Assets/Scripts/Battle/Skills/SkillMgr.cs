@@ -88,7 +88,7 @@ namespace Battle.Skills
 
         public void add_cell(Skill cell)
         {
-            m_cells.Add(cell.id, cell);
+            m_cells.Add(cell.pos, cell);
         }
 
 
@@ -101,7 +101,7 @@ namespace Battle.Skills
         }
 
 
-        public void load(uint id)
+        public void load(uint id, ISkillMono skill_mono)
         {
             Battle_DB.instance.skill.try_get(id, out var r);
             if (!r.f_load_funcs.Any()) return;
@@ -110,6 +110,9 @@ namespace Battle.Skills
             {
                 m_cells.TryGetValue(pos, out var cell);
                 Table_Utility.do_expr(code, cell);
+
+                cell.skill_mono = skill_mono;
+                r.f_cast_funcs.try_get_value(pos, out cell.cast_func);
             }
         }
     }

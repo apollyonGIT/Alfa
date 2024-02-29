@@ -1,10 +1,11 @@
 ﻿using Common;
 using Foundation;
+using UnityEngine;
 using static AutoCode.Tables.BehaviourOption;
 
 namespace Battle.Behaviour_Options
 {
-    public class Behaviour_Option : Model<Behaviour_Option, ISelectorView>
+    public class Behaviour_Option : Model<Behaviour_Option, ISelectorView>, ISkillMono
     {
         public Record _desc;
 
@@ -51,7 +52,7 @@ namespace Battle.Behaviour_Options
 
             Mission.instance.try_get_mgr("SkillMgr", out var skill_mgr);
             skill_mgr.GetType().GetMethod("reset")?.Invoke(skill_mgr, null);
-            skill_mgr.GetType().GetMethod("load")?.Invoke(skill_mgr, new object[] { _desc.f_id });
+            skill_mgr.GetType().GetMethod("load")?.Invoke(skill_mgr, new object[] { _desc.f_id, this });
         }
 
 

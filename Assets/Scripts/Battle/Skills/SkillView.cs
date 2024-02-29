@@ -72,6 +72,8 @@ namespace Battle.Skills
             reset();
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             cell.mgr.is_casting = false;
+
+            cell.cast();
         }
 
 
