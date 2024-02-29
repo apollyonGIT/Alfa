@@ -9,6 +9,7 @@ namespace Battle
         #region outter
         public VID? foucs_pos = null; //焦点位置
 
+        public int trigram_asign_each_turn = 3;
         #endregion
 
         static Vector2 m_ori_camera_pos;

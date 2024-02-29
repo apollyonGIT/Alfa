@@ -9,6 +9,9 @@ namespace Battle.Skills
         public string content;
         public int cost;
 
+        public bool is_active => skill_mono != null;
+        public bool is_lock;
+
         public int pos;
         public ISkillMono skill_mono;
         public string cast_func;
@@ -53,7 +56,7 @@ namespace Battle.Skills
         {
             title = "";
             content = "";
-            content = "";
+            cost = 0;
         }
 
 

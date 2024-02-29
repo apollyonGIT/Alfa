@@ -1,8 +1,10 @@
 ﻿using Common;
 using Foundation;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Battle.Skills
 {
@@ -10,7 +12,11 @@ namespace Battle.Skills
     {
         public TextMeshProUGUI title;
         public TextMeshProUGUI content;
-        public TextMeshProUGUI cost;
+
+        public GameObject cost;
+        public TextMeshProUGUI cost_value;
+
+        public RawImage bg;
 
         [HideInInspector]
         public SkillPD pd;
@@ -37,6 +43,7 @@ namespace Battle.Skills
 
         void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
         {
+            if (!cell.is_active || cell.is_lock) return;
             if (cell.mgr.is_casting) return;
 
             transform.localPosition = new(transform.localPosition.x, pd.selected_height_offset);
@@ -52,6 +59,7 @@ namespace Battle.Skills
 
         void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
         {
+            if (!cell.is_active || cell.is_lock) return;
             if (cell.mgr.is_casting) return;
 
             reset();
@@ -60,6 +68,7 @@ namespace Battle.Skills
 
         void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
         {
+            if (!cell.is_active || cell.is_lock) return;
             if (eventData.button != PointerEventData.InputButton.Left) return;
 
             Cursor.SetCursor(pd.cursor, Vector2.zero, CursorMode.Auto);
@@ -69,6 +78,7 @@ namespace Battle.Skills
 
         void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
         {
+            if (!cell.is_active || cell.is_lock) return;
             if (eventData.button != PointerEventData.InputButton.Left) return;
 
             reset();
@@ -94,9 +104,17 @@ namespace Battle.Skills
 
         void ISkillView.notify_on_tick1()
         {
+            if (!cell.is_active)
+            {
+                bg.color = Color.gray;
+                return;
+            }
+
             title.text = cell.title;
             content.text = cell.content;
-            cost.text = $"{cell.cost}";
+
+            cost_value.text = $"{cell.cost}";
+            cost.SetActive(title.text.Any());
         }
     }
 }
