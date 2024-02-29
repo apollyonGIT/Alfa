@@ -23,6 +23,12 @@ namespace Battle.Behaviour_Options
         {
             Debug.Log("nova");
         }
+
+
+        public void cast_twine()
+        {
+            Debug.Log("twine");
+        }
     }
 }
 
