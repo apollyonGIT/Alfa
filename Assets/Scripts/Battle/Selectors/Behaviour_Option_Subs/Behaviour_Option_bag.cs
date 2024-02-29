@@ -14,7 +14,7 @@ namespace Battle.Behaviour_Options
 
         public override void on_click()
         {
-            Debug.Log("bag");
+            base.on_click();
         }
     }
 }

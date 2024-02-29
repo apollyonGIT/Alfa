@@ -14,7 +14,7 @@ namespace Battle.Behaviour_Options
 
         public override void on_click()
         {
-            Debug.Log("hand");
+            base.on_click();
         }
     }
 }

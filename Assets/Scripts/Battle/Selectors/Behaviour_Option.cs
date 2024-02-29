@@ -34,8 +34,28 @@ namespace Battle.Behaviour_Options
         }
 
 
-        public virtual void on_click()
+        public virtual void init()
         { 
+        }
+
+
+        public virtual void on_click()
+        {
+            mgr.reset();
+
+            foreach (var view in views)
+            {
+                view.notify_on_select();
+            }
+        }
+
+
+        public void on_cancel()
+        {
+            foreach (var view in views)
+            {
+                view.notify_on_cancel();
+            }
         }
     }
 }

@@ -23,6 +23,7 @@ namespace Battle.Behaviour_Options
                 EX_Utility.try_load_asset(cell._desc.f_view_path, out Behaviour_OptionView view_asset);
                 var view = Instantiate(view_asset, transform);
                 cell.add_view(view);
+                cell.init();
             }
         }
 

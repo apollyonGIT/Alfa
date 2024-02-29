@@ -12,9 +12,15 @@ namespace Battle.Behaviour_Options
         }
 
 
+        public override void init()
+        {
+            on_click();
+        }
+
+
         public override void on_click()
         {
-            Debug.Log("brain");
+            base.on_click();
         }
     }
 }

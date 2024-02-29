@@ -8,6 +8,8 @@ namespace Battle.Behaviour_Options
     public interface ISelectorView : IModelView<Behaviour_Option>
     {
         void notify_on_tick1();
+        void notify_on_select();
+        void notify_on_cancel();
     }
 
 
@@ -82,6 +84,15 @@ namespace Battle.Behaviour_Options
         public void add_cell(Behaviour_Option cell)
         {
             m_cells.Add(cell._desc.f_id, cell);
+        }
+
+
+        public void reset()
+        {
+            foreach (var (_, cell) in m_cells)
+            {
+                cell.on_cancel();
+            }
         }
     }
 }
