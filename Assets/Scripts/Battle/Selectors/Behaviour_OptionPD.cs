@@ -45,10 +45,9 @@ namespace Battle.Behaviour_Options
 
             for (int i = 0; i < rs.Count; i++)
             {
-                var id = rs[i].f_id;
-                var type = Assembly.Load("Battle").GetType($"Battle.Behaviour_Options.Behaviour_Option_{id}");
+                var type = Assembly.Load("Battle").GetType($"Battle.Behaviour_Options.Behaviour_Option_{rs[i].f_name}");
 
-                yield return (Behaviour_Option)Activator.CreateInstance(type, new object[] { mgr, id });
+                yield return (Behaviour_Option)Activator.CreateInstance(type, new object[] { mgr, rs[i].f_id });
             }
         }
     }

@@ -16,16 +16,6 @@ namespace Battle.Behaviour_Options
         {
             on_click();
         }
-
-
-        public override void on_click()
-        {
-            base.on_click();
-
-            Mission.instance.try_get_mgr("SkillMgr", out var skill_mgr);
-            skill_mgr.try_get_cell(out var skill, new object[] { 2 });
-            skill.GetType().GetMethod("load")?.Invoke(skill, new object[] { "b" });
-        }
     }
 }
 

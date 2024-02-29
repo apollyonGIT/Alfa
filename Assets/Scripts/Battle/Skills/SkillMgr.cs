@@ -1,7 +1,9 @@
 ﻿using Common;
+using Common.Table_Module;
 using Common.Ticker_Module;
 using Foundation;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Battle.Skills
 {
@@ -95,6 +97,19 @@ namespace Battle.Skills
             foreach (var (_, cell) in m_cells)
             {
                 cell.reset();
+            }
+        }
+
+
+        public void load(uint id)
+        {
+            Battle_DB.instance.skill.try_get(id, out var r);
+            if (!r.f_load_funcs.Any()) return;
+
+            foreach (var (pos, code) in r.f_load_funcs)
+            {
+                m_cells.TryGetValue(pos, out var cell);
+                Table_Utility.do_expr(code, cell);
             }
         }
     }

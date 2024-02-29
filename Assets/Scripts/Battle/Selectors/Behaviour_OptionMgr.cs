@@ -20,7 +20,7 @@ namespace Battle.Behaviour_Options
         int IMgr.priority => m_mgr_priority;
         readonly int m_mgr_priority;
 
-        Dictionary<string, Behaviour_Option> m_cells = new();
+        Dictionary<uint, Behaviour_Option> m_cells = new();
 
         //==================================================================================================
 

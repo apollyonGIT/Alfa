@@ -16,7 +16,7 @@ namespace Battle.Behaviour_Options
         {
             this.mgr = mgr;
 
-            var id = (string)args[0];
+            var id = (uint)args[0];
             Battle_DB.instance.behaviour_option.try_get(id, out _desc);
         }
 
@@ -51,6 +51,7 @@ namespace Battle.Behaviour_Options
 
             Mission.instance.try_get_mgr("SkillMgr", out var skill_mgr);
             skill_mgr.GetType().GetMethod("reset")?.Invoke(skill_mgr, null);
+            skill_mgr.GetType().GetMethod("load")?.Invoke(skill_mgr, new object[] { _desc.f_id });
         }
 
 

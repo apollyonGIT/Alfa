@@ -63,6 +63,21 @@ namespace Battle
                 return m_behaviour_option;
             }
         }
+
+
+        Skill m_skill;
+        public Skill skill
+        {
+            get
+            {
+                if (m_skill == null)
+                {
+                    EX_Utility.try_load_table("skill", out m_skill);
+                }
+
+                return m_skill;
+            }
+        }
     }
 }
 
