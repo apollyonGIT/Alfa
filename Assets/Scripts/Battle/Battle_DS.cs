@@ -154,6 +154,7 @@ namespace Battle
 
     public interface ISkillMono
     {
+        public uint id { get; }
     }
 }
 

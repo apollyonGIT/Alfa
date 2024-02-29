@@ -101,9 +101,11 @@ namespace Battle.Skills
         }
 
 
-        public void load(uint id, ISkillMono skill_mono)
+        public void load(ISkillMono skill_mono)
         {
-            Battle_DB.instance.skill.try_get(id, out var r);
+            reset();
+
+            Battle_DB.instance.skill.try_get(skill_mono.id, out var r);
             if (!r.f_load_funcs.Any()) return;
 
             foreach (var (pos, code) in r.f_load_funcs)

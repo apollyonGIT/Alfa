@@ -11,6 +11,8 @@ namespace Battle.Behaviour_Options
 
         public Behaviour_OptionMgr mgr;
 
+        uint ISkillMono.id => _desc.f_id;
+
         //==================================================================================================
 
         public Behaviour_Option(Behaviour_OptionMgr mgr,  params object[] args)
@@ -51,8 +53,7 @@ namespace Battle.Behaviour_Options
             }
 
             Mission.instance.try_get_mgr("SkillMgr", out var skill_mgr);
-            skill_mgr.GetType().GetMethod("reset")?.Invoke(skill_mgr, null);
-            skill_mgr.GetType().GetMethod("load")?.Invoke(skill_mgr, new object[] { _desc.f_id, this });
+            skill_mgr.GetType().GetMethod("load")?.Invoke(skill_mgr, new object[] { this });
         }
 
 
