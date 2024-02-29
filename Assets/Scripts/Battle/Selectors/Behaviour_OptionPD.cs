@@ -7,8 +7,6 @@ namespace Battle.Behaviour_Options
 {
     public class Behaviour_OptionPD : Producer
     {
-        public Behaviour_OptionView[] model_views;
-
         public override IMgr imgr => mgr;
         Behaviour_OptionMgr mgr;
 
@@ -18,12 +16,12 @@ namespace Battle.Behaviour_Options
         {
             mgr = new("Behaviour_OptionMgr", priority);
 
-            var i = 0;
             foreach (var cell in cells(mgr))
             {
                 mgr.add_cell(cell);
 
-                var view = Instantiate(model_views[i++], transform);
+                EX_Utility.try_load_asset(cell._desc.f_view_path, out Behaviour_OptionView view_asset);
+                var view = Instantiate(view_asset, transform);
                 cell.add_view(view);
             }
         }
@@ -42,12 +40,14 @@ namespace Battle.Behaviour_Options
 
         IEnumerable<Behaviour_Option> cells(Behaviour_OptionMgr mgr)
         {
-            for (int i = 0; i < model_views.Length; i++)
-            {
-                var name = model_views[i].name;
-                var type = Assembly.Load("Battle").GetType($"Battle.Behaviour_Options.Behaviour_Option_{name}");
+            var rs = Battle_DB.instance.behaviour_option.records;
 
-                yield return (Behaviour_Option)Activator.CreateInstance(type, new object[] { mgr, name });
+            for (int i = 0; i < rs.Count; i++)
+            {
+                var id = rs[i].f_id;
+                var type = Assembly.Load("Battle").GetType($"Battle.Behaviour_Options.Behaviour_Option_{id}");
+
+                yield return (Behaviour_Option)Activator.CreateInstance(type, new object[] { mgr, id });
             }
         }
     }

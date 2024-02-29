@@ -1,10 +1,11 @@
 ﻿using Foundation;
+using static AutoCode.Tables.BehaviourOption;
 
 namespace Battle.Behaviour_Options
 {
     public class Behaviour_Option : Model<Behaviour_Option, ISelectorView>
     {
-        public string id;
+        public Record _desc;
 
         public Behaviour_OptionMgr mgr;
 
@@ -14,7 +15,8 @@ namespace Battle.Behaviour_Options
         {
             this.mgr = mgr;
 
-            id = (string)args[0];
+            var id = (string)args[0];
+            Battle_DB.instance.behaviour_option.try_get(id, out _desc);
         }
 
 

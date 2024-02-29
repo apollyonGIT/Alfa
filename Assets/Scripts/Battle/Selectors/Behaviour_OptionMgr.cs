@@ -81,7 +81,7 @@ namespace Battle.Behaviour_Options
 
         public void add_cell(Behaviour_Option cell)
         {
-            m_cells.Add(cell.id, cell);
+            m_cells.Add(cell._desc.f_id, cell);
         }
     }
 }

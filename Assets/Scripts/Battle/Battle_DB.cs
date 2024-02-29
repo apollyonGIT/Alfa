@@ -48,6 +48,21 @@ namespace Battle
                 return m_monster;
             }
         }
+
+
+        BehaviourOption m_behaviour_option;
+        public BehaviourOption behaviour_option
+        {
+            get
+            {
+                if (m_behaviour_option == null)
+                {
+                    EX_Utility.try_load_table("behaviour_option", out m_behaviour_option);
+                }
+
+                return m_behaviour_option;
+            }
+        }
     }
 }
 
