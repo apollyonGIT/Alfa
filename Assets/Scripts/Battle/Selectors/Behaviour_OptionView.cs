@@ -2,24 +2,24 @@
 using Common;
 using UnityEngine.EventSystems;
 
-namespace Battle.Selectors
+namespace Battle.Behaviour_Options
 {
-    public class SelectorView : View, ISelectorView, IPointerClickHandler
+    public class Behaviour_OptionView : View, ISelectorView, IPointerClickHandler
     {
-        Selector cell;
+        Behaviour_Option cell;
 
         public override object vmgr => cell.mgr;
         public override object vcell => cell;
 
         //==================================================================================================
 
-        void IModelView<Selector>.attach(Selector cell)
+        void IModelView<Behaviour_Option>.attach(Behaviour_Option cell)
         {
             this.cell = cell;
         }
 
 
-        void IModelView<Selector>.detach(Selector cell)
+        void IModelView<Behaviour_Option>.detach(Behaviour_Option cell)
         {
             this.cell = null;
         }

@@ -3,26 +3,26 @@ using Common.Ticker_Module;
 using Foundation;
 using System.Collections.Generic;
 
-namespace Battle.Selectors
+namespace Battle.Behaviour_Options
 {
-    public interface ISelectorView : IModelView<Selector>
+    public interface ISelectorView : IModelView<Behaviour_Option>
     {
         void notify_on_tick1();
     }
 
 
-    public class SelectorMgr : IMgr
+    public class Behaviour_OptionMgr : IMgr
     {
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
         int IMgr.priority => m_mgr_priority;
         readonly int m_mgr_priority;
 
-        Dictionary<string, Selector> m_cells = new();
+        Dictionary<string, Behaviour_Option> m_cells = new();
 
         //==================================================================================================
 
-        public SelectorMgr(string name, int priority, params object[] args)
+        public Behaviour_OptionMgr(string name, int priority, params object[] args)
         {
             m_mgr_name = name;
             m_mgr_priority = priority;
@@ -79,7 +79,7 @@ namespace Battle.Selectors
         }
 
 
-        public void add_cell(Selector cell)
+        public void add_cell(Behaviour_Option cell)
         {
             m_cells.Add(cell.id, cell);
         }

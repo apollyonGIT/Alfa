@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Battle.Selectors
+namespace Battle.Behaviour_Options
 {
-    public class Selector_foot : Selector
+    public class Behaviour_Option_bag : Behaviour_Option
     {
 
         //==================================================================================================
 
-        public Selector_foot(SelectorMgr mgr, params object[] args) : base(mgr, args)
+        public Behaviour_Option_bag(Behaviour_OptionMgr mgr, params object[] args) : base(mgr, args)
         {
         }
     }

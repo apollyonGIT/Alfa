@@ -1,16 +1,16 @@
 ﻿using Foundation;
 
-namespace Battle.Selectors
+namespace Battle.Behaviour_Options
 {
-    public class Selector : Model<Selector, ISelectorView>
+    public class Behaviour_Option : Model<Behaviour_Option, ISelectorView>
     {
         public string id;
 
-        public SelectorMgr mgr;
+        public Behaviour_OptionMgr mgr;
 
         //==================================================================================================
 
-        public Selector(SelectorMgr mgr,  params object[] args)
+        public Behaviour_Option(Behaviour_OptionMgr mgr,  params object[] args)
         {
             this.mgr = mgr;
 

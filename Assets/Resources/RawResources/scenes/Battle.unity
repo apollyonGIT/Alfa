@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 247363383}
   - component: {fileID: 247363384}
   m_Layer: 5
-  m_Name: selectors
+  m_Name: behaviour_options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

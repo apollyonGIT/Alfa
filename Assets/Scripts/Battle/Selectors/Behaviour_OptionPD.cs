@@ -3,20 +3,20 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Battle.Selectors
+namespace Battle.Behaviour_Options
 {
-    public class SelectorPD : Producer
+    public class Behaviour_OptionPD : Producer
     {
-        public SelectorView[] model_views;
+        public Behaviour_OptionView[] model_views;
 
         public override IMgr imgr => mgr;
-        SelectorMgr mgr;
+        Behaviour_OptionMgr mgr;
 
         //==================================================================================================
 
         public override void init(int priority)
         {
-            mgr = new("SelectorMgr", priority);
+            mgr = new("Behaviour_OptionMgr", priority);
 
             var i = 0;
             foreach (var cell in cells(mgr))
@@ -40,14 +40,14 @@ namespace Battle.Selectors
         }
 
 
-        IEnumerable<Selector> cells(SelectorMgr mgr)
+        IEnumerable<Behaviour_Option> cells(Behaviour_OptionMgr mgr)
         {
             for (int i = 0; i < model_views.Length; i++)
             {
                 var name = model_views[i].name;
-                var type = Assembly.Load("Battle").GetType($"Battle.Selectors.Selector_{name}");
+                var type = Assembly.Load("Battle").GetType($"Battle.Behaviour_Options.Behaviour_Option_{name}");
 
-                yield return (Selector)Activator.CreateInstance(type, new object[] { mgr, name });
+                yield return (Behaviour_Option)Activator.CreateInstance(type, new object[] { mgr, name });
             }
         }
     }

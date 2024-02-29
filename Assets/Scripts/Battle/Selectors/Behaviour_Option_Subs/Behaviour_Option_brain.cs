@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Battle.Selectors
+namespace Battle.Behaviour_Options
 {
-    public class Selector_hand : Selector
+    public class Behaviour_Option_brain : Behaviour_Option
     {
 
         //==================================================================================================
 
-        public Selector_hand(SelectorMgr mgr, params object[] args) : base(mgr, args)
+        public Behaviour_Option_brain(Behaviour_OptionMgr mgr, params object[] args) : base(mgr, args)
         {
         }
     }
