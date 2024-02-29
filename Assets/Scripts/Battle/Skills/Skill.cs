@@ -5,7 +5,9 @@ namespace Battle.Skills
 {
     public class Skill : Model<Skill, ISkillView>
     {
+        public string title;
         public string content;
+        public int cost;
 
         public int pos;
         public ISkillMono skill_mono;
@@ -24,8 +26,10 @@ namespace Battle.Skills
         }
 
 
-        public void load(string content)
+        public void load(int cost, string title, string content)
         {
+            this.cost = cost;
+            this.title = title;
             this.content = content;
         }
 
@@ -47,6 +51,8 @@ namespace Battle.Skills
 
         public void reset()
         {
+            title = "";
+            content = "";
             content = "";
         }
 

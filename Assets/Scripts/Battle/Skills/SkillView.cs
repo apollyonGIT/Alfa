@@ -8,7 +8,9 @@ namespace Battle.Skills
 {
     public class SkillView : View, ISkillView, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
+        public TextMeshProUGUI title;
         public TextMeshProUGUI content;
+        public TextMeshProUGUI cost;
 
         [HideInInspector]
         public SkillPD pd;
@@ -92,7 +94,9 @@ namespace Battle.Skills
 
         void ISkillView.notify_on_tick1()
         {
+            title.text = cell.title;
             content.text = cell.content;
+            cost.text = $"{cell.cost}";
         }
     }
 }

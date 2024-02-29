@@ -468,11 +468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19fcc925840af244a9a21f7d2ef28082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model_views:
-  - {fileID: -1377049972903666154, guid: 423487ced8b1be046b265015bc1bc179, type: 3}
-  - {fileID: -8433375429287534653, guid: 418e9f8c275375a4e81c45faca58f99e, type: 3}
-  - {fileID: 3315666223957599075, guid: 5869b8917f0f8c84e9ad7eeaeeedfb36, type: 3}
-  - {fileID: 1541735144025222253, guid: f1c24f0be10319e46bfc65d522f66f09, type: 3}
 --- !u!1 &322141683
 GameObject:
   m_ObjectHideFlags: 0
