@@ -25,11 +25,11 @@ namespace Battle.Players
         public Player(PlayerMgr mgr, params object[] args)
         {
             this.mgr = mgr;
-            
-            pos = (VID)args[0];
 
-            var id = (string)args[1];
+            var id = (uint)args[0];
             Battle_DB.instance.monster.try_get(id, out _desc);
+
+            pos = (VID)args[1];
 
             EX_Utility.try_load_asset(_desc.f_arrival_asset_path, out Arrival_Asset asset);
             m_arrival_pos_array = asset.pos_array;

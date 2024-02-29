@@ -1,6 +1,7 @@
 ﻿using Common;
 using Foundation;
 using UnityEngine;
+using static AutoCode.Tables.Monster;
 
 namespace Battle.Enemys
 {
@@ -9,8 +10,9 @@ namespace Battle.Enemys
         public VID pos;
         public Vector2 view_pos => (Vector2)pos;
 
-        public int hp = 100;
+        public int hp;
 
+        Record _desc;
         public EnemyMgr mgr;
 
         //==================================================================================================
@@ -19,7 +21,11 @@ namespace Battle.Enemys
         {
             this.mgr = mgr;
 
-            pos = (VID)args[0];
+            var id = (uint)args[0];
+            Battle_DB.instance.monster.try_get(id, out _desc);
+            hp = _desc.f_hp;
+
+            pos = (VID)args[1];
         }
 
 

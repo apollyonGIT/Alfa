@@ -43,7 +43,7 @@ namespace Battle.Enemys
         {
             VID pos = (7, 6);
 
-            yield return new(mgr, pos);
+            yield return new(mgr, 400000101u, pos);
         }
     }
 }
