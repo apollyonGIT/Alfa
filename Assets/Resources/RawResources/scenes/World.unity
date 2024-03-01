@@ -739,8 +739,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: enter battle
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d7f866645c82f4f4aadba67a74dd0825, type: 2}
-  m_sharedMaterial: {fileID: 502319491979941409, guid: d7f866645c82f4f4aadba67a74dd0825, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 87edb3dcd0efb574fbfee58ddcbd04a0, type: 2}
+  m_sharedMaterial: {fileID: 8129831729150653549, guid: 87edb3dcd0efb574fbfee58ddcbd04a0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
