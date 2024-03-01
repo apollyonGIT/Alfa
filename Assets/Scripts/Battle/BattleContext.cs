@@ -7,9 +7,11 @@ namespace Battle
     public class BattleContext : Singleton<BattleContext>
     {
         #region outter
-        public VID? foucs_pos = null; //焦点位置
-
         public int trigram_asign_each_turn = 3;
+
+        public VID? foucs_pos = null; //焦点位置
+        public object reactable_obj;
+
         #endregion
 
         static Vector2 m_ori_camera_pos;

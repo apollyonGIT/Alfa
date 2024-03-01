@@ -23,7 +23,6 @@ namespace Battle.Skills
         Dictionary<int, Skill> m_cells = new();
 
         public bool is_casting;
-        public object in_cell_view;
 
         //==================================================================================================
 
