@@ -31,12 +31,6 @@ namespace Battle.Players
         }
 
 
-        public override void fini()
-        {
-            imgr.fini();
-        }
-
-
         IEnumerable<Player> cells(PlayerMgr mgr)
         {
             VID pos = (2, 3);

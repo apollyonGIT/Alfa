@@ -39,12 +39,6 @@ namespace Battle.Trigrams
         }
 
 
-        public override void fini()
-        {
-            imgr.fini();
-        }
-
-
         IEnumerable<Trigram> cells(TrigramMgr mgr)
         {
             for (int i = 0; i < 8; i++)

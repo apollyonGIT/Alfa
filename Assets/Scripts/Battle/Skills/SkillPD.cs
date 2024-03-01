@@ -44,12 +44,6 @@ namespace Battle.Skills
         }
 
 
-        public override void fini()
-        {
-            imgr.fini();
-        }
-
-
         IEnumerable<Skill> cells(SkillMgr mgr)
         {
             for (int pos = 0; pos < count; pos++)

@@ -31,9 +31,9 @@ namespace Common
         {
             if (producers == null) return;
 
-            foreach (var t in producers.Where(t => t != null))
+            foreach (var t in producers.Where(t => t.imgr != null))
             {
-                t.fini();
+                t.imgr.fini();
             }
         }
 

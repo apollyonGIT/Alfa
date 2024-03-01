@@ -33,12 +33,6 @@ namespace Battle.Intentions
         public override void call()
         {
         }
-
-
-        public override void fini()
-        {
-            imgr.fini();
-        }
     }
 }
 

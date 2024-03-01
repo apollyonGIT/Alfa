@@ -39,12 +39,6 @@ namespace Battle.Lands
         }
 
 
-        public override void fini()
-        {
-            imgr.fini();
-        }
-
-
         IEnumerable<Land> cells(LandMgr mgr)
         {
             for (int y = 0; y < count_y; y++)

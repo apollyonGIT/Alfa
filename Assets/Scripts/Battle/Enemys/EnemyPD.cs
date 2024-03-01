@@ -33,12 +33,6 @@ namespace Battle.Enemys
         }
 
 
-        public override void fini()
-        {
-            imgr.fini();
-        }
-
-
         IEnumerable<Enemy> cells(EnemyMgr mgr)
         {
             VID pos = (7, 6);

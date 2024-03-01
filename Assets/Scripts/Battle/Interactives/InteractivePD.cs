@@ -31,12 +31,6 @@ namespace Battle.Interactives
         }
 
 
-        public override void fini()
-        {
-            imgr.fini();
-        }
-
-
         IEnumerable<Interactive> cells(InteractiveMgr mgr)
         {
             Common_DS.instance.try_get_value(Config.land_area, out (int x, int y) land_area);

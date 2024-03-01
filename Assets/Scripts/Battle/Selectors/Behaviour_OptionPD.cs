@@ -33,12 +33,6 @@ namespace Battle.Behaviour_Options
         }
 
 
-        public override void fini()
-        {
-            imgr.fini();
-        }
-
-
         IEnumerable<Behaviour_Option> cells(Behaviour_OptionMgr mgr)
         {
             var rs = Battle_DB.instance.behaviour_option.records;

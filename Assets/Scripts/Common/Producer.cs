@@ -11,8 +11,6 @@ namespace Common
         public abstract void init(int priority);
 
         public abstract void call();
-
-        public abstract void fini();
     }
 }
 
