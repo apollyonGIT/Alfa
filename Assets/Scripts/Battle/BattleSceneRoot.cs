@@ -1,10 +1,19 @@
 ﻿using Common;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using World;
 
 namespace Battle
 {
     public class BattleSceneRoot : SceneRoot<BattleSceneRoot>
     {
+        GraphicRaycaster m_gr;
+        PointerEventData m_pointer_event;
+        List<RaycastResult> m_ray_results = new();
+
         WorldSceneRoot root;
 
         //==================================================================================================
@@ -15,8 +24,11 @@ namespace Battle
             mainCamera = root.mainCamera;
             uiCamera = root.uiCamera;
             uiRoot.worldCamera = uiCamera;
+            m_gr = uiRoot.GetComponent<GraphicRaycaster>();
 
             init_producers();
+
+            m_pointer_event = new(EventSystem.current);
         }
 
 
@@ -41,6 +53,15 @@ namespace Battle
         public void btn_next()
         {
             call_producers();
+        }
+
+
+        public bool valid_in_ui()
+        {
+            m_ray_results.Clear();
+            m_pointer_event.position = Mouse.current.position.ReadValue();
+            m_gr.Raycast((m_pointer_event), m_ray_results);
+            return m_ray_results.Any();
         }
     }
 }

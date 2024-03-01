@@ -1,5 +1,10 @@
 ﻿using Common;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Battle
 {
@@ -44,8 +49,9 @@ namespace Battle
 
         public void OnRightMouseDown()
         {
-            m_is_right_mouse_hold = true;
+            if (BattleSceneRoot.instance.valid_in_ui()) return;
 
+            m_is_right_mouse_hold = true;
             m_temp_pos = Battle_Camera_Helper.instance.pos + (Vector3)Mouse_Helper.calc_mouse_pos(BattleSceneRoot.instance.uiCamera);
         }
 

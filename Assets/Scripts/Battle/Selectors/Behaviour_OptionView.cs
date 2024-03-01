@@ -36,7 +36,8 @@ namespace Battle.Behaviour_Options
 
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
         {
-            cell.on_click();
+            if (eventData.button == PointerEventData.InputButton.Left)
+                cell.on_click();
         }
 
 
