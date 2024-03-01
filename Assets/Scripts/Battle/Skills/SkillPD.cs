@@ -35,6 +35,7 @@ namespace Battle.Skills
                 var view = Instantiate(model_view, transform);
                 cell.add_view(view);
                 view.pd = this;
+                view.gameObject.name = cell.pos.ToString();
             }
         }
 

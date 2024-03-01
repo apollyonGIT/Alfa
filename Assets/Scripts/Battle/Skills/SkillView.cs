@@ -43,6 +43,8 @@ namespace Battle.Skills
 
         void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
         {
+            cell.mgr.in_cell_view = this;
+
             if (!cell.is_active || cell.is_lock) return;
             if (cell.mgr.is_casting) return;
 
@@ -59,6 +61,8 @@ namespace Battle.Skills
 
         void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
         {
+            cell.mgr.in_cell_view = null;
+
             if (!cell.is_active || cell.is_lock) return;
             if (cell.mgr.is_casting) return;
 
@@ -81,15 +85,16 @@ namespace Battle.Skills
             if (!cell.is_active || cell.is_lock) return;
             if (eventData.button != PointerEventData.InputButton.Left) return;
 
-            var is_in_ui = BattleSceneRoot.instance.valid_in_ui(out var raycastResults);
-            if (is_in_ui && raycastResults[0].gameObject.GetComponentInParent<SkillView>() == this)
-            {
-                Debug.Log("xxxx");
-            }
-
             reset();
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             cell.mgr.is_casting = false;
+
+            var in_cell_view = cell.mgr.in_cell_view;
+            if (in_cell_view != null)
+            {
+                (in_cell_view as IPointerEnterHandler).OnPointerEnter(eventData);
+                return;
+            } 
 
             cell.cast();
         }
