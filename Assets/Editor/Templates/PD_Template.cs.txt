@@ -18,12 +18,6 @@ namespace #namespace#
         public override void call()
         {
         }
-
-
-        public override void fini()
-        {
-            imgr.fini();
-        }
     }
 }
 
