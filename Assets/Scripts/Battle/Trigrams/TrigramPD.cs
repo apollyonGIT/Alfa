@@ -35,7 +35,7 @@ namespace Battle.Trigrams
         public override void call()
         {
             var bctx = BattleContext.instance;
-            mgr.random_select(bctx.trigram_asign_each_turn, trigram_max_count);
+            mgr.random_select(bctx.trigram_each_turn, trigram_max_count);
         }
 
 

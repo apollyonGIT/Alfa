@@ -7,7 +7,12 @@ namespace Battle
     public class BattleContext : Singleton<BattleContext>
     {
         #region outter
-        public int trigram_asign_each_turn = 3;
+        public int hp;
+        public int energy;
+        public int reiki;
+
+        public int reiki_each_turn;
+        public int trigram_each_turn = 3;
 
         public VID? foucs_pos = null; //焦点位置
         public object reactable_obj;

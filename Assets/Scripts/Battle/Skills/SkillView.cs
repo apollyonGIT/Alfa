@@ -18,8 +18,7 @@ namespace Battle.Skills
 
         public RawImage bg;
 
-        [HideInInspector]
-        public SkillPD pd;
+        internal SkillPD pd;
         Skill cell;
 
         int m_index;
