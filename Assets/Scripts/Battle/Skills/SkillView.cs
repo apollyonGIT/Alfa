@@ -81,6 +81,12 @@ namespace Battle.Skills
             if (!cell.is_active || cell.is_lock) return;
             if (eventData.button != PointerEventData.InputButton.Left) return;
 
+            var is_in_ui = BattleSceneRoot.instance.valid_in_ui(out var raycastResults);
+            if (is_in_ui && raycastResults[0].gameObject.GetComponentInParent<SkillView>() == this)
+            {
+                Debug.Log("xxxx");
+            }
+
             reset();
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             cell.mgr.is_casting = false;

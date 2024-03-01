@@ -56,11 +56,12 @@ namespace Battle
         }
 
 
-        public bool valid_in_ui()
+        public bool valid_in_ui(out List<RaycastResult> result)
         {
             m_ray_results.Clear();
             m_pointer_event.position = Mouse.current.position.ReadValue();
             m_gr.Raycast((m_pointer_event), m_ray_results);
+            result = m_ray_results;
             return m_ray_results.Any();
         }
     }
