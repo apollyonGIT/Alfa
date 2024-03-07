@@ -42,7 +42,7 @@ namespace Battle.Skills
 
         void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
         {
-            BattleContext.instance.reactable_obj = this;
+            BattleContext.instance.pointing_ui_obj = this;
 
             if (!cell.is_active || cell.is_lock) return;
             if (cell.mgr.is_casting) return;
@@ -60,7 +60,7 @@ namespace Battle.Skills
 
         void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
         {
-            BattleContext.instance.reactable_obj = null;
+            BattleContext.instance.pointing_ui_obj = null;
 
             if (!cell.is_active || cell.is_lock) return;
             if (cell.mgr.is_casting) return;
@@ -88,7 +88,7 @@ namespace Battle.Skills
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             cell.mgr.is_casting = false;
 
-            var in_cell_view = BattleContext.instance.reactable_obj;
+            var in_cell_view = BattleContext.instance.pointing_ui_obj;
             if (in_cell_view != null)
             {
                 (in_cell_view as IPointerEnterHandler).OnPointerEnter(eventData);
