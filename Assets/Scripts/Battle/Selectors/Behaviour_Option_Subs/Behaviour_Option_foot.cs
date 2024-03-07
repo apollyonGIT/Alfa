@@ -1,9 +1,8 @@
-﻿using Common;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Battle.Behaviour_Options
 {
-    public class Behaviour_Option_foot : Behaviour_Option
+    public class Behaviour_Option_foot : Behaviour_Option_Static
     {
 
         //==================================================================================================
@@ -13,12 +12,9 @@ namespace Battle.Behaviour_Options
         }
 
 
-        public override void on_click()
+        public void cast_sit()
         {
-            base.on_click();
-
-            Mission.instance.try_get_mgr("SkillMgr", out var skill_mgr);
-            skill_mgr.GetType().GetMethod("load_from_db")?.Invoke(skill_mgr, new object[] { this });
+            Debug.Log("sit");
         }
     }
 }

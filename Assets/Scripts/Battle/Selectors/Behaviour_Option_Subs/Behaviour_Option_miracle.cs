@@ -1,12 +1,11 @@
 ﻿using Common;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Battle.Behaviour_Options
 {
-    public class Behaviour_Option_miracle : Behaviour_Option, ISkillMono_Dyn
+    public class Behaviour_Option_miracle : Behaviour_Option_Dyn
     {
-        Dictionary<int, string[]> ISkillMono_Dyn.data => m_data;
-        Dictionary<int, string[]> m_data = new();
 
         //==================================================================================================
 
@@ -17,18 +16,15 @@ namespace Battle.Behaviour_Options
 
         public override void init()
         {
-            //m_data.Add(0, new string[] { "load(0,凝神,)", "cast_nova()" });
+            m_data.Add(0, new string[] { "load(0,冰霜术,)", "cast_nova()" });
 
-            on_click();
+            on_left_click();
         }
 
 
-        public override void on_click()
+        public void cast_nova()
         {
-            base.on_click();
-
-            Mission.instance.try_get_mgr("SkillMgr", out var skill_mgr);
-            skill_mgr.GetType().GetMethod("load_from_data")?.Invoke(skill_mgr, new object[] { this });
+            Debug.Log("nova");
         }
     }
 }

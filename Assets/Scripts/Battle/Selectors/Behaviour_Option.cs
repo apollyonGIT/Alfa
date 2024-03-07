@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using System;
 using static AutoCode.Tables.BehaviourOption;
 
 namespace Battle.Behaviour_Options
@@ -41,7 +42,7 @@ namespace Battle.Behaviour_Options
         }
 
 
-        public virtual void on_click()
+        public virtual void on_left_click()
         {
             mgr.reset();
 
@@ -49,6 +50,11 @@ namespace Battle.Behaviour_Options
             {
                 view.notify_on_select();
             }
+        }
+
+
+        public virtual void on_right_click()
+        {
         }
 
 
