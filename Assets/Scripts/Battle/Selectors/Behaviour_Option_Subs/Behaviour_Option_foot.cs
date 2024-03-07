@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Common;
+using UnityEngine;
 
 namespace Battle.Behaviour_Options
 {
@@ -16,7 +17,8 @@ namespace Battle.Behaviour_Options
         {
             base.on_click();
 
-            load_skills(this);
+            Mission.instance.try_get_mgr("SkillMgr", out var skill_mgr);
+            skill_mgr.GetType().GetMethod("load_from_db")?.Invoke(skill_mgr, new object[] { this });
         }
     }
 }

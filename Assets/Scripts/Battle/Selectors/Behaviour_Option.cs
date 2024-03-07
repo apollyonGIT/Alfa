@@ -1,6 +1,4 @@
-﻿using Common;
-using Foundation;
-using UnityEngine;
+﻿using Foundation;
 using static AutoCode.Tables.BehaviourOption;
 
 namespace Battle.Behaviour_Options
@@ -60,13 +58,6 @@ namespace Battle.Behaviour_Options
             {
                 view.notify_on_cancel();
             }
-        }
-
-
-        public void load_skills(ISkillMono skillMono)
-        {
-            Mission.instance.try_get_mgr("SkillMgr", out var skill_mgr);
-            skill_mgr.GetType().GetMethod("load")?.Invoke(skill_mgr, new object[] { skillMono });
         }
     }
 }
