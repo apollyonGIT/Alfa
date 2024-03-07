@@ -7,7 +7,6 @@ namespace Battle.Behaviour_Options
     public class Behaviour_Option : Model<Behaviour_Option, ISelectorView>, ISkillMono
     {
         public Record _desc;
-
         public Behaviour_OptionMgr mgr;
 
         uint ISkillMono.id => _desc.f_id;
