@@ -20,6 +20,12 @@ namespace Battle.Behaviour_Options
             Mission.instance.try_get_mgr("SkillMgr", out var skill_mgr);
             skill_mgr.GetType().GetMethod("load_from_db")?.Invoke(skill_mgr, new object[] { this });
         }
+
+
+        public void cast_nova()
+        {
+            Debug.Log("nova");
+        }
     }
 }
 

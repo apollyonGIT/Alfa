@@ -1,6 +1,5 @@
 ﻿using Common;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Battle.Behaviour_Options
 {
@@ -18,7 +17,7 @@ namespace Battle.Behaviour_Options
 
         public override void init()
         {
-            m_data.Add(0, new string[] { "load(0,凝神,)", "cast_nova()" });
+            //m_data.Add(0, new string[] { "load(0,凝神,)", "cast_nova()" });
 
             on_click();
         }
@@ -30,18 +29,6 @@ namespace Battle.Behaviour_Options
 
             Mission.instance.try_get_mgr("SkillMgr", out var skill_mgr);
             skill_mgr.GetType().GetMethod("load_from_data")?.Invoke(skill_mgr, new object[] { this });
-        }
-
-
-        public void cast_nova()
-        {
-            Debug.Log("nova");
-        }
-
-
-        public void cast_twine()
-        {
-            Debug.Log("twine");
         }
     }
 }
