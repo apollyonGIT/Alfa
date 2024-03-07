@@ -7,11 +7,13 @@ namespace Battle
     public class BattleContext : Singleton<BattleContext>
     {
         #region outter
+        public int max_hp;
+        public int max_reiki;
         public int hp;
         public int reiki;
 
         public int reiki_each_turn;
-        public int trigram_each_turn = 3;
+        public int trigram_each_turn;
 
         public VID? foucs_pos = null; //焦点位置
         public object pointing_ui_obj;

@@ -5,6 +5,9 @@ namespace Battle.Players
 {
     public class PlayerPD : Producer
     {
+        public int max_hp;
+        public int max_reiki;
+
         public PlayerView model_view;
 
         public override IMgr imgr => mgr;
@@ -22,6 +25,14 @@ namespace Battle.Players
 
                 var view = Instantiate(model_view, transform);
                 cell.add_view(view);
+            }
+
+            var ctx = BattleContext.instance;
+            {
+                ctx.max_hp = max_hp;
+                ctx.hp = max_hp;
+                ctx.max_reiki = max_reiki;
+                ctx.reiki = max_reiki;
             }
         }
 

@@ -6,7 +6,8 @@ namespace Battle.Trigrams
 {
     public class TrigramPD : Producer
     {
-        public int trigram_max_count = 3;
+        public int trigram_each_turn;
+        public int trigram_max_count;
 
         public float radius = 70;
         public TrigramView model_view;
@@ -29,6 +30,8 @@ namespace Battle.Trigrams
             }
 
             call();
+
+            BattleContext.instance.trigram_each_turn = trigram_each_turn;
         }
 
 

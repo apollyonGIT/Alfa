@@ -71,6 +71,21 @@ namespace Battle.Reikis
                 view.notify_on_tick1();
             }
         }
+
+
+        public void calc_reiki()
+        {
+            var ctx = BattleContext.instance;
+            ref var reiki = ref ctx.reiki;
+            ref var reiki_each_turn = ref ctx.reiki_each_turn;
+
+            reiki -= reiki_each_turn;
+            if (reiki <= 0)
+            {
+                reiki = 0;
+                reiki_each_turn = 0;
+            }
+        }
     }
 }
 
