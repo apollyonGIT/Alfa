@@ -102,12 +102,11 @@ namespace Battle.Skills
         }
 
 
-        public void load_from_db(ISkillMono skill_mono)
+        public void load(ISkillMono skill_mono)
         {
             reset();
 
-            Battle_DB.instance.skill.try_get(skill_mono.id, out var r);
-            if (!r.f_load_funcs.Any()) return;
+            if (!Battle_DB.instance.skill.try_get(skill_mono.id, out var r)) return;
 
             foreach (var (pos, code) in r.f_load_funcs)
             {
@@ -116,22 +115,6 @@ namespace Battle.Skills
 
                 cell.skill_mono = skill_mono;
                 r.f_cast_funcs.try_get_value(pos, out cell.cast_func);
-            }
-        }
-
-
-        public void load_from_data(ISkillMono_Dyn skill_mono)
-        {
-            reset();
-
-            foreach (var (pos, codes) in skill_mono.data)
-            {
-                var load_func = codes[0];
-                m_cells.TryGetValue(pos, out var cell);
-                Table_Utility.do_expr(load_func, cell);
-
-                cell.skill_mono = skill_mono;
-                cell.cast_func = codes[1];
             }
         }
     }

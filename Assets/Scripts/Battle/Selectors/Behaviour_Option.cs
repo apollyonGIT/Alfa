@@ -1,5 +1,5 @@
-﻿using Foundation;
-using System;
+﻿using Common;
+using Foundation;
 using static AutoCode.Tables.BehaviourOption;
 
 namespace Battle.Behaviour_Options
@@ -9,7 +9,8 @@ namespace Battle.Behaviour_Options
         public Record _desc;
         public Behaviour_OptionMgr mgr;
 
-        uint ISkillMono.id => _desc.f_id;
+        uint ISkillMono.id => m_skill_id;
+        protected uint m_skill_id;
 
         //==================================================================================================
 
@@ -49,6 +50,9 @@ namespace Battle.Behaviour_Options
             {
                 view.notify_on_select();
             }
+
+            Mission.instance.try_get_mgr("SkillMgr", out var skill_mgr);
+            skill_mgr.GetType().GetMethod("load")?.Invoke(skill_mgr, new object[] { this });
         }
 
 

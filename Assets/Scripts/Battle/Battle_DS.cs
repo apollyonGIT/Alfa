@@ -156,11 +156,5 @@ namespace Battle
     {
         public uint id { get; }
     }
-
-
-    public interface ISkillMono_Dyn : ISkillMono
-    {
-        public Dictionary<int, string[]> data { get; }
-    }
 }
 
