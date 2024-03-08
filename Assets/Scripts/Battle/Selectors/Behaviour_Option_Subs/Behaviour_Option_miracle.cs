@@ -15,6 +15,7 @@ namespace Battle.Behaviour_Options
         public override void init()
         {
             m_skill_id = 199000001u;
+
             on_left_click();
         }
     }

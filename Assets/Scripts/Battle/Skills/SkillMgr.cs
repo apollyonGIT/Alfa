@@ -5,6 +5,7 @@ using Foundation;
 using Mono.Cecil.Cil;
 using System.Collections.Generic;
 using System.Linq;
+using static AutoCode.Tables.Skill;
 
 namespace Battle.Skills
 {
@@ -22,6 +23,7 @@ namespace Battle.Skills
         readonly int m_mgr_priority;
 
         Dictionary<int, Skill> m_cells = new();
+        Dictionary<uint, Record> m_infos = new();
 
         public bool is_casting;
 
@@ -56,6 +58,11 @@ namespace Battle.Skills
             {
                 ticker.add_tick(m_mgr_priority, m_mgr_name, tick);
                 ticker.add_tick(m_mgr_priority, m_mgr_name, tick1);
+            }
+
+            foreach (var r in Battle_DB.instance.skill.records)
+            {
+                m_infos.Add(r.f_id, r);
             }
         }
 
@@ -106,9 +113,7 @@ namespace Battle.Skills
         {
             reset();
 
-            if (!Battle_DB.instance.skill.try_get(skill_mono.id, out var r))
-                Common_DS.instance.try_get_value(skill_mono.id.ToString(), out r);
-            if (r == null) return;
+            if (!m_infos.TryGetValue(skill_mono.id, out var r)) return;
 
             foreach (var (pos, code) in r.f_load_funcs)
             {
