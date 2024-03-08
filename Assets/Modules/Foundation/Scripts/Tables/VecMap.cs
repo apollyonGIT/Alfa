@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Foundation.Tables {
     public class VecMap<TKey, TValue> : IEnumerable<(TKey key, TValue value)> where TKey: IComparable<TKey> {
@@ -10,6 +11,14 @@ namespace Foundation.Tables {
         public VecMap() {
             m_items = new (TKey key, TValue value)[0];
         }
+
+
+        public VecMap(TKey key, TValue value)
+        {
+            m_items = new (TKey key, TValue value)[0];
+            Append(key, value);
+        }
+
 
         public static VecMap<TKey, TValue> new_unchecked((TKey key, TValue value)[] sorted_items) {
             return new VecMap<TKey, TValue>(sorted_items);
@@ -37,6 +46,13 @@ namespace Foundation.Tables {
             }
             value = default;
             return false;
+        }
+
+        public void Append(TKey key, TValue value)
+        {
+            var list = m_items.ToList();
+            list.Add((key, value));
+            m_items = list.ToArray();
         }
 
         public struct Enumerator : IEnumerator<(TKey key, TValue value)> {
