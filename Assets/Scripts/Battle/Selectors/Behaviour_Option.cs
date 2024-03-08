@@ -51,8 +51,8 @@ namespace Battle.Behaviour_Options
                 view.notify_on_select();
             }
 
-            Mission.instance.try_get_mgr("SkillMgr", out var skill_mgr);
-            skill_mgr.GetType().GetMethod("load")?.Invoke(skill_mgr, new object[] { this });
+            Mission.instance.try_get_mgr("SkillMgr", out Skills.SkillMgr skill_mgr);
+            skill_mgr.load(this);
         }
 
 

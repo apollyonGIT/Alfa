@@ -2,9 +2,7 @@
 using Common.Table_Module;
 using Common.Ticker_Module;
 using Foundation;
-using Mono.Cecil.Cil;
 using System.Collections.Generic;
-using System.Linq;
 using static AutoCode.Tables.Skill;
 
 namespace Battle.Skills
