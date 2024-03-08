@@ -64,7 +64,7 @@ namespace Battle.Skills
 
         public void cast()
         {
-            Table_Utility.do_expr(cast_func, skill_mono);
+            Table_Utility.do_expr(cast_func, skill_mono.exec_method_obj);
         }
     }
 }

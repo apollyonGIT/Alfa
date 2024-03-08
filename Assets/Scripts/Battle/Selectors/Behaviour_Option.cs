@@ -10,7 +10,10 @@ namespace Battle.Behaviour_Options
         public Behaviour_OptionMgr mgr;
 
         uint ISkillMono.id => m_skill_id;
+        object ISkillMono.exec_method_obj => m_exec_method_obj;
+
         protected uint m_skill_id;
+        protected object m_exec_method_obj;
 
         //==================================================================================================
 
@@ -38,7 +41,9 @@ namespace Battle.Behaviour_Options
 
 
         public virtual void init()
-        { 
+        {
+            m_skill_id = _desc.f_id;
+            m_exec_method_obj = this;
         }
 
 

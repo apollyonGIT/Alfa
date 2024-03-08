@@ -12,12 +12,6 @@ namespace Battle.Behaviour_Options
         }
 
 
-        public override void init()
-        {
-            m_skill_id = _desc.f_id;
-        }
-
-
         public void cast_pickup()
         {
             Debug.Log("pickup");
