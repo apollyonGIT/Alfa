@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Common;
+using UnityEngine;
 
 namespace Battle.Behaviour_Options
 {
@@ -14,7 +15,10 @@ namespace Battle.Behaviour_Options
 
         public override void init()
         {
-            //m_skill_id = 199000001u;
+            m_skill_id = 198000001u;
+
+            Battle_DB.instance.skill.try_get(199000002u, out var r);
+            Common_DS.instance.add(m_skill_id.ToString(), r);
         }
     }
 }

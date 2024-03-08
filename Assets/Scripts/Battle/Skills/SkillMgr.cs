@@ -106,20 +106,17 @@ namespace Battle.Skills
         {
             reset();
 
-            if (Battle_DB.instance.skill.try_get(skill_mono.id, out var r))
-            {
-                foreach (var (pos, code) in r.f_load_funcs)
-                {
-                    m_cells.TryGetValue(pos, out var cell);
-                    Table_Utility.do_expr(code, cell);
+            if (!Battle_DB.instance.skill.try_get(skill_mono.id, out var r))
+                Common_DS.instance.try_get_value(skill_mono.id.ToString(), out r);
+            if (r == null) return;
 
-                    cell.skill_mono = skill_mono;
-                    r.f_cast_funcs.try_get_value(pos, out cell.cast_func);
-                }
-            }
-            else
-            { 
-                
+            foreach (var (pos, code) in r.f_load_funcs)
+            {
+                m_cells.TryGetValue(pos, out var cell);
+                Table_Utility.do_expr(code, cell);
+
+                cell.skill_mono = skill_mono;
+                r.f_cast_funcs.try_get_value(pos, out cell.cast_func);
             }
         }
     }
