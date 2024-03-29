@@ -129,6 +129,38 @@ namespace Battle.Enemys
                 move(cell, new(0, -1));
             }
         }
+
+
+        public void seek_path()
+        {
+            var cell = m_cells.First().Value;
+
+            var start = cell.pos;
+            var end = (0, 0);
+
+            var results = new List<VID>();
+            var t = start;
+            bool is_step_x = true;
+                
+            while (t != end)
+            {
+                var dir = end - t;
+                dir = VID.mag(dir);
+                if (is_step_x)
+                    dir.y = 0;
+                else
+                    dir.x = 0;
+
+                is_step_x = !is_step_x;
+
+                t += dir;
+                results.Add(t);
+            }
+
+            
+
+
+        }
     }
 }
 

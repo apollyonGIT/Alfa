@@ -143,19 +143,23 @@ namespace Battle
 
             return ret.ToArray();
         }
+
+
+        public static VID mag(VID v)
+        {
+            if (v.x != 0)
+                v.x = v.x > 0 ? 1 : -1;
+            if (v.y != 0)
+                v.y = v.y > 0 ? 1 : -1;
+
+            return v;
+        }
     }
 
 
     public interface IEntityMgr
     {
         IEnumerable<VID> pos_array { get; }
-    }
-
-
-    public interface ISkillMono
-    {
-        public uint id { get; }
-        public object exec_method_obj { get; }
     }
 }
 

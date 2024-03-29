@@ -64,6 +64,13 @@ namespace Battle
             result = m_ray_results;
             return m_ray_results.Any();
         }
+
+
+        public void btn_test()
+        {
+            Mission.instance.try_get_mgr("EnemyMgr", out var imgr);
+            imgr.GetType().GetMethod("seek_path")?.Invoke(imgr, null);
+        }
     }
 }
 
