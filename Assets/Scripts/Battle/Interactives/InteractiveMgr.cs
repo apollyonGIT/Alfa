@@ -89,6 +89,7 @@ namespace Battle.Interactives
                         player_mgr.move_to(pos);
 
                     reset();
+                    BattleSceneRoot.instance.next_turn();
                     return;
                 }
 

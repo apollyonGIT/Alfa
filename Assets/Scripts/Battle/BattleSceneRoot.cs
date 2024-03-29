@@ -50,7 +50,7 @@ namespace Battle
         }
 
 
-        public void btn_next()
+        public void next_turn()
         {
             call_producers();
         }
