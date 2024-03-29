@@ -110,10 +110,9 @@ namespace Battle.Enemys
         }
 
 
-        public void move(ref VID pos, Vector2 step)
+        public void move(Enemy cell, Vector2 step)
         {
-            if (!m_cells.TryGetValue(pos, out var cell)) return;
-
+            ref var pos = ref cell.pos;
             var from = pos;
             Chess_Helper.opti_move(ref pos, step);
 
@@ -127,7 +126,7 @@ namespace Battle.Enemys
             var temp = m_cells.ToList();
             foreach (var (_, cell) in temp)
             {
-                move(ref cell.pos, new(0, -1));
+                move(cell, new(0, -1));
             }
         }
     }
