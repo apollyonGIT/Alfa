@@ -33,6 +33,8 @@ namespace Battle
 
         public static void detach(WorldContext wctx)
         {
+            BattleSceneRoot.instance.monoRoot.gameObject.SetActive(false);
+
             var camera_helper = World_Camera_Helper.instance;
             {
                 camera_helper.move_to_pos(m_ori_camera_pos);
