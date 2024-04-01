@@ -137,24 +137,29 @@ namespace Battle.Enemys
 
             var start = cell.pos;
             var end = (0, 0);
-
             var t = start;
-            bool is_step_x = true;
-                
+
             while (t != end)
             {
                 var dir = end - t;
-                dir = dir.mag;
-                if (is_step_x)
-                    dir.y = 0;
-                else
-                    dir.x = 0;
-
-                is_step_x = !is_step_x;
+                rnd_select_dir(ref dir);
 
                 t += dir;
+                Debug.Log((Vector2)t);
                 yield return t;
             }
+        }
+
+
+        void rnd_select_dir(ref VID dir)
+        {
+            dir = dir.mag;
+            if (dir.x == 0 || dir.y == 0) return;
+
+            if (EX_Utility.rnd_int(0, 1) == 0)
+                dir.x = 0;
+            else
+                dir.y = 0;
         }
 
 

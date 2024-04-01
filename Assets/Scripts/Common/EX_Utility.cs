@@ -274,6 +274,7 @@ namespace Common
         /// </summary>
         public static int rnd_int(int min, int max)
         {
+            max++;
             return new System.Random().Next(min, max);
         }
 
