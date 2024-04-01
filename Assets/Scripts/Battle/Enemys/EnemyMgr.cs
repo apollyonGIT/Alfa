@@ -175,7 +175,6 @@ namespace Battle.Enemys
                 if (open.ContainsKey(t.pos))
                     open.Remove(t.pos);
                 close.Add(t.pos, t);
-                Debug.Log((Vector2)t.pos);
 
                 var focus_list = new List<Node>();
                 foreach (var dir in s_dirs)
@@ -225,7 +224,7 @@ namespace Battle.Enemys
         {
             Mission.instance.try_get_mgr("LandMgr", out Lands.LandMgr land_mgr);
 
-            var o = new VID[] { (7, 5), (6, 6), (7, 7) };
+            var o = new VID[] { (7, 5), (6, 6), (7, 7), (8, 4), (2, 0) };
             seek_path(o, out var ret);
             foreach (var pos in ret)
             {
