@@ -4,6 +4,8 @@ using Foundation;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static Foundation.Net.TcpStream;
+using static UnityEditor.PlayerSettings;
 
 namespace Battle.Enemys
 {
@@ -131,45 +133,110 @@ namespace Battle.Enemys
         }
 
 
-        public IEnumerable<VID> seek_path()
+        public struct Node
         {
-            var cell = m_cells.First().Value;
+            public VID pos;
+            public VID? last_pos;
 
-            var start = cell.pos;
-            var end = (0, 0);
-            var t = start;
+            public int g;
+            public int h;
+            public int f => g + h;
 
-            while (t != end)
+            public static int calc_h(VID start, VID end)
             {
-                var dir = end - t;
-                rnd_select_dir(ref dir);
+                var offset = end - start;
+                return Mathf.Abs(offset.x) + Mathf.Abs(offset.y);
+            }
 
-                t += dir;
-                Debug.Log((Vector2)t);
-                yield return t;
+
+            public Node(VID pos, VID? last_pos, int g, VID end)
+            {
+                this.pos = pos;
+                this.last_pos = last_pos;
+                this.g = g;
+                h = calc_h(pos, end);
             }
         }
 
 
-        void rnd_select_dir(ref VID dir)
+        public void seek_path(VID[] o, out LinkedList<VID> ret)
         {
-            dir = dir.mag;
-            if (dir.x == 0 || dir.y == 0) return;
+            var start = m_cells.First().Value.pos;
+            var end = (0, 0);
 
-            if (EX_Utility.rnd_int(0, 1) == 0)
-                dir.x = 0;
-            else
-                dir.y = 0;
+            Node t = new(start, null, 0, end);
+
+            var s_dirs = new VID[] { (0, 1), (0, -1), (1, 0), (-1, 0) };
+            var open = new Dictionary<VID, Node>();
+            var close = new Dictionary<VID, Node>();
+
+            while (t.pos != end)
+            {
+                if (open.ContainsKey(t.pos))
+                    open.Remove(t.pos);
+                close.Add(t.pos, t);
+                Debug.Log((Vector2)t.pos);
+
+                var focus_list = new List<Node>();
+                foreach (var dir in s_dirs)
+                {
+                    var pos = dir + t.pos;
+                    if (o.Contains(pos)) continue;
+                    if (!VID.valid_in_area(pos)) continue;
+                    if (close.ContainsKey(pos)) continue;
+
+                    Node temp = new(pos, t.pos, t.g + 1, end);
+                    if (open.TryGetValue(pos, out var open_node))
+                    {
+                        if (temp.f < open_node.f)
+                            open[pos] = temp;
+                    }
+                    else
+                    {
+                        open.Add(pos, temp);
+                    }
+                    focus_list.Add(temp);
+                }
+
+                open = open.OrderBy(e => e.Value.f).ToDictionary(e => e.Key, e => e.Value);
+                t = open.First().Value;
+
+                //优化
+                foreach (var f in focus_list)
+                {
+                    if (f.f == t.f)
+                    {
+                        t = f;
+                        break;
+                    }   
+                }
+            }
+
+            ret = new LinkedList<VID>();
+            while (t.pos != start)
+            {
+                ret.AddFirst(t.pos);
+                close.TryGetValue((VID)t.last_pos, out t);
+            }
         }
 
 
         public void show_path()
         {
             Mission.instance.try_get_mgr("LandMgr", out Lands.LandMgr land_mgr);
-            foreach (var pos in seek_path())
+
+            var o = new VID[] { (7, 5), (6, 6), (7, 7) };
+            seek_path(o, out var ret);
+            foreach (var pos in ret)
             {
-                land_mgr.set_cell_color(pos);
+                land_mgr.set_cell_color(pos, Color.gray);
             }
+
+            foreach (var pos in o)
+            {
+                land_mgr.set_cell_color(pos, Color.red);
+            }
+            
         }
     }
 }

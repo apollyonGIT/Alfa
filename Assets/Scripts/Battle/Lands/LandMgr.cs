@@ -59,12 +59,12 @@ namespace Battle.Lands
         }
 
 
-        public void set_cell_color(VID pos)
+        public void set_cell_color(VID pos, Color color)
         {
             m_cells.TryGetValue(pos, out var cell);
             foreach (var view in cell.views)
             {
-                view.notify_on_change_color(Color.gray);
+                view.notify_on_change_color(color);
             }
         }
     }

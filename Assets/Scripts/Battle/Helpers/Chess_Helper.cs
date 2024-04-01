@@ -22,7 +22,7 @@ namespace Battle
         {
             var temp = pos + step;
 
-            if (!VID.valid_offset(temp)) return false;
+            if (!VID.valid_in_area(temp)) return false;
             pos = temp;
             return true;
         }

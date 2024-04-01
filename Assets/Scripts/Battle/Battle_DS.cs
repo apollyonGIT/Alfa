@@ -37,7 +37,7 @@ namespace Battle
         /// <summary>
         /// 出界检定
         /// </summary>
-        public static bool valid_offset(VID vid)
+        public static bool valid_in_area(VID vid)
         {
             int x = vid.x;
             int y = vid.y;
