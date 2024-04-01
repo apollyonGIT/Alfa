@@ -1,11 +1,13 @@
 ﻿using Common;
 using Foundation;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Battle.Lands
 {
     public interface ILandView : IModelView<Land>
-    { 
+    {
+        void notify_on_change_color(Color color);
     }
 
 
@@ -54,6 +56,16 @@ namespace Battle.Lands
         public void add_cell(Land cell)
         {
             m_cells.Add(cell.pos ,cell);
+        }
+
+
+        public void set_cell_color(VID pos)
+        {
+            m_cells.TryGetValue(pos, out var cell);
+            foreach (var view in cell.views)
+            {
+                view.notify_on_change_color(Color.gray);
+            }
         }
     }
 }

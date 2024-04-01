@@ -1,10 +1,13 @@
 ﻿using Common;
 using Foundation;
+using UnityEngine;
 
 namespace Battle.Lands
 {
     public class LandView : View, ILandView
     {
+        public SpriteRenderer area;
+
         Land cell;
 
         public override object vmgr => cell.mgr;
@@ -23,6 +26,12 @@ namespace Battle.Lands
         void IModelView<Land>.detach(Land cell)
         {
             this.cell = null;
+        }
+
+
+        void ILandView.notify_on_change_color(Color color)
+        {
+            area.color = color;
         }
     }
 }

@@ -131,14 +131,13 @@ namespace Battle.Enemys
         }
 
 
-        public void seek_path()
+        public IEnumerable<VID> seek_path()
         {
             var cell = m_cells.First().Value;
 
             var start = cell.pos;
             var end = (0, 0);
 
-            var results = new List<VID>();
             var t = start;
             bool is_step_x = true;
                 
@@ -154,12 +153,18 @@ namespace Battle.Enemys
                 is_step_x = !is_step_x;
 
                 t += dir;
-                results.Add(t);
+                yield return t;
             }
+        }
 
-            
 
-
+        public void show_path()
+        {
+            Mission.instance.try_get_mgr("LandMgr", out Lands.LandMgr land_mgr);
+            foreach (var pos in seek_path())
+            {
+                land_mgr.set_cell_color(pos);
+            }
         }
     }
 }

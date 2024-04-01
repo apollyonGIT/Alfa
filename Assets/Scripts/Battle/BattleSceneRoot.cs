@@ -69,7 +69,7 @@ namespace Battle
         public void btn_test()
         {
             Mission.instance.try_get_mgr("EnemyMgr", out var imgr);
-            imgr.GetType().GetMethod("seek_path")?.Invoke(imgr, null);
+            imgr.GetType().GetMethod("show_path")?.Invoke(imgr, null);
         }
     }
 }
