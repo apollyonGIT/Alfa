@@ -9,6 +9,7 @@ namespace Battle
     {
         public int x;
         public int y;
+        public VID mag => cal_mag();
 
         //==================================================================================================
 
@@ -145,8 +146,9 @@ namespace Battle
         }
 
 
-        public static VID mag(VID v)
+        VID cal_mag()
         {
+            var v = this;
             if (v.x != 0)
                 v.x = v.x > 0 ? 1 : -1;
             if (v.y != 0)

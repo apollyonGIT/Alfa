@@ -144,7 +144,7 @@ namespace Battle.Enemys
             while (t != end)
             {
                 var dir = end - t;
-                dir = VID.mag(dir);
+                dir = dir.mag;
                 if (is_step_x)
                     dir.y = 0;
                 else
