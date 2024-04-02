@@ -4,8 +4,6 @@ using Foundation;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static Foundation.Net.TcpStream;
-using static UnityEditor.PlayerSettings;
 
 namespace Battle.Enemys
 {
@@ -159,97 +157,34 @@ namespace Battle.Enemys
         }
 
 
-        public void seek_path(VID[] o, out LinkedList<VID> ret)
-        {
-            ret = new();
-
-            var start = m_cells.First().Value.pos;
-            var end = (0, 0);
-            Node t = new(start, null, 0, end);
-
-            var s_dirs = new VID[] { (0, 1), (0, -1), (1, 0), (-1, 0)};
-            var open = new Dictionary<VID, Node>() { { t.pos, t } };
-            var close = new Dictionary<VID, Node>();
-            var focus_list = new LinkedList<Node>();
-
-            while (t.pos != end)
-            {
-                if (open.ContainsKey(t.pos))
-                    open.Remove(t.pos);
-                close.Add(t.pos, t);
-
-                focus_list.Clear();
-                foreach (var dir in s_dirs)
-                {
-                    var pos = dir + t.pos;
-                    if (o.Contains(pos)) continue;
-                    if (!VID.valid_in_area(pos)) continue;
-                    if (close.ContainsKey(pos)) continue;
-
-                    Node temp = new(pos, t.pos, t.g + 1, end);
-                    if (open.TryGetValue(pos, out var open_node))
-                    {
-                        if (temp.f < open_node.f)
-                            open[pos] = temp;
-                    }
-                    else
-                    {
-                        open.Add(pos, temp);
-                    }
-
-                    //规则：seek方向乱序
-                    if (EX_Utility.rnd_int(0, 1) == 0)
-                        focus_list.AddLast(temp);
-                    else
-                        focus_list.AddFirst(temp);
-                }
-
-                //规则：如果不存在open格，代表无法到达
-                if (!open.Any())
-                {
-                    Debug.Log("无法到达");
-                    return;
-                }
-
-                open = open.OrderBy(e => e.Value.f).ToDictionary(e => e.Key, e => e.Value);
-                t = open.First().Value;
-
-                //优化
-                foreach (var f in focus_list)
-                {
-                    if (f.f == t.f)
-                    {
-                        t = f;
-                        break;
-                    }   
-                }
-            }
-
-            //回溯处理
-            while (t.pos != start)
-            {
-                ret.AddFirst(t.pos);
-                close.TryGetValue((VID)t.last_pos, out t);
-            }
-        }
-
-
         public void show_path()
         {
             Mission.instance.try_get_mgr("LandMgr", out Lands.LandMgr land_mgr);
 
-            var o = new VID[] { (7, 5), (6, 6), (7, 7), (8, 4), (2, 0), (0, 1)};
-            seek_path(o, out var ret);
-            foreach (var pos in ret)
-            {
-                land_mgr.set_cell_color(pos, Color.gray);
-            }
+            var start = (Vector2)m_cells.First().Value.pos;
+            var end = Vector2.zero;
+            
+            var obstacles = new LinkedList<Vector2>();
+            obstacles.AddLast(new Vector2(1, 0));
+            obstacles.AddLast(new Vector2(0, 1));
+            //var entity_pos_array = Entity_Helper.instance.entity_pos_array;
+            //foreach (var e in entity_pos_array)
+            //{
+            //    obstacles.AddLast((Vector2)e);
+            //}
 
-            foreach (var pos in o)
+            foreach (var pos in obstacles)
             {
                 land_mgr.set_cell_color(pos, Color.red);
             }
-            
+
+            if (!Common.SeekPath_Module.SeekPath_Utility.try_seek_path(start, end, obstacles.ToArray(), VID.valid_in_area, out var paths))
+                return;
+
+            foreach (var pos in paths)
+            {
+                land_mgr.set_cell_color(pos, Color.gray);
+            }
         }
     }
 }

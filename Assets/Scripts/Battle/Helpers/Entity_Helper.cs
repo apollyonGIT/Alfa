@@ -26,7 +26,7 @@ namespace Battle
 
         public static bool pess_move(ref VID pos, Vector2 step)
         {
-            var temp = pos + step;
+            VID temp = pos + step;
 
             if (!VID.valid_in_area(temp)) return false;
             pos = temp;

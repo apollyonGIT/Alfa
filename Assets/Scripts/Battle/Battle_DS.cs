@@ -37,6 +37,11 @@ namespace Battle
         /// <summary>
         /// 出界检定
         /// </summary>
+        public static bool valid_in_area(Vector2 v)
+        {
+            return valid_in_area((VID)v);
+        }
+
         public static bool valid_in_area(VID vid)
         {
             int x = vid.x;
