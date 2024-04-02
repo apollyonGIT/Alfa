@@ -2,6 +2,7 @@
 using Common.Ticker_Module;
 using Foundation;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Battle.Players
@@ -142,6 +143,13 @@ namespace Battle.Players
 
             ret = cell.GetType().GetProperty(name)?.GetValue(cell);
             return ret != default;
+        }
+
+
+        public VID get_closest_player_pos(VID pos)
+        {
+            var temps = m_cells.OrderBy(e => (e.Key - pos).length).ToDictionary(e => e.Key, e => e.Value);
+            return temps.First().Key;
         }
     }
 }

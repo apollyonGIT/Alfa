@@ -98,19 +98,7 @@ namespace Battle.Enemys
         }
 
 
-        public void move_to(VID to)
-        {
-            VID pos = (VID)BattleContext.instance.foucs_pos;
-            if (!m_cells.TryGetValue(pos, out var cell)) return;
-
-            cell.pos = to;
-
-            remove_cell(pos);
-            add_cell(cell);
-        }
-
-
-        public void move(Enemy cell, Vector2 step)
+        public void move_by_step(Enemy cell, Vector2 step)
         {
             ref var pos = ref cell.pos;
             var from = pos;
@@ -121,16 +109,32 @@ namespace Battle.Enemys
         }
 
 
-        public void move()
+        public void move_to_pos(Enemy cell, Vector2 new_pos)
         {
+            var step = new_pos - (Vector2)cell.pos;
+            move_by_step(cell, step);
+        }
+
+
+        public void move_to_player()
+        {
+            Mission.instance.try_get_mgr("PlayerMgr", out Players.PlayerMgr player_mgr);
+
             var temp = m_cells.ToList();
             foreach (var (_, cell) in temp)
             {
-                move(cell, new(0, -1));
+                var start = cell.pos;
+                var end = player_mgr.get_closest_player_pos(start);
+
+                if (Common.SeekPath_Module.SeekPath_Utility.try_seek_path((Vector2)start, (Vector2)end, new Vector2[] { }, VID.valid_in_area, out var paths))
+                    move_to_pos(cell, paths.First());
             }
         }
 
 
+        /// <summary>
+        /// 测试
+        /// </summary>
         public void show_path()
         {
             Mission.instance.try_get_mgr("LandMgr", out Lands.LandMgr land_mgr);
@@ -140,12 +144,6 @@ namespace Battle.Enemys
             
             var obstacles = new LinkedList<Vector2>();
             obstacles.AddLast(new Vector2(1, 0));
-            //obstacles.AddLast(new Vector2(0, 1));
-            //var entity_pos_array = Entity_Helper.instance.entity_pos_array;
-            //foreach (var e in entity_pos_array)
-            //{
-            //    obstacles.AddLast((Vector2)e);
-            //}
 
             foreach (var pos in obstacles)
             {

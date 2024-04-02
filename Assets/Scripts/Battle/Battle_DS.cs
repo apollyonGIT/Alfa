@@ -9,7 +9,8 @@ namespace Battle
     {
         public int x;
         public int y;
-        public VID mag => cal_mag();
+        public VID mag => calc_mag();
+        public int length => calc_length();
 
         //==================================================================================================
 
@@ -151,7 +152,7 @@ namespace Battle
         }
 
 
-        VID cal_mag()
+        VID calc_mag()
         {
             var v = this;
             if (v.x != 0)
@@ -160,6 +161,18 @@ namespace Battle
                 v.y = v.y > 0 ? 1 : -1;
 
             return v;
+        }
+
+
+        int calc_length()
+        {
+            var v = this;
+            if (v.x < 0)
+                v.x = -v.x;
+            if (v.y < 0)
+                v.y = -v.y;
+
+            return v.x + v.y;
         }
     }
 }
