@@ -140,7 +140,7 @@ namespace Battle.Enemys
             
             var obstacles = new LinkedList<Vector2>();
             obstacles.AddLast(new Vector2(1, 0));
-            obstacles.AddLast(new Vector2(0, 1));
+            //obstacles.AddLast(new Vector2(0, 1));
             //var entity_pos_array = Entity_Helper.instance.entity_pos_array;
             //foreach (var e in entity_pos_array)
             //{
