@@ -116,7 +116,7 @@ namespace Battle.Enemys
         {
             ref var pos = ref cell.pos;
             var from = pos;
-            Chess_Helper.opti_move(ref pos, step);
+            Entity_Helper.opti_move(ref pos, step);
 
             remove_cell(from);
             add_cell(cell);

@@ -157,11 +157,5 @@ namespace Battle
             return v;
         }
     }
-
-
-    public interface IEntityMgr
-    {
-        IEnumerable<VID> pos_array { get; }
-    }
 }
 

@@ -5,7 +5,13 @@ using UnityEngine;
 
 namespace Battle
 {
-    public class Chess_Helper : Singleton<Chess_Helper>
+    public interface IEntityMgr
+    {
+        IEnumerable<VID> pos_array { get; }
+    }
+
+
+    public class Entity_Helper : Singleton<Entity_Helper>
     {
         public IEnumerable<VID> entity_pos_array => calc_entity_pos_array();
 

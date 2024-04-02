@@ -113,7 +113,7 @@ namespace Battle.Players
             if (!m_cells.TryGetValue(pos, out var cell)) return;
 
             var from = pos;
-            Chess_Helper.opti_move(ref pos, step);
+            Entity_Helper.opti_move(ref pos, step);
 
             remove_cell(from);
             add_cell(cell);
@@ -126,7 +126,7 @@ namespace Battle.Players
             if (!m_cells.TryGetValue(pos, out var cell)) return false;
 
             arrival_pos_array = cell.arrival_pos_array;
-            Chess_Helper.instance.calc_with_block(pos, ref arrival_pos_array);
+            Entity_Helper.instance.calc_with_block(pos, ref arrival_pos_array);
 
             return true;
         }
