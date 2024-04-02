@@ -161,14 +161,16 @@ namespace Battle.Enemys
 
         public void seek_path(VID[] o, out LinkedList<VID> ret)
         {
+            ret = new();
+
             var start = m_cells.First().Value.pos;
             var end = (0, 0);
-
             Node t = new(start, null, 0, end);
 
-            var s_dirs = new VID[] { (0, 1), (0, -1), (1, 0), (-1, 0) };
-            var open = new Dictionary<VID, Node>();
+            var s_dirs = new VID[] { (0, 1), (0, -1), (1, 0), (-1, 0)};
+            var open = new Dictionary<VID, Node>() { { t.pos, t } };
             var close = new Dictionary<VID, Node>();
+            var focus_list = new LinkedList<Node>();
 
             while (t.pos != end)
             {
@@ -176,7 +178,7 @@ namespace Battle.Enemys
                     open.Remove(t.pos);
                 close.Add(t.pos, t);
 
-                var focus_list = new List<Node>();
+                focus_list.Clear();
                 foreach (var dir in s_dirs)
                 {
                     var pos = dir + t.pos;
@@ -194,7 +196,19 @@ namespace Battle.Enemys
                     {
                         open.Add(pos, temp);
                     }
-                    focus_list.Add(temp);
+
+                    //规则：seek方向乱序
+                    if (EX_Utility.rnd_int(0, 1) == 0)
+                        focus_list.AddLast(temp);
+                    else
+                        focus_list.AddFirst(temp);
+                }
+
+                //规则：如果不存在open格，代表无法到达
+                if (!open.Any())
+                {
+                    Debug.Log("无法到达");
+                    return;
                 }
 
                 open = open.OrderBy(e => e.Value.f).ToDictionary(e => e.Key, e => e.Value);
@@ -211,7 +225,7 @@ namespace Battle.Enemys
                 }
             }
 
-            ret = new LinkedList<VID>();
+            //回溯处理
             while (t.pos != start)
             {
                 ret.AddFirst(t.pos);
@@ -224,7 +238,7 @@ namespace Battle.Enemys
         {
             Mission.instance.try_get_mgr("LandMgr", out Lands.LandMgr land_mgr);
 
-            var o = new VID[] { (7, 5), (6, 6), (7, 7), (8, 4), (2, 0) };
+            var o = new VID[] { (7, 5), (6, 6), (7, 7), (8, 4), (2, 0), (0, 1)};
             seek_path(o, out var ret);
             foreach (var pos in ret)
             {
