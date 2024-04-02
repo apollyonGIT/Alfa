@@ -131,32 +131,6 @@ namespace Battle.Enemys
         }
 
 
-        public struct Node
-        {
-            public VID pos;
-            public VID? last_pos;
-
-            public int g;
-            public int h;
-            public int f => g + h;
-
-            public static int calc_h(VID start, VID end)
-            {
-                var offset = end - start;
-                return Mathf.Abs(offset.x) + Mathf.Abs(offset.y);
-            }
-
-
-            public Node(VID pos, VID? last_pos, int g, VID end)
-            {
-                this.pos = pos;
-                this.last_pos = last_pos;
-                this.g = g;
-                h = calc_h(pos, end);
-            }
-        }
-
-
         public void show_path()
         {
             Mission.instance.try_get_mgr("LandMgr", out Lands.LandMgr land_mgr);
