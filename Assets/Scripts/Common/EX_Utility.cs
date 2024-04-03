@@ -320,8 +320,10 @@ namespace Common
                 hit_null_ac?.Invoke();
                 return;
             }
-                
-            if (!hit.TryGetComponent(out View view)) return;
+
+            var view = hit.GetComponentInParent<View>();
+            if (view == null) return;
+
             hit_success_ac?.Invoke(view);
         }
         #endregion

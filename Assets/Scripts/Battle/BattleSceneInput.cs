@@ -1,10 +1,5 @@
 ﻿using Common;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 namespace Battle
 {
@@ -20,12 +15,7 @@ namespace Battle
         {
             Battle_Mouse_Helper.instance.calc_mouse_pos(out var pos);
 
-            EX_Utility.raycast(pos,
-                () =>
-                {
-                    Mission.instance.try_get_mgr("InteractiveMgr", out var interactive_mgr);
-                    interactive_mgr.GetType().GetMethod("notify_on_left_click_null")?.Invoke(interactive_mgr, null);
-                },
+            EX_Utility.raycast(pos, notify_on_left_click_null,
                 (view) =>
                 {
                     var mgr = view.vmgr;
@@ -68,6 +58,12 @@ namespace Battle
 
             var pos = m_temp_pos - (Vector3)Mouse_Helper.calc_mouse_pos(BattleSceneRoot.instance.uiCamera);
             Battle_Camera_Helper.instance.move_to_pos(pos);
+        }
+
+
+        public void notify_on_left_click_null()
+        { 
+            
         }
     }
 }

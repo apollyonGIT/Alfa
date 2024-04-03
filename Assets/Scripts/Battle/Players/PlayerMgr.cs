@@ -151,6 +151,15 @@ namespace Battle.Players
             var temps = m_cells.OrderBy(e => (e.Key - pos).length).ToDictionary(e => e.Key, e => e.Value);
             return temps.First().Key;
         }
+
+
+        /// <summary>
+        /// 左键触发
+        /// </summary>
+        public void notify_on_left_click(Player cell)
+        {
+            Debug.Log("1111");
+        }
     }
 }
 
