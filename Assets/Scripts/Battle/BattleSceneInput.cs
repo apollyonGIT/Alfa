@@ -5,8 +5,9 @@ namespace Battle
 {
     public class BattleSceneInput : MonoBehaviour
     {
-        bool m_is_right_mouse_hold;
+        public Producer playerPD;
 
+        bool m_is_right_mouse_hold;
         Vector3 m_temp_pos;
 
         //==================================================================================================
@@ -66,7 +67,12 @@ namespace Battle
         }
 
 
-        
+        public void OnMoveUp()
+        {
+            //var mgr = playerPD.imgr;
+            
+        }
+
     }
 }
 
