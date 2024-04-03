@@ -25,6 +25,11 @@ namespace Battle
         }
 
 
+        public void notify_on_left_click_null()
+        {
+        }
+
+
         public void OnZoomIn()
         {
             Battle_Camera_Helper.instance.change_size(-0.5f);
@@ -61,10 +66,7 @@ namespace Battle
         }
 
 
-        public void notify_on_left_click_null()
-        { 
-            
-        }
+        
     }
 }
 

@@ -158,7 +158,6 @@ namespace Battle.Players
         /// </summary>
         public void notify_on_left_click(Player cell)
         {
-            Debug.Log("1111");
         }
     }
 }
