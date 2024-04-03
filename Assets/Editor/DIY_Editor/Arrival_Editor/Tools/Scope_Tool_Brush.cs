@@ -2,7 +2,7 @@
 
 namespace Editor.DIY_Editor.Arrival_Editor
 {
-    public class Arrival_Tool_Brush : Tool
+    public class Scope_Tool_Brush : Tool
     {
         protected override void left_click(object[] args)
         {

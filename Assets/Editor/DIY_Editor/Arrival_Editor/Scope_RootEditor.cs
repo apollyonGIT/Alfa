@@ -2,19 +2,19 @@
 
 namespace Editor.DIY_Editor.Arrival_Editor
 {
-    [CustomEditor(typeof(Arrival_Root), true)]
-    public class Arrival_RootEditor : RootEditor
+    [CustomEditor(typeof(Scope_Root), true)]
+    public class Scope_RootEditor : RootEditor
     {
-        Arrival_Root root;
-        Arrival_Tool_Brush m_brush;
+        Scope_Root root;
+        Scope_Tool_Brush m_brush;
 
         //==================================================================================================
 
         private void OnEnable()
         {
-            root = (Arrival_Root)target;
+            root = (Scope_Root)target;
 
-            m_brush = CreateInstance<Arrival_Tool_Brush>();
+            m_brush = CreateInstance<Scope_Tool_Brush>();
             m_brush.init(root, "d_TerrainInspector.TerrainToolSplat", "info_area");
         }
 

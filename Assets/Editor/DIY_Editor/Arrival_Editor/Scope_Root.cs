@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Editor.DIY_Editor.Arrival_Editor
 {
-    public class Arrival_Root : Root<Arrival_Asset>
+    public class Scope_Root : Root<Scope_Asset>
     {
         public GameObject model_view;
 
@@ -35,7 +35,7 @@ namespace Editor.DIY_Editor.Arrival_Editor
         }
 
 
-        protected override void save_asset(Arrival_Asset asset)
+        protected override void save_asset(Scope_Asset asset)
         {
             var list = new List<Vector2>();
             foreach (var (pos, _) in m_cells)
