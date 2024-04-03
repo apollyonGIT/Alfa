@@ -28,11 +28,10 @@ namespace Battle.Players
 
             var id = (uint)args[0];
             Battle_DB.instance.monster.try_get(id, out _desc);
-
-            pos = (VID)args[1];
-
             EX_Utility.try_load_asset(_desc.f_arrival_asset_path, out Arrival_Asset asset);
             m_arrival_pos_array = asset.pos_array;
+
+            pos = (VID)args[1];
 
             Player_AC.load_ac(this);
 

@@ -16,7 +16,7 @@ namespace Battle.Players
         {
             this.cell = cell;
 
-            transform.localPosition = cell.view_pos;
+            (this as IPlayerView).notify_on_tick1();
         }
 
 

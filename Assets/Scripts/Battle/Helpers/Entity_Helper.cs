@@ -17,20 +17,17 @@ namespace Battle
 
         //==================================================================================================
 
-        public static void opti_move(ref VID pos, Vector2 step)
+        public static void move_by_step(ref VID pos, Vector2 step)
         {
             pos += step;
             VID.border_constraint(ref pos);
         }
 
 
-        public static bool pess_move(ref VID pos, Vector2 step)
+        public static void move_to_pos(ref VID pos, Vector2 new_pos)
         {
-            VID temp = pos + step;
-
-            if (!VID.valid_in_area(temp)) return false;
-            pos = temp;
-            return true;
+            pos = new_pos;
+            VID.border_constraint(ref pos);
         }
 
 

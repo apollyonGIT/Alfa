@@ -5,8 +5,6 @@ namespace Battle
 {
     public class BattleSceneInput : MonoBehaviour
     {
-        public Producer playerPD;
-
         bool m_is_right_mouse_hold;
         Vector3 m_temp_pos;
 
@@ -69,10 +67,41 @@ namespace Battle
 
         public void OnMoveUp()
         {
-            //var mgr = playerPD.imgr;
-            
+            OnMove(Vector2.up);
         }
 
+
+        public void OnMoveDown()
+        {
+            OnMove(Vector2.down);
+        }
+
+
+        public void OnMoveLeft()
+        {
+            OnMove(Vector2.left);
+        }
+
+
+        public void OnMoveRight()
+        {
+            OnMove(Vector2.right);
+        }
+
+
+        public void OnMove(Vector2 dir)
+        {
+            Mission.instance.try_get_mgr("PlayerMgr", out Players.PlayerMgr mgr);
+            mgr.move_by_step(dir);
+
+            BattleSceneRoot.instance.next_turn();
+        }
+
+
+        public void OnWait()
+        {
+            BattleSceneRoot.instance.next_turn();
+        }
     }
 }
 

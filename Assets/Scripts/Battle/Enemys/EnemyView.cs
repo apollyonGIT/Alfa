@@ -15,6 +15,8 @@ namespace Battle.Enemys
         void IModelView<Enemy>.attach(Enemy cell)
         {
             this.cell = cell;
+
+            (this as IEnemyView).notify_on_tick1();
         }
 
 

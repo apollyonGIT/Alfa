@@ -231,12 +231,20 @@ namespace Common
         }
 
 
+        /// <summary>
+        /// 转化到枚举类
+        /// </summary>
         public static IEnumerable<K> convert_dic_to_ienum<K, V>(Dictionary<K, V> dic)
         {
             foreach (var (key, _) in dic)
             {
                 yield return key;
             }
+        }
+
+        public static IEnumerable<T> convert_obj_to_ienum<T>(T obj)
+        {
+            yield return obj;
         }
         #endregion
 

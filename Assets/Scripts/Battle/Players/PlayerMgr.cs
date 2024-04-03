@@ -2,7 +2,6 @@
 using Common.Ticker_Module;
 using Foundation;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Battle.Players
@@ -20,9 +19,9 @@ namespace Battle.Players
         int IMgr.priority => m_mgr_priority;
         readonly int m_mgr_priority;
 
-        IEnumerable<VID> IEntityMgr.pos_array => EX_Utility.convert_dic_to_ienum(m_cells);
+        IEnumerable<VID> IEntityMgr.pos_array => EX_Utility.convert_obj_to_ienum(cell.pos);
 
-        Dictionary<VID, Player> m_cells = new();
+        public Player cell;
 
         //==================================================================================================
 
@@ -66,90 +65,26 @@ namespace Battle.Players
 
         void tick1()
         {
-            foreach (var (_, cell) in m_cells)
-            {
-                cell.tick1();
-            }
+            cell.tick1();
         }
 
 
         bool IMgr.try_get_cell(out object cell, params object[] args)
         {
-            cell = default;
-
-            var pos = (VID)args[0];
-            if (!m_cells.TryGetValue(pos, out var _cell)) return false;
-
-            cell = _cell;
+            cell = this.cell;
             return true;
         }
 
 
-        public void add_cell(Player cell)
+        public void move_to_pos(Vector2 new_pos)
         {
-            m_cells.Add(cell.pos, cell);
+            Entity_Helper.move_to_pos(ref cell.pos, new_pos);
         }
 
 
-        public void remove_cell(VID pos)
+        public void move_by_step(Vector2 step)
         {
-            m_cells.Remove(pos);
-        }
-
-
-        public void move_to(VID to)
-        {
-            VID pos = (VID)BattleContext.instance.foucs_pos;
-            if (!m_cells.TryGetValue(pos, out var cell)) return;
-
-            cell.pos = to;
-
-            remove_cell(pos);
-            add_cell(cell);
-        }
-
-
-        public void move(ref VID pos, Vector2 step)
-        {
-            if (!m_cells.TryGetValue(pos, out var cell)) return;
-
-            var from = pos;
-            Entity_Helper.opti_move(ref pos, step);
-
-            remove_cell(from);
-            add_cell(cell);
-        }
-
-
-        public bool try_get_arrivals(VID pos, out VID[] arrival_pos_array)
-        {
-            arrival_pos_array = default;
-            if (!m_cells.TryGetValue(pos, out var cell)) return false;
-
-            arrival_pos_array = cell.arrival_pos_array;
-            Entity_Helper.instance.calc_with_block(pos, ref arrival_pos_array);
-
-            return true;
-        }
-
-
-        public bool current_player_prop(string name, out object ret)
-        {
-            ret = default;
-
-            var focus_pos = BattleContext.instance.foucs_pos;
-            if (focus_pos == null) return false;
-            if (!m_cells.TryGetValue((VID)focus_pos, out Player cell)) return false;
-
-            ret = cell.GetType().GetProperty(name)?.GetValue(cell);
-            return ret != default;
-        }
-
-
-        public VID get_closest_player_pos(VID pos)
-        {
-            var temps = m_cells.OrderBy(e => (e.Key - pos).length).ToDictionary(e => e.Key, e => e.Value);
-            return temps.First().Key;
+            Entity_Helper.move_by_step(ref cell.pos, step);
         }
 
 

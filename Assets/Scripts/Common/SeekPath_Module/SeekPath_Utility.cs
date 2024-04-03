@@ -42,6 +42,9 @@ namespace Common.SeekPath_Module
         {
             ret = new LinkedList<Vector2>();
 
+            //规则：起点即终点，寻路结束
+            if (start == end) return false;
+
             Node t = new(start, null, 0, end);
             var open = new Dictionary<Vector2, Node>() { { t.pos, t } };
             var close = new Dictionary<Vector2, Node>();

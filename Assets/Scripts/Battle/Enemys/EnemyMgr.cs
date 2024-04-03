@@ -102,7 +102,7 @@ namespace Battle.Enemys
         {
             ref var pos = ref cell.pos;
             var from = pos;
-            Entity_Helper.opti_move(ref pos, step);
+            Entity_Helper.move_by_step(ref pos, step);
 
             remove_cell(from);
             add_cell(cell);
@@ -112,7 +112,7 @@ namespace Battle.Enemys
         public void move_to_pos(Enemy cell, Vector2 new_pos)
         {
             var step = new_pos - (Vector2)cell.pos;
-            move_by_step(cell, step);
+            move_by_step(cell, step);        
         }
 
 
@@ -124,7 +124,7 @@ namespace Battle.Enemys
             foreach (var (_, cell) in temp)
             {
                 var start = cell.pos;
-                var end = player_mgr.get_closest_player_pos(start);
+                var end = player_mgr.cell.pos;
 
                 if (Common.SeekPath_Module.SeekPath_Utility.try_seek_path((Vector2)start, (Vector2)end, new Vector2[] { }, VID.valid_in_area, out var paths))
                     move_to_pos(cell, paths.First());
