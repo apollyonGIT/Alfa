@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 726ba47a839c6374b95b41bceffd5343, type: 3}
   m_Name: player
   m_EditorClassIdentifier: 
-  asset: {fileID: 528215086122585318, guid: 30c7ec1337bc3f9499ce125a9a5b02a5, type: 3}
+  asset: {fileID: -4054814660055043716, guid: 316aee2371247154b850d67c0ae7842a, type: 3}
