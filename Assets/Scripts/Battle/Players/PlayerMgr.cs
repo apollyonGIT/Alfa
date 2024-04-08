@@ -113,10 +113,7 @@ namespace Battle.Players
                 return;
             }
 
-            foreach (var pos in cell.arrival_pos_array)
-            {
-                land_mgr.enable_cell_color(pos, false);
-            }
+            land_mgr.clear_cells_color();
             ctx.player_status = EN_player_status.none;
         }
     }

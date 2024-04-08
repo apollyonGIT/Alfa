@@ -67,34 +67,35 @@ namespace Battle
 
         public void OnMoveUp()
         {
-            OnMove(Vector2.up);
+            player_move(Vector2.up);
         }
 
 
         public void OnMoveDown()
         {
-            OnMove(Vector2.down);
+            player_move(Vector2.down);
         }
 
 
         public void OnMoveLeft()
         {
-            OnMove(Vector2.left);
+            player_move(Vector2.left);
         }
 
 
         public void OnMoveRight()
         {
-            OnMove(Vector2.right);
+            player_move(Vector2.right);
         }
 
 
-        void OnMove(Vector2 dir)
+        void player_move(Vector2 dir)
         {
             Mission.instance.try_get_mgr("PlayerMgr", out Players.PlayerMgr mgr);
             mgr.move_by_step(dir);
 
             BattleSceneRoot.instance.next_turn();
+            clean();
         }
 
 
@@ -108,6 +109,13 @@ namespace Battle
         {
             Mission.instance.try_get_mgr("PlayerMgr", out Players.PlayerMgr mgr);
             mgr.show_fly_area();
+        }
+
+
+        void clean()
+        {
+            Mission.instance.try_get_mgr("LandMgr", out Lands.LandMgr mgr);
+            mgr.clear_cells_color();
         }
     }
 }

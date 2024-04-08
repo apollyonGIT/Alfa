@@ -79,6 +79,18 @@ namespace Battle.Lands
                 view.notify_on_enable_color(is_enable);
             }
         }
+
+
+        public void clear_cells_color()
+        {
+            foreach (var (_, cell) in m_cells)
+            {
+                foreach (var view in cell.views)
+                {
+                    view.notify_on_enable_color(false);
+                }
+            }
+        }
     }
 }
 
