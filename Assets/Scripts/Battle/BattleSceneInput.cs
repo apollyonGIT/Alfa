@@ -89,7 +89,7 @@ namespace Battle
         }
 
 
-        public void OnMove(Vector2 dir)
+        void OnMove(Vector2 dir)
         {
             Mission.instance.try_get_mgr("PlayerMgr", out Players.PlayerMgr mgr);
             mgr.move_by_step(dir);
@@ -101,6 +101,13 @@ namespace Battle
         public void OnWait()
         {
             BattleSceneRoot.instance.next_turn();
+        }
+
+
+        public void OnFly()
+        {
+            Mission.instance.try_get_mgr("PlayerMgr", out Players.PlayerMgr mgr);
+            mgr.show_fly_area();
         }
     }
 }

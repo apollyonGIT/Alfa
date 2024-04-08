@@ -9,6 +9,8 @@ namespace Battle
         #region outter
         public int max_hp;
         public int hp;
+
+        public EN_player_status player_status;
         #endregion
 
         static Vector2 m_ori_camera_pos;

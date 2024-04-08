@@ -7,6 +7,7 @@ namespace Battle.Lands
     public class LandView : View, ILandView
     {
         public SpriteRenderer area;
+        public SpriteRenderer mask;
 
         Land cell;
 
@@ -31,7 +32,13 @@ namespace Battle.Lands
 
         void ILandView.notify_on_change_color(Color color)
         {
-            area.color = color;
+            mask.color = color;
+        }
+
+
+        void ILandView.notify_on_enable_color(bool is_enable)
+        {
+            mask.gameObject.SetActive(is_enable);
         }
     }
 }

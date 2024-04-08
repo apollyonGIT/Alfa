@@ -94,6 +94,31 @@ namespace Battle.Players
         public void notify_on_left_click(Player cell)
         {
         }
+
+
+        public void show_fly_area()
+        {
+            var ctx = BattleContext.instance;
+            Mission.instance.try_get_mgr("LandMgr", out Lands.LandMgr land_mgr);
+            
+            if (ctx.player_status == EN_player_status.none)
+            {
+                foreach (var pos in cell.arrival_pos_array)
+                {
+                    land_mgr.set_cell_color(pos, Config.current.fly_area_color);
+                    land_mgr.enable_cell_color(pos, true);
+                }
+
+                ctx.player_status = EN_player_status.show_fly_area;
+                return;
+            }
+
+            foreach (var pos in cell.arrival_pos_array)
+            {
+                land_mgr.enable_cell_color(pos, false);
+            }
+            ctx.player_status = EN_player_status.none;
+        }
     }
 }
 

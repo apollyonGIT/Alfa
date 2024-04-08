@@ -58,7 +58,8 @@ namespace Common
         public string battle_assembly;
         public string battle_context_path;
 
-        [Header("战斗资源")]
+        [Header("范围显示")]
+        public Color fly_area_color;
 
         #endregion
 

@@ -2,12 +2,14 @@
 using Foundation;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 namespace Battle.Lands
 {
     public interface ILandView : IModelView<Land>
     {
         void notify_on_change_color(Color color);
+        void notify_on_enable_color(bool is_enable);
     }
 
 
@@ -61,10 +63,20 @@ namespace Battle.Lands
 
         public void set_cell_color(VID pos, Color color)
         {
-            m_cells.TryGetValue(pos, out var cell);
+            if (!m_cells.TryGetValue(pos, out var cell)) return;
             foreach (var view in cell.views)
             {
                 view.notify_on_change_color(color);
+            }
+        }
+
+
+        public void enable_cell_color(VID pos, bool is_enable)
+        {
+            if (!m_cells.TryGetValue(pos, out var cell)) return;
+            foreach (var view in cell.views)
+            {
+                view.notify_on_enable_color(is_enable);
             }
         }
     }
