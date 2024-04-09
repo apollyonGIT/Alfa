@@ -2,7 +2,6 @@
 using Foundation;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 namespace Battle.Lands
 {
@@ -90,6 +89,13 @@ namespace Battle.Lands
                     view.notify_on_enable_color(false);
                 }
             }
+        }
+
+
+        public void notify_on_left_click(Land cell)
+        {
+            Mission.instance.try_get_mgr("PlayerMgr", out Players.PlayerMgr mgr);
+            
         }
     }
 }
