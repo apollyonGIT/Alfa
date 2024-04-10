@@ -1,6 +1,5 @@
 ﻿using Common;
 using UnityEngine;
-using World;
 
 namespace Battle
 {
