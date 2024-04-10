@@ -29,9 +29,6 @@ namespace Battle
             m_pointer_event = new(EventSystem.current);
 
             init_producers();
-
-            var input = gameObject.GetComponent<BattleSceneInput>();
-            input.on_init();
         }
 
 

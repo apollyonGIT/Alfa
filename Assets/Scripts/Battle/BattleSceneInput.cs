@@ -1,11 +1,12 @@
 ﻿using Common;
+using Foundation;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace Battle
 {
-    public class BattleSceneInput : MonoBehaviour
+    public class BattleSceneInput : MonoBehaviourSingleton<BattleSceneInput>
     {
         bool m_is_right_mouse_hold;
         Vector3 m_temp_pos;
@@ -15,7 +16,7 @@ namespace Battle
 
         //==================================================================================================
 
-        public void on_init()
+        protected override void on_init()
         {
             ctx = BattleContext.instance;
             root = BattleSceneRoot.instance;
@@ -79,34 +80,48 @@ namespace Battle
 
         public void OnMoveUp()
         {
-            player_move(Vector2.up);
+            player_move_by_step(Vector2.up);
         }
 
 
         public void OnMoveDown()
         {
-            player_move(Vector2.down);
+            player_move_by_step(Vector2.down);
         }
 
 
         public void OnMoveLeft()
         {
-            player_move(Vector2.left);
+            player_move_by_step(Vector2.left);
         }
 
 
         public void OnMoveRight()
         {
-            player_move(Vector2.right);
+            player_move_by_step(Vector2.right);
         }
 
 
-        void player_move(Vector2 dir)
+        public void player_move_by_step(Vector2 dir, bool is_enter_next_turn = true)
         {
             Mission.instance.try_get_mgr("PlayerMgr", out Players.PlayerMgr mgr);
             mgr.move_by_step(ctx, dir);
 
-            root.next_turn();
+            if (is_enter_next_turn)
+                root.next_turn();
+            
+            clean();
+        }
+
+
+        public void player_move_to_pos(Vector2 pos, bool is_enter_next_turn = true)
+        {
+            Mission.instance.try_get_mgr("PlayerMgr", out Players.PlayerMgr mgr);
+            mgr.move_to_pos(ctx, pos);
+
+            if (is_enter_next_turn)
+                root.next_turn();
+
             clean();
         }
 
@@ -117,7 +132,7 @@ namespace Battle
         }
 
 
-        public void OnFly()
+        public void OnShowFly()
         {
             Mission.instance.try_get_mgr("LandMgr", out Lands.LandMgr mgr);
 
@@ -135,6 +150,16 @@ namespace Battle
             mgr.clear_cells_color();
             ctx.player_status = EN_player_status.none;
         }
+
+
+        public void try_fly(Vector2 pos)
+        {
+            if (ctx.player_status != EN_player_status.show_fly_area) return;
+
+            player_move_to_pos(pos, false);
+            ctx.player_status = EN_player_status.none;
+        }
+
 
 
         void clean()
@@ -168,6 +193,9 @@ namespace Battle
                 land_mgr.set_cell_color(pos, Color.gray);
             }
         }
+
+
+        
     }
 }
 
