@@ -76,45 +76,23 @@ namespace Battle.Players
         }
 
 
-        public void move_to_pos(Vector2 new_pos)
+        public void move_to_pos(BattleContext ctx, Vector2 new_pos)
         {
-            Entity_Helper.move_to_pos(ref cell.pos, new_pos);
+            Entity_Helper.move_to_pos(ref ctx.pos, new_pos);
         }
 
 
-        public void move_by_step(Vector2 step)
+        public void move_by_step(BattleContext ctx, Vector2 step)
         {
-            Entity_Helper.move_by_step(ref cell.pos, step);
+            Entity_Helper.move_by_step(ref ctx.pos, step);
         }
 
 
         /// <summary>
         /// 左键触发
         /// </summary>
-        public void notify_on_left_click(Player cell)
+        public void notify_on_left_click(BattleContext ctx, Player cell)
         {
-        }
-
-
-        public void show_fly_area()
-        {
-            var ctx = BattleContext.instance;
-            Mission.instance.try_get_mgr("LandMgr", out Lands.LandMgr land_mgr);
-            
-            if (ctx.player_status == EN_player_status.none)
-            {
-                foreach (var pos in cell.arrival_pos_array)
-                {
-                    land_mgr.set_cell_color(pos, Config.current.fly_area_color);
-                    land_mgr.enable_cell_color(pos, true);
-                }
-
-                ctx.player_status = EN_player_status.show_fly_area;
-                return;
-            }
-
-            land_mgr.clear_cells_color();
-            ctx.player_status = EN_player_status.none;
         }
     }
 }

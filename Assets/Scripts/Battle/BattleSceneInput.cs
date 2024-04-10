@@ -8,7 +8,17 @@ namespace Battle
         bool m_is_right_mouse_hold;
         Vector3 m_temp_pos;
 
+        BattleContext ctx;
+        BattleSceneRoot root;
+
         //==================================================================================================
+
+        public void on_init()
+        {
+            ctx = BattleContext.instance;
+            root = BattleSceneRoot.instance;
+        }
+
 
         public void OnLeftMouseClick()
         {
@@ -18,7 +28,7 @@ namespace Battle
                 (view) =>
                 {
                     var mgr = view.vmgr;
-                    mgr.GetType().GetMethod("notify_on_left_click")?.Invoke(mgr, new object[] { view.vcell });
+                    mgr.GetType().GetMethod("notify_on_left_click")?.Invoke(mgr, new object[] { ctx, view.vcell });
                 }
             );
         }
@@ -43,7 +53,7 @@ namespace Battle
 
         public void OnRightMouseDown()
         {
-            if (BattleSceneRoot.instance.valid_in_ui(out _)) return;
+            if (root.valid_in_ui(out _)) return;
 
             m_is_right_mouse_hold = true;
             m_temp_pos = Battle_Camera_Helper.instance.pos + (Vector3)Mouse_Helper.calc_mouse_pos(BattleSceneRoot.instance.uiCamera);
@@ -92,23 +102,23 @@ namespace Battle
         void player_move(Vector2 dir)
         {
             Mission.instance.try_get_mgr("PlayerMgr", out Players.PlayerMgr mgr);
-            mgr.move_by_step(dir);
+            mgr.move_by_step(ctx, dir);
 
-            BattleSceneRoot.instance.next_turn();
+            root.next_turn();
             clean();
         }
 
 
         public void OnWait()
         {
-            BattleSceneRoot.instance.next_turn();
+            root.next_turn();
         }
 
 
         public void OnFly()
         {
-            Mission.instance.try_get_mgr("PlayerMgr", out Players.PlayerMgr mgr);
-            mgr.show_fly_area();
+            Mission.instance.try_get_mgr("LandMgr", out Lands.LandMgr mgr);
+            mgr.show_fly_area(ctx);
         }
 
 

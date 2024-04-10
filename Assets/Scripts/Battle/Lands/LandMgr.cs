@@ -92,10 +92,27 @@ namespace Battle.Lands
         }
 
 
-        public void notify_on_left_click(Land cell)
+        public void notify_on_left_click(BattleContext ctx, Land cell)
         {
-            Mission.instance.try_get_mgr("PlayerMgr", out Players.PlayerMgr mgr);
-            
+        }
+
+
+        public void show_fly_area(BattleContext ctx)
+        {
+            if (ctx.player_status == EN_player_status.none)
+            {
+                foreach (var pos in ctx.fly_pos_array)
+                {
+                    set_cell_color(pos, Config.current.fly_area_color);
+                    enable_cell_color(pos, true);
+                }
+
+                ctx.player_status = EN_player_status.show_fly_area;
+                return;
+            }
+
+            clear_cells_color();
+            ctx.player_status = EN_player_status.none;
         }
     }
 }

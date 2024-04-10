@@ -802,7 +802,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   max_hp: 100
-  max_reiki: 150
   model_view: {fileID: 4769470234079413372, guid: e348f4425dfaa9345b03715cac91d80d, type: 3}
 --- !u!1 &1341879678
 GameObject:
@@ -1217,7 +1216,6 @@ GameObject:
   - component: {fileID: 2013995908}
   - component: {fileID: 2013995909}
   - component: {fileID: 2013995910}
-  - component: {fileID: 2013995911}
   m_Layer: 0
   m_Name: Root
   m_TagString: Untagged
@@ -1314,15 +1312,3 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &2013995911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2013995906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f142e90900e6f46b135de40703dd19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

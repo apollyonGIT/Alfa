@@ -6,30 +6,29 @@ namespace Battle.Players
 {
     public class Player : Model<Player, IPlayerView>
     {
-        public VID pos;
         public Vector2 view_pos => (Vector2)pos;
+        public VID pos => ctx.pos;
 
-        public int hp = 100;
         public int dmg => calc_dmg();
-
-        public VID[] arrival_pos_array => VID.convert(m_arrival_pos_array, pos);
-        Vector2[] m_arrival_pos_array;
 
         public AutoCode.Tables.Player.Record _desc;
         public PlayerMgr mgr;
+
+        public BattleContext ctx;
 
         //==================================================================================================
 
         public Player(PlayerMgr mgr, params object[] args)
         {
             this.mgr = mgr;
+            ctx = BattleContext.instance;
 
             var id = (uint)args[0];
             Battle_DB.instance.player.try_get(id, out _desc);
-            EX_Utility.try_load_asset(_desc.f_arrival_asset_path, out Scope_Asset asset);
-            m_arrival_pos_array = asset.pos_array;
 
-            pos = (VID)args[1];
+            EX_Utility.try_load_asset(_desc.f_fly_asset_path, out Scope_Asset asset);
+            ctx.fly_pos_array_data = asset.pos_array;
+            ctx.pos = (VID)args[1];
         }
 
 

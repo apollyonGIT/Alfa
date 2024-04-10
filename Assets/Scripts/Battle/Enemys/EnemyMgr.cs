@@ -118,13 +118,13 @@ namespace Battle.Enemys
 
         public void move_to_player()
         {
-            Mission.instance.try_get_mgr("PlayerMgr", out Players.PlayerMgr player_mgr);
+            var ctx = BattleContext.instance;
 
             var temp = m_cells.ToList();
             foreach (var (_, cell) in temp)
             {
                 var start = cell.pos;
-                var end = player_mgr.cell.pos;
+                var end = ctx.pos;
 
                 if (Common.SeekPath_Module.SeekPath_Utility.try_seek_path((Vector2)start, (Vector2)end, new Vector2[] { }, VID.valid_in_area, out var paths))
                     move_to_pos(cell, paths.First());

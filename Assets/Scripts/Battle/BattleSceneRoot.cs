@@ -24,11 +24,14 @@ namespace Battle
             mainCamera = root.mainCamera;
             uiCamera = root.uiCamera;
             uiRoot.worldCamera = uiCamera;
+
             m_gr = uiRoot.GetComponent<GraphicRaycaster>();
+            m_pointer_event = new(EventSystem.current);
 
             init_producers();
 
-            m_pointer_event = new(EventSystem.current);
+            var input =  gameObject.AddComponent<BattleSceneInput>();
+            input.on_init();
         }
 
 
@@ -68,8 +71,8 @@ namespace Battle
 
         public void btn_test()
         {
-            Mission.instance.try_get_mgr("EnemyMgr", out var imgr);
-            imgr.GetType().GetMethod("show_path")?.Invoke(imgr, null);
+            Mission.instance.try_get_mgr("EnemyMgr", out Enemys.EnemyMgr mgr);
+            mgr.show_path();
         }
     }
 }
