@@ -128,36 +128,22 @@ namespace Battle.Enemys
                 var end = ctx.pos;
 
                 if (Common.SeekPath_Module.SeekPath_Utility.try_seek_path((Vector2)start, (Vector2)end, new Vector2[] { }, VID.valid_in_area, out var paths))
-                    move_to_pos(cell, paths.First());
+                {
+                    var pos = paths.First();
+
+                    if (pos != ctx.pos)
+                        move_to_pos(cell, pos);
+                    else
+                        collide_with_player(ctx, cell);
+                }  
             }
         }
 
 
-        /// <summary>
-        /// 测试
-        /// </summary>
-        public void show_path()
+        public void collide_with_player(BattleContext ctx, Enemy cell)
         {
-            Mission.instance.try_get_mgr("LandMgr", out Lands.LandMgr land_mgr);
-
-            var start = (Vector2)m_cells.First().Value.pos;
-            var end = Vector2.zero;
-            
-            var obstacles = new LinkedList<Vector2>();
-            obstacles.AddLast(new Vector2(1, 0));
-
-            foreach (var pos in obstacles)
-            {
-                land_mgr.set_cell_color(pos, Color.red);
-            }
-
-            if (!Common.SeekPath_Module.SeekPath_Utility.try_seek_path(start, end, obstacles.ToArray(), VID.valid_in_area, out var paths))
-                return;
-
-            foreach (var pos in paths)
-            {
-                land_mgr.set_cell_color(pos, Color.gray);
-            }
+            ref int player_hp = ref ctx.hp;
+            player_hp -= 10;
         }
     }
 }
