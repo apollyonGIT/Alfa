@@ -29,12 +29,7 @@ namespace Battle
         {
             if (ctx.player_status != EN_player_status.show_fly_area) return;
 
-            Mission.instance.try_get_mgr("PlayerMgr", out Players.PlayerMgr player_mgr);
-            player_mgr.move_to_pos(ctx, pos);
-
-            Mission.instance.try_get_mgr("LandMgr", out Lands.LandMgr land_mgr);
-            land_mgr.clear_cells_color();
-
+            AC_Move.player_move_to_pos(ctx, pos, false);
             ctx.player_status = EN_player_status.none;
         }
     }

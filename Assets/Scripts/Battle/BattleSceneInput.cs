@@ -80,49 +80,25 @@ namespace Battle
 
         public void OnMoveUp()
         {
-            player_move_by_step(Vector2.up);
+            AC_Move.player_move_by_step(ctx, Vector2.up);
         }
 
 
         public void OnMoveDown()
         {
-            player_move_by_step(Vector2.down);
+            AC_Move.player_move_by_step(ctx, Vector2.down);
         }
 
 
         public void OnMoveLeft()
         {
-            player_move_by_step(Vector2.left);
+            AC_Move.player_move_by_step(ctx, Vector2.left);
         }
 
 
         public void OnMoveRight()
         {
-            player_move_by_step(Vector2.right);
-        }
-
-
-        public void player_move_by_step(Vector2 dir, bool is_enter_next_turn = true)
-        {
-            Mission.instance.try_get_mgr("PlayerMgr", out Players.PlayerMgr mgr);
-            mgr.move_by_step(ctx, dir);
-
-            if (is_enter_next_turn)
-                root.next_turn();
-            
-            clean();
-        }
-
-
-        public void player_move_to_pos(Vector2 pos, bool is_enter_next_turn = true)
-        {
-            Mission.instance.try_get_mgr("PlayerMgr", out Players.PlayerMgr mgr);
-            mgr.move_to_pos(ctx, pos);
-
-            if (is_enter_next_turn)
-                root.next_turn();
-
-            clean();
+            AC_Move.player_move_by_step(ctx, Vector2.right);
         }
 
 
@@ -135,13 +111,6 @@ namespace Battle
         public void OnShowFly()
         {
             AC_Fly.show_fly_area(ctx);
-        }
-
-
-        void clean()
-        {
-            Mission.instance.try_get_mgr("LandMgr", out Lands.LandMgr mgr);
-            mgr.clear_cells_color();
         }
 
 
