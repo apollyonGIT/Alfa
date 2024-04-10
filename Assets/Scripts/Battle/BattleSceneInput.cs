@@ -134,32 +134,8 @@ namespace Battle
 
         public void OnShowFly()
         {
-            Mission.instance.try_get_mgr("LandMgr", out Lands.LandMgr mgr);
-
-            if (ctx.player_status == EN_player_status.none)
-            {
-                foreach (var pos in ctx.fly_pos_array)
-                {
-                    mgr.set_cell_color(pos, Config.current.fly_area_color);
-                }
-
-                ctx.player_status = EN_player_status.show_fly_area;
-                return;
-            }
-
-            mgr.clear_cells_color();
-            ctx.player_status = EN_player_status.none;
+            AC_Fly.show_fly_area(ctx);
         }
-
-
-        public void try_fly(Vector2 pos)
-        {
-            if (ctx.player_status != EN_player_status.show_fly_area) return;
-
-            player_move_to_pos(pos, false);
-            ctx.player_status = EN_player_status.none;
-        }
-
 
 
         void clean()

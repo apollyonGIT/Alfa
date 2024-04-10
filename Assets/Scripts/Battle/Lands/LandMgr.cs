@@ -85,8 +85,7 @@ namespace Battle.Lands
 
         public void notify_on_left_click(BattleContext ctx, Land cell)
         {
-            var input = BattleSceneInput.instance;
-            input.try_fly((Vector2)cell.pos);
+            AC_Fly.try_fly(ctx, (Vector2)cell.pos);
         }
     }
 }
