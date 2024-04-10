@@ -23,6 +23,7 @@ namespace Battle.Enemys
         IEnumerable<VID> IEntityMgr.pos_array => EX_Utility.convert_dic_to_ienum(m_cells);
 
         Dictionary<VID, Enemy> m_cells = new();
+        public Vector2 temp_cell_pos_for_test => (Vector2)m_cells.First().Value.pos;
 
         //==================================================================================================
 

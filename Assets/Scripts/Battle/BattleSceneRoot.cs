@@ -30,7 +30,7 @@ namespace Battle
 
             init_producers();
 
-            var input =  gameObject.AddComponent<BattleSceneInput>();
+            var input = gameObject.GetComponent<BattleSceneInput>();
             input.on_init();
         }
 
@@ -69,11 +69,6 @@ namespace Battle
         }
 
 
-        public void btn_test()
-        {
-            Mission.instance.try_get_mgr("EnemyMgr", out Enemys.EnemyMgr mgr);
-            mgr.show_path();
-        }
     }
 }
 

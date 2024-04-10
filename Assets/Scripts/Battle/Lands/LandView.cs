@@ -34,12 +34,6 @@ namespace Battle.Lands
         {
             mask.color = color;
         }
-
-
-        void ILandView.notify_on_enable_color(bool is_enable)
-        {
-            mask.gameObject.SetActive(is_enable);
-        }
     }
 }
 

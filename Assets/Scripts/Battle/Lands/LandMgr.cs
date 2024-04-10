@@ -8,7 +8,6 @@ namespace Battle.Lands
     public interface ILandView : IModelView<Land>
     {
         void notify_on_change_color(Color color);
-        void notify_on_enable_color(bool is_enable);
     }
 
 
@@ -56,7 +55,7 @@ namespace Battle.Lands
 
         public void add_cell(Land cell)
         {
-            m_cells.Add(cell.pos ,cell);
+            m_cells.Add(cell.pos, cell);
         }
 
 
@@ -70,23 +69,15 @@ namespace Battle.Lands
         }
 
 
-        public void enable_cell_color(VID pos, bool is_enable)
-        {
-            if (!m_cells.TryGetValue(pos, out var cell)) return;
-            foreach (var view in cell.views)
-            {
-                view.notify_on_enable_color(is_enable);
-            }
-        }
-
-
         public void clear_cells_color()
         {
+            Color a_zero_color = new(0, 0, 0, 0);
+
             foreach (var (_, cell) in m_cells)
             {
                 foreach (var view in cell.views)
                 {
-                    view.notify_on_enable_color(false);
+                    view.notify_on_change_color(a_zero_color);
                 }
             }
         }
@@ -94,25 +85,6 @@ namespace Battle.Lands
 
         public void notify_on_left_click(BattleContext ctx, Land cell)
         {
-        }
-
-
-        public void show_fly_area(BattleContext ctx)
-        {
-            if (ctx.player_status == EN_player_status.none)
-            {
-                foreach (var pos in ctx.fly_pos_array)
-                {
-                    set_cell_color(pos, Config.current.fly_area_color);
-                    enable_cell_color(pos, true);
-                }
-
-                ctx.player_status = EN_player_status.show_fly_area;
-                return;
-            }
-
-            clear_cells_color();
-            ctx.player_status = EN_player_status.none;
         }
     }
 }
