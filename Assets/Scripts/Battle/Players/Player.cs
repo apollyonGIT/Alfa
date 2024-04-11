@@ -6,7 +6,7 @@ namespace Battle.Players
 {
     public class Player : Model<Player, IPlayerView>
     {
-        public Vector2 view_pos => (Vector2)pos;
+        public Vector2 view_pos => (Vector2)pos * 2 + new Vector2(0.5f, 0.5f);
         public VID pos => ctx.pos;
 
         public int dmg => calc_dmg();

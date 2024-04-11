@@ -8,7 +8,7 @@ namespace Battle.Enemys
     public class Enemy : Model<Enemy, IEnemyView>
     {
         public VID pos;
-        public Vector2 view_pos => (Vector2)pos;
+        public Vector2 view_pos => (Vector2)pos * 2 + new Vector2(0.5f, 0.5f);
 
         public int hp;
 
