@@ -8,9 +8,6 @@ namespace Battle
 {
     public class BattleSceneInput : MonoBehaviourSingleton<BattleSceneInput>
     {
-        bool m_is_right_mouse_hold;
-        Vector3 m_temp_pos;
-
         BattleContext ctx;
         BattleSceneRoot root;
 
@@ -44,37 +41,31 @@ namespace Battle
 
         public void OnZoomIn()
         {
-            Battle_Camera_Helper.instance.change_size(-0.5f);
+            Battle_Camera_Helper.instance.zoom(-0.5f);
         }
 
 
         public void OnZoomOut()
         {
-            Battle_Camera_Helper.instance.change_size(0.5f);
+            Battle_Camera_Helper.instance.zoom(0.5f);
         }
 
 
         public void OnRightMouseDown()
         {
-            if (root.valid_in_ui(out _)) return;
-
-            m_is_right_mouse_hold = true;
-            m_temp_pos = Battle_Camera_Helper.instance.pos + (Vector3)Mouse_Helper.calc_mouse_pos(BattleSceneRoot.instance.uiCamera);
+            Battle_Camera_Helper.instance.drag_start();
         }
 
 
         public void OnRightMouseUp()
         {
-            m_is_right_mouse_hold = false;
+            Battle_Camera_Helper.instance.drag_end();
         }
 
 
         public void OnRightMouseDrag()
         {
-            if (!m_is_right_mouse_hold) return;
-
-            var pos = m_temp_pos - (Vector3)Mouse_Helper.calc_mouse_pos(BattleSceneRoot.instance.uiCamera);
-            Battle_Camera_Helper.instance.move_to_pos(pos);
+            Battle_Camera_Helper.instance.dragging();
         }
 
 
