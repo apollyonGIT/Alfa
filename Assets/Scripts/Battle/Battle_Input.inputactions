@@ -76,24 +76,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "ShowAttackArea",
-                    "type": "Button",
-                    "id": "f31c800b-3a38-4ea7-b14a-5b2efcd14623",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "HideAttackArea",
-                    "type": "Button",
-                    "id": "f52b9c61-15d2-496b-abbf-e5e84f8e563a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -182,28 +164,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "RightMouseClick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "137b94f8-2ad7-416b-b90a-c70561214999",
-                    "path": "<Keyboard>/q",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ShowAttackArea",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7ea13486-2a2c-4cb0-93e0-10c8734b586e",
-                    "path": "<Keyboard>/q",
-                    "interactions": "Press(behavior=1)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HideAttackArea",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

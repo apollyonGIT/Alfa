@@ -50,6 +50,12 @@ namespace Battle
         }
 
 
+        public void btn_test()
+        {
+            SeekPath_Helper.show_path();
+        }
+
+
         public void next_turn()
         {
             call_producers();

@@ -1155,8 +1155,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2013995911}
-        m_TargetAssemblyTypeName: Battle.BattleSceneInput, Battle
+      - m_Target: {fileID: 2013995909}
+        m_TargetAssemblyTypeName: Battle.BattleSceneRoot, Battle
         m_MethodName: btn_test
         m_Mode: 1
         m_Arguments:
