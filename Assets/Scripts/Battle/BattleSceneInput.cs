@@ -39,33 +39,9 @@ namespace Battle
         }
 
 
-        public void OnZoomIn()
+        public void OnRightMouseClick()
         {
-            Battle_Camera_Helper.instance.zoom(-0.5f);
-        }
-
-
-        public void OnZoomOut()
-        {
-            Battle_Camera_Helper.instance.zoom(0.5f);
-        }
-
-
-        public void OnRightMouseDown()
-        {
-            Battle_Camera_Helper.instance.drag_start();
-        }
-
-
-        public void OnRightMouseUp()
-        {
-            Battle_Camera_Helper.instance.drag_end();
-        }
-
-
-        public void OnRightMouseDrag()
-        {
-            Battle_Camera_Helper.instance.dragging();
+            Debug.Log(111);
         }
 
 
@@ -99,7 +75,7 @@ namespace Battle
         }
 
 
-        public void OnShowFly()
+        public void OnShowFlyArea()
         {
             AC_Fly.show_fly_area(ctx);
         }

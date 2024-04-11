@@ -127,7 +127,7 @@ namespace Battle.Enemys
                 var start = cell.pos;
                 var end = ctx.pos;
 
-                if (Common.SeekPath_Module.SeekPath_Utility.try_seek_path((Vector2)start, (Vector2)end, new Vector2[] { }, VID.valid_in_area, out var paths))
+                if (SeekPath_Helper.try_seek_path(start, end, new(), VID.valid_in_area, out var paths))
                 {
                     var pos = paths.First();
 
