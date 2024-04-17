@@ -42,13 +42,6 @@ namespace Common
 
 
         #region internal_setting
-        //tick优先级
-        public const int EnemyMgr_Priority = 0;
-
-        //tick管理类
-        public const string EnemyMgr_Name = "EnemyMgr_Name";
-
-        //普通管理类
 
         #endregion
 
@@ -58,14 +51,10 @@ namespace Common
         public string battle_assembly;
         public string battle_context_path;
 
-        [Header("范围显示")]
-        public Color fly_area_color;
-
         #endregion
 
 
         #region common_ds_key
-        public const string land_area = "land_area"; 
 
         #endregion
     }
