@@ -8,7 +8,7 @@ namespace Editor.DIY_Editor.Arrival_Editor
     {
         public GameObject model_view;
 
-        Dictionary<VID, GameObject> m_cells = new();
+        Dictionary<Vector2, GameObject> m_cells = new();
 
         //==================================================================================================
 
@@ -49,7 +49,7 @@ namespace Editor.DIY_Editor.Arrival_Editor
 
         public void do_brush(Vector2 pos)
         {
-            VID _pos = pos;
+            var _pos = pos;
             if (m_cells.TryGetValue(_pos, out var _)) return;
 
             var view = Instantiate(model_view, transform);
@@ -62,7 +62,7 @@ namespace Editor.DIY_Editor.Arrival_Editor
 
         public void do_erase(Vector2 pos)
         {
-            VID _pos = pos;
+            var _pos = pos;
             if (!m_cells.TryGetValue(_pos, out var cell)) return;
 
             m_cells.Remove(_pos);

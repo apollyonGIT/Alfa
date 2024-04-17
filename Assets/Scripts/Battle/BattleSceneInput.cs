@@ -36,47 +36,6 @@ namespace Battle
         {
         }
 
-
-        public void OnRightMouseClick()
-        {
-            Debug.Log(111);
-        }
-
-
-        public void OnMoveUp()
-        {
-            AC_Move.player_move_by_step(ctx, Vector2.up);
-        }
-
-
-        public void OnMoveDown()
-        {
-            AC_Move.player_move_by_step(ctx, Vector2.down);
-        }
-
-
-        public void OnMoveLeft()
-        {
-            AC_Move.player_move_by_step(ctx, Vector2.left);
-        }
-
-
-        public void OnMoveRight()
-        {
-            AC_Move.player_move_by_step(ctx, Vector2.right);
-        }
-
-
-        public void OnWait()
-        {
-            root.next_turn();
-        }
-
-
-        public void OnShowFlyArea()
-        {
-            AC_Fly.show_fly_area(ctx);
-        }
     }
 }
 

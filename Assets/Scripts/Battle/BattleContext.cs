@@ -7,14 +7,7 @@ namespace Battle
     public class BattleContext : Singleton<BattleContext>
     {
         #region outter
-        public int max_hp;
-        public int hp;
-        public VID pos;
-
-        public Vector2[] fly_pos_array_data;
-        public VID[] fly_pos_array => VID.convert(fly_pos_array_data, pos);
-
-        public EN_player_status player_status;
+        
         #endregion
 
         static Vector2 m_ori_camera_pos;
