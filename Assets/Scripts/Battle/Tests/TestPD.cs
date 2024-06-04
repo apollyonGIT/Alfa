@@ -18,13 +18,11 @@ namespace Battle.Tests
 
         public override void init(int priority)
         {
-            //GenerateRandomMap();
         }
 
 
         public override void call()
         {
-            //GenerateRandomMap();
         }
 
 

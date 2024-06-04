@@ -448,8 +448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0410b1a9cce705f4581b3a3954fb6493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scale: 10
-  offset: {x: 100, y: 100}
+  scale: 50
+  offset: {x: 0, y: 0}
   output: {fileID: 268943670}
 --- !u!1 &533072629
 GameObject:
