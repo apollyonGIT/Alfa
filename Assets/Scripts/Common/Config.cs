@@ -51,6 +51,9 @@ namespace Common
         public string battle_assembly;
         public string battle_context_path;
 
+        [Header("摄像机")]
+        public float camera_size_world;
+        public float camera_size_battle;
         #endregion
 
 

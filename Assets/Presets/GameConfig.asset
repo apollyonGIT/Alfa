@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battle_assembly: Battle
   battle_context_path: Battle.BattleContext
-  fly_area_color: {r: 0.2509804, g: 0.27058825, b: 0.65882355, a: 0.63529414}
+  camera_size_world: 15
+  camera_size_battle: 15
