@@ -8,7 +8,6 @@ namespace Common
         public int priority { get; }
         void init(params object[] args);
         void fini();
-        bool try_get_cell(out object cell, params object[] args);
     }
 
 
