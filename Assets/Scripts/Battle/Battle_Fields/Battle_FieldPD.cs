@@ -1,5 +1,6 @@
 ﻿using Common;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Battle.Battle_Fields
 {
@@ -22,6 +23,8 @@ namespace Battle.Battle_Fields
 
                 var view = Instantiate(model, transform);
                 cell.add_view(view);
+
+                view.transform.localPosition = new Vector2(0.5f, 0.5f * Hexagon_Helper.in2out * 1.5f);
             }
         }
 
@@ -34,6 +37,9 @@ namespace Battle.Battle_Fields
         IEnumerable<Battle_Field> cells(Battle_FieldMgr mgr)
         {
             var id = Hexagon_ID.zero;
+            yield return new(mgr, id);
+
+            id = Hexagon_ID.zero.right();
             yield return new(mgr, id);
         }
     }

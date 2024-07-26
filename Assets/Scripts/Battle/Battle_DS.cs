@@ -1,8 +1,4 @@
-﻿using Common;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Battle
 {
@@ -30,6 +26,78 @@ namespace Battle
             h1.s -= h2.s;
 
             return h1;
+        }
+
+
+        public Hexagon_ID right(int step = 1)
+        {
+            var ret = this;
+            ret.q += step;
+            ret.s -= step;
+
+            return ret;
+        }
+
+
+        public Hexagon_ID right_up(int step = 1)
+        {
+            var ret = this;
+            ret.q += step;
+            ret.r -= step;
+
+            return ret;
+        }
+
+
+        public Hexagon_ID right_down(int step = 1)
+        {
+            var ret = this;
+            ret.r += step;
+            ret.s -= step;
+
+            return ret;
+        }
+
+
+        public Hexagon_ID left(int step = 1)
+        {
+            var ret = this;
+            ret.s += step;
+            ret.q -= step;
+
+            return ret;
+        }
+
+
+        public Hexagon_ID left_up(int step = 1)
+        {
+            var ret = this;
+            ret.s += step;
+            ret.r -= step;
+
+            return ret;
+        }
+
+
+        public Hexagon_ID left_down(int step = 1)
+        {
+            var ret = this;
+            ret.r += step;
+            ret.q -= step;
+
+            return ret;
+        }
+
+
+        public static implicit operator Vector2(Hexagon_ID id)
+        {
+            return new();
+        }
+
+
+        public static implicit operator Hexagon_ID(Vector2 v)
+        {
+            return new();
         }
     }
 
