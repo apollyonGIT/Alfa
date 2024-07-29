@@ -21,10 +21,14 @@ namespace Battle.Battle_Fields
             {
                 mgr.add_cell(cell);
 
-                var view = Instantiate(model, transform);
-                cell.add_view(view);
+                //var view = Instantiate(model, transform);
+                //cell.add_view(view);
 
-                view.transform.localPosition = new Vector2(0.5f, 0.5f * Hexagon_Helper.in2out * 1.5f);
+                //view.transform.localPosition = new Vector2(0.5f, 0.5f * Hexagon.in2out * 1.5f);
+
+                //view.transform.localPosition = Hexagon.calc_unity_pos(cell.id, 0.5f);
+
+                Debug.Log(Hexagon.calc_unity_pos(cell.id, 0.5f));
             }
         }
 
@@ -36,10 +40,10 @@ namespace Battle.Battle_Fields
 
         IEnumerable<Battle_Field> cells(Battle_FieldMgr mgr)
         {
-            var id = Hexagon_ID.zero;
+            var id = Hexagon.zero.right_up();
             yield return new(mgr, id);
 
-            id = Hexagon_ID.zero.right();
+            id = Hexagon.zero.right();
             yield return new(mgr, id);
         }
     }

@@ -5,7 +5,7 @@ namespace Battle.Battle_Fields
 {
     public class Battle_Field : Model<Battle_Field, IBattle_FieldView>
     {
-        public Hexagon_ID id;
+        public Hexagon id;
         public Vector2 view_pos;
 
         public Battle_FieldMgr mgr;
@@ -16,7 +16,7 @@ namespace Battle.Battle_Fields
         {
             this.mgr = mgr;
 
-            id = (Hexagon_ID)args[0];
+            id = (Hexagon)args[0];
             
         }
     }

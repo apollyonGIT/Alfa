@@ -12,7 +12,7 @@ namespace Battle.Battle_Fields
 
     public class Battle_FieldMgr : IMgr
     {
-        Dictionary<Hexagon_ID, Battle_Field> cells = new();
+        Dictionary<Hexagon, Battle_Field> cells = new();
 
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
