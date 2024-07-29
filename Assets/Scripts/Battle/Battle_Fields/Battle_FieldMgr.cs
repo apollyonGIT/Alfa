@@ -52,6 +52,17 @@ namespace Battle.Battle_Fields
         {
             cells.Remove(cell.id);
         }
+
+
+        public void remove_cells()
+        {
+            foreach (var (_, cell) in cells)
+            {
+                cell.clear_views();
+            }
+
+            cells.Clear();
+        }
     }
 }
 

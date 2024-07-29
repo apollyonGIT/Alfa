@@ -610,6 +610,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 3700285875723374575, guid: d1e05314f6de45f4f8e535c97ef6107e, type: 3}
+  coordinates:
+  - {x: 0, y: 1}
+  - {x: 1, y: 1}
+  - {x: 1, y: 0}
 --- !u!1 &1246512493
 GameObject:
   m_ObjectHideFlags: 0

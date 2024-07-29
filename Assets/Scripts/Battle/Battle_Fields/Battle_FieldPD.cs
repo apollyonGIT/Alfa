@@ -7,6 +7,7 @@ namespace Battle.Battle_Fields
     public class Battle_FieldPD : Producer
     {
         public Battle_FieldView model;
+        public Vector2Int[] coordinates;
 
         public override IMgr imgr => mgr;
         Battle_FieldMgr mgr;
@@ -17,20 +18,15 @@ namespace Battle.Battle_Fields
         {
             mgr = new("Battle_FieldMgr", priority);
 
-            foreach (var cell in cells(mgr))
-            {
-                mgr.add_cell(cell);
-
-                var view = Instantiate(model, transform);
-                cell.add_view(view);
-
-                view.transform.localPosition = Hexagon.calc_unity_pos(cell.id, 0.5f);
-            }
+            add_cells(mgr);
         }
 
 
         public override void call()
         {
+            mgr.remove_cells();
+
+            add_cells(mgr);
         }
 
 
@@ -38,20 +34,23 @@ namespace Battle.Battle_Fields
         {
             Hexagon id;
 
-            id = Hexagon.zero.xy2hex(new(0, 1));
-            yield return new(mgr, id);
+            foreach (var pos in coordinates)
+            {
+                id = Hexagon.zero.xy_2_hex(pos);
+                yield return new(mgr, id);
+            }
+        }
 
-            id = Hexagon.zero.xy2hex(new(0, 0));
-            yield return new(mgr, id);
 
-            id = Hexagon.zero.xy2hex(new(1, 1));
-            yield return new(mgr, id);
+        public void add_cells(Battle_FieldMgr mgr)
+        {
+            foreach (var cell in cells(mgr))
+            {
+                mgr.add_cell(cell);
 
-            id = Hexagon.zero.xy2hex(new(1, 0));
-            yield return new(mgr, id);
-
-            id = Hexagon.zero.xy2hex(new(0, 2));
-            yield return new(mgr, id);
+                var view = Instantiate(model, transform);
+                cell.add_view(view);
+            }
         }
     }
 }

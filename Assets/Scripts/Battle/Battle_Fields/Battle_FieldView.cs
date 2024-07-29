@@ -23,12 +23,16 @@ namespace Battle.Battle_Fields
             q.text = $"{id.q}";
             r.text = $"{id.r}";
             s.text = $"{id.s}";
+
+            transform.localPosition = cell.view_pos;
         }
 
 
         void IModelView<Battle_Field>.detach(Battle_Field cell)
         {
             this.cell = null;
+
+            DestroyImmediate(gameObject);
         }
     }
 }

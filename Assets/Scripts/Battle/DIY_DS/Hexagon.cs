@@ -92,10 +92,9 @@ namespace Battle
         }
 
 
-        public static Vector2 calc_unity_pos (Hexagon hex, float radius)
+        public Vector2 hex_2_unity_pos (float radius)
         {
-            var v = hex.hex2xy();
-            Debug.Log(v);
+            var v = hex_2_xy();
             
             var x = 2 * v.x;
             var y = in2out * 1.5f * v.y;
@@ -108,25 +107,23 @@ namespace Battle
         }
 
 
-        public static implicit operator Hexagon(Vector2 v)
+        public Vector2Int hex_2_xy()
         {
-            return new();
-        }
-
-
-        Vector2Int hex2xy()
-        {
-            var e = r % 2;
-
             return new(q, -r);
         }
 
 
-        public Hexagon xy2hex(Vector2Int v)
+        public Hexagon xy_2_hex(Vector2Int v)
+        {
+            return xy_2_hex(v.x, v.y);
+        }
+
+
+        public Hexagon xy_2_hex(int x, int y)
         {
             var hex = zero;
-            hex.r = -v.y;
-            hex.q = v.x;
+            hex.r = -y;
+            hex.q = x;
             hex.s = 0 - (hex.r + hex.q);
 
             return hex;
