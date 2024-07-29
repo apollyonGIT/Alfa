@@ -36,7 +36,7 @@ namespace Battle.Battle_Fields
 
             foreach (var pos in coordinates)
             {
-                id = Hexagon.zero.xy_2_hex(pos);
+                id = Hexagon.xy_2_hex(pos);
                 yield return new(mgr, id);
             }
         }

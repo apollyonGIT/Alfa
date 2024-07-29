@@ -92,9 +92,9 @@ namespace Battle
         }
 
 
-        public Vector2 hex_2_unity_pos (float radius)
+        public static Vector2 hex_2_unity_pos (Hexagon hex, float radius)
         {
-            var v = hex_2_xy();
+            var v = hex_2_xy(hex);
             
             var x = 2 * v.x;
             var y = in2out * 1.5f * v.y;
@@ -107,19 +107,19 @@ namespace Battle
         }
 
 
-        public Vector2Int hex_2_xy()
+        public static Vector2Int hex_2_xy(Hexagon hex)
         {
-            return new(q, -r);
+            return new(hex.q, -hex.r);
         }
 
 
-        public Hexagon xy_2_hex(Vector2Int v)
+        public static Hexagon xy_2_hex(Vector2Int v)
         {
             return xy_2_hex(v.x, v.y);
         }
 
 
-        public Hexagon xy_2_hex(int x, int y)
+        public static Hexagon xy_2_hex(int x, int y)
         {
             var hex = zero;
             hex.r = -y;
