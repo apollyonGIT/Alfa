@@ -45,7 +45,7 @@ namespace Battle
         public Hexagon right_up(int step = 1)
         {
             var ret = this;
-            ret.q += step;
+            ret.q += (step - 1);
             ret.r -= step;
 
             return ret;
@@ -56,7 +56,7 @@ namespace Battle
         {
             var ret = this;
             ret.r += step;
-            ret.s -= step;
+            ret.s -= (step - 1);
 
             return ret;
         }
@@ -75,7 +75,7 @@ namespace Battle
         public Hexagon left_up(int step = 1)
         {
             var ret = this;
-            ret.s += step;
+            ret.s += (step - 1);
             ret.r -= step;
 
             return ret;
@@ -86,7 +86,7 @@ namespace Battle
         {
             var ret = this;
             ret.r += step;
-            ret.q -= step;
+            ret.q -= (step - 1);
 
             return ret;
         }
@@ -118,14 +118,11 @@ namespace Battle
         {
             var e = r % 2;
 
-            if (e == 0)
-                return new(q, -r);
-            else
-                return new(q - 1, -r);
+            return new(q, -r);
         }
 
 
-        Hexagon xy2hex(Vector2Int v)
+        public Hexagon xy2hex(Vector2Int v)
         {
             var hex = zero;
             hex.r = -v.y;
