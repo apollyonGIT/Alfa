@@ -1,6 +1,7 @@
 ﻿using Common;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 namespace Battle.Battle_Fields
 {
@@ -34,11 +35,22 @@ namespace Battle.Battle_Fields
         {
             Hexagon id;
 
-            foreach (var pos in coordinates)
-            {
-                id = Hexagon.xy_2_hex(pos);
-                yield return new(mgr, id);
-            }
+            //foreach (var pos in coordinates)
+            //{
+            //    id = Hexagon.xy_2_hex(pos);
+            //    yield return new(mgr, id);
+            //}
+
+            id = Hexagon.xy_2_hex(2, 2);
+            yield return new(mgr, id);
+
+            //yield return new(mgr, id.left());
+            //yield return new(mgr, id.left_up());
+            //yield return new(mgr, id.left_down());
+
+            //yield return new(mgr, id.right());
+            //yield return new(mgr, id.right_up());
+            //yield return new(mgr, id.right_down());
         }
 
 

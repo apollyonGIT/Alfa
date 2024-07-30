@@ -36,7 +36,7 @@ namespace Battle
         {
             var ret = this;
             ret.q += step;
-            ret.s -= step;
+            ret.s = -(ret.q + ret.r);
 
             return ret;
         }
@@ -45,8 +45,8 @@ namespace Battle
         public Hexagon right_up(int step = 1)
         {
             var ret = this;
-            ret.q += (step - 1);
             ret.r -= step;
+            ret.s = -(ret.q + ret.r);
 
             return ret;
         }
@@ -56,7 +56,7 @@ namespace Battle
         {
             var ret = this;
             ret.r += step;
-            ret.s -= (step - 1);
+            ret.s = -(ret.q + ret.r);
 
             return ret;
         }
@@ -65,8 +65,8 @@ namespace Battle
         public Hexagon left(int step = 1)
         {
             var ret = this;
-            ret.s += step;
             ret.q -= step;
+            ret.s = -(ret.q + ret.r);
 
             return ret;
         }
@@ -75,8 +75,9 @@ namespace Battle
         public Hexagon left_up(int step = 1)
         {
             var ret = this;
-            ret.s += (step - 1);
             ret.r -= step;
+            ret.q -= step;
+            ret.s = -(ret.r + ret.q);
 
             return ret;
         }
@@ -86,7 +87,8 @@ namespace Battle
         {
             var ret = this;
             ret.r += step;
-            ret.q -= (step - 1);
+            ret.q -= step;
+            ret.s = -(ret.r + ret.q);
 
             return ret;
         }
