@@ -1,7 +1,7 @@
 ﻿using Common;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 namespace Battle.Battle_Fields
 {
@@ -35,33 +35,23 @@ namespace Battle.Battle_Fields
         {
             Hexagon id;
 
-            //foreach (var pos in coordinates)
-            //{
-            //    id = Hexagon.xy_2_hex(pos);
-            //    yield return new(mgr, id);
-            //}
-
-            id = Hexagon.xy_2_hex(2, 2);
-            yield return new(mgr, id);
-
-            //yield return new(mgr, id.left());
-            //yield return new(mgr, id.left_up());
-            //yield return new(mgr, id.left_down());
-
-            //yield return new(mgr, id.right());
-            //yield return new(mgr, id.right_up());
-            //yield return new(mgr, id.right_down());
+            foreach (var pos in coordinates)
+            {
+                id = Hexagon.xy_2_hex(pos);
+                yield return new(mgr, id);
+            }
         }
 
 
         public void add_cells(Battle_FieldMgr mgr)
         {
-            foreach (var cell in cells(mgr))
+            foreach (var (cell, index) in cells(mgr).Select((value, i) => (value, i)))
             {
                 mgr.add_cell(cell);
 
                 var view = Instantiate(model, transform);
                 cell.add_view(view);
+                view.name = index.ToString();
             }
         }
     }
