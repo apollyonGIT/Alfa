@@ -32,6 +32,37 @@ namespace Battle
         }
 
 
+        public static bool operator ==(Hexagon h1, Hexagon h2)
+        {
+            return (h1.q == h2.q) && (h1.r == h2.r) && (h1.s == h2.s);
+        }
+
+
+        public static bool operator !=(Hexagon h1, Hexagon h2)
+        {
+            return (h1.q != h2.q) || (h1.r != h2.r) || (h1.s != h2.s);
+        }
+
+
+        public override bool Equals(object obj)
+        {
+            if (obj is not Hexagon h2) return false;
+            return (q == h2.q) && (r == h2.r) && (s == h2.s);
+        }
+
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+
+        public override string ToString()
+        {
+            return $"q:{q},r:{r},s:{s}";
+        }
+
+
         public Hexagon right(int step = 1)
         {
             var ret = this;
@@ -94,10 +125,10 @@ namespace Battle
         }
 
 
-        public static Vector2 hex_2_unity_pos(Hexagon hex, float radius)
+        public static Vector2 hex_2_pos(Hexagon hex, float radius)
         {
             var v = hex_2_xy(hex);
-            return xy_2_unity_pos(v, radius);
+            return xy_2_pos(v, radius);
         }
 
 
@@ -107,7 +138,7 @@ namespace Battle
         }
 
 
-        public static Vector2 xy_2_unity_pos (Vector2Int v, float radius)
+        public static Vector2 xy_2_pos (Vector2Int v, float radius)
         {
             var _x = 2f * v.x;
             var _y = in2out * 1.5f * v.y;
@@ -129,9 +160,6 @@ namespace Battle
 
             return hex;
         }
-
-
-        
     }
 }
 
