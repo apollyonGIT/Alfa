@@ -131,10 +131,34 @@ namespace Battle
 
         public static Vector2 hex_2_xy(Hexagon hex)
         {
-            var x = Mathf.Floor((hex.q - hex.s) / 2);
+            var x = Mathf.Floor((hex.q - hex.s) / 2f);
             var y = -hex.r;
 
             return new(x, y);
+        }
+
+
+        public static Hexagon xy_2_hex(float x, float y)
+        {
+            Hexagon ret = zero;
+
+            var qs_add = y;
+
+            var qs_sub_1 = x * 2;
+            var qs_sub_2 = x * 2 + 1;
+            var qs_sub = (qs_sub_1 + qs_add) * 5 % 10 == 0 ? qs_sub_1 : qs_sub_2;
+
+            ret.q = (int)(qs_sub + qs_add) / 2;
+            ret.r = -(int)y;
+            ret.s = -(ret.q + ret.r);
+
+            return ret;
+        }
+
+
+        public static Hexagon xy_2_hex(Vector2 v)
+        {
+            return xy_2_hex(v.x, v.y);
         }
 
 

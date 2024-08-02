@@ -1,6 +1,7 @@
 ﻿using Common;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Battle.Battle_Fields
 {
@@ -36,6 +37,29 @@ namespace Battle.Battle_Fields
             id = Hexagon.zero;
             yield return new(mgr, id);
 
+            id = Hexagon.zero.left();
+            Hexagon.xy_2_hex(Hexagon.hex_2_xy(id));
+            yield return new(mgr, id);
+
+            id = Hexagon.zero.left_up();
+            Hexagon.xy_2_hex(Hexagon.hex_2_xy(id));
+            yield return new(mgr, id);
+
+            id = Hexagon.zero.left_down();
+            Hexagon.xy_2_hex(Hexagon.hex_2_xy(id));
+            yield return new(mgr, id);
+
+            id = Hexagon.zero.right();
+            Hexagon.xy_2_hex(Hexagon.hex_2_xy(id));
+            yield return new(mgr, id);
+
+            id = Hexagon.zero.right_down();
+            Hexagon.xy_2_hex(Hexagon.hex_2_xy(id));
+            yield return new(mgr, id);
+
+            id = Hexagon.zero.right_up();
+            Hexagon.xy_2_hex(Hexagon.hex_2_xy(id));
+            yield return new(mgr, id);
         }
 
 
