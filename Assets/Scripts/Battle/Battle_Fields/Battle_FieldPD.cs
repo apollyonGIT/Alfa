@@ -1,14 +1,12 @@
 ﻿using Common;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace Battle.Battle_Fields
 {
     public class Battle_FieldPD : Producer
     {
         public Battle_FieldView model;
-        public Vector2Int[] coordinates;
 
         public override IMgr imgr => mgr;
         Battle_FieldMgr mgr;
@@ -35,11 +33,9 @@ namespace Battle.Battle_Fields
         {
             Hexagon id;
 
-            foreach (var pos in coordinates)
-            {
-                id = Hexagon.xy_2_hex(pos);
-                yield return new(mgr, id);
-            }
+            id = Hexagon.zero;
+            yield return new(mgr, id);
+
         }
 
 
@@ -51,7 +47,6 @@ namespace Battle.Battle_Fields
 
                 var view = Instantiate(model, transform);
                 cell.add_view(view);
-                view.name = index.ToString();
             }
         }
     }

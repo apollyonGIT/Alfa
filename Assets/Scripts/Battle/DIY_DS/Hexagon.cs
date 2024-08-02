@@ -66,6 +66,7 @@ namespace Battle
         public Hexagon right(int step = 1)
         {
             var ret = this;
+
             ret.q += step;
             ret.s = -(ret.q + ret.r);
 
@@ -76,8 +77,9 @@ namespace Battle
         public Hexagon right_up(int step = 1)
         {
             var ret = this;
+
             ret.r -= step;
-            ret.s = -(ret.q + ret.r);
+            ret.q = -(ret.s + ret.r);
 
             return ret;
         }
@@ -86,6 +88,7 @@ namespace Battle
         public Hexagon right_down(int step = 1)
         {
             var ret = this;
+
             ret.r += step;
             ret.s = -(ret.q + ret.r);
 
@@ -96,6 +99,7 @@ namespace Battle
         public Hexagon left(int step = 1)
         {
             var ret = this;
+
             ret.q -= step;
             ret.s = -(ret.q + ret.r);
 
@@ -106,8 +110,8 @@ namespace Battle
         public Hexagon left_up(int step = 1)
         {
             var ret = this;
+
             ret.r -= step;
-            ret.q -= step;
             ret.s = -(ret.r + ret.q);
 
             return ret;
@@ -117,48 +121,32 @@ namespace Battle
         public Hexagon left_down(int step = 1)
         {
             var ret = this;
+
             ret.r += step;
-            ret.q -= step;
-            ret.s = -(ret.r + ret.q);
+            ret.q = -(ret.r + ret.s);
 
             return ret;
         }
 
 
+        public static Vector2 hex_2_xy(Hexagon hex)
+        {
+            var x = Mathf.Floor((hex.q - hex.s) / 2);
+            var y = -hex.r;
+
+            return new(x, y);
+        }
+
+
         public static Vector2 hex_2_pos(Hexagon hex, float radius)
         {
-            var v = hex_2_xy(hex);
-            return xy_2_pos(v, radius);
-        }
+            float x = (hex.q - hex.s);
+            float y = -hex.r;
 
+            x *= radius;
+            y *= (1.5f * radius * in2out);
 
-        public static Vector2Int hex_2_xy(Hexagon hex)
-        {
-            return new(hex.q, -hex.r);
-        }
-
-
-        public static Vector2 xy_2_pos (Vector2Int v, float radius)
-        {
-            var _x = 2f * v.x;
-            var _y = in2out * 1.5f * v.y;
-            var ret = new Vector2(_x, _y);
-
-            if ((_y % 2) == 0)
-                return ret * radius;
-            else
-                return ret * radius + new Vector2(radius, 0);
-        }
-
-
-        public static Hexagon xy_2_hex(Vector2Int v)
-        {
-            var hex = zero;
-            hex.r = -v.y;
-            hex.q = v.x;
-            hex.s = 0 - (hex.r + hex.q);
-
-            return hex;
+            return new(x, y);
         }
     }
 }
