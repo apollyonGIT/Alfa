@@ -34,32 +34,14 @@ namespace Battle.Battle_Fields
         {
             Hexagon id;
 
-            id = Hexagon.zero;
-            yield return new(mgr, id);
-
-            id = Hexagon.zero.left();
-            Hexagon.xy_2_hex(Hexagon.hex_2_xy(id));
-            yield return new(mgr, id);
-
-            id = Hexagon.zero.left_up();
-            Hexagon.xy_2_hex(Hexagon.hex_2_xy(id));
-            yield return new(mgr, id);
-
-            id = Hexagon.zero.left_down();
-            Hexagon.xy_2_hex(Hexagon.hex_2_xy(id));
-            yield return new(mgr, id);
-
-            id = Hexagon.zero.right();
-            Hexagon.xy_2_hex(Hexagon.hex_2_xy(id));
-            yield return new(mgr, id);
-
-            id = Hexagon.zero.right_down();
-            Hexagon.xy_2_hex(Hexagon.hex_2_xy(id));
-            yield return new(mgr, id);
-
-            id = Hexagon.zero.right_up();
-            Hexagon.xy_2_hex(Hexagon.hex_2_xy(id));
-            yield return new(mgr, id);
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    id = Hexagon.xy_2_hex(i, j);
+                    yield return new(mgr, id);
+                }
+            }
         }
 
 

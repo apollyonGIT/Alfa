@@ -172,6 +172,15 @@ namespace Battle
 
             return new(x, y);
         }
+
+
+        public static float distance(Hexagon hex_1, Hexagon hex_2)
+        {
+            var x = Mathf.Abs((hex_1.q - hex_1.s) - (hex_2.q - hex_2.s));
+            var y = Mathf.Abs(hex_1.r - hex_2.r);
+
+            return (x + y) / 2f;
+        }
     }
 }
 
