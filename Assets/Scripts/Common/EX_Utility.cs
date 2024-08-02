@@ -320,20 +320,20 @@ namespace Common
         }
 
 
-        public static void raycast(Vector2 pos, Action hit_null_ac ,Action<View> hit_success_ac)
-        {
-            var hit = Physics2D.Raycast(pos, Vector2.zero).transform;
-            if (hit == null)
-            {
-                hit_null_ac?.Invoke();
-                return;
-            }
+        //public static void raycast(Vector2 pos, Action hit_null_ac ,Action<View> hit_success_ac)
+        //{
+        //    var hit = Physics2D.Raycast(pos, Vector2.zero).transform;
+        //    if (hit == null)
+        //    {
+        //        hit_null_ac?.Invoke();
+        //        return;
+        //    }
 
-            var view = hit.GetComponentInParent<View>();
-            if (view == null) return;
+        //    var view = hit.GetComponentInParent<View>();
+        //    if (view == null) return;
 
-            hit_success_ac?.Invoke(view);
-        }
+        //    hit_success_ac?.Invoke(view);
+        //}
         #endregion
     }
 }

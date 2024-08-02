@@ -1,17 +1,13 @@
 ﻿using Foundation;
 using UnityEngine;
-using Common;
 
 namespace Battle.Battle_Fields
 {
-    public class Battle_FieldView : View, IBattle_FieldView
+    public class Battle_FieldView : MonoBehaviour, IBattle_FieldView
     {
         public TextMesh q, r, s;
 
         Battle_Field cell;
-
-        public override object vmgr => cell.mgr;
-        public override object vcell => cell;
 
         //==================================================================================================
 
@@ -33,6 +29,12 @@ namespace Battle.Battle_Fields
             this.cell = null;
 
             DestroyImmediate(gameObject);
+        }
+
+
+        public void notify_on_left_click()
+        {
+            Debug.Log("123");
         }
     }
 }

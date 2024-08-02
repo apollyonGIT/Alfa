@@ -22,60 +22,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "MoveUp",
-                    "type": "Button",
-                    "id": "fbfcdf4e-4c60-4f2f-8963-61fd58d75cbb",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "MoveDown",
-                    "type": "Button",
-                    "id": "6437d21c-9560-4368-a497-af523e83dcd9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "MoveLeft",
-                    "type": "Button",
-                    "id": "3687250b-baff-4ab1-bd43-12dba4e9a68c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "MoveRight",
-                    "type": "Button",
-                    "id": "bb006aa0-6866-4748-84fb-3904ac317ebd",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Wait",
-                    "type": "Button",
-                    "id": "31474d48-9709-4eca-88ee-da97bfaa42c2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ShowFlyArea",
-                    "type": "Button",
-                    "id": "30e1bd47-b817-4a60-9460-05248e1cfe85",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -87,72 +33,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "LeftMouseClick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3f384c9a-cb7c-43d5-9d48-8e12593cec4c",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2d687b9b-d943-4b74-bda3-2e7b0eb744c6",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "865ea855-80f2-4911-b329-79e427514a00",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveLeft",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4f492c61-075d-4758-8d6a-cf97e1164789",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveRight",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "da2692d6-f896-4093-8c6c-e6f97b2ecbaa",
-                    "path": "<Keyboard>/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Wait",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a99f4aa5-c175-437b-ba11-ad98111eb336",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ShowFlyArea",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
