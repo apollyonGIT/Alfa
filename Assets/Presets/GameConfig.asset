@@ -16,3 +16,4 @@ MonoBehaviour:
   battle_context_path: Battle.BattleContext
   camera_size_world: 5
   camera_size_battle: 5
+  camera_pos_battle: {x: 5.22, y: 4}

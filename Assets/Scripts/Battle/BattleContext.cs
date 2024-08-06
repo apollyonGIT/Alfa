@@ -7,7 +7,7 @@ namespace Battle
     public class BattleContext : Singleton<BattleContext>
     {
         #region outter
-        
+
         #endregion
 
         static Vector2 m_ori_camera_pos;
@@ -17,7 +17,12 @@ namespace Battle
         public static void attach(WorldContext wctx)
         {
             m_ori_camera_pos = wctx.mainCamera_pos;
-            Battle_Camera_Helper.instance.reset_size();
+
+            var camera_helper = Battle_Camera_Helper.instance;
+            {
+                camera_helper.move_to_pos(new(5.22f, 4));
+                camera_helper.reset_size();
+            }
         }
 
 

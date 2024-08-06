@@ -34,7 +34,7 @@ namespace Battle.Battle_Fields
 
         public void notify_on_left_click()
         {
-            Debug.Log("123");
+            Debug.Log(cell.xy_pos);
         }
     }
 }

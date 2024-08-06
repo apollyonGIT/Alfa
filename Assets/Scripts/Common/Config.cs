@@ -54,6 +54,7 @@ namespace Common
         [Header("摄像机")]
         public float camera_size_world;
         public float camera_size_battle;
+        public Vector2 camera_pos_battle;
         #endregion
 
 

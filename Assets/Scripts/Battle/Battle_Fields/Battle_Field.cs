@@ -7,6 +7,7 @@ namespace Battle.Battle_Fields
     {
         public Hexagon id;
         public Vector2 view_pos => Hexagon.hex_2_pos(id, 0.5f);
+        public Vector2 xy_pos => Hexagon.hex_2_xy(id);
 
         public Battle_FieldMgr mgr;
 
