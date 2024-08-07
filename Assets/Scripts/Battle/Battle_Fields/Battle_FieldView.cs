@@ -34,7 +34,8 @@ namespace Battle.Battle_Fields
 
         public void notify_on_left_click()
         {
-            Debug.Log(cell.xy_pos);
+            var dis = Hexagon.distance(Hexagon.xy_2_hex(new(1, 1)), cell.id);
+            Debug.Log(dis);
         }
     }
 }

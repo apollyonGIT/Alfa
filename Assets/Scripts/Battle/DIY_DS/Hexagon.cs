@@ -176,10 +176,10 @@ namespace Battle
 
         public static float distance(Hexagon hex_1, Hexagon hex_2)
         {
-            var x = Mathf.Abs((hex_1.q - hex_1.s) - (hex_2.q - hex_2.s));
-            var y = Mathf.Abs(hex_1.r - hex_2.r);
+            var t = hex_1 - hex_2;
+            var dis = Mathf.Max(Mathf.Abs(t.q), Mathf.Abs(t.r), Mathf.Abs(t.s));
 
-            return (x + y) / 2f;
+            return dis;
         }
     }
 }
