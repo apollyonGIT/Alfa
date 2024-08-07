@@ -7,20 +7,13 @@ namespace Battle
     {
         public void OnLeftMouseClick()
         {
-            Battle_Mouse_Helper.instance.calc_mouse_pos(out var pos);
-
-            var hit = Physics2D.Raycast(pos, Vector2.zero).transform;
-            if (hit == null) return;
-            if (!hit.TryGetComponent(out InteractiveView iview)) return;
-
-            var view = iview.target;
-            if (view != null)
-                view.GetType().GetMethod("notify_on_left_click")?.Invoke(view, null);
+            Battle_Mouse_Helper.do_hit_view_method<InteractiveView>("notify_on_left_click");
         }
 
 
         public void OnRightMouseClick()
         {
+            Battle_Mouse_Helper.do_hit_view_method<InteractiveView>("notify_on_right_click");
         }
     }
 }

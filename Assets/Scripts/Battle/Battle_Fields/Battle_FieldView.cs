@@ -6,6 +6,7 @@ namespace Battle.Battle_Fields
     public class Battle_FieldView : MonoBehaviour, IBattle_FieldView
     {
         public TextMesh q, r, s;
+        public SpriteRenderer bg;
 
         Battle_Field cell;
 
@@ -34,8 +35,20 @@ namespace Battle.Battle_Fields
 
         public void notify_on_left_click()
         {
-            var dis = Hexagon.distance(Hexagon.xy_2_hex(new(1, 1)), cell.id);
+            var dis = Hexagon.distance(Hexagon.xy_2_hex(new(0, 0)), cell.id);
             Debug.Log(dis);
+        }
+
+
+        public void notify_on_right_click()
+        {
+            ref var is_obs = ref cell.is_obs;
+            is_obs = !is_obs;
+
+            if (is_obs)
+                bg.color = Color.blue;
+            else
+                bg.color = Color.white;
         }
     }
 }

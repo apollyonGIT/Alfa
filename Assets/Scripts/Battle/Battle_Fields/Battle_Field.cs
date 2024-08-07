@@ -11,6 +11,8 @@ namespace Battle.Battle_Fields
 
         public Battle_FieldMgr mgr;
 
+        public bool is_obs; //是否为障碍物
+
         //==================================================================================================
 
         public Battle_Field(Battle_FieldMgr mgr,  params object[] args)
