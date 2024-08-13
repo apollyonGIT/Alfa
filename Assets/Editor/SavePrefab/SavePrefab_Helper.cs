@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Common
+namespace Editor
 {
     public class SavePrefab_Helper : MonoBehaviour
     {

@@ -32,7 +32,7 @@ namespace Editor.DIY_Editor
 
             var ev = Event.current;
             if (ev.type != EventType.MouseDown && ev.type != EventType.MouseDrag) return;
-            if (!Common.Mouse_Helper.try_get_mouse_point(ev, root, out var point)) return;
+            if (!try_get_mouse_point(ev, root, out var point)) return;
 
             var args = new object[] { (Vector2)point };
             if (ev.button == 0)
@@ -51,6 +51,28 @@ namespace Editor.DIY_Editor
 
         protected virtual void right_click(object[] args)
         {
+        }
+
+
+        /// <summary>
+        /// 获取鼠标在scene中的点击位置
+        /// 以组件所在的gameobject为参照物
+        /// </summary>
+        public static bool try_get_mouse_point(Event ev, Component target, out Vector3 point)
+        {
+            Ray ray = HandleUtility.GUIPointToWorldRay(ev.mousePosition);
+
+            point = new();
+            if (target == null) return false;
+
+            var transform = target.transform;
+            var plane = new Plane(transform.forward, -Vector3.Dot(transform.position, transform.forward));
+
+            if (!plane.Raycast(ray, out var distance)) return false;
+
+            point = ray.GetPoint(distance);
+            point = transform.InverseTransformPoint(point); //获取点的位置
+            return true;
         }
     }
 }

@@ -4,9 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace Common
@@ -98,26 +96,6 @@ namespace Common
 
 
         /// <summary>
-        /// 不启动游戏，加载asset
-        /// path带文件后缀
-        /// </summary>
-        public static bool try_load_asset_without_running<T>(string path, bool is_complete_path, out T asset) where T : UnityEngine.Object
-        {
-            if (!is_complete_path)
-                path = $"Assets/Resources/RawResources/{path}";
-
-            asset = UnityEditor.AssetDatabase.LoadAssetAtPath<T>(path);
-            if (asset == null)
-            {
-                UnityEngine.Debug.LogWarning("路径错误：asset文件");
-                return false;
-            }
-
-            return true;
-        }
-
-
-        /// <summary>
         /// 加载table
         /// </summary>
         public static bool try_load_table<T>(string binaryAsset_name, out T t) where T : ITable, new()
@@ -138,28 +116,7 @@ namespace Common
         }
 
 
-        /// <summary>
-        /// 不启动游戏，加载table
-        /// </summary>
-        public static bool try_load_table_without_running<T>(string excel_name, string sheet_name, out T t) where T : ITable, new()
-        {
-            t = new();
-
-            var xlsx = UnityEditor.AssetDatabase.LoadAssetAtPath<ExcelFileAsset>($"Assets/Tables/{excel_name}.xlsx");
-            if (xlsx == null)
-            {
-                return false;
-            }
-
-            bool e;
-            foreach (var asset in xlsx.assets.Where(t => t.name == sheet_name))
-            {
-                e = t.load_from(asset.bytes);
-                if (!e) return false;
-            }
-
-            return true;
-        }
+        
         #endregion
 
 
@@ -216,6 +173,7 @@ namespace Common
         {
             return Quaternion.LookRotation(Vector3.forward, new Vector2(-dir.y, dir.x));
         }
+
         public static Quaternion quick_look_rotation_from_up(Vector2 dir)
         {
             return quick_look_rotation_from_left(new Vector2(-dir.y, dir.x));

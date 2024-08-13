@@ -1,4 +1,5 @@
 ﻿using Common;
+using UnityEngine;
 
 namespace Init
 {
@@ -17,7 +18,7 @@ namespace Init
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else
-        Application.Quit();
+            Application.Quit();
 #endif
         }
         #endregion

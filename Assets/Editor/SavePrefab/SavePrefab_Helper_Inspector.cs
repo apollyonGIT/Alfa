@@ -1,8 +1,7 @@
-﻿using Common;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
-namespace Editors.Inspectors
+namespace Editor
 {
     [CustomEditor(typeof(SavePrefab_Helper))]
     public class SavePrefab_Helper_Inspector : UnityEditor.Editor

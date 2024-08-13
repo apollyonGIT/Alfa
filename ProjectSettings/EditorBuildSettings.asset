@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Main.unity
     guid: 193cdc05df44bd944bae5e3ae26547f0
+  - enabled: 1
+    path: Assets/Resources/RawResources/scenes/Init.unity
+    guid: 2a0107f0bc85527408608e2e543bdff1
+  - enabled: 1
+    path: Assets/Resources/RawResources/scenes/World.unity
+    guid: c8ec1e5c8c4d9164394dd917353d75bb
+  - enabled: 1
+    path: Assets/Resources/RawResources/scenes/Battle.unity
+    guid: dfc496740c26c8e4db9a8cae6f6a946e
   m_configObjects: {}

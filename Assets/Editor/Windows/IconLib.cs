@@ -1,12 +1,10 @@
-﻿#if UNITY_EDITOR
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 
-namespace Editor.Windows
+namespace Editor
 {
     public class IconLib : EditorWindow
     {
@@ -692,6 +690,5 @@ namespace Editor.Windows
 
         #endregion
     }
-#endif
 }
 
