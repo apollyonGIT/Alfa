@@ -21,6 +21,12 @@ namespace Battle.BFs
         {
             this.cell = null;
         }
+
+
+        public void notify_on_left_click()
+        {
+            Debug.Log(cell.pos);
+        }
     }
 }
 
