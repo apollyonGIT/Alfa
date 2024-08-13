@@ -2,23 +2,29 @@
 using UnityEngine;
 using Common;
 
-namespace #namespace#
+namespace Scripts.BFs
 {
-    public class #name# : MonoBehaviour, #iview#
+    public class BFView : MonoBehaviour, IBFView
     {
-        #cell# cell;
+        BF cell;
 
         //==================================================================================================
 
-        void IModelView<#cell#>.attach(#cell# cell)
+        void IModelView<BF>.attach(BF cell)
         {
             this.cell = cell;
         }
 
 
-        void IModelView<#cell#>.detach(#cell# cell)
+        void IModelView<BF>.detach(BF cell)
         {
             this.cell = null;
+        }
+
+
+        public void notify_on_left_click()
+        {
+            Debug.Log(111);
         }
     }
 }
