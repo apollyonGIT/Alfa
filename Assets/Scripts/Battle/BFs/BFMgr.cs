@@ -1,7 +1,9 @@
 ﻿using Common;
 using Foundation;
+using System.Collections.Generic;
+using UnityEngine;
 
-namespace Scripts.BFs
+namespace Battle.BFs
 {
     public interface IBFView : IModelView<BF>
     { 
@@ -10,6 +12,8 @@ namespace Scripts.BFs
 
     public class BFMgr : IMgr
     {
+        public Dictionary<Vector2, BF> cells = new();
+
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
         int IMgr.priority => m_mgr_priority;
@@ -35,6 +39,12 @@ namespace Scripts.BFs
         void IMgr.init(object[] args)
         {
             Mission.instance.attach_mgr(m_mgr_name, this);
+        }
+
+
+        public void add_cell(BF cell)
+        {
+            cells.Add(cell.pos, cell);
         }
     }
 }

@@ -1,8 +1,7 @@
 ﻿using Foundation;
 using UnityEngine;
-using Common;
 
-namespace Scripts.BFs
+namespace Battle.BFs
 {
     public class BFView : MonoBehaviour, IBFView
     {
@@ -13,18 +12,14 @@ namespace Scripts.BFs
         void IModelView<BF>.attach(BF cell)
         {
             this.cell = cell;
+
+            transform.localPosition = cell.view_pos;
         }
 
 
         void IModelView<BF>.detach(BF cell)
         {
             this.cell = null;
-        }
-
-
-        public void notify_on_left_click()
-        {
-            Debug.Log(111);
         }
     }
 }
