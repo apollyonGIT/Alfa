@@ -4,12 +4,9 @@ using Common;
 
 namespace #namespace#
 {
-    public class #name# : View, #iview#
+    public class #name# : #iview#
     {
         #cell# cell;
-
-        public override object vmgr => cell.mgr;
-        public override object vcell => cell;
 
         //==================================================================================================
 
