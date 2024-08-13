@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Editor
 {
-    [CustomEditor(typeof(SavePrefab_Helper))]
-    public class SavePrefab_Helper_Inspector : UnityEditor.Editor
+    [CustomEditor(typeof(SavePrefab))]
+    public class SavePrefab_Inspector : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
@@ -12,7 +12,7 @@ namespace Editor
 
             if (GUILayout.Button("do"))
             {
-                var instance = (SavePrefab_Helper)target;
+                var instance = (SavePrefab)target;
                 instance.@do();
             }
         }

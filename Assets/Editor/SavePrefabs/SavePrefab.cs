@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Editor
 {
-    public class SavePrefab_Helper : MonoBehaviour
+    public class SavePrefab : MonoBehaviour
     {
         public GameObject target_prefab;
         public GameObject source_prefab;

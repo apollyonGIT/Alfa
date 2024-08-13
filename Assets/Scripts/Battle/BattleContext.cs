@@ -20,7 +20,7 @@ namespace Battle
 
             var camera_helper = Battle_Camera_Helper.instance;
             {
-                camera_helper.move_to_pos(new(5.22f, 4));
+                camera_helper.move_to_pos(Config.current.camera_pos_battle);
                 camera_helper.reset_size();
             }
         }
