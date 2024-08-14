@@ -5,32 +5,17 @@ namespace Battle
 {
     public class Battle_DB : Singleton<Battle_DB>
     {
-        Monster m_monster;
-        public Monster monster
+        Enemy m_enemy;
+        public Enemy enemy
         {
             get
             {
-                if (m_monster == null)
+                if (m_enemy == null)
                 {
-                    EX_Utility.try_load_table("monster", out m_monster);
+                    EX_Utility.try_load_table("enemy", out m_enemy);
                 }
 
-                return m_monster;
-            }
-        }
-
-
-        Player m_player;
-        public Player player
-        {
-            get
-            {
-                if (m_player == null)
-                {
-                    EX_Utility.try_load_table("player", out m_player);
-                }
-
-                return m_player;
+                return m_enemy;
             }
         }
     }
