@@ -29,8 +29,8 @@ namespace Battle.BFs
 
         public override void call()
         {
-        }
 
+        }
 
 
         IEnumerable<BF> cells()
