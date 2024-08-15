@@ -16,6 +16,9 @@ namespace World
 
         public void out_battle(WorldContext ctx)
         {
+            Mission.instance.try_get_mgr("EnemyMgr", out var enemy_mgr);
+            enemy_mgr.fini();
+
             Assembly.Load(Config.current.battle_assembly).GetType(Config.current.battle_context_path).GetMethod("detach").Invoke(null, new object[] { ctx });
 
             EX_Utility.unload_scene_async("Battle");

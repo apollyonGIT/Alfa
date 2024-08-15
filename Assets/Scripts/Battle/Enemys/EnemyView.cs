@@ -44,6 +44,12 @@ namespace Battle.Enemys
         {
             fresh();
         }
+
+
+        private void OnDisable()
+        {
+            cell.bctx.detach();
+        }
     }
 }
 

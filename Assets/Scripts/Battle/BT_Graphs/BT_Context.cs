@@ -11,7 +11,7 @@ namespace Battle.BT_Graphs
         public string main_state;
 
         public object owner;
-        public BT_GraphAsset asset;
+        BT_GraphAsset asset;
 
         Type IContext.context_type => typeof(BT_Context);
 
@@ -24,18 +24,28 @@ namespace Battle.BT_Graphs
             this.owner = owner;
 
             EX_Utility.try_load_asset(asset_path, out asset);
-            init_graph();
+            attach(asset);
+
+            asset.notify_on_save += attach;
 
             main_state = "idle";
         }
 
 
-        public void init_graph()
+        public void attach(BT_GraphAsset asset)
         {
+            m_cpns.Clear();
+
             foreach (var node in asset.graph.nodes.Where(t => t is BT_Node bn && bn.module_name != null && bn.cpn_type != null).Cast<BT_Node>())
             {
                 m_cpns.Add(node.module_name, node.init_cpn(this));
             }
+        }
+
+
+        public void detach()
+        {
+            asset.notify_on_save -= attach;
         }
 
 

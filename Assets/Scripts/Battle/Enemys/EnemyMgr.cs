@@ -39,6 +39,7 @@ namespace Battle.Enemys
             Mission.instance.detach_mgr(m_mgr_name);
 
             Ticker.instance.remove_tick(m_mgr_name);
+            Ticker.instance.remove_tick1(m_mgr_name);
         }
 
 
