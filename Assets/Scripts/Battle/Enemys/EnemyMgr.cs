@@ -59,7 +59,7 @@ namespace Battle.Enemys
 
             foreach (var cell in cells)
             {
-                cell.bctx?.tick();
+                cell.bctx?.call();
             }
         }
 

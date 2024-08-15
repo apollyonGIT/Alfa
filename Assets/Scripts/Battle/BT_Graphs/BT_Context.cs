@@ -53,7 +53,7 @@ namespace Battle.BT_Graphs
         }
 
 
-        public void tick()
+        public void call()
         {
             try_do_cpn(main_state);
         }
