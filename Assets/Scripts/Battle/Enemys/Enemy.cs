@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using Battle.BT_Graphs;
+using Foundation;
 using UnityEngine;
 
 namespace Battle.Enemys
@@ -10,6 +11,7 @@ namespace Battle.Enemys
         public Vector2 pos;
         public Vector2 view_pos => pos * 2f;
 
+        public BT_Context bctx;
         public EnemyMgr mgr;
 
         //==================================================================================================
@@ -22,6 +24,8 @@ namespace Battle.Enemys
             Battle_DB.instance.enemy.try_get(id, out _desc);
 
             pos = (Vector2)args[1];
+
+            bctx = new(this, _desc.f_behaviour_tree);
         }
     }
 }

@@ -7,6 +7,7 @@ namespace Battle.BFs
     public class BFPD : Producer
     {
         public BFView model;
+        public Vector2Int area;
 
         public override IMgr imgr => mgr;
         BFMgr mgr;
@@ -35,9 +36,9 @@ namespace Battle.BFs
 
         IEnumerable<BF> cells()
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < area.y; i++)
             {
-                for (int j = 0; j < 10; j++)
+                for (int j = 0; j < area.x; j++)
                 {
                     Vector2 pos = new(i, j);
                     yield return new(mgr, pos);

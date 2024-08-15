@@ -997,6 +997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 4999644828080896380, guid: 1447c29f026b14f4e9ac804a3af8313b, type: 3}
+  area: {x: 8, y: 8}
 --- !u!1 &1565609547
 GameObject:
   m_ObjectHideFlags: 0

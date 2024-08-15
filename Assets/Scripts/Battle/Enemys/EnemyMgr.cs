@@ -1,6 +1,9 @@
 ﻿using Common;
+using Common.Ticker_Module;
 using Foundation;
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Battle.Enemys
 {
@@ -32,12 +35,25 @@ namespace Battle.Enemys
         void IMgr.fini()
         {
             Mission.instance.detach_mgr(m_mgr_name);
+
+            Ticker.instance.remove_tick(m_mgr_name);
         }
 
 
         void IMgr.init(object[] args)
         {
             Mission.instance.attach_mgr(m_mgr_name, this);
+
+            Ticker.instance.add_tick(m_mgr_priority, m_mgr_name, tick);
+        }
+
+
+        void tick()
+        {
+            foreach (var cell in cells)
+            {
+                cell.bctx?.tick();
+            }
         }
 
 

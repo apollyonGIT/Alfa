@@ -35,7 +35,7 @@ namespace Common
 
         #region const
         //帧率
-        public const int PHYSICS_TICKS_PER_SECOND = 120;
+        public const int PHYSICS_TICKS_PER_SECOND = 60;
         public const float PHYSICS_TICK_DELTA_TIME = 1f / PHYSICS_TICKS_PER_SECOND;
 
         #endregion
