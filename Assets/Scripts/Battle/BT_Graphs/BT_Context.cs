@@ -1,10 +1,8 @@
-﻿using Battle.BFs;
-using Common;
+﻿using Common;
 using GraphNode;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using UnityEngine;
 
 namespace Battle.BT_Graphs
@@ -14,6 +12,7 @@ namespace Battle.BT_Graphs
         public string main_state;
 
         public Vector2 pos;
+        public Dictionary<Vector2, object> sight => calc_sight();
 
         public object owner;
         BT_GraphAsset m_asset;
@@ -56,10 +55,7 @@ namespace Battle.BT_Graphs
 
         public void tick()
         {
-            Mission.instance.try_get_mgr("BFMgr", out BFMgr bf_mgr);
-            
-            SeekPath_Helper.try_seek_path(pos, new(5,5), bf_mgr.access_cells, out var path);
-            bf_mgr.show_path(path);
+            try_do_cpn(main_state);
         }
 
 
@@ -69,6 +65,13 @@ namespace Battle.BT_Graphs
 
             cpn.@do(this, args);
             return true;
+        }
+
+
+        Dictionary<Vector2, object> calc_sight()
+        {
+            Mission.instance.try_get_mgr("BFMgr", out BFs.BFMgr bf_mgr);
+            return bf_mgr.access_cells;
         }
     }
 }

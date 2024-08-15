@@ -10,7 +10,7 @@ namespace Battle
         left,
         right,
         up,
-        down
+        down,
     }
 }
 

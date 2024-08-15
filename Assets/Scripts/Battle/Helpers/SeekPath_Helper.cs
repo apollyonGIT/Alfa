@@ -38,7 +38,7 @@ namespace Battle
         }
 
 
-        public static bool try_seek_path(Vector2 start, Vector2 end, Dictionary<Vector2, bool> map, out Vector2[] ret)
+        public static bool try_seek_path(Vector2 start, Vector2 end, Dictionary<Vector2, object> map, out Vector2[] ret)
         {
             ret = default;
             var _ret = new LinkedList<Vector2>();
@@ -62,7 +62,7 @@ namespace Battle
                 {
                     var pos = dir + t.pos;
 
-                    if (!map.TryGetValue(pos, out var is_access) || !is_access) continue;
+                    if (!map.TryGetValue(pos, out _)) continue;
                     if (close.ContainsKey(pos)) continue;
 
                     Node temp = new(pos, t.pos, t.g + 1, end);
