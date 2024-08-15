@@ -11,7 +11,7 @@ namespace Battle.BT_Graphs
         public string main_state;
 
         public object owner;
-        BT_GraphAsset asset;
+        BT_GraphAsset m_asset;
 
         Type IContext.context_type => typeof(BT_Context);
 
@@ -23,10 +23,10 @@ namespace Battle.BT_Graphs
         {
             this.owner = owner;
 
-            EX_Utility.try_load_asset(asset_path, out asset);
-            attach(asset);
+            EX_Utility.try_load_asset(asset_path, out m_asset);
+            attach(m_asset);
 
-            asset.notify_on_save += attach;
+            m_asset.notify_on_save += attach;
 
             main_state = "idle";
         }
@@ -45,7 +45,7 @@ namespace Battle.BT_Graphs
 
         public void detach()
         {
-            asset.notify_on_save -= attach;
+            m_asset.notify_on_save -= attach;
         }
 
 
