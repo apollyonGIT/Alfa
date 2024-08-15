@@ -6,13 +6,13 @@
 
         //==================================================================================================
 
-        public virtual void @init(BT_Context ctx, BT_Node node)
+        public virtual void @init(BT_Context bctx, BT_Node node)
         {
             this.node = node;
         }
 
 
-        public virtual void @do(BT_Context ctx)
+        public virtual void @do(BT_Context bctx, params object[] args)
         {
 
         }

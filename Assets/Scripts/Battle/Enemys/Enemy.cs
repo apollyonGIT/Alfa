@@ -27,6 +27,13 @@ namespace Battle.Enemys
 
             bctx = new(this, _desc.f_behaviour_tree);
         }
+
+
+        public Vector2 pos_ref 
+        {
+            get { return pos; }
+            set { pos = value; }
+        }
     }
 }
 

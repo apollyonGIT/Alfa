@@ -8,13 +8,15 @@ using UnityEngine;
 namespace Battle.Enemys
 {
     public interface IEnemyView : IModelView<Enemy>
-    { 
+    {
+        void notify_on_tick();
     }
 
 
     public class EnemyMgr : IMgr
     {
         public List<Enemy> cells = new();
+        public bool is_call;
 
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
@@ -45,14 +47,31 @@ namespace Battle.Enemys
             Mission.instance.attach_mgr(m_mgr_name, this);
 
             Ticker.instance.add_tick(m_mgr_priority, m_mgr_name, tick);
+            Ticker.instance.add_tick1(m_mgr_priority, m_mgr_name, tick1);
         }
 
 
         void tick()
         {
+            if (!is_call) return;
+
             foreach (var cell in cells)
             {
                 cell.bctx?.tick();
+            }
+
+            is_call = false;
+        }
+
+
+        void tick1()
+        {
+            foreach (var cell in cells)
+            {
+                foreach (var view in cell.views)
+                {
+                    view.notify_on_tick();
+                }
             }
         }
 

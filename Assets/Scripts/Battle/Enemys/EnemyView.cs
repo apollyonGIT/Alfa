@@ -38,6 +38,12 @@ namespace Battle.Enemys
         {
             Debug.Log(123);
         }
+
+
+        void IEnemyView.notify_on_tick()
+        {
+            fresh();
+        }
     }
 }
 

@@ -1,9 +1,19 @@
-﻿using UnityEngine;
+﻿using System.Runtime.CompilerServices;
+using UnityEngine;
 
 namespace Battle
 {
     public class Move_Helper
     {
+        public static void move(EN_Move_Type move_type, ref Vector2 ori, int step = 1)
+        {
+            var objs = new object[] { ori, step };
+            typeof(Move_Helper).GetMethod(move_type.ToString())?.Invoke(null, objs);
+
+            ori = (Vector2)objs[0];
+        }
+
+
         public static void left(ref Vector2 ori, int step = 1)
         {
             ori += (Vector2.left * step);

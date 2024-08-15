@@ -29,6 +29,7 @@ namespace Battle.Enemys
 
         public override void call()
         {
+            mgr.is_call = true;
         }
 
 
