@@ -10,6 +10,9 @@ namespace Battle.BFs
 
         public BFMgr mgr;
 
+        public bool is_obs;
+        public bool is_access => !is_obs;
+
         //==================================================================================================
 
         public BF(BFMgr mgr,  params object[] args)

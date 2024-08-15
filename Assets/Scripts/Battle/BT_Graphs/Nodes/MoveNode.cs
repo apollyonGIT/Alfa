@@ -50,12 +50,7 @@ namespace Battle.BT_Graphs
             var move_type = (EN_Move_Type)args[0];
             var step = (int)args[1];
 
-            var owner = bctx.owner;
-            var pi = owner.GetType().GetProperty("pos_ref");
-
-            var pos = (Vector2)pi.GetValue(owner);
-            Move_Helper.move(move_type, ref pos, step);
-            pi.SetValue(owner, pos);
+            Move_Helper.move(move_type, ref bctx.pos, step);
 
             node.do_out("_o", bctx);
         }

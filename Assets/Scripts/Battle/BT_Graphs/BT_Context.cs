@@ -1,14 +1,19 @@
-﻿using Common;
+﻿using Battle.BFs;
+using Common;
 using GraphNode;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using UnityEngine;
 
 namespace Battle.BT_Graphs
 {
     public class BT_Context : IContext
     {
         public string main_state;
+
+        public Vector2 pos;
 
         public object owner;
         BT_GraphAsset m_asset;
@@ -51,7 +56,10 @@ namespace Battle.BT_Graphs
 
         public void tick()
         {
-            try_do_cpn(main_state);
+            Mission.instance.try_get_mgr("BFMgr", out BFMgr bf_mgr);
+            
+            SeekPath_Helper.try_seek_path(pos, new(5,5), bf_mgr.access_cells, out var path);
+            bf_mgr.show_path(path);
         }
 
 

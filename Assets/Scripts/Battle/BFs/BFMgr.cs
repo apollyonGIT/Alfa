@@ -1,18 +1,21 @@
 ﻿using Common;
 using Foundation;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Battle.BFs
 {
     public interface IBFView : IModelView<BF>
-    { 
+    {
+        void notify_on_show_path(bool is_enable = false);
     }
 
 
     public class BFMgr : IMgr
     {
         public Dictionary<Vector2, BF> cells = new();
+        public Dictionary<Vector2, bool> access_cells => cells.Where(t => t.Value.is_access).ToDictionary(t => t.Key, t => true);
 
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
@@ -45,6 +48,27 @@ namespace Battle.BFs
         public void add_cell(BF cell)
         {
             cells.Add(cell.pos, cell);
+        }
+
+
+        public void show_path(Vector2[] path)
+        {
+            foreach (var (_, cell) in cells)
+            {
+                foreach (var view in cell.views)
+                {
+                    view.notify_on_show_path();
+                }
+            }
+
+            foreach (var pos in path)
+            {
+                cells.TryGetValue(pos, out var cell);
+                foreach (var view in cell.views)
+                {
+                    view.notify_on_show_path(true);
+                }
+            }
         }
     }
 }
