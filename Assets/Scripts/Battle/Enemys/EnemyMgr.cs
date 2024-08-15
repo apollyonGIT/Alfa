@@ -54,13 +54,12 @@ namespace Battle.Enemys
         void tick()
         {
             if (!is_call) return;
+            is_call = false;
 
             foreach (var cell in cells)
             {
                 cell.bctx?.tick();
             }
-
-            is_call = false;
         }
 
 

@@ -29,6 +29,11 @@ namespace Battle.BT_Graphs
 
         //==================================================================================================
 
+        public MainState(BT_Context bctx, BT_Node node) : base(bctx, node)
+        {
+        }
+
+
         public override void @do(BT_Context bctx, params object[] args)
         {
             node.do_out("_o", bctx);

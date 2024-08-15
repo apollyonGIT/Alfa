@@ -6,7 +6,7 @@
 
         //==================================================================================================
 
-        public virtual void @init(BT_Context bctx, BT_Node node)
+        public BT_CPN(BT_Context bctx, BT_Node node)
         {
             this.node = node;
         }

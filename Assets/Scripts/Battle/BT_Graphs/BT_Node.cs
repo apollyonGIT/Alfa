@@ -15,10 +15,7 @@ namespace Battle.BT_Graphs
 
         public BT_CPN init_cpn(BT_Context bctx)
         {
-            var cpn = (BT_CPN)Activator.CreateInstance(cpn_type);
-            cpn.init(bctx, this);
-
-            return cpn;
+            return (BT_CPN)Activator.CreateInstance(cpn_type, bctx, this);
         }
 
 
