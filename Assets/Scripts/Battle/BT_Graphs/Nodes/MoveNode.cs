@@ -21,7 +21,10 @@ namespace Battle.BT_Graphs
         [Display("input")]
         public void _i(BT_Context bctx)
         {
-            Move_Helper.move(move_type, ref bctx.pos, step);
+            var pos = Move_Helper.move(move_type, bctx.pos, step);
+
+            if (bctx.sight.ContainsKey(pos))
+                bctx.pos = pos;
 
             _o?.Invoke(bctx);
         }
