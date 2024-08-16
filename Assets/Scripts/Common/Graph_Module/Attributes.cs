@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Battle.Graph_Module
+namespace Common.Graph_Module
 {
     public class Attributes
     {

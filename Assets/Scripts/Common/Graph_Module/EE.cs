@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Battle.Graph_Module
+namespace Common.Graph_Module
 {
     [Serializable]
     public class EE : IExpressionExternal

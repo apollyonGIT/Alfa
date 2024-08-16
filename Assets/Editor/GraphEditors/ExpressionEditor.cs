@@ -1,18 +1,20 @@
-﻿using Battle.BT_Graphs;
-using Battle.Graph_Module;
-using CalcExpr;
+﻿using CalcExpr;
 using Common;
+using Common.Graph_Module;
 using GraphNode;
 using GraphNode.Editor;
 
 namespace Editor.GraphEditors
 {
-    [PropertyEditor(typeof(EX_Expression))]
-    public class EX_ExpressionEditor : ExpressionEditor<EX_Expression>
+    [PropertyEditor(typeof(Common.Graph_Module.Expression))]
+    public class ExpressionEditor : ExpressionEditor<Common.Graph_Module.Expression>
     {
+
+        //================================================================================================
+
         public override ExpressionBase create_expression()
         {
-            return new EX_Expression();
+            return new Common.Graph_Module.Expression();
         }
 
 
@@ -20,7 +22,7 @@ namespace Editor.GraphEditors
         {
             Common_DS.instance.try_get_value("expression_continue", out bool need_complete);
 
-            external = new EE(str, typeof(BT_Context), need_complete);
+            external = new EE(str, target.ctx_type, need_complete);
             ty = external.ret_type;
 
             var content = target.content;

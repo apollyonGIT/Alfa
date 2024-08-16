@@ -1,15 +1,17 @@
 ﻿using CalcExpr;
 using GraphNode;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
-namespace Battle.Graph_Module
+namespace Common.Graph_Module
 {
     [Serializable]
-    public class EX_Expression : Expression<EX_Expression>
+    public class Expression : Expression<Expression>
     {
+        public virtual Type ctx_type => null;
+
+        //================================================================================================
+
         public int do_calc_int<T>(T ctx) where T : IContext
         {
             if (constant.HasValue)

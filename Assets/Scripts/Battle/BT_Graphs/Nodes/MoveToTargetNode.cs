@@ -1,5 +1,4 @@
-﻿using Battle.Graph_Module;
-using GraphNode;
+﻿using GraphNode;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -15,11 +14,11 @@ namespace Battle.BT_Graphs
 
         [ShowInBody(format = "target_x -> {0}")]
         [ExpressionType(CalcExpr.ValueType.Floating)]
-        public EX_Expression target_x;
+        public BT_Expression target_x;
 
         [ShowInBody(format = "target_y -> {0}")]
         [ExpressionType(CalcExpr.ValueType.Floating)]
-        public EX_Expression target_y;
+        public BT_Expression target_y;
 
         //==================================================================================================
 
