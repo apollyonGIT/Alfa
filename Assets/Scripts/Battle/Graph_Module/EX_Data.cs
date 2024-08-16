@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Battle.Graph_Module
 {
-    public class TL_Data
+    public class EX_Data
     {
         public static Dictionary<string, string> datas = new();
         public static System.Type owner_type = typeof(BT_Context);

@@ -14,14 +14,12 @@ namespace Battle.BT_Graphs
         public int step;
 
         [ShowInBody(format = "target_x -> {0}")]
-        public int target_x;
+        [ExpressionType(CalcExpr.ValueType.Integer)]
+        public EX_Expression target_x;
 
         [ShowInBody(format = "target_y -> {0}")]
-        public int target_y;
-
-        [ShowInBody(format = "z -> {0}")]
-        [ExpressionType(CalcExpr.ValueType.Floating)]
-        public EX_Expression z;
+        [ExpressionType(CalcExpr.ValueType.Integer)]
+        public EX_Expression target_y;
 
         //==================================================================================================
 
@@ -30,11 +28,8 @@ namespace Battle.BT_Graphs
         [Display("input")]
         public void _i(BT_Context bctx)
         {
-            var _z = z.do_calc_float(bctx);
-            Debug.Log(z);
-
             var e = new Move_To_Target(bctx, this);
-            e.@do(bctx, new Vector2(target_x, target_y) ,step);
+            e.@do(bctx, new Vector2(target_x.do_calc_int(bctx), target_y.do_calc_int(bctx)) ,step);
         }
         #endregion
 

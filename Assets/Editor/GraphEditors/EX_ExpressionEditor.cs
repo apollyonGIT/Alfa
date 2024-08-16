@@ -18,12 +18,12 @@ namespace Editor.GraphEditors
 
         protected override bool get_external(string str, out ValueType ty, out IExpressionExternal external)
         {
-            if (!TL_Data.datas.Any())
-                TL_Data.reset();
+            //if (!EX_Data.datas.Any())
+            //    EX_Data.reset();
 
             Common_DS.instance.try_get_value("tl_content_need_complete", out bool need_complete);
 
-            external = new EE(str, TL_Data.owner_type, need_complete);
+            external = new EE(str, EX_Data.owner_type, need_complete);
             ty = external.ret_type;
 
             var content = target.content;
