@@ -14,11 +14,11 @@ namespace Battle.BT_Graphs
         public int step;
 
         [ShowInBody(format = "target_x -> {0}")]
-        [ExpressionType(CalcExpr.ValueType.Integer)]
+        [ExpressionType(CalcExpr.ValueType.Floating)]
         public EX_Expression target_x;
 
         [ShowInBody(format = "target_y -> {0}")]
-        [ExpressionType(CalcExpr.ValueType.Integer)]
+        [ExpressionType(CalcExpr.ValueType.Floating)]
         public EX_Expression target_y;
 
         //==================================================================================================
@@ -29,7 +29,7 @@ namespace Battle.BT_Graphs
         public void _i(BT_Context bctx)
         {
             var e = new Move_To_Target(bctx, this);
-            e.@do(bctx, new Vector2(target_x.do_calc_int(bctx), target_y.do_calc_int(bctx)) ,step);
+            e.@do(bctx, new Vector2(target_x.do_calc_float(bctx), target_y.do_calc_float(bctx)) ,step);
         }
         #endregion
 
