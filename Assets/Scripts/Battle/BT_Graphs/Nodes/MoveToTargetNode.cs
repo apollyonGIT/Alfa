@@ -1,3 +1,4 @@
+﻿using Battle.Graph_Module;
 using GraphNode;
 using System;
 using System.Linq;
@@ -18,6 +19,10 @@ namespace Battle.BT_Graphs
         [ShowInBody(format = "target_y -> {0}")]
         public int target_y;
 
+        [ShowInBody(format = "z -> {0}")]
+        [ExpressionType(CalcExpr.ValueType.Floating)]
+        public EX_Expression z;
+
         //==================================================================================================
 
         #region Input
@@ -25,6 +30,9 @@ namespace Battle.BT_Graphs
         [Display("input")]
         public void _i(BT_Context bctx)
         {
+            var _z = z.do_calc_float(bctx);
+            Debug.Log(z);
+
             var e = new Move_To_Target(bctx, this);
             e.@do(bctx, new Vector2(target_x, target_y) ,step);
         }
