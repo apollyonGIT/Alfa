@@ -8,7 +8,6 @@ namespace Battle.BT_Graphs
     [Graph(typeof(BT_Graph))]
     public class MainStateNode : BT_Node
     {
-        public override Type cpn_type => typeof(MainState);
 
         //==================================================================================================
 
@@ -21,24 +20,12 @@ namespace Battle.BT_Graphs
         [Display("out")]
         public System.Action<BT_Context> _o { get; set; }
         #endregion
-    }
 
 
-    public class MainState : BT_CPN
-    {
-
-        //==================================================================================================
-
-        public MainState(BT_Context bctx, BT_Node node) : base(bctx, node)
+        public void @do(BT_Context bctx)
         {
+            _o?.Invoke(bctx);
         }
-
-
-        public override void @do(BT_Context bctx, params object[] args)
-        {
-            node.do_out("_o", bctx);
-        }
-
     }
 }
 

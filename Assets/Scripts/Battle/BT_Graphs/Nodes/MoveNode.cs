@@ -21,8 +21,9 @@ namespace Battle.BT_Graphs
         [Display("input")]
         public void _i(BT_Context bctx)
         {
-            var e = new Move(bctx, this);
-            e.@do(bctx, move_type, step);
+            Move_Helper.move(move_type, ref bctx.pos, step);
+
+            _o?.Invoke(bctx);
         }
         #endregion
 
@@ -32,29 +33,6 @@ namespace Battle.BT_Graphs
         [Display("out")]
         public System.Action<BT_Context> _o { get; set; }
         #endregion
-    }
-
-
-    public class Move : BT_CPN
-    {
-
-        //==================================================================================================
-
-        public Move(BT_Context bctx, BT_Node node) : base(bctx, node)
-        {
-        }
-
-
-        public override void @do(BT_Context bctx, params object[] args)
-        {
-            var move_type = (EN_Move_Type)args[0];
-            var step = (int)args[1];
-
-            Move_Helper.move(move_type, ref bctx.pos, step);
-
-            node.do_out("_o", bctx);
-        }
-
     }
 }
 

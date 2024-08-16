@@ -27,35 +27,8 @@ namespace Battle.BT_Graphs
         [Display("input")]
         public void _i(BT_Context bctx)
         {
-            var e = new Move_To_Target(bctx, this);
-            e.@do(bctx, new Vector2(target_x.do_calc_float(bctx), target_y.do_calc_float(bctx)) ,step);
-        }
-        #endregion
-
-
-        #region Output
-        [Output]
-        [Display("out")]
-        public System.Action<BT_Context> _o { get; set; }
-        #endregion
-    }
-
-
-    public class Move_To_Target : BT_CPN
-    {
-
-        //==================================================================================================
-
-        public Move_To_Target(BT_Context bctx, BT_Node node) : base(bctx, node)
-        {
-        }
-
-
-        public override void @do(BT_Context bctx, params object[] args)
-        {
             ref var pos = ref bctx.pos;
-            var target_pos = (Vector2)args[0];
-            var step = (int)args[1];
+            Vector2 target_pos = new(target_x.do_calc_float(bctx), target_y.do_calc_float(bctx));
 
             if (step > 0 && SeekPath_Helper.try_seek_path(bctx.pos, target_pos, bctx.sight, out var path))
             {
@@ -65,9 +38,16 @@ namespace Battle.BT_Graphs
                     pos = path[step - 1];
             }
 
-            node.do_out("_o", bctx);
+            _o?.Invoke(bctx);
         }
+        #endregion
 
+
+        #region Output
+        [Output]
+        [Display("out")]
+        public System.Action<BT_Context> _o { get; set; }
+        #endregion
     }
 }
 

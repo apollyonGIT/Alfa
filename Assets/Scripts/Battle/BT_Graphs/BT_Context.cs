@@ -19,7 +19,7 @@ namespace Battle.BT_Graphs
 
         Type IContext.context_type => typeof(BT_Context);
 
-        Dictionary<string, BT_CPN> m_cpns = new();
+        public Dictionary<string, BT_Node> nodes = new();
 
         //================================================================================================
 
@@ -38,11 +38,11 @@ namespace Battle.BT_Graphs
 
         public void attach(BT_GraphAsset asset)
         {
-            m_cpns.Clear();
+            nodes.Clear();
 
-            foreach (var node in asset.graph.nodes.Where(t => t is BT_Node bn && bn.module_name != null && bn.cpn_type != null).Cast<BT_Node>())
+            foreach (var node in asset.graph.nodes.Where(t => t is BT_Node bn && bn.module_name != null).Cast<BT_Node>())
             {
-                m_cpns.Add(node.module_name, node.init_cpn(this));
+                nodes.Add(node.module_name, node);
             }
         }
 
@@ -55,16 +55,14 @@ namespace Battle.BT_Graphs
 
         public void call()
         {
-            try_do_cpn(main_state);
+            do_node_method(main_state);
         }
 
 
-        public bool try_do_cpn(string module_name, params object[] args)
+        public void do_node_method(string module_name)
         {
-            if (!m_cpns.TryGetValue(module_name, out var cpn)) return false;
-
-            cpn.@do(this, args);
-            return true;
+            nodes.TryGetValue(module_name, out var node);
+            node.GetType().GetMethod("do")?.Invoke(node, new object[] { this });
         }
 
 
