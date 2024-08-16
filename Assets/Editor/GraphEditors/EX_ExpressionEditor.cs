@@ -1,9 +1,9 @@
-﻿using Battle.Graph_Module;
+﻿using Battle.BT_Graphs;
+using Battle.Graph_Module;
 using CalcExpr;
 using Common;
 using GraphNode;
 using GraphNode.Editor;
-using System.Linq;
 
 namespace Editor.GraphEditors
 {
@@ -18,12 +18,9 @@ namespace Editor.GraphEditors
 
         protected override bool get_external(string str, out ValueType ty, out IExpressionExternal external)
         {
-            //if (!EX_Data.datas.Any())
-            //    EX_Data.reset();
+            Common_DS.instance.try_get_value("expression_continue", out bool need_complete);
 
-            Common_DS.instance.try_get_value("tl_content_need_complete", out bool need_complete);
-
-            external = new EE(str, EX_Data.owner_type, need_complete);
+            external = new EE(str, typeof(BT_Context), need_complete);
             ty = external.ret_type;
 
             var content = target.content;
@@ -41,13 +38,13 @@ namespace Editor.GraphEditors
 
         protected override void notify_changed(bool by_user)
         {
-            Common_DS.instance.add("tl_content_need_complete", false);
+            Common_DS.instance.add("expression_continue", false);
 
             var content = target.content;
             if (content.Contains("@"))
             {
                 target.content = content.Split("@")[0];
-                Common_DS.instance.add("tl_content_need_complete", true);
+                Common_DS.instance.add("expression_continue", true);
             }
 
             base.notify_changed(by_user);
