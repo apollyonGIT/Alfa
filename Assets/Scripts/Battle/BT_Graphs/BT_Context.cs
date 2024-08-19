@@ -69,7 +69,9 @@ namespace Battle.BT_Graphs
         Dictionary<Vector2, object> calc_sight()
         {
             Mission.instance.try_get_mgr("BFMgr", out BFs.BFMgr bf_mgr);
-            return bf_mgr.access_cells;
+            var ret = bf_mgr.cells.Where(t => t.Value.is_access).ToDictionary(t => t.Key, t => (object)t.Value);
+
+            return ret;
         }
     }
 }

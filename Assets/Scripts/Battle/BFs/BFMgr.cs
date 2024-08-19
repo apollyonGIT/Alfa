@@ -15,7 +15,6 @@ namespace Battle.BFs
     public class BFMgr : IMgr
     {
         public Dictionary<Vector2, BF> cells = new();
-        public Dictionary<Vector2, object> access_cells => cells.Where(t => t.Value.is_access).ToDictionary(t => t.Key, t => (object)t.Value);
 
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
