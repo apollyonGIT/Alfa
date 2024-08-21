@@ -48,27 +48,6 @@ namespace Battle.BFs
         {
             cells.Add(cell.pos, cell);
         }
-
-
-        public void show_path(Vector2[] path)
-        {
-            foreach (var (_, cell) in cells)
-            {
-                foreach (var view in cell.views)
-                {
-                    view.notify_on_show_path();
-                }
-            }
-
-            foreach (var pos in path)
-            {
-                cells.TryGetValue(pos, out var cell);
-                foreach (var view in cell.views)
-                {
-                    view.notify_on_show_path(true);
-                }
-            }
-        }
     }
 }
 
