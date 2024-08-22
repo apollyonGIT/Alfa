@@ -39,7 +39,7 @@ namespace Battle.Cards
         {
             for (int i = 0; i < count; i++)
             {
-                yield return new(mgr, type, 300000101u);
+                yield return new(mgr, type, 300101101u);
             }
         }
     }
