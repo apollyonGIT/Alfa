@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 namespace Common
@@ -278,20 +279,21 @@ namespace Common
         }
 
 
-        //public static void raycast(Vector2 pos, Action hit_null_ac ,Action<View> hit_success_ac)
-        //{
-        //    var hit = Physics2D.Raycast(pos, Vector2.zero).transform;
-        //    if (hit == null)
-        //    {
-        //        hit_null_ac?.Invoke();
-        //        return;
-        //    }
+        /// <summary>
+        /// 检测：当前鼠标位置，是否触及指定ui
+        /// </summary>
+        public static bool valid_in_ui(PointerEventData eventData, string go_name)
+        {
+            List<RaycastResult> results = new();
+            EventSystem.current.RaycastAll(eventData, results);
 
-        //    var view = hit.GetComponentInParent<View>();
-        //    if (view == null) return;
+            foreach (RaycastResult result in results.Where(t => t.gameObject.name == go_name))
+            {
+                return true;
+            }
 
-        //    hit_success_ac?.Invoke(view);
-        //}
+            return false;
+        }
         #endregion
     }
 }

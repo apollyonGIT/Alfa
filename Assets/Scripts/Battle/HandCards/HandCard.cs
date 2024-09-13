@@ -1,5 +1,6 @@
 ﻿using AutoCode.Tables;
 using Foundation;
+using UnityEngine;
 
 namespace Battle.HandCards
 {
@@ -17,6 +18,12 @@ namespace Battle.HandCards
 
             var id = (uint)args[0];
             World.DB.instance.card.try_get(id, out _desc);
+        }
+
+
+        public void use()
+        {
+            mgr.remove_cell(this);
         }
     }
 }

@@ -7,8 +7,6 @@ namespace Battle
     public class BattleContext : Singleton<BattleContext>
     {
         #region outter
-        public bool is_in_handcard_area;
-
 
         #endregion
 

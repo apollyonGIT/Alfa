@@ -58,6 +58,14 @@ namespace Battle.HandCards
 
             cells.Clear();
         }
+
+
+        public void remove_cell(HandCard cell)
+        {
+            cell.clear_views();
+
+            cells.Remove(cell);
+        }
     }
 }
 
