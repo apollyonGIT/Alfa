@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace Common
@@ -16,6 +17,13 @@ namespace Common
         {
             ret = camera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             ret.z = 0;
+        }
+
+
+        public Vector3 calc_mouse_pos_ui(PointerEventData eventData, RectTransform rect)
+        {
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(rect, eventData.position, eventData.enterEventCamera, out var mouse_pos);
+            return mouse_pos;
         }
     }
 
