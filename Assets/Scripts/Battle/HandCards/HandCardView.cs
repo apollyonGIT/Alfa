@@ -3,7 +3,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 using Common;
-using System.Collections.Generic;
 
 namespace Battle.HandCards
 {

@@ -1,6 +1,5 @@
 ﻿using AutoCode.Tables;
 using Foundation;
-using UnityEngine;
 
 namespace Battle.HandCards
 {
