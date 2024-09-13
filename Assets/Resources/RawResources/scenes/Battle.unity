@@ -728,7 +728,7 @@ GameObject:
   - component: {fileID: 836814141}
   - component: {fileID: 836814140}
   m_Layer: 5
-  m_Name: handcards
+  m_Name: holds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1071,7 +1071,7 @@ GameObject:
   - component: {fileID: 1343261645}
   - component: {fileID: 1343261644}
   m_Layer: 5
-  m_Name: handcard_area
+  m_Name: hold_area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

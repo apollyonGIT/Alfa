@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7306155241538122413}
   - component: {fileID: 444976004549720552}
   m_Layer: 5
-  m_Name: handcard
+  m_Name: hold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

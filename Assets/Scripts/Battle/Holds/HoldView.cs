@@ -4,19 +4,19 @@ using TMPro;
 using UnityEngine.EventSystems;
 using Common;
 
-namespace Battle.HandCards
+namespace Battle.Holds
 {
-    public class HandCardView : MonoBehaviour, IHandCardView, IDragHandler, IBeginDragHandler, IEndDragHandler
+    public class HoldView : MonoBehaviour, IHoldView, IDragHandler, IBeginDragHandler, IEndDragHandler
     {
         public TextMeshProUGUI title;
 
-        HandCard cell;
+        Hold cell;
         RectTransform rect;
 
         //==================================================================================================
 
 
-        void IModelView<HandCard>.attach(HandCard cell)
+        void IModelView<Hold>.attach(Hold cell)
         {
             this.cell = cell;
             rect = GetComponent<RectTransform>();
@@ -25,7 +25,7 @@ namespace Battle.HandCards
         }
 
 
-        void IModelView<HandCard>.detach(HandCard cell)
+        void IModelView<Hold>.detach(Hold cell)
         {
             this.cell = null;
 
@@ -53,7 +53,7 @@ namespace Battle.HandCards
 
         void IEndDragHandler.OnEndDrag(PointerEventData eventData)
         {
-            var can_use = !EX_Utility.valid_in_ui(eventData, "handcard_area");
+            var can_use = !EX_Utility.valid_in_ui(eventData, "hold_area");
 
             //打出
             if (can_use)

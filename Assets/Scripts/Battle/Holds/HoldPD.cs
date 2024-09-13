@@ -1,20 +1,20 @@
 ﻿using Common;
 using System.Collections.Generic;
 
-namespace Battle.HandCards
+namespace Battle.Holds
 {
-    public class HandCardPD : Producer
+    public class HoldPD : Producer
     {
-        public HandCardView model;
+        public HoldView model;
 
         public override IMgr imgr => mgr;
-        HandCardMgr mgr;
+        HoldMgr mgr;
 
         //==================================================================================================
 
         public override void init(int priority)
         {
-            mgr = new("HandCardMgr", priority);
+            mgr = new("HoldMgr", priority);
 
             call();
         }
@@ -22,7 +22,7 @@ namespace Battle.HandCards
 
         public override void call()
         {
-            var count = 6 - mgr.current_handcard_count;
+            var count = 6 - mgr.hold_count;
 
             foreach (var cell in cells(count))
             {
@@ -34,7 +34,7 @@ namespace Battle.HandCards
         }
 
 
-        IEnumerable<HandCard> cells(int count)
+        IEnumerable<Hold> cells(int count)
         {
             for (int i = 0; i < count; i++)
             {

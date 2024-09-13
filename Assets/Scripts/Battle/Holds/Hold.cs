@@ -1,17 +1,17 @@
 ﻿using AutoCode.Tables;
 using Foundation;
 
-namespace Battle.HandCards
+namespace Battle.Holds
 {
-    public class HandCard : Model<HandCard, IHandCardView>
+    public class Hold : Model<Hold, IHoldView>
     {
         public Card.Record _desc;
 
-        public HandCardMgr mgr;
+        public HoldMgr mgr;
 
         //==================================================================================================
 
-        public HandCard(HandCardMgr mgr,  params object[] args)
+        public Hold(HoldMgr mgr,  params object[] args)
         {
             this.mgr = mgr;
 

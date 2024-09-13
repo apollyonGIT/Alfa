@@ -2,18 +2,18 @@
 using Foundation;
 using System.Collections.Generic;
 
-namespace Battle.HandCards
+namespace Battle.Holds
 {
-    public interface IHandCardView : IModelView<HandCard>
+    public interface IHoldView : IModelView<Hold>
     { 
     }
 
 
-    public class HandCardMgr : IMgr
+    public class HoldMgr : IMgr
     {
-        public int current_handcard_count => cells.Count;
+        public int hold_count => cells.Count;
 
-        LinkedList<HandCard> cells = new();
+        LinkedList<Hold> cells = new();
 
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
@@ -22,7 +22,7 @@ namespace Battle.HandCards
 
         //==================================================================================================
 
-        public HandCardMgr(string name, int priority, params object[] args)
+        public HoldMgr(string name, int priority, params object[] args)
         {
             m_mgr_name = name;
             m_mgr_priority = priority;
@@ -43,7 +43,7 @@ namespace Battle.HandCards
         }
 
 
-        public void add_cell(HandCard cell)
+        public void add_cell(Hold cell)
         {
             cells.AddLast(cell);
         }
@@ -60,7 +60,7 @@ namespace Battle.HandCards
         }
 
 
-        public void remove_cell(HandCard cell)
+        public void remove_cell(Hold cell)
         {
             cell.clear_views();
 
