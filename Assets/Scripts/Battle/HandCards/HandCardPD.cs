@@ -38,7 +38,7 @@ namespace Battle.HandCards
         {
             for (int i = 0; i < count; i++)
             {
-                yield return new(mgr);
+                yield return new(mgr, 300401101u);
             }
         }
     }

@@ -1,10 +1,11 @@
-﻿using Foundation;
+﻿using AutoCode.Tables;
+using Foundation;
 
 namespace Battle.HandCards
 {
     public class HandCard : Model<HandCard, IHandCardView>
     {
-        public string title = "123";
+        public Card.Record _desc;
 
         public HandCardMgr mgr;
 
@@ -13,6 +14,9 @@ namespace Battle.HandCards
         public HandCard(HandCardMgr mgr,  params object[] args)
         {
             this.mgr = mgr;
+
+            var id = (uint)args[0];
+            World.DB.instance.card.try_get(id, out _desc);
         }
     }
 }

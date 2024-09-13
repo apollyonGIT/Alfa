@@ -32,7 +32,7 @@ namespace Battle.HandCards
 
         public void fresh()
         {
-            title.text = $"{cell.title}";
+            title.text = $"{cell._desc.f_name}";
         }
     }
 }
