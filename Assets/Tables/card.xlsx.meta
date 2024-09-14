@@ -18,3 +18,12 @@ ScriptedImporter:
       generate_code: 1
       code_lang: 0
       code_path: 
+  - sheet_name: deck
+    exports:
+    - name: deck
+      has_mask: 0
+      mask: 0
+      generate_asset: 1
+      generate_code: 1
+      code_lang: 0
+      code_path: 

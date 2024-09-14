@@ -28,29 +28,14 @@ namespace Battle.Decks
 
         IEnumerable<Deck> cells()
         {
-            for (int i = 0; i < 6; i++)
-            {
-                yield return new(mgr, 300101101u);
-            }
+            var rs = World.DB.instance.deck.records;
 
-            for (int i = 0; i < 6; i++)
+            foreach (var r in rs)
             {
-                yield return new(mgr, 300201101u);
-            }
-
-            for (int i = 0; i < 6; i++)
-            {
-                yield return new(mgr, 300301101u);
-            }
-
-            for (int i = 0; i < 6; i++)
-            {
-                yield return new(mgr, 300401101u);
-            }
-
-            for (int i = 0; i < 6; i++)
-            {
-                yield return new(mgr, 300501101u);
+                for (int i = 0; i < r.f_count; i++)
+                {
+                    yield return new(mgr, r.f_id);
+                }
             }
         }
     }

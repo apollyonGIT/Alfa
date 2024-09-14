@@ -18,6 +18,21 @@ namespace World
                 return m_card;
             }
         }
+
+
+        Deck m_deck;
+        public Deck deck
+        {
+            get
+            {
+                if (m_deck == null)
+                {
+                    EX_Utility.try_load_table("deck", out m_deck);
+                }
+
+                return m_deck;
+            }
+        }
     }
 }
 
