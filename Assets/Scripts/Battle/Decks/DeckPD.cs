@@ -28,7 +28,7 @@ namespace Battle.Decks
 
         IEnumerable<Deck> cells()
         {
-            var rs = World.DB.instance.deck.records;
+            var rs = DB.instance.deck.records;
 
             foreach (var r in rs)
             {

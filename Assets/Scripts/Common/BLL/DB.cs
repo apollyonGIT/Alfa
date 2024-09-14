@@ -1,7 +1,6 @@
 ﻿using AutoCode.Tables;
-using Common;
 
-namespace World
+namespace Common
 {
     public class DB : Singleton<DB>
     {

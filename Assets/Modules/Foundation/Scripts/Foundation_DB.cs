@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Foundation {
 
-    public abstract class DB {
+    public abstract class Foundation_DB {
 
         public void load_all(string bundle) {
             var table_type = typeof(ITable);

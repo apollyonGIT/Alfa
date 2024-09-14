@@ -1,12 +1,14 @@
 ﻿using AutoCode.Tables;
+using Common;
 using Foundation;
 
 namespace Battle.Decks
 {
     public class Deck : Model<Deck, IDeckView>
     {
-        public Card.Record _desc;
+        public ENUM.Card_Status status;
 
+        public Card.Record _desc;
         public DeckMgr mgr;
 
         //==================================================================================================
@@ -16,7 +18,7 @@ namespace Battle.Decks
             this.mgr = mgr;
 
             var id = (uint)args[0];
-            World.DB.instance.card.try_get(id, out _desc);
+            DB.instance.card.try_get(id, out _desc);
         }
     }
 }

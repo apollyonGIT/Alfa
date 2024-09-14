@@ -1,4 +1,5 @@
 ﻿using AutoCode.Tables;
+using Common;
 using Foundation;
 
 namespace Battle.Holds
@@ -16,7 +17,7 @@ namespace Battle.Holds
             this.mgr = mgr;
 
             var id = (uint)args[0];
-            World.DB.instance.card.try_get(id, out _desc);
+            DB.instance.card.try_get(id, out _desc);
         }
 
 

@@ -40,7 +40,7 @@ namespace Battle.Holds
 
             for (int i = 0; i < count; i++)
             {
-                var id = deck_mgr.select_random_cell();
+                var id = deck_mgr.draw_random_cell();
                 yield return new(mgr, id);
             }
         }

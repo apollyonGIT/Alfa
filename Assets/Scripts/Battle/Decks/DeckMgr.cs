@@ -2,7 +2,6 @@
 using Foundation;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace Battle.Decks
 {
@@ -14,6 +13,9 @@ namespace Battle.Decks
     public class DeckMgr : IMgr
     {
         public LinkedList<Deck> cells = new();
+        public IEnumerable<Deck> discards => cells.Where(t => t.status == ENUM.Card_Status.discard);
+        public IEnumerable<Deck> drawcards => cells.Where(t => t.status == ENUM.Card_Status.drawcard);
+        public IEnumerable<Deck> holds => cells.Where(t => t.status == ENUM.Card_Status.hold);
 
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
@@ -68,17 +70,19 @@ namespace Battle.Decks
         }
 
 
-        public uint select_random_cell()
+        public uint draw_random_cell()
         {
-            var index = EX_Utility.rnd_int(1, cells.Count);
+            var index = EX_Utility.rnd_int(1, drawcards.Count());
 
-            var e = cells.GetEnumerator();
+            var e = drawcards.GetEnumerator();
             for (int i = 0; i < index; i++)
             {
                 e.MoveNext();
             }
 
-            return e.Current._desc.f_id;
+            var cell = e.Current;
+
+            return cell._desc.f_id;
         }
     }
 }

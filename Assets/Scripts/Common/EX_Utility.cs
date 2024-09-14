@@ -271,15 +271,6 @@ namespace Common
 
         #region Valid
         /// <summary>
-        /// 检测：对象枚举中，是否包含元素
-        /// </summary>
-        public static bool valid_enum_contain_element<ENUM, E>(E e)
-        {
-            return Enum.IsDefined(typeof(ENUM), e);
-        }
-
-
-        /// <summary>
         /// 检测：当前鼠标位置，是否触及指定ui
         /// </summary>
         public static bool valid_in_ui(PointerEventData eventData, string go_name)
