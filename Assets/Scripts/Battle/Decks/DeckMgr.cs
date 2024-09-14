@@ -39,6 +39,31 @@ namespace Battle.Decks
         {
             Mission.instance.attach_mgr(m_mgr_name, this);
         }
+
+
+        public void add_cell(Deck cell)
+        {
+            cells.AddLast(cell);
+        }
+
+
+        public void remove_cells()
+        {
+            foreach (var cell in cells)
+            {
+                cell.clear_views();
+            }
+
+            cells.Clear();
+        }
+
+
+        public void remove_cell(Deck cell)
+        {
+            cell.clear_views();
+
+            cells.Remove(cell);
+        }
     }
 }
 
