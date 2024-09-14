@@ -36,9 +36,12 @@ namespace Battle.Holds
 
         IEnumerable<Hold> cells(int count)
         {
+            Mission.instance.try_get_mgr("DeckMgr", out Decks.DeckMgr deck_mgr);
+
             for (int i = 0; i < count; i++)
             {
-                yield return new(mgr, 300401101u);
+                var id = deck_mgr.select_random_cell();
+                yield return new(mgr, id);
             }
         }
     }

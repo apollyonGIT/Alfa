@@ -1,6 +1,8 @@
 ﻿using Common;
 using Foundation;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace Battle.Decks
 {
@@ -63,6 +65,20 @@ namespace Battle.Decks
             cell.clear_views();
 
             cells.Remove(cell);
+        }
+
+
+        public uint select_random_cell()
+        {
+            var index = EX_Utility.rnd_int(1, cells.Count);
+
+            var e = cells.GetEnumerator();
+            for (int i = 0; i < index; i++)
+            {
+                e.MoveNext();
+            }
+
+            return e.Current._desc.f_id;
         }
     }
 }
