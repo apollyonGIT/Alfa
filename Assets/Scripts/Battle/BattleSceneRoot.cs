@@ -1,4 +1,5 @@
-﻿using Common;
+﻿using Battle.Cards;
+using Common;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.EventSystems;
@@ -66,6 +67,20 @@ namespace Battle
         }
 
 
+        public void btn_deck()
+        {
+            var current = uiRoot.transform.Find("win_deck");
+            if (current != null)
+            {
+                DestroyImmediate(current.gameObject);
+                return;
+            }
+
+            EX_Utility.try_load_asset(("wins", "win_deck"), out Win_Deck asset);
+            var win_deck = Instantiate(asset, uiRoot.transform);
+            win_deck.init();
+            win_deck.name = "win_deck";
+        }
     }
 }
 
