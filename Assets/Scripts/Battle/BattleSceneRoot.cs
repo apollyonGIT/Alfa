@@ -2,6 +2,7 @@
 using Common;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -67,19 +68,21 @@ namespace Battle
         }
 
 
-        public void btn_deck()
+        public void btn_win(string win_name)
         {
-            var current = uiRoot.transform.Find("win_deck");
+            var current = uiRoot.transform.Find(win_name);
             if (current != null)
             {
                 DestroyImmediate(current.gameObject);
                 return;
             }
 
-            EX_Utility.try_load_asset(("wins", "win_deck"), out Win_Deck asset);
-            var win_deck = Instantiate(asset, uiRoot.transform);
-            win_deck.init();
-            win_deck.name = "win_deck";
+            EX_Utility.try_load_asset(("wins", win_name), out GameObject go);
+            var asset = go.GetComponent(win_name);
+            var win = Instantiate(asset, uiRoot.transform);
+
+            win.GetType().GetMethod("init")?.Invoke(win, null);
+            win.name = win_name;
         }
     }
 }

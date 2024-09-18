@@ -84,9 +84,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1918009608352674172}
-  - component: {fileID: 5728500041952413611}
+  - component: {fileID: 1569106983802404274}
   m_Layer: 5
-  m_Name: Win_Deck
+  m_Name: Win_Discard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5728500041952413611
+--- !u!114 &1569106983802404274
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3034821066842269510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff1b489a62ed2e749be473c4caa6c8be, type: 3}
+  m_Script: {fileID: 11500000, guid: 632af18927dad9c4990860129795d37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 1011438190503113890, guid: d14252e29aefda24cb3aeb87c9f2dda2, type: 3}
