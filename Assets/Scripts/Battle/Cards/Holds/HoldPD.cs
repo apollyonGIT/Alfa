@@ -1,7 +1,7 @@
 ﻿using Common;
 using System.Collections.Generic;
 
-namespace Battle.Holds
+namespace Battle.Cards
 {
     public class HoldPD : Producer
     {
@@ -36,12 +36,12 @@ namespace Battle.Holds
 
         IEnumerable<Hold> cells(int count)
         {
-            Mission.instance.try_get_mgr("DeckMgr", out Decks.DeckMgr deck_mgr);
+            Mission.instance.try_get_mgr("DeckMgr", out DeckMgr deck_mgr);
 
             for (int i = 0; i < count; i++)
             {
-                var id = deck_mgr.draw_random_cell();
-                yield return new(mgr, id);
+                var card = deck_mgr.draw();
+                yield return new(mgr, card);
             }
         }
     }

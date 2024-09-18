@@ -1,13 +1,11 @@
-﻿using AutoCode.Tables;
-using Common;
+﻿using Common;
 using Foundation;
 
-namespace Battle.Holds
+namespace Battle.Cards
 {
     public class Hold : Model<Hold, IHoldView>
     {
-        public Card.Record _desc;
-
+        public Card card;
         public HoldMgr mgr;
 
         //==================================================================================================
@@ -16,8 +14,7 @@ namespace Battle.Holds
         {
             this.mgr = mgr;
 
-            var id = (uint)args[0];
-            DB.instance.card.try_get(id, out _desc);
+            card = (Card)args[0];
         }
 
 

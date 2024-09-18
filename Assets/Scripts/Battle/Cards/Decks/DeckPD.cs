@@ -1,7 +1,7 @@
 ﻿using Common;
 using System.Collections.Generic;
 
-namespace Battle.Decks
+namespace Battle.Cards
 {
     public class DeckPD : Producer
     {
@@ -26,7 +26,7 @@ namespace Battle.Decks
         }
 
 
-        IEnumerable<Deck> cells()
+        IEnumerable<Card> cells()
         {
             var rs = DB.instance.deck.records;
 

@@ -1,21 +1,19 @@
 ﻿using Common;
 using Foundation;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace Battle.Decks
+namespace Battle.Cards
 {
-    public interface IDeckView : IModelView<Deck>
+    public interface IHoldView : IModelView<Hold>
     { 
     }
 
 
-    public class DeckMgr : IMgr
+    public class HoldMgr : IMgr
     {
-        public LinkedList<Deck> cells = new();
-        public IEnumerable<Deck> discards => cells.Where(t => t.status == ENUM.Card_Status.discard);
-        public IEnumerable<Deck> drawcards => cells.Where(t => t.status == ENUM.Card_Status.drawcard);
-        public IEnumerable<Deck> holds => cells.Where(t => t.status == ENUM.Card_Status.hold);
+        public int hold_count => cells.Count;
+
+        LinkedList<Hold> cells = new();
 
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
@@ -24,7 +22,7 @@ namespace Battle.Decks
 
         //==================================================================================================
 
-        public DeckMgr(string name, int priority, params object[] args)
+        public HoldMgr(string name, int priority, params object[] args)
         {
             m_mgr_name = name;
             m_mgr_priority = priority;
@@ -45,8 +43,10 @@ namespace Battle.Decks
         }
 
 
-        public void add_cell(Deck cell)
+        public void add_cell(Hold cell)
         {
+            cell.card.status = ENUM.Card_Status.hold;
+
             cells.AddLast(cell);
         }
 
@@ -55,6 +55,7 @@ namespace Battle.Decks
         {
             foreach (var cell in cells)
             {
+                cell.card.status = ENUM.Card_Status.discard;
                 cell.clear_views();
             }
 
@@ -62,27 +63,12 @@ namespace Battle.Decks
         }
 
 
-        public void remove_cell(Deck cell)
+        public void remove_cell(Hold cell)
         {
+            cell.card.status = ENUM.Card_Status.discard;
             cell.clear_views();
 
             cells.Remove(cell);
-        }
-
-
-        public uint draw_random_cell()
-        {
-            var index = EX_Utility.rnd_int(1, drawcards.Count());
-
-            var e = drawcards.GetEnumerator();
-            for (int i = 0; i < index; i++)
-            {
-                e.MoveNext();
-            }
-
-            var cell = e.Current;
-
-            return cell._desc.f_id;
         }
     }
 }

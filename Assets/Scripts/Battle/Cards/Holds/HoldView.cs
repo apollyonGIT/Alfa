@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using Common;
 
-namespace Battle.Holds
+namespace Battle.Cards
 {
     public class HoldView : MonoBehaviour, IHoldView, IDragHandler, IBeginDragHandler, IEndDragHandler
     {
@@ -35,7 +35,7 @@ namespace Battle.Holds
 
         public void fresh()
         {
-            title.text = $"{cell._desc.f_name}";
+            title.text = $"{cell.card._desc.f_name}";
         }
 
 

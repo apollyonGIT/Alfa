@@ -1,19 +1,15 @@
 ﻿using Common;
-using Foundation;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace Battle.Holds
+namespace Battle.Cards
 {
-    public interface IHoldView : IModelView<Hold>
-    { 
-    }
-
-
-    public class HoldMgr : IMgr
+    public class DeckMgr : IMgr
     {
-        public int hold_count => cells.Count;
-
-        LinkedList<Hold> cells = new();
+        public LinkedList<Card> cells = new();
+        public IEnumerable<Card> discards => cells.Where(t => t.status == ENUM.Card_Status.discard);
+        public IEnumerable<Card> drawcards => cells.Where(t => t.status == ENUM.Card_Status.drawcard);
+        public IEnumerable<Card> holds => cells.Where(t => t.status == ENUM.Card_Status.hold);
 
         string IMgr.name => m_mgr_name;
         readonly string m_mgr_name;
@@ -22,7 +18,7 @@ namespace Battle.Holds
 
         //==================================================================================================
 
-        public HoldMgr(string name, int priority, params object[] args)
+        public DeckMgr(string name, int priority, params object[] args)
         {
             m_mgr_name = name;
             m_mgr_priority = priority;
@@ -43,7 +39,7 @@ namespace Battle.Holds
         }
 
 
-        public void add_cell(Hold cell)
+        public void add_cell(Card cell)
         {
             cells.AddLast(cell);
         }
@@ -51,20 +47,27 @@ namespace Battle.Holds
 
         public void remove_cells()
         {
-            foreach (var cell in cells)
-            {
-                cell.clear_views();
-            }
-
             cells.Clear();
         }
 
 
-        public void remove_cell(Hold cell)
+        public void remove_cell(Card cell)
         {
-            cell.clear_views();
-
             cells.Remove(cell);
+        }
+
+
+        public Card draw()
+        {
+            var index = EX_Utility.rnd_int(1, drawcards.Count());
+
+            var e = drawcards.GetEnumerator();
+            for (int i = 0; i < index; i++)
+            {
+                e.MoveNext();
+            }
+
+            return e.Current;
         }
     }
 }

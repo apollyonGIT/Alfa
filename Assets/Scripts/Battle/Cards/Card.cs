@@ -1,19 +1,17 @@
-﻿using AutoCode.Tables;
-using Common;
-using Foundation;
+﻿using Common;
 
-namespace Battle.Decks
+namespace Battle.Cards
 {
-    public class Deck : Model<Deck, IDeckView>
+    public class Card
     {
         public ENUM.Card_Status status;
 
-        public Card.Record _desc;
+        public AutoCode.Tables.Card.Record _desc;
         public DeckMgr mgr;
 
         //==================================================================================================
 
-        public Deck(DeckMgr mgr,  params object[] args)
+        public Card(DeckMgr mgr,  params object[] args)
         {
             this.mgr = mgr;
 
