@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 using Common;
+using Battle.BFs;
 
 namespace Battle.Cards
 {
@@ -53,18 +54,21 @@ namespace Battle.Cards
 
         void IEndDragHandler.OnEndDrag(PointerEventData eventData)
         {
-            var can_use = !EX_Utility.valid_in_ui(eventData, "hold_area");
+            var is_in_slot = Common_DS.instance.try_get_value("slot_view", out SlotView slot_view);
+            var can_use = !EX_Utility.valid_in_ui(eventData, "hold_area") && is_in_slot;
 
             //打出
             if (can_use)
             {
-                cell.use();
+                cell.use(slot_view.id);
             }
             else //放回手牌栏
             {
                 Common_DS.instance.try_get_value("card_ori_pos", out Vector3 pos);
                 transform.position = pos;
             }
+
+            Common_DS.instance.remove("slot_view");
         }
     }
 }

@@ -1,17 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Common;
 using UnityEngine;
+using World;
 
 namespace Battle.BFs
 {
     public class SlotView : MonoBehaviour
     {
+        public int id;
 
         //==================================================================================================
 
-        public void notify_on_left_click()
+        public void notify_on_UseCardInSlot()
         {
-            Debug.Log(111);
+            Common_DS.instance.add("slot_view", this);
         }
     }
 }

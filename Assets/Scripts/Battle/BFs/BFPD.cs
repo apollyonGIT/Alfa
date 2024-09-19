@@ -1,5 +1,4 @@
 ﻿using Common;
-using Foundation;
 
 namespace Battle.BFs
 {
@@ -13,7 +12,8 @@ namespace Battle.BFs
 
         public override void init(int priority)
         {
-            Instantiate(model, transform);
+            var view = Instantiate(model, transform);
+            view.init();
         }
 
 

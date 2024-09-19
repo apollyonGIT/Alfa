@@ -1,11 +1,10 @@
-﻿using Common;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Battle.Cards;
+using Common;
 using UnityEngine;
 
-namespace Battle.Cards
+namespace Battle.Wins
 {
-    public class Win_Discard : MonoBehaviour
+    public class Win_Draw : MonoBehaviour
     {
         public Show_Card_View model;
 
@@ -17,7 +16,7 @@ namespace Battle.Cards
         {
             Mission.instance.try_get_mgr("DeckMgr", out DeckMgr deck_mgr);
 
-            foreach (var card in deck_mgr.discards)
+            foreach (var card in deck_mgr.drawcards)
             {
                 var show_card = Instantiate(model, content);
                 show_card.init(card);

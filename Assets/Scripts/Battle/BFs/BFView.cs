@@ -1,8 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Cards.BattleCards;
 using UnityEngine;
 
-public class BFView : MonoBehaviour
+namespace Battle.BFs
 {
-    
+    public class BFView : MonoBehaviour
+    {
+        public BattleCardPD battle_card_PD;
+
+        //==================================================================================================
+
+        public void init()
+        {
+            battle_card_PD.init(999);
+        }
+    }
 }
+

@@ -15,6 +15,12 @@ namespace Battle
         {
             Battle_Mouse_Helper.do_hit_view_method<InteractiveView>("notify_on_right_click");
         }
+
+
+        public void OnUseCardInSlot()
+        {
+            Battle_Mouse_Helper.do_hit_view_method<InteractiveView>("notify_on_UseCardInSlot");
+        }
     }
 }
 
