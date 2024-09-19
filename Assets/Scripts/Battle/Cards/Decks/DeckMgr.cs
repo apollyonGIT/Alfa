@@ -59,6 +59,16 @@ namespace Battle.Cards
 
         public Card draw()
         {
+            //回归抽牌堆
+            if (!drawcards.Any())
+            {
+                foreach (var discard in discards)
+                {
+                    discard.status = ENUM.Card_Status.drawcard;
+                }
+            }
+
+            //正常抽取
             var index = EX_Utility.rnd_int(1, drawcards.Count());
 
             var e = drawcards.GetEnumerator();
